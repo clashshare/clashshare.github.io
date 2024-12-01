@@ -1,4 +1,4 @@
-# 11月30日|最高速度19.4M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接  更新时间 2024-11-30 10:58:19
+# 12月1日|最高速度18.8M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接  更新时间 2024-12-01 10:03:14
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://clashshare.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://clashshare.github.io/uploads/2024/11/0-20241130.yaml
-- https://clashshare.github.io/uploads/2024/11/1-20241130.yaml
-- https://clashshare.github.io/uploads/2024/11/2-20241130.yaml
-- https://clashshare.github.io/uploads/2024/11/3-20241130.yaml
-- https://clashshare.github.io/uploads/2024/11/4-20241130.yml
+- https://clashshare.github.io/uploads/2024/12/0-20241201.yaml
+- https://clashshare.github.io/uploads/2024/12/1-20241201.yaml
+- https://clashshare.github.io/uploads/2024/12/2-20241201.yaml
+- https://clashshare.github.io/uploads/2024/12/3-20241201.yaml
+- https://clashshare.github.io/uploads/2024/12/4-20241201.yml
 
 ### V2ray订阅链接
 
-- https://clashshare.github.io/uploads/2024/11/0-20241130.txt
-- https://clashshare.github.io/uploads/2024/11/1-20241130.txt
-- https://clashshare.github.io/uploads/2024/11/2-20241130.txt
-- https://clashshare.github.io/uploads/2024/11/3-20241130.txt
-- https://clashshare.github.io/uploads/2024/11/4-20241130.txt
+- https://clashshare.github.io/uploads/2024/12/0-20241201.txt
+- https://clashshare.github.io/uploads/2024/12/1-20241201.txt
+- https://clashshare.github.io/uploads/2024/12/2-20241201.txt
+- https://clashshare.github.io/uploads/2024/12/3-20241201.txt
+- https://clashshare.github.io/uploads/2024/12/4-20241201.txt
 
 ## 更多clash节点订阅 ：
 
