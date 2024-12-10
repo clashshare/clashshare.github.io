@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-23853.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）</title>
+        <meta name="description" content="文章目录  前言 一、环境准备 二、SpringBoot项目打jar包   1.1 使用Maven的package插件打包 1.2 上传至Linux服务器   三、Vue项目打包   1.1 修改后台" />
+        <link rel="icon" href="__ADDON__/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_4" rel="nofollow">前言</a></li> <li><a href="#_11" rel="nofollow">一、环境准备</a></li> <li><a href="#SpringBootjar_23" rel="nofollow">二、SpringBoot项目打jar包</a></li> <li> <ul> <li><a href="#11_Mavenpackage_24" rel="nofollow">1.1 使用Maven的package插件打包</a></li> <li><a href="#12_Linux_27" rel="nofollow">1.2 上传至Linux服务器</a></li> </ul> </li> <li><a href="#Vue_31" rel="nofollow">三、Vue项目打包</a></li> <li> <ul> <li><a href="#11__32" rel="nofollow">1.1 修改后台请求地址</a></li> <li><a href="#12_dist_36" rel="nofollow">1.2 生成dist文件</a></li> <li><a href="#13_linux_46" rel="nofollow">1.3 上传至linux服务器</a></li> </ul> </li> <li><a href="#Nginx_55" rel="nofollow">三、配置Nginx</a></li> <li><a href="#_102" rel="nofollow">四、启动项目</a></li> <li> <ul> <li><a href="#11_Nginx_103" rel="nofollow">1.1 启动Nginx服务器</a></li> <li><a href="#12_SpringBoot_105" rel="nofollow">1.2 启动SpringBoot</a></li> <li><a href="#13__114" rel="nofollow">1.3 访问项目</a></li> </ul> </li> <li><a href="#_118" rel="nofollow">总结</a></li> </ul> </div> <hr color="#000000" size="1&quot;"/> </h1> <p>Java企业开发少不了Spring Boot 加 Vue，在如今大街小巷都遍布的前后端分离项目标配，已经成为公司开发必不可少的技术，最近小编开源了一个关于RBAC的项目，也是用Spring Boot 和 Vue写的，想获取源码，最下方有Gitee链接，今天就以我的个人项目做列子。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/fcf0d979949ee1cf776d8dedc088b70c.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> <hr color="#000000" size="1&quot;"/> </h1> <p><strong>1、web服务器</strong></p> <p><strong>2、MySql数据库</strong></p> <p><strong>3、Nginx服务器</strong></p> <p><strong>4、Java环境</strong></p> <p>以后环境准备就绪之后，我们就开始打包进行部署，关于Nginx的使用，以及Docker后面的文章会有专题进行学习。</p> </h1> <h2><a id="11_Mavenpackage_24" rel="nofollow"></a>1.1 使用Maven的package插件打包</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/6a35c5af6e6925f47e6014101915fcc1.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> <h2><a id="12_Linux_27" rel="nofollow"></a>1.2 上传至Linux服务器</h2> <p>将打包后Jar包上传至Linux服务器，随便找个目录：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/22a36215a58af43fc1b9dbac7d579323.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> </h1> <h2><a id="11__32" rel="nofollow"></a>1.1 修改后台请求地址</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/28e17be0440510fb3ca2868c9de8b97d.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"><br /> 现在部署上想了，需要将你前端的启动端口，全部改成后端项目的端口，保持一致，然后修改后端请求的IP地址。就是你服务器的IP地址或者域名。</p> <h2><a id="12_dist_36" rel="nofollow"></a>1.2 生成dist文件</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/de094823eed96581c31a43d49677b5d2.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"><br /> 当然你也可以以下使用命令进行打包：</p> <pre><code class="prism language-java">npm run build</code></pre> <p>打包成功后会生成一个dist静态文件夹，里面都是我们vue项目打包编译后css、js等静态资源文件。</p> <h2><a id="13_linux_46" rel="nofollow"></a>1.3 上传至linux服务器</h2> <p>将dist一整个文件上传至Linux中，创建一个目录，用于存放dist文件，记住存放地址，下面配置Nginx静态资源需要使用：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/fa70fce9ff87102c3a864de051a04414.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"><br /> 为了方便管理，我都放在一个文件目录下：</p> <pre><code class="prism language-java"><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>dt</code></pre> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/e1b295b9920407068684c6622ae29be4.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"><br /> 由于Nginx服务器都部署在一台服务器上面，并且我们没有域名，也不做什么负载均衡，所以这里的配置就很简单，IP就写本机，服务器本机即是localhost，后面我们会有部署升级的文章，比如关于配置负载均衡、静态资源压缩、Https证书等等。</p> <p>关键的地方：</p> <p><strong>Vue的静态资源文件路径：</strong></p> <pre><code class="prism language-java">root<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>dt<span class="token operator">/</span>dist<span class="token punctuation">;</span></code></pre> <p><strong>Spring Boot的接口地址：</strong></p> <pre><code class="prism language-java">proxy_pass  http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">9090</span><span class="token operator">/</span>api<span class="token operator">/</span><span class="token punctuation">;</span></code></pre> <p>小编所有接口都有一个api作为前缀，因为这样好做权限资源的拦截。</p> <p><strong>完整配置：</strong></p> <pre><code class="prism language-json">server<span class="token punctuation">{<!-- --></span>         listen<span class="token number">80</span><span class="token punctuation">;</span>         server_name  localhost<span class="token punctuation">;</span>  		#前端页面         location<span class="token operator">/</span><span class="token punctuation">{<!-- --></span> 			#Linux上的前端工程打包目录 			root<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>dt<span class="token operator">/</span>dist<span class="token punctuation">;</span>  			#防止重定向页面刷新 路由失效 			try_files $uri $uri<span class="token operator">/</span><span class="token operator">/</span>index<span class="token punctuation">.</span>html<span class="token punctuation">;</span> 			index index<span class="token punctuation">.</span>html index<span class="token punctuation">.</span>htm<span class="token punctuation">;</span><span class="token punctuation">}</span> 		 		#后台接口地址 	    location<span class="token operator">/</span>api<span class="token operator">/</span><span class="token punctuation">{<!-- --></span> 			 proxy_set_header Host $host<span class="token punctuation">;</span> 			 proxy_set_header<span class="token constant">X</span><span class="token operator">-</span>Real<span class="token operator">-</span><span class="token constant">IP</span> $remote_addr<span class="token punctuation">;</span> 			 proxy_set_header<span class="token constant">REMOTE</span><span class="token operator">-</span><span class="token constant">HOST</span> $remote_addr<span class="token punctuation">;</span> 			 proxy_set_header<span class="token constant">X</span><span class="token operator">-</span>Forwarded<span class="token operator">-</span>For $proxy_add_x_forwarded_for<span class="token punctuation">;</span> 			 #填写你接口地址和端口，利用 nginx 反向代理进行服务转发 			 proxy_pass  http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token punctuation">:</span><span class="token number">9090</span><span class="token operator">/</span>api<span class="token operator">/</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>一切配置好之后，我们就可以开始启动项目了。</p> </h1> <h2><a id="11_Nginx_103" rel="nofollow"></a>1.1 启动Nginx服务器</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/8d917e0ed386729cb63702aa268dfc65.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> <h2><a id="12_SpringBoot_105" rel="nofollow"></a>1.2 启动SpringBoot</h2> <p>推荐后台启动方式：</p> <pre><code class="prism language-java">nohup java<span class="token operator">-</span>jar cms<span class="token operator">-</span>manage<span class="token operator">-</span><span class="token number">1.0</span><span class="token operator">-</span>SNAPSHOT<span class="token punctuation">.</span>jar<span class="token operator">&gt;</span>online<span class="token punctuation">.</span>log<span class="token number">2</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token operator">&amp;</span></code></pre> <p>online.log为启动试试日志，可通过cat命令进行查看。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/37c40bc7bebb9c8e7d1485d0341d8f6d.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> <h2><a id="13__114" rel="nofollow"></a>1.3 访问项目</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/be1efa73b251939740f73ff09de2ac7b.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/778d217658d88cd4b7e412e6312d3aec.jpg" alt="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）"></p> </h1> <p>由于Nginx服务器都部署在一台服务器上面，并且我们没有域名，也不做什么负载均衡，所以这里的配置就很简单，IP就写本机，服务器本机即是localhost，后面我们会有部署升级的文章，比如关于配置负载均衡、静态资源压缩、Https证书等等。后面我们会结合使用Docker部署，并且小编有文章也有些写，大家可自行查阅。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23398.htm">动物疫苗周期多长时间打一次 动物疫苗周期多长时间打一次好</a></p>
+                                        <p>下一个：<a href="/news/article-23855.htm">我所在的城市里有一家宠物医院英文 我所在的城市里有一家宠物医院英文翻译</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-free-node-subscribe.htm" title="8月16日|最高速度20.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">8月16日|最高速度20.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-ssr-node.htm" title="12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21564.htm" title="延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）">延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-9-free-high-speed-nodes.htm" title="6月9日|最高速度21.8M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">6月9日|最高速度21.8M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-26-clash-windows.htm" title="6月26日|最高速度21.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">6月26日|最高速度21.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21106.htm" title="动物医院办理条件要求是什么呢（动物医院收费标准）">动物医院办理条件要求是什么呢（动物医院收费标准）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-12-free-subscribe-node.htm" title="6月12日|最高速度18.4M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接">6月12日|最高速度18.4M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-clash-v2ray-ss-ssr.htm" title="11月19日|最高速度21.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月19日|最高速度21.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-v2ray.htm" title="10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-free-node-subscribe-links.htm" title="12月6日|最高速度22.9M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接">12月6日|最高速度22.9M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
