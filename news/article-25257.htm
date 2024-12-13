@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-25257.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Git基础Git创建本地版本库详解</title>
+        <meta name="description" content="目录  1、Git版本库介绍 2、创建本地版本库  场景一：创建一个空的本地版本库。 场景二：项目中已存在文件时，创建该项目的本地版本库。 场景三：在GitHub网站上创建仓库，克隆到本地。     " />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Git基础Git创建本地版本库详解</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#1git%E7%89%88%E6%9C%AC%E5%BA%93%E4%BB%8B%E7%BB%8D" rel="nofollow">1、Git版本库介绍</a></li> <li><a href="#2%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E5%BA%93" rel="nofollow">2、创建本地版本库</a> <ul> <li><a href="#%E5%9C%BA%E6%99%AF%E4%B8%80%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E5%BA%93" rel="nofollow">场景一：创建一个空的本地版本库。</a></li> <li><a href="#%E5%9C%BA%E6%99%AF%E4%BA%8C%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%B7%B2%E5%AD%98%E5%9C%A8%E6%96%87%E4%BB%B6%E6%97%B6%E5%88%9B%E5%BB%BA%E8%AF%A5%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E5%BA%93" rel="nofollow">场景二：项目中已存在文件时，创建该项目的本地版本库。</a></li> <li><a href="#%E5%9C%BA%E6%99%AF%E4%B8%89%E5%9C%A8github%E7%BD%91%E7%AB%99%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0" rel="nofollow">场景三：在GitHub网站上创建仓库，克隆到本地。</a></li> </ul> </li> </ul> </div> <h2 id="1git版本库介绍">1、Git版本库介绍</h2> <p>每个Git版本控制系统的主机中，都可以包含若干个本地版本库，一般情况下一个本地版本库对应一个项目，用于对某个特定项目中的本地文件进行版本管理。其实，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除等操作Git都能跟踪到，以便任何时刻都可以追踪历史，或者在将来某个时刻可以进行“还原”。</p> <p>Git中版本库又名仓库，英文名<code>Repository</code>，使用命令<code>git init</code>来创建并初始化一个本地版本库。</p> <p>初始化后，在当前目录下会出现一个名为<code>.git</code>的目录，所有Git需要的数据和资源都存放在这个目录中。包括暂存区文件，版本记录文件，配置文件等。换句话说，如果你想从项目中删除Git的版本控制，但又要保留项目原文件，那么只需要将这个<code>.git</code>目录删除即可。这样话，这个项目就与Git没有任何关系。</p> <h2 id="2创建本地版本库">2、创建本地版本库</h2> <p>在日常工作当中，创建Git本地版本库的场景有两种。</p> <h3 id="场景一创建一个空的本地版本库">场景一：创建一个空的本地版本库。</h3> <p><strong>介绍：</strong></p> <p>这种情况是项目还没有代码，需要先创建一个Git本地版本库的时候。</p> <p>在你专门存放Git版本库的文件夹中，执行<code>git init your_project（项目名）</code>，这个时候Git会在当前路径下，创建一个和项目名称同名的文件夹，这个文件夹就是一个Git的裸仓库，里面的会有一个隐藏的<code>.git</code>文件夹。</p> <p>要进行开发的时候，只要进入到这个文件夹里面就可以了。</p> <p><strong>步骤：</strong></p> <p>直接用Git管理新建的项目</p> <ol> <li>进入到Git本地版本库管理目录<code>git-repository</code>。</li> <li>查看目录内容。</li> <li>执行<code>$ git init your_project</code>，创建Git本地版本库。</li> <li>查看Git本地版本库是否创建。</li> <li>进入到刚刚创建的Git本地版本库。</li> <li>查看Git本地版本库中的内容。</li> <li>进入<code>.git</code>目录，进行查看。</li> </ol> <p><strong>演示：</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/fbb0cd773852aefce5f5e57a3a543cf7.jpg" alt="Git基础Git创建本地版本库详解"></p> <blockquote> <p>说明</p> <ul> <li>当我们执行完<code>$ git init first_git_repo</code>命令之后，会出现下面一行提示。<br /><code>Initialized empty Git repository in J:/git-repository/first_git_repo/.git/</code><br /> 意思是：初始化一个空的Git仓库，然后是仓库的路径。</li> <li><code>.git</code>目录：这个文件夹是Git的核心内容，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。这个文件夹以后我们会详细的讲解。</li> <li>后面显示<code>（master）</code>表示默认创建了<code>master</code>主分支。</li> </ul> </blockquote> <blockquote> <p>提示：</p> <ul> <li>我们也可以在<code>git-repository</code>目录中，先通过<code>mkdir first_git_repo</code>，创建一个仓库目录，然后在进入这个目录中，执行<code>git init</code>命令，和上边是一样的，这里就不演示了。</li> <li>如果你使用Windows系统，为了避免遇到各种莫名其妙的问题，请确保目录名（包括父目录）不包含中文。</li> </ul> </blockquote> <h3 id="场景二项目中已存在文件时创建该项目的本地版本库">场景二：项目中已存在文件时，创建该项目的本地版本库。</h3> <p><strong>介绍：</strong></p> <p>这种情况就是在创建仓库之前，项目中已经有一些代码文件了。换种方式说，在本地创建Git仓库，把代码纳入到Git管理中，提交到 GitHub。</p> <p>针对这种情况，我们只需要进入到已有的项目代码所在的文件夹，然后执行<code>git init</code>命令就可以了。</p> <p><strong>步骤：</strong></p> <p>把已有的项目文件的目录纳入Git管理</p> <ol> <li><code>second_git_repo</code>目录是一个已有文件的项目目录。</li> <li>进入<code>second_git_repo</code>目录，查看内容。</li> <li>执行<code>git init</code>命令，把该目录纳入Git管理。</li> <li>该目录纳入Git管理后，查看目录以有<code>.git</code>目录。</li> <li>进入<code>.git</code>目录，进行查看。</li> </ol> <p><strong>演示：</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f3d9f688c330f70f19a566fa53ad92fa.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>以上就是Git在本地创建版本库常用的两种情况。</p> <h3 id="场景三在github网站上创建仓库克隆到本地">场景三：在GitHub网站上创建仓库，克隆到本地。</h3> <p><strong>1、进入GitHub网站，点击右上角的加号，选择穿件仓库。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6f85fa10d6d83e7123614c08a851821f.jpg" alt="Git基础Git创建本地版本库详解"></p> <p><strong>2、进入到创建Git仓库页面。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b047985d2ffcea9c50247f254d362686.jpg" alt="Git基础Git创建本地版本库详解"></p> <ul> <li><strong>Public</strong>：公有的，就是大家谁都能看得到的仓库，也能下载你仓库中的代码。</li> <li><strong>Private</strong>：私有的，你可以选择让谁看到，需要花钱</li> </ul> <p>其他的不用管直接点击创建（<code>Create repository</code>）。</p> <p><strong>3、查看创建的仓库，选择认证方式。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/bb714c25619d7876bdcaf48c21cffbf8.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>会有一个仓库列表，点击你刚刚创建的仓库。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c34e0fd4808b6e9ea079fe9fc3842087.jpg" alt="Git基础Git创建本地版本库详解"></p> <table> <thead> <tr> <th>https和ssh验证方式的区别</th> </tr> </thead> <tbody> <tr> <td>https基于用户名密码的验证方式。</td> </tr> <tr> <td>SSh基于公钥私钥的验证方式（sshkey的方式），之前讲过。</td> </tr> </tbody> </table> <p><strong>4、克隆仓库到本地</strong></p> <p>进入到你想克隆的位置的文件夹中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b6f091a107ed5e8a8de6e0a23ffa767c.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>执行<code>git clone + 远程仓库路径</code>。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/db42b3a4cd37b5064734ebdb56b0c871.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>查看<code>git-repository-temp</code>目录中，已经clone出GitHub上创建的仓库了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c0de32b5bb52dd76522571e25417a2c4.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>进入<code>clone</code>到本地的项目TestNG中查看。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/74d483f64e3d82e5086d423894735ad3.jpg" alt="Git基础Git创建本地版本库详解"></p> <p>里边也有<code>.git</code>文件夹，说明也被Git管理。</p> <p>以上就是三种创建Git的形式。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25256.htm">VUE项目解决Vant组件库样式修改不生效问题</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-22027.htm" title="长沙学美容的地方（长沙学美容学费大概多少钱?）">长沙学美容的地方（长沙学美容学费大概多少钱?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-v2ray.htm" title="10月19日|最高速度20M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接">10月19日|最高速度20M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-30-free-subscribe-node.htm" title="7月30日|最高速度21M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">7月30日|最高速度21M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-clash-node-daily-updates.htm" title="11月4日|最高速度19.7M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">11月4日|最高速度19.7M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24540.htm" title="动物打防疫针运输安全吗（动物打防疫针运输安全吗现在）">动物打防疫针运输安全吗（动物打防疫针运输安全吗现在）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-node-subscribe.htm" title="10月4日|最高速度22.1M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接">10月4日|最高速度22.1M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-5-free-clash-subscribe.htm" title="8月5日|最高速度18.4M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接">8月5日|最高速度18.4M/S，2024最新Clash/SSR/V2ray/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-21-shadowrocket-node.htm" title="6月21日|最高速度22.1M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接">6月21日|最高速度22.1M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-clash-subscribe.htm" title="12月3日|最高速度20M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接">12月3日|最高速度20M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-10-free-clash-subscribe.htm" title="8月10日|最高速度22.9M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接">8月10日|最高速度22.9M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
