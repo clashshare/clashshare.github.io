@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-25724.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Java连接MySQL数据——命令行程序</title>
+        <meta name="description" content="SQL编程包括两种形式，一种是过程化编程，主要通过数据库交互式工具，通过存储过程、触发器、函数等形式的编程；另一种是嵌入式SQL编程，将SQL语句嵌入到高级开发语言，完成数据的各种操作。 命令行程序由" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Java连接MySQL数据——命令行程序</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>SQL编程包括两种形式，一种是过程化编程，主要通过数据库交互式工具，通过存储过程、触发器、函数等形式的编程；另一种是嵌入式SQL编程，将SQL语句嵌入到高级开发语言，完成数据的各种操作。<br /> 命令行程序由于对外依赖的jar包少易上手，通常作为教学示例程序。我们通过命令行 程序介绍嵌入式SQL开发过程，示例开发工具选择idea。</p> <h2> <a id="_3" rel="nofollow"></a>创建表</h2> <p>通过SQLyol建立表student；</p> <pre><code class="prism language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student<span class="token punctuation">(</span> Sno <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span> Sname <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ssex   <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  Sage   <span class="token keyword">INT</span><span class="token punctuation">,</span> Sdept <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> </code></pre> <p>插入数据：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/5ecac25ec386dbf74a4ab30246204044.jpg" alt="Java连接MySQL数据——命令行程序"></p> <h2> <a id="_20" rel="nofollow"></a>创建命令行程序</h2> <p>新建一个命令行程序，打开idea工具，选择：File—&gt;New—&gt;Project，弹出对话框，如下图所示<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/cf90d7e1bba977d5111308eaf55b6e3d.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 直接点击Next按钮，进入到下一个Tab页，勾选Create project from template，选择Command line App<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/9703506c6192b185f7bf7736cc7f0a55.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 点击Next进入下一个Tab页，如图所示<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/148da70a49ed2d2bdb86700b132b7d11.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 输入项目名称，选择项目路径，书写基本包包名，基本包名一般由com+域名组成，确保其唯一性。填写完成后，点击finish按钮，完成命令行程序的创建，创建完成的页面如下图所示<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/3647fd665972113800bd3e8927a70277.jpg" alt="Java连接MySQL数据——命令行程序"></p> <h2> <a id="jar_29" rel="nofollow"></a>下载并导入jar包</h2> <p>下载mysql-connector-java-8.0.13.jar;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mvnrepository.com/artifact/mysql/mysql-connector-java"  rel="nofollow">下载地址</a>,，将jar包存入本地目录。<br /> 项目中导入Jar包。点击File—&gt;ProjectStructure 打开对话框，如下图所示<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/a51add44138dd414a5038bf56047da87.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 点击右侧“+”，选择“JARs or directories”，弹出对话框，选择刚才下载的jar包，如下图所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/0df2273cf5d364d4ab2937a57f925c6c.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 点击OK，完成jar包的导入，导入后就可以在工程中看到导入的jar包，如下图<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/6f8a92dfa84bf85e481315b26f1228f0.jpg" alt="Java连接MySQL数据——命令行程序"></p> <h2> <a id="_37" rel="nofollow"></a>创建工具包</h2> <p>在开始练习时，就应该形成一个良好的习惯，将不同类型的类放置在不同包中，创建工具包util，用存放公共使用的工具类，这里的类一般使用静态方法。<br /> 创建数据库连接类：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/726c0daf2f2bd3d5ad16f0b4abcc67dd.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySqlConnection</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> <span class="token keyword">static</span> Connection con<span class="token operator">=</span>null<span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token keyword">static</span> String driveName <span class="token operator">=</span><span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token keyword">static</span> String url <span class="token operator">=</span> <span class="token string">"jdbc:mysql://127.0.0.1:3306/sl?serverTimezone=GMT%2b8"</span><span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token keyword">static</span> String user<span class="token operator">=</span><span class="token string">"root"</span><span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token keyword">static</span> String pws<span class="token operator">=</span><span class="token string">"root"</span><span class="token punctuation">;</span>          <span class="token keyword">private</span>  <span class="token function">MySqlConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span>     <span class="token keyword">public</span> <span class="token keyword">static</span> Connection <span class="token function">getCon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>        <span class="token keyword">if</span><span class="token punctuation">(</span>con<span class="token operator">==</span>null<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>            con <span class="token operator">=</span> <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> con<span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token keyword">private</span> <span class="token keyword">static</span> Connection <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>         <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>             Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>driveName<span class="token punctuation">)</span><span class="token punctuation">;</span>             connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>user<span class="token punctuation">,</span>pws<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> <span class="token operator">|</span> SQLException e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">return</span> connection<span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>这里的方法使用static 修饰代表是静态方法，该方法属于类，而不是对象；<br /> 创建SQL执行包装类，完成数据库各种方法的执行，这里仅写了一个返回ResultSet方法，代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MysqlHelp</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span>  <span class="token keyword">static</span> ResultSet <span class="token function">query</span><span class="token punctuation">(</span>String sql<span class="token punctuation">)</span>  <span class="token punctuation">{<!-- --></span>         Connection con <span class="token operator">=</span> MySqlConnection<span class="token punctuation">.</span><span class="token function">getCon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         ResultSet result <span class="token operator">=</span>null<span class="token punctuation">;</span>          <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>             Statement stmt <span class="token operator">=</span> con<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             result<span class="token operator">=</span> stmt<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">return</span> result<span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <h2> <a id="_93" rel="nofollow"></a>创建实体类</h2> <p>创建pojo包，在该包下创建实体类Student，实体类只包含私有属性和get、set方法，为了简单期间，增加了一个lombok包，就不需要写get、set方法。lombok jar的安装，File—&gt;Settings ，打开对话框如下图：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/fbbb9e3bb5a6b6ffb25a29b6366b702b.jpg" alt="Java连接MySQL数据——命令行程序"><br /> 在实体类上加主解符“@Data”即可。当然也可以不用Lombok，老老实实的写get、set方法也可以，使用lombok代码如下</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Data</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> String sno<span class="token punctuation">;</span>     <span class="token keyword">private</span> String sName<span class="token punctuation">;</span>     <span class="token keyword">private</span> String sSex<span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token keyword">int</span> sAge<span class="token punctuation">;</span>     <span class="token keyword">private</span> String sDept<span class="token punctuation">;</span>      <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span>String sno<span class="token punctuation">,</span>String name<span class="token punctuation">,</span> String sex<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">,</span>String dept<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setSno</span><span class="token punctuation">(</span>sno<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setSAge</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setSName</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setSDept</span><span class="token punctuation">(</span>dept<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setSSex</span><span class="token punctuation">(</span>sex<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>      <span class="token keyword">public</span> String <span class="token function">getInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> <span class="token string">"学号："</span><span class="token operator">+</span>sno <span class="token operator">+</span><span class="token string">"姓名："</span><span class="token operator">+</span>sName<span class="token operator">+</span><span class="token string">"性别："</span><span class="token operator">+</span>sSex<span class="token operator">+</span><span class="token string">"年龄："</span><span class="token operator">+</span><span class="token string">"院系："</span><span class="token operator">+</span>sDept<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>为了演示方便，在实体类中增加了一个构造函数和字符串的输出，实体类当然完全没有这两个方法。</p> <h2> <a id="_121" rel="nofollow"></a>创建持久化层</h2> <p>创建一个dao包，包中创建类StudentDao，完成数据的存取操作，代码如下</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StudentDao</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getStudentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         String sql<span class="token operator">=</span><span class="token string">"SELECT Sno AS sno,Sname AS NAME,Ssex AS sex,Sage AS age,Sdept AS dept FROM student"</span><span class="token punctuation">;</span>          ResultSet result <span class="token operator">=</span> MysqlHelp<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>                     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>result<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>                     String sno <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"sno"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     String name <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token keyword">int</span> age <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     String dept <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"dept"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     String sex <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"sex"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>sno<span class="token punctuation">,</span> name<span class="token punctuation">,</span> sex<span class="token punctuation">,</span> age<span class="token punctuation">,</span> dept<span class="token punctuation">)</span><span class="token punctuation">;</span>                     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                     e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span>              <span class="token punctuation">}</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <p>这里调用了上面定义的 MysqlHelp的query方法，完成数据的存取及结构化数据向面向对象实体类的转换。</p> <h2> <a id="_151" rel="nofollow"></a>业务层调用</h2> <p>打开main函数，写入下代码，完成dao层方法调用</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{<!-- --></span>      <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         StudentDao student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StudentDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         student<span class="token punctuation">.</span><span class="token function">getStudentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>执行结果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/93d1f37654b8cb4fda532a28c969f206.jpg" alt="Java连接MySQL数据——命令行程序"></p> <h2> <a id="_166" rel="nofollow"></a>总结</h2> <p>在这里尽量使用面向对象的封装技术，将每个类的职责单一化，而不是把所有代码写到一起的做法，尽管写到一起，代码更好读，而且简单。另外思考一个问题，我们能不能把结构化的数据自动转换为实体对象，以及数据库的连接、SQL的执行交给第三方的程序去做，简化我们的代码？答案是肯定的，Mybaits、hibernet就是完成这些工作的框架</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25257.htm">Git基础Git创建本地版本库详解</a></p>
+                                        <p>下一个：<a href="/news/article-25726.htm">宠物救助站上海（宠物救助站上海地址）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-6-4-node-share.htm" title="6月4日|最高速度20.4M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接">6月4日|最高速度20.4M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-25-free-ssr-subscribe.htm" title="8月25日|最高速度20.2M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">8月25日|最高速度20.2M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-v2ray-subscribe.htm" title="11月2日|最高速度22.2M/S，2024最新SSR/V2ray/Shadowrocket/Clash免费节点高速订阅链接">11月2日|最高速度22.2M/S，2024最新SSR/V2ray/Shadowrocket/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-ssr-subscribe.htm" title="12月10日|最高速度18M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">12月10日|最高速度18M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-node-share-links.htm" title="12月1日|最高速度19.4M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">12月1日|最高速度19.4M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-7-free-ssr-subscribe.htm" title="8月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">8月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-node-subscribe.htm" title="10月4日|最高速度22.1M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接">10月4日|最高速度22.1M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-11-clash-node-daily-updates.htm" title="6月11日|最高速度22.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">6月11日|最高速度22.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-subscribe-node.htm" title="8月24日|最高速度20.8M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接">8月24日|最高速度20.8M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21564.htm" title="延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）">延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
