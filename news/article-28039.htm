@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-28039.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>iOS全埋点解决方案手势采集</title>
+        <meta name="description" content="前言 	随着科技以及业务的发展，手势的应用也越来越普及，因此对于数据采集，我们要考虑如果通过全埋点来实现手势的采集。 一、手势识别器 	苹果为了降低开发者在手势事件处理方面的开发难度，定义了一个抽象类" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">iOS全埋点解决方案手势采集</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="前言">前言</h3> <p>	随着科技以及业务的发展，手势的应用也越来越普及，因此对于数据采集，我们要考虑如果通过全埋点来实现手势的采集。</p> <h3 id="一手势识别器">一、手势识别器</h3> <p>	苹果为了降低开发者在手势事件处理方面的开发难度，定义了一个抽象类 UIGestureRecognizer 来协助开发者。UIGestureRecognizer 是具体手势识别器的抽象基类，它定义了一组可以为所有具体手势识别器配置的常见行为。它还可以通过设置委托（即实现了 UIGestureRecognizerDelegate 协议的对象），来支持对某些行为进行更细粒度的定制。</p> <p>	手势识别器必须被添加在一个特定的视图上（比如 UILabel、UIImageView 等控件），即需要通过调用 UIView 类中的 - addGestureRecognizer: 方法进行添加。手势识别器也是用了 Target-Action 设计模式。当我们为一个手势识别器添加一个或者多个 Target-Action 后，在视图上进行触摸操作时，一旦系统识别了该手势，就会向所有的 Target 对象发送消息，并执行 Action 方法。虽然手势识别器和 UIControl 类一样，都是使用了 Target-Action 设计模式，但是手势识别器并不会将消息交由 UIApplication 对象来进行发送。因此，我们无法使用与 UIControl 控件相同的处理方式，即通过响应者链的方式来实现对手势操作的全埋点。</p> <p>	由于 UIGestureRecognizer 是一个抽象基类，所以它并不会处理具体的手势。因此，对于轻拍（UITapGestureRecognizer）、长按（UILongPressGestureRecognizer）等具体的手势触摸事件，需要使用相应的子类即具体的手势识别器进行处理。</p> <p>常见的具体手势识别器有：</p> <ul> <li>UITapGestureRecognizer：轻拍手势</li> <li>UILongPressGestureRecognizer：长按手势</li> <li>UIPinchGestureRecognizer：捏合（缩放）手势</li> <li>UIRotationGestureRecognizer：旋转手势</li> <li>UISwipeGestureRecognizer：轻扫手势</li> <li>UIPanGestureRecognizer：平移手势</li> <li>UIScreenEdgePanGestureRecognizer：屏幕边缘平移手势</li> </ul> <p>	给上面所有的具体手势识别器添加 Target-Action 的方法都是相同的，常见的主要是通过以下的两个方法进行添加。</p> <ul> <li> <p>initWithTarget:target action:</p> </li> <li> <p>addTarget:action:</p> <p>详细的定义参考如下：</p> <pre><code>/** 指定初始化方法  通过添加一个 Target-Action 进行初始化， 当初始化的手势识别器对象，识别到触摸手势时，会向 Target 对象发送消息，即调用 Action 方法  @param target 需要发送消息的 Target 对象 @param action 向 Target 对象发送的消息，即方法名 @return 初始化的对象 */ - (instancetype)initWithTarget:(nullable id)target action:(nullable SEL)action NS_DESIGNATED_INITIALIZER;  /** 向一个手势识别器添加一个 Target-Action  可以多次调用此方法，给一个手势识别器对象添加多个 Target-Action 。 如果已经添加了一个 Target-Action，再次添加相同的 Target-Action 时，会被忽略。  @param target 需要发送消息的 Target 对象 @param action 向 Target 对象发送的消息，即方法名 */ - (void)addTarget:(id)target action:(SEL)action;</code></pre> </li> </ul> <p>    在实际的开发过程中，使用比较多的是 UITapGestureRecognizer 和 UILongPressGestureRecognizer 两个手势识别器，这两个手势识别器分别是处理轻拍手势和长按手势。</p> <h3 id="二手势全埋点">二、手势全埋点</h3> <p>	在数据采集中，一般只需要采集常见控件（UILabel、UIImageView）的轻拍和长按手势。<br /> 所以，我们分别介绍如何实现控件轻拍和长按手势的全埋点。</p> <h4 id="21-uitapgesturerecognizer-全埋点">2.1 UITapGestureRecognizer 全埋点</h4> <p>	为了采集控件的轻拍手势，我们可以通过 Method Swizzling 交换 UITapGestureRecognizer 类的添加 Target-Action 的方法，从而可以添加一个新的 Target-Action，并在新添加的 Action 方法中触发 $AppClick 事件，从而就可以达到采集控件轻拍手势全埋点的效果。</p> <p>在 UITapGestureRecognizer 类中，用于添加 Target-Action 方法有两个：</p> <p>• - initWithTarget:action:</p> <p>• - addTarget:action:</p> <p>因此，我们需要对这两个方法分别进行交换。</p> <p>第一步：创建 UITapGestureRecognizer 分类 UIGestureRecognizer+SensorsData，并实现 +load 类方法，在 + load方法中，进行 - initWithTarget:action: 和 - addTarget:action: 的方法交换。</p> <pre><code>#import "UIGestureRecognizer+SensorsData.h" #import "NSObject+SASwizzler.h" #import "SensorsAnalyticsSDK+Track.h"  @implementation UITapGestureRecognizer (SensorsData)  + (void)load {     [UITapGestureRecognizer sensorsdata_swizzleMethod:@selector(sensorsdata_initWithTarget:action:) withMethod:@selector(initWithTarget:action:)];     [UITapGestureRecognizer sensorsdata_swizzleMethod:@selector(addTarget:action:) withMethod:@selector(sensorsdata_addTarget:action:)]; }  - (instancetype)sensorsdata_initWithTarget:(id)target action:(SEL)action {     [self sensorsdata_initWithTarget:target action:action];     [self addTarget:target action:action];     return self; }  - (void)sensorsdata_addTarget:(id)target action:(SEL)action {     [self sensorsdata_addTarget:target action:action];          // 新增 Target-Action, 用于触发 $AppClick 事件     [self sensorsdata_addTarget:self action:@selector(sensorsdata_trackTapGestureAction:)]; }  - (void)sensorsdata_trackTapGestureAction:(UITapGestureRecognizer *)sender {     [[SensorsAnalyticsSDK sharedInstance] trackAppClickWithView:view properties:nil]; }</code></pre> <p>第二步：在 - sensorsdata_trackTapGestureAction: 方法中判断要采集的控件</p> <pre><code>- (void)sensorsdata_trackTapGestureAction:(UITapGestureRecognizer *)sender {     UIView *view = sender.view;     // 暂定只采集 UILabel 和 UIImageView     BOOL isTrackClass = [view isKindOfClass:UILabel.class] || [view isKindOfClass:UIImageView.class];     if (!isTrackClass) {         return;     }     [[SensorsAnalyticsSDK sharedInstance] trackAppClickWithView:view properties:nil]; }</code></pre> <p>第三步：测试验证</p> <pre><code>{   "event" : "$AppClick",   "time" : 1648892963385,   "propeerties" : {     "$model" : "x86_64",     "$manufacturer" : "Apple",     "$element_type" : "UIImageView",     "$lib_version" : "1.0.0",     "$os" : "iOS",     "$app_version" : "1.0",     "$screen_name" : "ViewController",     "$os_version" : "15.2",     "$lib" : "iOS"   } }</code></pre> <h4 id="22-uilongpressgesturerecognizer-全埋点">2.2 UILongPressGestureRecognizer 全埋点</h4> <p>	对于 UILongPressGestureRecognizer 来说，其实现逻辑与 UITapGestureRecognizer 基本上是相同的。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27579.htm">中牧股份宠物疫苗（中牧实业股份有限公司兽用疫苗生产基地）</a></p>
+                                        <p>下一个：<a href="/news/article-28040.htm">小猫挠没出血但蹭破点皮过了几天还需要打疫苗吗（小猫挠破皮没流血了用打针么）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-7-9-free-ssr-subscribe.htm" title="7月9日|最高速度21.2M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接">7月9日|最高速度21.2M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22024.htm" title="猫多久会认人（猫多久会认得主人,知道自己的名字）">猫多久会认人（猫多久会认得主人,知道自己的名字）</a></li>
+                        <li class="py-2"><a href="/news/article-20650.htm" title="哪家动物医院好（哪家动物医院好一点）">哪家动物医院好（哪家动物医院好一点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-windows.htm" title="11月5日|最高速度19.6M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月5日|最高速度19.6M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-free-node-subscribe.htm" title="9月24日|最高速度22.4M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">9月24日|最高速度22.4M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-node-subscribe.htm" title="6月14日|最高速度22.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">6月14日|最高速度22.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24792.htm" title="宠物批发零售（宠物批发零售网站）">宠物批发零售（宠物批发零售网站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-free-v2ray.htm" title="9月7日|最高速度22.6M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">9月7日|最高速度22.6M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19273.htm" title="动物防疫计划表（动物防疫年度计划）">动物防疫计划表（动物防疫年度计划）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-4-node-share-links.htm" title="8月4日|最高速度20.1M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接">8月4日|最高速度20.1M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
