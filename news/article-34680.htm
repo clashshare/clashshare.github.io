@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-34680.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>C++ String类的简单实现</title>
+        <meta name="description" content="在之前c语言的学习中，对于字符串我们很难像整型和其他变量那样进行比较和直接的复制或者定义去运用。但在C++中为了解决这个问题提供了一种类，String类，以类型的形式对字符串进行封装，它除了作为储存字" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">C++ String类的简单实现</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>在之前c语言的学习中，对于字符串我们很难像整型和其他变量那样进行比较和直接的复制或者定义去运用。但在C++中为了解决这个问题提供了一种类，String类，以类型的形式对字符串进行封装，它除了作为储存字符的容器外，可以对字序列的一系列操作。</strong></p> <p><strong>下面我们对String类进行简单的模拟实现：</strong></p> <pre><code>namespace wjx { 	class string 	{ 	public: 	private: 		char* _str; 	};</code></pre> <p>首先，我们定义一个自己的命名空间，来实现我们的string类，定义初始数据char*类型的_str来作为string类中的数据。</p> <pre><code>string(const char* str) 			:_str(new char[strlen(str) + 1]) 		{ 			strcpy(_str, str); 		}</code></pre> <p>我们先来实现String类中的构造函数，首先计算出所加字符串的长度，为原有数据_str开辟空间，此处+1是为了放置'\0'方便操作，开辟空间后将str通过strcpy函数复制给_str，完成构造。</p> <pre><code>string(const string&amp; s) 			:_str(new char[strlen(s._str)+1]) 		{ 			strcpy(_str, s._str); 		} ~string() 		{ 			delete[] _str; 			_str = nullptr; 		}</code></pre> <p>上述为实现string类的拷贝构造函数(深拷贝)和析构函数，一个类中如果没有定义拷贝构造函数，就会调用默认的拷贝构造函数。而拷贝构造分为深浅拷贝，下图为<span style="color:#fe2c24;">深浅拷贝</span>的底层实现：</p> <p>&nbsp;<img fetchpriority="high" decoding="async" alt="" height="409" src="http://img.555519.xyz/uploads/20230108/5861e568176d0a7e00e1e4fd86389e5b.jpg"></p> <p>&nbsp;在我们没有定义拷贝构造函数时，系统会调用默认的拷贝构造函数，string s1("hello world"),string s2(s1),如上图所示系统默认的拷贝构造函数为普通的传值拷贝，所以s1与s2指向同一块空间，但当出作用域时，调用析构函数，s1指向的空间被释放，s2则指向空，所以程序会崩溃。</p> <p style="text-align:center;"><img decoding="async" alt="" height="230" src="http://img.555519.xyz/uploads/20230108/25473469b8e98fcabed07ac3e7a994ba.jpg"></p> <p>&nbsp;但当我们使用深拷贝时，则不会出现那样的情况，因为我们在定义深拷贝函数时，会首先开辟一个与要拷贝字符串等长的空间，再将其复制过去，所以s1与s2指向的位置是不同的，析构函数释放时是互不影响的，所以这就是深浅拷贝的区别。</p> <p>下面为赋值运算符重载的方法：</p> <pre><code>string&amp; operator=(const string&amp; s) 		{ 			if (this != &amp;s) 			{ 				char* tmp = new char[strlen(s._str) + 1]; 				strcpy(tmp, s._str); 				delete[] _str; 				_str = tmp; 			} 			return *this; 		}</code></pre> <p>上述代码为赋值运算符重载，当我们调用赋值运算符重载时，需要先开辟一个空间用来复制需要拷贝的字符串，再通过释放原来的空间并用成员变量指向新的空间，从而达到赋值。注意的是if (this != &amp;s)是需要区别s1=s1时的情况的，不能自己给自己赋值。</p> <p><strong>下面为拷贝构造函数和赋值运算符函数的现代写法：</strong></p> <pre><code>string(const string&amp; s)//拷贝构造函数现代写法 			:_str(nullptr) 		{ 			string tmp(s._str); 			swap(_str, tmp._str); 		}  string&amp; operator=(const string&amp; s)//赋值运算符重载的现代写法 		{ 			 if (this != &amp;s) 			 { 				 string tmp(s); 				 swap(_str, tmp._str); 			 } 			 return *this; 		}</code></pre> <p>现代写法对于之前的传统写法来说，对于拷贝构造函数，传统方法需要申请新空间，但现代版本不需要，直接创造一个对象，因为对象被创建后，数据的底层空间已经被开辟出来了，直接可以通过交换来实现拷贝构造；而对于赋值运算符重载来说传统版本需要申请和释放空间，而新版本利用创建对象和交换函数来直接实现。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34210.htm">从线上环境摘取了四个代码优化记录分享给大家</a></p>
+                                        <p>下一个：<a href="/news/article-34681.htm">牛羊兽药厂家排名前十强（专做牛羊药的兽药厂家）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-6-1-free-clash-subscribe.htm" title="6月1日|最高速度18.4M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接">6月1日|最高速度18.4M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25257.htm" title="Git基础Git创建本地版本库详解">Git基础Git创建本地版本库详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-ssr-subscribe.htm" title="10月21日|最高速度18.4M/S，2024最新Clash/Shadowrocket/V2ray/SSR免费节点高速订阅链接">10月21日|最高速度18.4M/S，2024最新Clash/Shadowrocket/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-6-clash-windows.htm" title="8月6日|最高速度20.4M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接">8月6日|最高速度20.4M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29424.htm" title="动物防疫站疫苗免费接种吗多少钱（动物防疫站疫苗免费接种吗多少钱啊）">动物防疫站疫苗免费接种吗多少钱（动物防疫站疫苗免费接种吗多少钱啊）</a></li>
+                        <li class="py-2"><a href="/news/article-20194.htm" title="宠物医生在线咨询24小时免费狂犬（咨询宠物医生在线!24小时免费!）">宠物医生在线咨询24小时免费狂犬（咨询宠物医生在线!24小时免费!）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-clash-node.htm" title="11月6日|最高速度20.3M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接">11月6日|最高速度20.3M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-clash-subscribe.htm" title="12月3日|最高速度20M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接">12月3日|最高速度20M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28972.htm" title="在哪免费领养宠物（在哪里免费领养宠物）">在哪免费领养宠物（在哪里免费领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-17-free-clash.htm" title="9月17日|最高速度19.2M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接">9月17日|最高速度19.2M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
