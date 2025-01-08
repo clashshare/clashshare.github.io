@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-37589.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MySQL 存储过程和函数</title>
+        <meta name="description" content="创建存储过程和函数 创建存储过程和函数就是将经常使用的一组 SQL 语句组合在一起，并将这些 SQL 语句当作一个整体存储在 MySQL 服务器 1. 创建存储过程 CREATE PROCEDURE " />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">MySQL 存储过程和函数</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p></p> <h2 id="创建存储过程和函数">创建存储过程和函数</h2> <p>创建存储过程和函数就是将经常使用的一组 SQL 语句组合在一起，并将这些 SQL 语句当作一个整体存储在 MySQL 服务器</p> <h4 id="1-创建存储过程">1. 创建存储过程</h4> <pre><code class="language-sql">CREATE PROCEDURE procedure_name ([proc_param[,...]])     [characteristic ...] routine_body</code></pre> <ul> <li>procedure_name 表示所要创建的存储过程的名字</li> <li>proc_param 表示存储过程的参数</li> <li>characteristic 表示存储过程的特性</li> <li>routine_body 表示存储过程的 SQL 语句</li> </ul> <p>procedure_name 不能出现重名</p> <p>proc_param 中每个参数的语法形式如下，每个参数由三部分组成，分别为输入/输出类型、参数名和参数类型。输入/输出类型有三种类型，分别是 IN（输入类型）、OUT（输出类型）、INOUT（输入/输出类型）。param_name 表示参数名，type 表示参数类型</p> <pre><code class="language-sql">[ IN | OUT | INOUT ] param_name type</code></pre> <p>characteristic 指定存储过程的特性，有以下取值：</p> <ul> <li>LANGUAGE SQL：说明存储过程中使用的是 SQL 语言编写的</li> <li>[NOT] DETERMINISTIC：说明存储过程执行的结果是否正确，DETERMINISTIC 表示结果是确定的，即每次执行存储过程，相同的输入会得到相同的输出；NOT DETERMINISTIC 表示结果是不确定的，相同的输入可能得到不同的输出，默认为 NOT DETERMINISTIC</li> <li>{CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA}：指明子程序使用 SQL 语句的限制，CONTAINS SQL 表示子程序不包含读或者写数据的语句，NO SQL 表示子程序不包含 SQL，READS SQL DATA 表示子程序包含读数据的语句，但是不包含写数据的语句，MODIFIES SQL DATA 表示子程序包含写数据的语句</li> <li>SQL SECURITY {DEFINER | INVOKER}：指明谁有权限执行，DEFINER  表示只有定义者才能执行，INVOKER 表示拥有权限的调用者可以执行，默认为 DEFINER</li> <li>COMMENT 'string'：注释信息，可以用来描述存储过程或函数</li> </ul> <p>示例：创建存储过程，查询表 t_employee 中所有员工的薪水的存储过程</p> <pre><code class="language-sql">DELIMITER $$ CREATE PROCEDURE proc_employee() COMMENT '查询员工薪水' BEGIN 	SELECT salary FROM t_employee END; $$ DELIMITER ;</code></pre> <p>MySQL 中默认以分号 ; 作为语句结束符，存储过程中的 SQL 语句需要分号来结束，为了避免冲突，先用 DELIMITER $$ 将 MySQL 的结束符设置为 $$，再用 DELIMITER ; 将结束符恢复为分号</p> <h4 id="2-创建存储函数">2. 创建存储函数</h4> <pre><code class="language-sql">CREATE FUNCTION fun_name([func_param,[,...]]) 	[characteristic ...] routine_body</code></pre> <ul> <li>fun_name 表示函数名字</li> <li>func_param 表示函数从参数</li> <li>characteristic 表示函数特性，取值与存储过程的取值相同</li> <li>routine_body 表示函数的 SQL 语句</li> </ul> <p>func_param 中每个参数的语法形式如下，分别为参数名和参数类型</p> <pre><code class="language-sql">param_type type</code></pre> <p>还是之前的示例</p> <pre><code class="language-sql">DELIMITER $$ 	CREATE FUNCTION func_employee(id INT(4)) 		RETURNS INT(6) 	COMMENT '查询员工薪水' 	BEGIN 		SELECT salary FROM t_employee 	END; 	$$ DELIMITER ;</code></pre> <p></p> <h2 id="变量">变量</h2> <p>在 MySQL 中，可以定义和使用变量，这些变量的作用范围在 BEGIN ... END 程序段中</p> <h4 id="1-定义变量">1. 定义变量</h4> <pre><code class="language-sql">DECLARE var_name[,...] type [DEFAULT value]</code></pre> <ul> <li>关键字 DECLARE 用来声明变量</li> <li>参数 var_name 是变量的名称，可以同时定义多个变量</li> <li>参数 type 用来指定变量的类型</li> <li>DEFAULT value 子句将变量默认值设置为 value，没有使用 DEFAULT 子句时，默认值为 NULL</li> </ul> <p>示例：定义变量 sql_test，数据类型为 INT 型，默认值为 10</p> <pre><code class="language-sql">DECLARE test_sql INT DEFAULT 10;</code></pre> <h4 id="2-变量赋值">2. 变量赋值</h4> <pre><code class="language-sql">SET var_name=expr[,var_name=expr]...</code></pre> <ul> <li>关键字 SET 用来为变量赋值</li> <li>参数 var_name 是变量的名称</li> <li>参数 expr 是赋值表达式</li> </ul> <p>示例：将变量 sql_test 赋值为 30</p> <pre><code class="language-sql">SET test_sql = 30;</code></pre> <p></p> <h2 id="定义条件和处理程序">定义条件和处理程序</h2> <p>定义条件和处理程序是事先定义程序执行过程中可能遇到的问题，并且可以在处理程序中定义解决这些问题的能力</p> <h4 id="1-定义条件">1. 定义条件</h4> <pre><code class="language-sql">DECLARE condition_name CONDITION FOR condition_value condition_value: SQLSTATE[VALUE] sqlstate_value|mysql_error_code</code></pre> <ul> <li>参数 condition_name 表示条件名称</li> <li>参数 condition_value 表示条件类型</li> <li>参数 sqlstate_value 和 参数 mysql_error_code 都可以表示 MySQL 的错误</li> </ul> <p>示例：定义 ERROR 1146(42S02) 错误，名称为 can_not_find，可以用两种不同的方法来定义</p> <pre><code class="language-sql">// 方法一:使用sqlstate_value DECLARE can_not_find CONDITION FOR SQLSTATE '42S02'; // 方法二:使用mysql_error_code DECLARE can_not_find CONDITION FOR 1146;</code></pre> <h4 id="2-定义处理程序">2. 定义处理程序</h4> <pre><code class="language-sql">DECLARE handler_type HANDLER FOR condition_value[,...] proc_statement handler_type: CONTINUE|EXIT|UNDO condition_value: SQLSTATE[VALUE]sqlstate_value|condition_name|SQLWARNING|NOT FOUND|SQLEXCEPTION|mysql_error_code</code></pre> <ul> <li> <p>handler_type 指明错误的处理方式：该参数有三个取值：</p> <ul> <li>CONTINUE：表示遇到错误不处理，继续向下执行</li> <li>EXIT：表示遇到错误马上退出</li> <li>UNDO：表示遇到错误后撤回之前的操作</li> </ul> </li> <li> <p>condition_value 表示错误类型，可以有以下取值：</p> <ul> <li>SQLSTATE[VALUE]sqlstate_value 包含 5 个字符的字符串错误值</li> <li>condition_name 表示 DECLARE CONDITION 定义的错误条件名称</li> <li>SQLWARNING 匹配所有 01 开头的 SQLSTATE 错误代码</li> <li>NOT FOUND 匹配所有 02 开头的 SQLSTATE 错误代码</li> <li>SQLEXCEPTION 匹配所有没有被 SQLWARNING 或 NOT FOUND 捕获的 SQLSTATE 错误代码</li> <li>mysql_error_code 匹配数值类型错误代码</li> </ul> </li> <li> <p>proc_statement 匹配数值类型错误代码</p> </li> </ul> <p>下面是定义处理程序的几种示例方式：</p> <pre><code class="language-sql">// 方法一:捕获sqlstate_value DECLARE CONTINUE HANDLER FOR SQLSTATE '42S02' SET @info='NOT FOUND'; // 方法二:使用mysql_error_code  DECLARE CONTINUE HANDLER FOR 1146 SET @info='NOT FOUND'; // 方法三:先定义条件,然后调用 ECLARE can_not_find CONDITION FOR 1146; DECLARE CONTINUE HANDLER FOR can_not_find SET @info='NOT FOUND'; // 方法四:使用SQLWARNING DECLARE EXIT HANDLER FOR SQLWARNING  SET @info='ERROR'; // 方法五:使用NOT FOUND DECLARE EXIT HANDLER FOR NOT FOUND SET @info='NOT FOUND'; // 方法六:使用SQLEXCEPTION  DECLARE EXIT HANDLER FOR 使用SQLEXCEPTION SET @info='ERROR';</code></pre> <p></p> <h2 id="光标">光标</h2> <p>查询语句可能查询出多条记录，在存储过程和函数使用光标来逐条读取查询结果集中的记录。光标必须声明在处理程序之前，声明在变量和条件之后</p> <h4 id="1-声明光标">1. 声明光标</h4> <pre><code class="language-sql">DECLARE cursor_name CURSOR FOR select_statement;</code></pre> <ul> <li>参数 cursor_name 表示光标名称</li> <li>参数 select_statement 表示 SELECT 语句</li> </ul> <p>下面声明一个名为 cur_employee 的光标</p> <pre><code class="language-sql">DECLARE cur_employee CURSOR FOR SELECT name,age FROM t_employee;</code></pre> <h4 id="2-打开光标">2. 打开光标</h4> <pre><code class="language-sql">OPEN cursor_name;</code></pre> <ul> <li>参数 cursor_name 表示光标的名称</li> </ul> <p>下面打开一个名为 cur_employee 的光标</p> <pre><code class="language-sql">OPEN cur_employee;</code></pre> <h4 id="3-使用光标">3. 使用光标</h4> <pre><code class="language-sql">FETCH cursor_name INTO var_name[,var_name...]</code></pre> <ul> <li>cursor_name 表示光标的名称</li> <li>var_name 表示将光标中的 SELECT 语句查询出来的信息存入该参数，该参数必须在声明光标之前就定义好</li> </ul> <p>下面打开一个名为 cur_employee 的光标，将查询的数据存入 emp_name 和 emp_age 这两个变量中</p> <pre><code class="language-sql">FETCH cur_employee INTO emp_name,emp_age;</code></pre> <h4 id="4-关闭光标">4. 关闭光标</h4> <pre><code class="language-sql">CLOSE cursor_name</code></pre> <ul> <li>cursor_name 表示光标的名称</li> </ul> <p></p> <h2 id="流程控制">流程控制</h2> <h4 id="1-if-语句">1. IF 语句</h4> <pre><code class="language-sql">IF search_condition THEN statement_list  [ELSEIF search_condition THEN statement_list]...  [ELSE statement_list] END IF</code></pre> <ul> <li>参数 search_condition 表示条件判断语句</li> <li>参数 statement_list 表示不同条件的执行语句</li> </ul> <p>下面是一个 IF 语句的示例</p> <pre><code class="language-sql">IF age&gt;20 THEN SET @count1=@conut1+1; 	ELSEIF age=20 THEN @count2=@conut2+1; 	ELSE @count3=@count3+1; END IF;</code></pre> <h4 id="2-case-语句">2. CASE 语句</h4> <pre><code class="language-sql">CASE case_value 	WHEN when_value THEN statement_list 	[WHEN when_value THEN statement_list]... 	[ELSE statement_list] END CASE</code></pre> <ul> <li>参数 case_value 表示条件判断的变量</li> <li>参数 when_value 表示变量的取值</li> <li>参数 statement_list 表示不同 when_value 的执行语句</li> </ul> <p>下面的是一个 CASE 语句的示例</p> <pre><code class="language-sql">CASE age 	WHEN 20 THEN SET @count1=@count1+1; 	ELSE SET @count2=@count2+1; END CASE;</code></pre> <h4 id="3-loop-语句">3. LOOP 语句</h4> <pre><code class="language-sql">[begin_label:]LOOP 	statement_list END LOOP [end_label]</code></pre> <ul> <li>参数 begin_label 和参数 end_label 分别表示循环开始和结束的标志，必须相同，而且都可以省略</li> <li>参数 statement_list 表示需要循环执行的语句</li> </ul> <p>下面是一个 LOOP 语句的示例</p> <pre><code class="language-sql">add_num:LOOP 	SELECT @count1=@count1+1; END LOOP add_num</code></pre> <h4 id="4-leave-语句">4. LEAVE 语句</h4> <p>主要用于跳出循环</p> <pre><code class="language-sql">LEAVE label</code></pre> <ul> <li>参数 label 表示循环的标志</li> </ul> <p>下面是一个 LEAVE 语句的示例</p> <pre><code class="language-sql">add_num:LOOP 	SELECT @count1=@count1+1; 	IF @count1=100 THEN 		LEAVE add_num; END LOOP add_num</code></pre> <h4 id="5-iterate-语句">5. ITERATE 语句</h4> <p>也是用于跳出循环，不过是跳出本次循环，直接进入下次循环，类似 Java 的 continue</p> <pre><code class="language-sql">ITERATE label</code></pre> <ul> <li>参数 label 表示循环的标志</li> </ul> <p>下面是一个 ITERATE 语句的示例</p> <pre><code class="language-sql">add_num:LOOP 	SELECT @count1=@count1+1; 	IF @count1=100 THEN 		LEAVE add_num; 	ELSE IF MOD(@count1,3)=0 THEN 		ITERATE add_num; 	SELECT * FROM employee; END LOOP add_num</code></pre> <h4 id="6-repeat-语句">6. REPEAT 语句</h4> <p>REPEAT 语句是由条件的控制循环语句，当满足特定条件就会退出循环语句</p> <pre><code class="language-sql">[begin_label:]REPEAT 	statement_list 	UNTIL search_condition END REPEAT [end_label]</code></pre> <ul> <li>参数 statement_list 表示需要循环执行的语句</li> <li>参数 search_condition 表示结束循环的条件，满足该条件即结束循环</li> </ul> <p>下面是一个 REPEAT 语句的示例</p> <pre><code class="language-sql">add_num:REPEAT 	SELECT @count1=@count1+1; 	UNTIL @count1=100 END REPEAT add_num</code></pre> <h4 id="7-while-语句">7. WHILE 语句</h4> <p>WHILE 语句也是有条件控制的循环语句，与 REPEAT 语句不同的是，WHILE 语句是当满足条件时执行循环内的语句</p> <pre><code class="language-sql">[begin_label:]WHILE search_condition DO 	statement_list END WHILE [end_label]</code></pre> <ul> <li>参数 statement_list 表示需要循环执行的语句</li> <li>参数 search_condition 表示结束循环的条件，满足该条件即结束循环</li> </ul> <p>下面是一个 WHILE 语句的示例</p> <pre><code class="language-sql">WHILE @count&lt;100 DO 	SET @count=@count+1; END WHILE;</code></pre> <p></p> <h2 id="操作存储过程和函数">操作存储过程和函数</h2> <h4 id="1-调用存储过程">1. 调用存储过程</h4> <p>在 MySQL 中，使用 CALL 语句来调用存储过程</p> <pre><code class="language-sql">CALL proc_name([parameter[,...]])</code></pre> <ul> <li>proc_name 是存储过程的名称</li> <li>paramter 是指存储过程的参数</li> </ul> <h4 id="2-调用存储函数">2. 调用存储函数</h4> <p>在 MySQL 中，存储函数的使用方法和 MySQL 内部函数是一样的</p> <h4 id="3-使用-show-status-语句查看存储过程和函数的状态">3. 使用 SHOW STATUS 语句查看存储过程和函数的状态</h4> <pre><code class="language-sql">SHOW {PROCEDURE|FUNCTION} STATUS{LIKE 'pattern'}</code></pre> <ul> <li>参数 PROCEDURE 表示查询存储过程，FUNCTION 表示存储函数</li> <li>参数 LIKE 'pattern' 用来匹配存储过程或函数的名称</li> </ul> <h4 id="4-使用-show-create-语句查看存储过程和函数的定义">4. 使用 SHOW CREATE 语句查看存储过程和函数的定义</h4> <pre><code class="language-sql">SHOW CREATE {PROCEDURE|FUNCTION} proc_name</code></pre> <h4 id="5-从-information_schemaroutine-表中查看存储过程和函数的信息">5. 从 information_schema.Routine 表中查看存储过程和函数的信息</h4> <pre><code>SELECT * FROM information_schema.Routine WHERE ROUTINE_NAME='proc_name'</code></pre> <h4 id="6-修改存储过程和函数">6. 修改存储过程和函数</h4> <pre><code class="language-sql">ALTER {PROCEDURE|FUNCTION} proc_name[characteristic...]; characteristic: 	{CONTAINS SQL|NO SQL|READS SQL DATA|MODIFIES SQL DATA} |SQL SECURITY{DEFINER|INVOKER} |COMMENT 'string'</code></pre> <ul> <li>参数 proc_name 表示存储过程或函数的名称</li> <li>参数 characteristic 指定存储过程的特性： <ul> <li>CONTAINS SQL 表示子程序包含 SQL 语句，但不包含读或写数据的语句</li> <li>NO SQL 表示子程序不包含 SQL 语句</li> <li>READS SQL DATA 表示子程序中包含读数据的语句</li> <li>MODIFIES SQL DATA 表示子程序中包含写数据的语句</li> </ul> </li> <li>SQL SECURITY{DEFINER|INVOKER} 指明谁有权限执行： <ul> <li>DEFINER 表示只有定义者才能执行</li> <li>INVOKER 表示调用者可以执行</li> </ul> </li> <li>COMMENT 'string' 是注释信息</li> </ul> <h4 id="7-删除存储过程和函数">7. 删除存储过程和函数</h4> <p>通过 DROP 语句删除存储过程</p> <pre><code class="language-sql">DROP PROCEDURE proc_name;</code></pre> <p>通过 DROP FUNCTION 语句删除存储函数</p> <pre><code class="language-sql">DROP FUNCTION func_name;</code></pre> <p></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-37093.htm">动物注射疫苗最佳的用药方法是什么意思（动物注射疫苗注射哪里）</a></p>
+                                        <p>下一个：<a href="/news/article-37591.htm">动物打疫苗打几次最好（小动物打疫苗多少钱一只）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37591.htm" title="动物打疫苗打几次最好（小动物打疫苗多少钱一只）">动物打疫苗打几次最好（小动物打疫苗多少钱一只）</a></li>
+                        <li class="py-2"><a href="/news/article-25724.htm" title="Java连接MySQL数据——命令行程序">Java连接MySQL数据——命令行程序</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-node-share.htm" title="11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30397.htm" title="上海宠物领养救助基地地址 上海宠物领养救助基地地址电话">上海宠物领养救助基地地址 上海宠物领养救助基地地址电话</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-high-speed-nodes.htm" title="12月23日|最高速度20M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址">12月23日|最高速度20M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33723.htm" title="网上卖狗合法吗（网上卖狗狗的讲信用吗?）">网上卖狗合法吗（网上卖狗狗的讲信用吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-ssr-node.htm" title="12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-windows.htm" title="11月5日|最高速度19.6M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月5日|最高速度19.6M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29424.htm" title="动物防疫站疫苗免费接种吗多少钱（动物防疫站疫苗免费接种吗多少钱啊）">动物防疫站疫苗免费接种吗多少钱（动物防疫站疫苗免费接种吗多少钱啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-clash-node-daily-updates.htm" title="11月17日|最高速度22.1M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月17日|最高速度22.1M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
