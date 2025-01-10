@@ -2,13 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clashshare.github.io" />
+        <link rel="canonical" href="https://clashshare.github.io/news/article-38564.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>免责申明 - ClashShare节点分享站</title>
-        <meta name="keywords" content="免责申明 - ClashShare节点分享站" />
-        <meta name="description" content="免责申明 - ClashShare节点分享站" />
+    <title>Kafka如何保证可靠的数据传递</title>
+        <meta name="description" content="1、复制系数N replication.factor 每个主题的Partition都会有N个副本 这样，在N-1个broker失效的情况下，仍然能从主题读取数据或向主题写入数据 复制系数N需要至少N个" />
         <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
     <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
     <!-- Template CSS -->
@@ -26,7 +25,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="newly_discovered_nodes">
+<body data-page="detail">
         <!--/header-w3l-->
     <div class="header-w3l">
         <!-- header -->
@@ -92,10 +91,13 @@
     <section class="w3l-inner-page-breadcrumb">
         <div class="breadcrumb-bg py-5">
             <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
-                <h2 class="title pt-5">免责申明</h2>
+                <h2 class="title pt-5">Kafka如何保证可靠的数据传递</h2>
                 <ul class="breadcrumbs-custom-path mt-3 text-center">
                     <li><a href="/">首页</a></li>
-                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 免责申明</li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
                 </ul>
             </div>
         </div>
@@ -105,30 +107,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div id="detail-box">
-                        <p>本平台专注于为用户提供V2ray、Clash等免费节点订阅服务，我们致力于为用户提供便捷、高效的网络访问体验。然而，在使用本平台服务的过程中，用户需要了解并遵守以下免责条款：</p>
-<p>一、服务内容</p>
-<p>本平台提供的所有节点订阅服务均来源于公开信息或合作伙伴，我们不对节点信息的真实性、准确性、合法性以及可用性做任何明示或暗示的保证。用户在使用节点时，请自行判断并承担相关风险。</p>
-<p>二、网络安全</p>
-<p>本平台仅提供节点订阅服务，不参与用户的网络访问行为。用户在使用节点时，应自行负责网络访问的安全性和合法性，不得利用本平台提供的服务从事任何违法、违规或侵犯他人权益的行为。</p>
-<p>三、隐私保护</p>
-<p>我们尊重并保护用户的个人隐私，但用户在使用本平台服务时，可能需要提供部分个人信息以完成相关操作。我们承诺将严格按照相关法律法规的要求，对用户提供的个人信息进行保密处理，并采取相应的安全措施防止信息泄露。但请注意，由于网络环境的复杂性和不确定性，我们无法保证用户个人信息在传输过程中绝对安全，用户应自行承担因信息泄露而可能产生的风险。</p>
-<p>四、版权及知识产权</p>
-<p>本平台上的所有内容（包括但不限于文字、图片、视频等）均受版权及知识产权法律保护。用户在使用本平台服务时，应遵守相关法律法规，不得擅自复制、传播或用于其他商业用途。对于侵犯本平台版权及知识产权的行为，我们将依法追究法律责任。</p>
-<p>五、免责条款</p>
-<ol>
-    <li>因网络故障、服务器维护等原因导致服务中断或无法正常使用时，本平台不承担任何责任。</li>
-    <li>用户在使用本平台服务时，因个人操作不当或第三方因素导致的损失，本平台不承担任何赔偿责任。</li>
-    <li>本平台提供的节点订阅服务仅供参考，用户在使用过程中应自行判断并承担相关风险。对于因使用本平台服务而产生的任何直接或间接损失，本平台不承担任何责任。</li>
-</ol>
-<p>六、其他</p>
-<ol>
-    <li>本免责声明自发布之日起生效，并可能根据法律法规的变化或本平台服务的调整而进行修改。用户在使用本平台服务时，应定期查看并了解最新的免责声明内容。</li>
-    <li>对于本免责声明中未明确的事项，将按照相关法律法规的规定进行处理。如用户在使用本平台服务过程中遇到任何问题或争议，可通过本平台提供的联系方式与我们联系，我们将尽力为用户解决问题。</li>
-</ol>
-<p>总之，本平台将竭诚为用户提供优质的节点订阅服务，但用户在使用服务时应自行承担相关风险并遵守相关法律法规。我们希望与用户共同营造一个安全、和谐、合法的网络环境。</p>
-                    </div>
-                </div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h3>1、复制系数N</h3> <p>replication.factor</p> <p>每个主题的Partition都会有N个副本</p> <p>这样，在N-1个broker失效的情况下，仍然能从主题读取数据或向主题写入数据</p> <p>复制系数N需要至少N个broker，而且会有N个数据副本</p> <h3>2、不完全的首领选举</h3> <p>unclean.leader.election</p> <p>如果设为true，当分区首领不可用时，我们允许不同步的副本(不在ISR中)成为首领，需要承担丢失数据和出现数据不一致的风险。</p> <p>如果设为false，当分区首领不可用时，我们只允许同步的副本(在ISR中)成为首领，但如果此时没有同步的副本，我们只能等待原先的首领上线，降低了可用性。</p> <h3>3、最少同步副本</h3> <p>min.insync.replcas</p> <p>对于一个包含3个副本的主题，如果min.insync.replcas被设为2，那么至少要存在两个同步副本才能向分区写入数据</p> <p>如果不满足两个同步副本，那么broker会停止接受生产者的请求。尝试发送数据的生产者会受到NotEnoughReplicasException异常。消费者仍然可以继续读取已有的数据。</p> <p>这样是为了避免在发生不完全选举时数据的写入和读取出现非预期的行为</p> <h3>4、生产者保证</h3> <p>1)acks 0，1，-1/all</p> <p>通过acks=all，保证消息达到所有的副本</p> <p>2)retries 重试次数</p> <p>3)开发人员针对异常进行处理</p> <p>例如将异常的消息保存起来，后续处理</p> <h3>5、消费者保证</h3> <p>1）group.id</p> <p>消费者组，同一个消费者组中的消费者只会分到主题分区的一个子集</p> <p>2）auto.offset.reset</p> <p>在没有偏移量可提交时（比如消费者第一次启动时）或者请求的偏移量在broker上不存在时(发生了rebalance)，消费者应该获取什么偏移量</p> <p>earliest,消费者会从分区的开始位置读取数据，会导致消费重复数据</p> <p>lastest,消费者会从分区的末尾开始读取数据，这样可以减少处理重复数据，但很有可能会错过一些消息</p> <p>3) enable.auto.commit</p> <p>是否允许自动提交</p> <p>4) auto.commit.interval.ms</p> <p>自动提交间隔时间</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-38056.htm">重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）</a></p>
+                                        <p>下一个：<a href="/news/article-38567.htm">宠物粮食注册商标哪一类（宠物商品粮）</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -136,16 +121,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-shadowrocket-node.htm" title="11月25日|最高速度20.2M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接">11月25日|最高速度20.2M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-18651.htm" title="动物医院好评模板怎么写范文大全（动物医院大众点评评语）">动物医院好评模板怎么写范文大全（动物医院大众点评评语）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-clash.htm" title="11月11日|最高速度22.6M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接">11月11日|最高速度22.6M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-34210.htm" title="从线上环境摘取了四个代码优化记录分享给大家">从线上环境摘取了四个代码优化记录分享给大家</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-clash-subscribe.htm" title="11月10日|最高速度18.3M/S，2024最新SSR/V2ray/Shadowrocket/Clash免费节点高速订阅链接">11月10日|最高速度18.3M/S，2024最新SSR/V2ray/Shadowrocket/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-clash.htm" title="1月2日|最高速度20.7M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址">1月2日|最高速度20.7M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34209.htm" title="JS中数字，字符串，null和undefined转换为bool是true还是false总结">JS中数字，字符串，null和undefined转换为bool是true还是false总结</a></li>
+                        <li class="py-2"><a href="/news/article-30863.htm" title="最贵的猫前十名（宠物猫咪价格表）">最贵的猫前十名（宠物猫咪价格表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-clash.htm" title="11月9日|最高速度20M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接">11月9日|最高速度20M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22941.htm" title="宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）">宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）</a></li>
+                        <li class="py-2"><a href="/news/article-34680.htm" title="C++ String类的简单实现">C++ String类的简单实现</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-8-free-clash-subscribe.htm" title="10月8日|最高速度19.7M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接">10月8日|最高速度19.7M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-clash.htm" title="11月26日|最高速度19.2M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月26日|最高速度19.2M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-32293.htm" title="动物疫苗价格查询官网网址是多少啊 动物疫苗价格查询官网网址是多少啊">动物疫苗价格查询官网网址是多少啊 动物疫苗价格查询官网网址是多少啊</a></li>
-                        <li class="py-2"><a href="/news/article-25257.htm" title="Git基础Git创建本地版本库详解">Git基础Git创建本地版本库详解</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-ssr-node.htm" title="1月8日|最高速度22.8M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址">1月8日|最高速度22.8M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-23398.htm" title="动物疫苗周期多长时间打一次 动物疫苗周期多长时间打一次好">动物疫苗周期多长时间打一次 动物疫苗周期多长时间打一次好</a></li>
-                        <li class="py-2"><a href="/news/article-28972.htm" title="在哪免费领养宠物（在哪里免费领养宠物）">在哪免费领养宠物（在哪里免费领养宠物）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-ssr-node.htm" title="12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -275,17 +260,6 @@
     <!--//MENU-JS-->
     <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
     <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
-        <script>
-        $(function() {
-            $('.js_to').click(function() {
-                var url = $(this).data('url');
-                var code = $(this).data('code');
-                url += code;
-
-                window.open(url);
-            })
-        });
-        </script>
 </body>
 
 </html>
