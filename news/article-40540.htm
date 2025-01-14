@@ -2,13 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://clashshare.github.io" />
+        <link rel="canonical" href="https://clashshare.github.io/news/article-40540.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>2024-10归档 - 第2页 - ClashShare节点分享站</title>
-        <meta name="keywords" content="2024-10归档ClashShare节点分享站" />
-        <meta name="description" content="2024-10归档，当前是第2页" />
+    <title>Synchronized锁及其膨胀</title>
+        <meta name="description" content="一、序言 在并发编程中，synchronized锁因其使用简单，在线程间同步被广泛应用。下面对其原理及锁升级过程进行探究。 二、如何使用 1、修饰实例方法 当实例方法被synchronized修饰时，" />
         <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
     <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
     <!-- Template CSS -->
@@ -26,7 +25,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <!--/header-w3l-->
     <div class="header-w3l">
         <!-- header -->
@@ -92,10 +91,13 @@
     <section class="w3l-inner-page-breadcrumb">
         <div class="breadcrumb-bg py-5">
             <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
-                <h2 class="title pt-5">2024-10 归档</h2>
+                <h2 class="title pt-5">Synchronized锁及其膨胀</h2>
                 <ul class="breadcrumbs-custom-path mt-3 text-center">
                     <li><a href="/">首页</a></li>
-                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 2024-10 归档 </li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
                 </ul>
             </div>
         </div>
@@ -105,79 +107,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-11">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-11-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240525/2d2f5ad56c80e41b227e87190062d926.webp" alt="10月11日|最高速度22.8M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-9 whybox-wrap">
-                                <a href="/free-nodes/2024-10-11-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <h3 class="mb-2 xcblog-blog-title">
-                                        10月11日|最高速度22.8M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接                                    </h3>
-                                </a>
-                                <p class="desc">这一次的节点更新覆盖了欧洲、日本、韩国、加拿大、美国、香港、新加坡等地区,最高速度可达22.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-10">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-10-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240525/bc62aa135a49ff90429edafff38640da.webp" alt="10月10日|最高速度20.8M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-9 whybox-wrap">
-                                <a href="/free-nodes/2024-10-10-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <h3 class="mb-2 xcblog-blog-title">
-                                        10月10日|最高速度20.8M/S，2024最新Clash/SSR/Shadowrocket/V2ray免费节点高速订阅链接                                    </h3>
-                                </a>
-                                <p class="desc">这一次的节点更新覆盖了欧洲、新加坡、加拿大、美国、韩国、日本、香港等地区,最高速度可达20.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-09">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-9-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240525/6899f93ba961c53ca640080d1e79ca18.webp" alt="10月9日|最高速度22.1M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-9 whybox-wrap">
-                                <a href="/free-nodes/2024-10-9-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <h3 class="mb-2 xcblog-blog-title">
-                                        10月9日|最高速度22.1M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接                                    </h3>
-                                </a>
-                                <p class="desc">这一次的节点更新覆盖了新加坡、加拿大、美国、日本、欧洲、香港、韩国等地区,最高速度可达22.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-08">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-8-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240525/2d2f5ad56c80e41b227e87190062d926.webp" alt="10月8日|最高速度19.7M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-9 whybox-wrap">
-                                <a href="/free-nodes/2024-10-8-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <h3 class="mb-2 xcblog-blog-title">
-                                        10月8日|最高速度19.7M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接                                    </h3>
-                                </a>
-                                <p class="desc">这一次的节点更新覆盖了美国、韩国、香港、加拿大、新加坡、欧洲、日本等地区,最高速度可达19.7 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-07">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-7-free-v2ray.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240525/6899f93ba961c53ca640080d1e79ca18.webp" alt="10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="col-md-9 whybox-wrap">
-                                <a href="/free-nodes/2024-10-7-free-v2ray.htm" class="xcblog-blog-url">
-                                    <h3 class="mb-2 xcblog-blog-title">
-                                        10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接                                    </h3>
-                                </a>
-                                <p class="desc">这一次的节点更新覆盖了韩国、香港、欧洲、日本、美国、新加坡、加拿大等地区,最高速度可达18.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                                            </div>
-                    <ul class="pagination"><li><a href="/date/2024-10/page-2.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li class="active"><span>3</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                </div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="一序言">一、序言</h3> <p>在并发编程中，<code>synchronized</code>锁因其使用简单，在线程间同步被广泛应用。下面对其原理及锁升级过程进行探究。</p> <h3 id="二如何使用">二、如何使用</h3> <h5 id="1修饰实例方法">1、修饰实例方法</h5> <p>当实例方法被synchronized修饰时，通过当前实例调用此方法的所有线程共用一把锁，不同对象调用此方法线程间互不影响。</p> <pre><code class="language-java">public class A {     public synchronized void func() {          } }</code></pre> <p>当使用synchronized锁修饰实例方法，锁添加在当前类的实例上，有多少个实例可添加多少把锁。</p> <h5 id="2修饰代码块">2、修饰代码块</h5> <p>修饰代码块比修饰方法颗粒度更小。当实例方法代码块被synchronized修饰时，通过当前实例调用此方法的所有线程共用一把锁，不同对象调用此方法线程间互不影响。</p> <pre><code class="language-java">public class B {     public void func() {         synchronized (this) {                      }     } }</code></pre> <p>当使用synchronized锁修饰代码块，锁添加在当前类的实例上，有多少个实例可添加多少把锁。</p> <h5 id="3修饰静态方法">3、修饰静态方法</h5> <p>当静态方法被synchronized修饰时，整个JVM所有调用此方法的线程均受同一个锁的约束。</p> <pre><code class="language-java">public class C {     public static synchronized void func() {          } }</code></pre> <p>当使用synchronized锁修饰静态方法，锁添加在当前类的<code>类对象</code>上，最多添加一把锁。</p> <blockquote> <p>非必要不使用synchronized修饰静态方法</p> </blockquote> <h3 id="三锁的升级">三、锁的升级</h3> <p>Java 8所使用的synchronized锁是经过优化后的，存在<code>偏向锁</code>、<code>轻量级锁</code>、<code>重量级锁</code>等状态。</p> <h4 id="一偏向锁">（一）偏向锁</h4> <p>线程间不存在锁的竞争行为，至多只有一个线程有获取锁的需求，常见场景为<code>单线程程序</code>。</p> <h5 id="1识别方法">1、识别方法</h5> <p>判断是不是偏向锁的标识是查看调用此方法的线程是否有且仅有一个。</p> <p>在多线程编程里，被锁修饰的方法仅被单一线程调用几乎不存在，因此偏向锁比较鸡肋：如果能够明确单一线程调用目标方法，使用无锁编程更为合适。</p> <h5 id="2性能比较">2、性能比较</h5> <p>无锁与偏向锁的性能差异非常接近，几乎可以忽略不计。</p> <h4 id="二轻量级锁">（二）轻量级锁</h4> <p>线程间存在锁的<code>伪竞争行为</code>，即同一时刻绝对不会存在两个线程申请获取锁，各线程尽管都有使用锁的需求，但是是交替使用锁。</p> <h5 id="1识别方法-1">1、识别方法</h5> <p>当有两个及以上线程调用被锁修饰的方法时，那么至少能确定是轻量级锁。</p> <h5 id="2性能比较-1">2、性能比较</h5> <p>轻量级锁由于同一时刻不存在两个线程互相竞争锁，因此不存在线程<code>阻塞-唤醒</code>的上下文切换，因此性能相对重量级锁要高很多。</p> <h4 id="三重量级锁">（三）重量级锁</h4> <p>线程间存在锁的<code>实质性竞争</code>行为，线程间都有获取锁的需求，但是时间不可交错，互斥锁的阻塞等待。</p> <h5 id="1识别方法-2">1、识别方法</h5> <p>当能够肯定至少有两个及以上线程调用被锁修饰的方法时，线程调用方法是随机的，那么大概率是重量级锁。</p> <h5 id="2性能比较-2">2、性能比较</h5> <p>重量级锁由于涉及到线程阻塞-唤醒的上下文切换，造成相比较与无锁状态，效率低很多。</p> <h3 id="四其它内容">四、其它内容</h3> <h4 id="一锁的性质">（一）锁的性质</h4> <h5 id="1公平性">1、公平性</h5> <p>synchronized锁是<code>非公平锁</code>，没有FIFO队列机制保障竞争锁的线程一定有几率获得锁。</p> <h5 id="2重入性">2、重入性</h5> <p>synchronized锁是<code>可重入锁</code>，可重入意味着嵌套调用不会产生死锁问题。</p> <h5 id="3乐悲观锁">3、乐（悲）观锁</h5> <p>synchronized锁是一种悲观锁，通过加锁实现线程间同步。</p> <h4 id="二理解重量级锁">（二）理解重量级锁</h4> <p>在多线程环境下，如果使用synchronized锁，那么大概率会升级到重量级锁。偏向锁和轻量级锁非刻意为之，很难存在，更大的意义是对比帮助理解重量级锁的性能。</p> <p>重量级锁尽管会对性能产生很大影响，但是依旧是解决线程间同步的有效手段。</p> <h5 id="1选用锁的建议">1、选用锁的建议</h5> <p>当被锁修饰的方法或者代码块执行时间较<code>长</code>时，选用基于线程阻塞-唤醒切换上下文的方式进行线程同步效率相对较高。</p> <p>当被锁修饰的方法或者代码块执行时间较<code>短</code>时，应选用其它替代锁，比如自旋锁等。</p> <h4 id="三理解synchronized锁">（三）理解synchronized锁</h4> <p>在实际多线程场景开发中，<code>synchronized</code>锁大概率会升级到重量级锁，因其单向升级的特点，重量级状态的<code>synchronized</code>锁可能会对实际业务的并发产生不利影响，手动选用其它锁可能会更合适。</p> <p><code>synchronized</code>锁仅可用于解决同一进程内不同线程间同步，对于分布式项目跨进城线程同步依赖于分布式锁，<code>synchronized</code>锁更多的意义是理解锁的过程。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40040.htm">宠物粮厂家批发价格表图片（宠物粮生产厂家）</a></p>
+                                        <p>下一个：<a href="/news/article-40541.htm">宠物粮食市场竞争与效益分析报告（宠物粮食市场份额）</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -185,16 +121,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-high-speed-nodes.htm" title="12月11日|最高速度22.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">12月11日|最高速度22.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31813.htm" title="哈尔滨王春华动物医院简介（哈尔滨王春山）">哈尔滨王春华动物医院简介（哈尔滨王春山）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-ssr-subscribe.htm" title="12月13日|最高速度19.6M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接">12月13日|最高速度19.6M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-26-clash-v2ray-ss-ssr.htm" title="12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址">12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34680.htm" title="C++ String类的简单实现">C++ String类的简单实现</a></li>
                         <li class="py-2"><a href="/news/article-31260.htm" title="开宠物食品厂有利润吗知乎 开宠物食品厂有利润吗知乎文章">开宠物食品厂有利润吗知乎 开宠物食品厂有利润吗知乎文章</a></li>
-                        <li class="py-2"><a href="/news/article-35450.htm" title="广州猫领养中心地址查询官网（广州去哪领养猫）">广州猫领养中心地址查询官网（广州去哪领养猫）</a></li>
-                        <li class="py-2"><a href="/news/article-23395.htm" title="离我最近的猫市场在哪里啊（附近的猫市）">离我最近的猫市场在哪里啊（附近的猫市）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-19-node-share.htm" title="12月19日|最高速度19.3M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">12月19日|最高速度19.3M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21107.htm" title="聊城宠物用品批发市场地址电话（聊城哪里有宠物大市场!）">聊城宠物用品批发市场地址电话（聊城哪里有宠物大市场!）</a></li>
-                        <li class="py-2"><a href="/news/article-24789.htm" title="全国最便宜的批发衣服市场是哪里（中国最便宜的服装批发）">全国最便宜的批发衣服市场是哪里（中国最便宜的服装批发）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-clash-windows.htm" title="12月21日|最高速度20.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址">12月21日|最高速度20.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21564.htm" title="延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）">延吉市动物卫生检疫站电话（延吉市动物防疫站咨询电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-node-share.htm" title="11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-clash-node-daily-updates.htm" title="1月13日|最高速度19.6M/S，2025最新Clash/SSR/Shadowrocket/V2ray免费节点订阅链接地址">1月13日|最高速度19.6M/S，2025最新Clash/SSR/Shadowrocket/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-free-node-subscribe-links.htm" title="11月1日|最高速度20.2M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接">11月1日|最高速度20.2M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-ssr-node.htm" title="12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-ssr-node.htm" title="1月8日|最高速度22.8M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址">1月8日|最高速度22.8M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share.htm" title="10月15日|最高速度19.2M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">10月15日|最高速度19.2M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
                     </ul>
     </div>
 </div>
