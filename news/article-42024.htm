@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-42024.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue&#8211;》混合文件使用以及ref的引用讲解</title>
+        <meta name="description" content="目录 mixin混合 前言 ref的引用DOM ref引用组件  mixin混合 在日常开发中，当我们开发的各种组件可能会有相同的内容，我们可以将相同的内容在各个相对应的组件内删除，然后放在同一个配置" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Vue&#8211;》混合文件使用以及ref的引用讲解</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p style="text-align:center;"> <p id="main-toc"><strong>目录</strong></p> <p id="mixin%E6%B7%B7%E5%90%88-toc" style="margin-left:40px;"><a href="#mixin%E6%B7%B7%E5%90%88" rel="nofollow">mixin混合</a></p> <p id="%E5%89%8D%E8%A8%80-toc" style="margin-left:40px;"><a href="#%E5%89%8D%E8%A8%80" rel="nofollow">前言</a></p> <p id="ref%E7%9A%84%E5%BC%95%E7%94%A8DOM-toc" style="margin-left:80px;"><a href="#ref%E7%9A%84%E5%BC%95%E7%94%A8DOM" rel="nofollow">ref的引用DOM</a></p> <p id="ref%E5%BC%95%E7%94%A8%E7%BB%84%E4%BB%B6-toc" style="margin-left:80px;"><a href="#ref%E5%BC%95%E7%94%A8%E7%BB%84%E4%BB%B6" rel="nofollow">ref引用组件</a></p> <hr id="hr-toc"/> <h2 id="mixin%E6%B7%B7%E5%90%88">mixin混合</h2> <p>在日常开发中，当我们开发的各种组件可能会有相同的内容，我们可以将相同的内容在各个相对应的组件内删除，然后放在同一个配置里。<span style="color:#be191c;"><strong>所谓混合</strong></span>：<span style="color:#1c7331;"><strong>两个或多个组件共享一个配置</strong></span>。当然这个配置文件的名字可以自定义，为了具体语义化，我将这个文件名命名mixin，当然看个人喜好。</p> <p><img fetchpriority="high" decoding="async" alt="" height="618" src="http://img.555519.xyz/uploads/20221231/c984fe79df11c6d2979318069868ccee.jpg"></p> <p>配置混合文件 mixin.js ，为了加深了解，继续在混合文件上添加data数据以及添加原组件data数据</p> <pre><code class="language-javascript">// mixin.js export const mixin = {     methods:{         showName(){             alert(this.name)         }     } } export const mixin2 = {     // 混合里面的data的数据会和原组件data数据进行整合     data(){         return {             x:10, //如果原组件data数据本身就有该数据，以原组件数据为主             y:10         }     } }</code></pre> <p><img decoding="async" alt="" height="731" src="http://img.555519.xyz/uploads/20221231/9a2aa29b5c655a8e88ca5b2d4b9bc336.jpg"></p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221231/28b02bcfd0e1a8a12c9021a11debcdec.jpg"></p> <p>当然混合也不能包容所有配置项或函数，<span style="color:#be191c;"><strong>生命周期函数就是一个特例</strong></span>： 它不以任何为主，不管是原组件还是混合文件里面的生命周期函数，只要有都要。</p> <p><img decoding="async" alt="" height="580" src="http://img.555519.xyz/uploads/20221231/299e6524b59a202f98c94de155d79c27.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="70" src="http://img.555519.xyz/uploads/20221231/d791d09086826a5bddafb81d088013e9.jpg"></p> <p>当然混合我们也可以同全局组件一样写到全局配置上，这样我们在混合里面写到data数据或者是methods方法都会写到vm上，直接使用无需调用。当然这样肯定是不合理的，所以Vue官方进行解释：推荐全局mixin<span style="color:#be191c;"><strong>应该用于插件开发</strong></span>，不建议应用使用。</p> <p><img loading="lazy" decoding="async" alt="" height="118" src="http://img.555519.xyz/uploads/20221231/8a9f63a26a0ebe5aa63886f0188c779f.jpg"></p> <blockquote> <p><span style="color:#be191c;"><strong>总结</strong></span>：</p> <p><span style="color:#b95514;"><strong>mixin</strong></span>：混合可以把多个组件共用的配置提取成一个混入对象</p> <p><span style="color:#b95514;"><strong>使用方式</strong></span>：</p> <p>1）定义混合文件</p> <p>2）使用混入文件</p> <p>局部导入：mixins:['xxx']</p> <p>全局导入：Vue.mixin(xxx)</p> </blockquote> <p><span style="color:#be191c;"><strong>PS</strong></span>：这里解释一下 Vue 的插件 ，所谓Vue的插件类似游戏外挂，让体验感更强一些。</p> <blockquote> <p><span style="color:#be191c;"><strong>功能</strong></span>：用于增强Vue</p> <p><span style="color:#be191c;"><strong>本质</strong></span>：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="387" src="http://img.555519.xyz/uploads/20221231/70d8a7f41de137e42b67079587f09a09.jpg"></p> <h2 id="%E5%89%8D%E8%A8%80">前言</h2> <blockquote> <p>在我们没使用框架之前，通常一般使用 jquery 来帮助程序员简化操作DOM的过程，随着 Vue 的流行，<span style="color:#be191c;"><strong>在MVVM模型的影响下，程序员不需要操作DOM只需把数据维护好就行</strong></span>(也称：数据驱动视图)，既然在 Vue 中不需要操作DOM，所以是很少在 Vue 项目中安装和使用 jquery 的。假设我们<span style="color:#be191c;"><strong>在 Vue项目中需要操作DOM怎么办？</strong></span>这时候就需要看看接下来讲解的内容了。</p> </blockquote> <h3 id="ref%E7%9A%84%E5%BC%95%E7%94%A8DOM">ref的引用DOM</h3> <p>ref用来辅助开发者在<span style="color:#be191c;"><strong>不依赖于 jQuery 的情况下</strong></span>，获取 DOM 元素或组件的引用。</p> <p>每个 vue 的组件实例上，都包含一个 <span style="color:#b95514;"><strong>$refs</strong> <strong>对象</strong></span>，里面存储着对应的DOM元素或组件的引用。默认情况下，<span style="color:#1c7331;"><strong>组件的 $refs 指向一个空对象</strong></span>。</p> <pre><code class="language-html">&lt;template&gt;   &lt;div class="app-container"&gt;     &lt;!-- 注意：ref的值是唯一的，如果出现重复后者会覆盖前者，这点尤为注意 --&gt;     &lt;h2 ref="myh1"&gt;App父组件&lt;/h2&gt;     &lt;button @click="showThis"&gt;改变颜色&lt;/button&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt;   export default {       methods:{       showThis(){         //  console.log(this);         this.$refs.myh1.style.color = 'red'       }     }   } &lt;/script&gt; </code></pre> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221231/bf809f429db354863a0864dd3289c59d.jpg"></p> <h3 id="ref%E5%BC%95%E7%94%A8%E7%BB%84%E4%BB%B6">ref引用组件</h3> <p>如果想要使用ref<span style="color:#be191c;"><strong>引用页面上的组件实例</strong></span>，则可以按照如下的方式进行操作：</p> <p><img loading="lazy" decoding="async" alt="" height="961" src="http://img.555519.xyz/uploads/20221231/4425db2b0f315b084b5a46432acb5329.jpg"></p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221231/21149bffc237a5ce1062ad9fcae37fa8.jpg"></p> <p>组件的<span style="color:#be191c;"><strong> $nextTick(cb) </strong></span>方法，会把 cb <span style="color:#be191c;"><strong>回调推迟到下一个 DOM 更新周期之后执行</strong></span>。通俗的理解是：等组件的DOM更新完成之后，再执行 cb 回调函数。从而能保证 cb 回调函数可以操作到最新 DOM 元素。</p> <pre><code class="language-html">&lt;template&gt;   &lt;div class="app-container"&gt;     &lt;h2&gt;App父组件&lt;/h2&gt;     &lt;input type="text" v-if="inputVisible" @blur="showButton" ref="iptRef"&gt;     &lt;button v-else @click="showinput"&gt;点击显示输入框&lt;/button&gt;   &lt;/div&gt; &lt;/template&gt; &lt;script&gt;   export default {       data(){       return {         // 默认输入框隐藏         inputVisible:false       }     },     methods:{       showinput(){         // 切换布尔值，把文本框展示出来         this.inputVisible = true         // 让展示出来的文本框自动获取焦点         this.$nextTick(()=&gt;{           this.$refs.iptRef.focus()         })       },       showButton(){         this.inputVisible = false       }     },   } &lt;/script&gt;   </code></pre> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221231/ba738022c61b021b7571c11a8c790d6e.jpg"></p> <blockquote> <p><span style="color:#be191c;"><strong>总结</strong></span>：</p> <p><span style="color:#b95514;"><strong>ref属性</strong></span>：被用来给元素或者子组件注册引用信息(id的替代者)，应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象(vc)</p> <p><span style="color:#b95514;"><strong>使用方式</strong></span>：</p> <p>打标识：&lt;h1 ref="xxx"&gt;...&lt;/h1&gt; 或&nbsp; &lt;Test ref="xxx"&gt;&lt;/Test&gt;</p> <p>获取：this.$refs.xxx</p> </blockquote></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41529.htm">猫咪恨主人的十种表现有哪些（猫咪恨主人该怎么办）</a></p>
+                                        <p>下一个：<a href="/news/article-42025.htm">宠物粮食广告（宠物粮食广告宣传语大全）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-36596.htm" title="宠物领养协议书范本定期回访内容模板（宠物领养协议书范本定期回访内容模板图片）">宠物领养协议书范本定期回访内容模板（宠物领养协议书范本定期回访内容模板图片）</a></li>
+                        <li class="py-2"><a href="/news/article-26654.htm" title="宠物粮食价格高对策论文（宠物粮食问题）">宠物粮食价格高对策论文（宠物粮食问题）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-clash.htm" title="1月2日|最高速度20.7M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址">1月2日|最高速度20.7M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38056.htm" title="重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）">重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）</a></li>
+                        <li class="py-2"><a href="/news/article-21563.htm" title="动物医院有公立的吗还是私立的好（动物医院有公立的吗还是私立的好一点）">动物医院有公立的吗还是私立的好（动物医院有公立的吗还是私立的好一点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-ssr-subscribe.htm" title="12月10日|最高速度18M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接">12月10日|最高速度18M/S，2024最新Shadowrocket/Clash/SSR/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41528.htm" title="猫六个月不洗澡（猫六个月不洗澡会怎么样）">猫六个月不洗澡（猫六个月不洗澡会怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-node-share.htm" title="11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日|最高速度20.6M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">1月16日|最高速度20.6M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20650.htm" title="哪家动物医院好（哪家动物医院好一点）">哪家动物医院好（哪家动物医院好一点）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
