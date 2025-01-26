@@ -1,0 +1,293 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-46005.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SOLID原则：解释和实例</title>
+        <meta name="description" content="在面向对象编程中，SOLID是5个重要的设计原则的缩写。首先是由著名的软件大师Robert C.Martin (Bob 大叔)在Design Principles and Design Pattern" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-46005.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="SOLID原则：解释和实例" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/d01d8a6324ca843dc2a5f5c444c9d948.webp" />
+        <meta property="og:release_date" content="2025-01-25T09:53:19" />
+    <meta property="og:updated_time" content="2025-01-25T09:53:19" />
+        <meta property="og:description" content="在面向对象编程中，SOLID是5个重要的设计原则的缩写。首先是由著名的软件大师Robert C.Martin (Bob 大叔)在Design Principles and Design Pattern" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SOLID原则：解释和实例">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share
+                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">SOLID原则：解释和实例</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>在面向对象编程中，SOLID是5个重要的设计原则的缩写。首先是由著名的软件大师Robert C.Martin (Bob 大叔)在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf"  rel="nofollow">Design Principles and Design Patterns</a> 中提出， 后来Michael Feathers 用SOLID来概括这五大原则。</p> <p>SOLID原则使得软件设计<strong>更加容易理解、灵活和可维护</strong>。作为一名软件工程师，这5个原则我们必须知道。</p> <p>本文，我将涵盖这些原则，并举例说明怎样是违背了原则，以及如何进行纠正来符合SOLID原则。</p> <h4> <a id="S__Single_responsibility_principle_6" rel="nofollow"></a>S — Single responsibility principle</h4> <p>在程序设计中，单一责任原则指的是每个模块或者类应该只有一个职责。</p> <p>你可能听过这样一句谚语“<strong>做一件事并把它做好</strong>”，这指的就是单一责任原则。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/b8e22fefc681de5a6d49aa8241b362d8.jpg" alt="SOLID原则：解释和实例"></p> <p>在文章《<em>Principles of Object Oriented Design</em>》中，Bob 大叔定义责任为“<strong>改变的原因</strong>”。并认为有一个且仅有一个原因使得类或模块发生改变。</p> <pre><code>class User {     void CreatePost(Database db, string postMessage)     {         try         {             db.Add(postMessage);         }         catch (Exception ex)         {             db.LogError("An error occured: ", ex.ToString());             File.WriteAllText("\LocalErrors.txt", ex.ToString());         }     } } </code></pre> <p>在上述代码示例中，我们注意到*CreatePost()*方法有多个功能，创建新的邮件，在数据库中记录错误日志以及在本地文件记录错误日志。</p> <p>这违背了单一责任原则。我们尝试修改如下：</p> <pre><code>class Post {     private ErrorLogger errorLogger = new ErrorLogger();      void CreatePost(Database db, string postMessage)     {         try         {             db.Add(postMessage);         }         catch (Exception ex)         {             errorLogger.log(ex.ToString())         }     } }  class ErrorLogger {     void log(string error)     {       db.LogError("An error occured: ", error);       File.WriteAllText("\LocalErrors.txt", error);     } } </code></pre> <p>通过把错误日志功能抽象出来，我们不再违背单一责任原则。</p> <p>现在有2个类，每个类都有一个责任；创建邮件和记录一个错误日志。</p> <h4> <a id="O__Openclosed_principle_71" rel="nofollow"></a>O — Open/closed principle</h4> <p>在程序设计中，开闭原则指的是软件对象（类，模块，函数等等）应该对扩展开放，对修改关闭。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/4e78d80cac420a8106afd537eda19f16.jpg" alt="SOLID原则：解释和实例"></p> <p>如果你熟悉OOP，那么对于多态应该不陌生。通过继承或接口实现，使得一个抽象类具有多个子类，就可以确保代码是符合开闭原则的。</p> <p>这听起来有点困惑，所以接下来举个例子，你就会非常清楚我在说什么。</p> <pre><code>class Post {     void CreatePost(Database db, string postMessage)     {         if (postMessage.StartsWith("#"))         {             db.AddAsTag(postMessage);         }         else         {             db.Add(postMessage);         }     } } </code></pre> <p>在这个代码段中，每当邮件是用字符“#“开头，我们都需要做一些指定。然而，当有不同的字符开头，代码会有不同的行为，这违背了开闭原则。</p> <p>比如，如果我们以后想用“@”开头，我们必须在<em>CreatePost()<em>方法中增加一个</em>‘else if’</em>，这修改了类。</p> <p>这里简单使用了继承来使代码符合开闭原则。</p> <pre><code>class Post {     void CreatePost(Database db, string postMessage)     {         db.Add(postMessage);     } }  class TagPost : Post {     override void CreatePost(Database db, string postMessage)     {         db.AddAsTag(postMessage);     } } </code></pre> <p>通过使用继承，重写*CreatePost()*方法来创建邮件的扩展行为变得更加简单。</p> <p>现在，判断第一个字符“#”可以在软件其它地方处理。更酷的事情是，如果我们想改变<em>postMessage</em>的判断方式，可以不影响基类的行为。</p> <h4> <a id="L__Liskov_substitution_principle_127" rel="nofollow"></a>L — Liskov substitution principle</h4> <p>这个原则可能是第一次介绍时最难理解的一个。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/293a8b268955ef2e030ce2c4a8651926.jpg" alt="SOLID原则：解释和实例"></p> <p>在程序设计中，里氏替换原则指的是如果 <em>S</em> 是<em>T</em> 的子类，那么<em>T</em> 的实例可以用 <em>S</em> 的实例取代。</p> <p>更一般的表述是，在不改变程序正确性的前提下，派生类对象可以在程序中代替其基类对象。</p> <pre><code>class Post {     void CreatePost(Database db, string postMessage)     {         db.Add(postMessage);     } }  class TagPost : Post {     override void CreatePost(Database db, string postMessage)     {         db.AddAsTag(postMessage);     } }  class MentionPost : Post {     void CreateMentionPost(Database db, string postMessage)     {         string user = postMessage.parseUser();          db.NotifyUser(user);         db.OverrideExistingMention(user, postMessage);         base.CreatePost(db, postMessage);     } }  class PostHandler {     private database = new Database();      void HandleNewPosts() {         List&lt;string&gt; newPosts = database.getUnhandledPostsMessages();          foreach (string postMessage in newPosts)         {             Post post;              if (postMessage.StartsWith("#"))             {                 post = new TagPost();             }             else if (postMessage.StartsWith("@"))             {                 post = new MentionPost();             }             else {                 post = new Post();             }              post.CreatePost(database, postMessage);         }     } } </code></pre> <p>由于没有覆写，<em>CreatePost()<em>方法在子类</em>MentionPost</em>中不会起到应有的作用。</p> <p>修改后如下：</p> <pre><code>...  class MentionPost : Post {     override void CreatePost(Database db, string postMessage)     {         string user = postMessage.parseUser();          NotifyUser(user);         OverrideExistingMention(user, postMessage)         base.CreatePost(db, postMessage);     }      private void NotifyUser(string user)     {         db.NotifyUser(user);     }      private void OverrideExistingMention(string user, string postMessage)     {         db.OverrideExistingMention(user, postMessage);     } }  ... </code></pre> <p>通过重构<em>MentionPost</em>类，就能满足可替换性。</p> <p>这只是一个不违背里氏替换原则的简单例子。然而，在实际使用过程中，这种情形可以用多种方式实现并且不易识别出来。</p> <h4> <a id="I__Interface_segregation_principle_232" rel="nofollow"></a>I — Interface segregation principle</h4> <p>这个原则理解起来很简单，实际上，如果你习惯于使用接口，很大概率上会用到这个原则。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/53b26a744bb605ae3e0bae33a74f7c6f.jpg" alt="SOLID原则：解释和实例"></p> <p>在程序设计中，接口隔离原则指的是客户不应被迫使用对其而言无用的方法或功能。</p> <p>简单来讲，不要在已有接口上增加新的方法来实现新的功能。相反的，可以创建新的接口，如果有必要，可以让你的类实现多个接口。</p> <pre><code>interface IPost {     void CreatePost(); }  interface IPostNew {     void CreatePost();     void ReadPost(); } </code></pre> <p>在上述代码示例中，假设我已经有了一个<em>IPost</em> 接口，包含<em>CreatePost()<em>方法；后来，我增加了一个新方法 <em>ReadPost()</em>，修改了这个接口，变成</em>IPostNew</em> 接口，这违背了接口隔离原则。修改如下：</p> <pre><code>interface IPostCreate {     void CreatePost(); }  interface IPostRead {     void ReadPost(); } </code></pre> <p>一旦任何类需要实现这2个方法，就将同时实现这2个接口。</p> <h4> <a id="D__Dependency_inversion_principle_272" rel="nofollow"></a>D - Dependency inversion principle</h4> <p>最后，我们来看一下D，最后一个设计原则。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/c62281eaf6ade76db265c03b8ff88d9f.jpg" alt="SOLID原则：解释和实例"></p> <p>在程序设计中，依赖倒置原则用于解耦软件中的模块。这个原则表述如下：</p> <ul> <li>高层的模块不应该依赖底层的模块，而应该依赖抽象；</li> <li>抽象不应该依赖实现细节，实现细节应该依赖抽象。</li> </ul> <p>为了遵循这一原则，我们需要使用一种设计模式称为<strong>依赖注入</strong>，典型的，依赖注入通过类的构造函数作为输入参数。</p> <pre><code>class Post {     private ErrorLogger errorLogger = new ErrorLogger();      void CreatePost(Database db, string postMessage)     {         try         {             db.Add(postMessage);         }         catch (Exception ex)         {             errorLogger.log(ex.ToString())         }     } } </code></pre> <p>观察到我们在<em>Post</em> 类中创建了<em>ErrorLogger</em> 实例，如果我们想使用不同的日志，我们需要修改Post类，这违背了依赖倒置原则。修改如下：</p> <pre><code>class Post {     private Logger _logger;      public Post(Logger injectedLogger)     {         _logger = injectedLogger;     }      void CreatePost(Database db, string postMessage)     {         try         {             db.Add(postMessage);         }         catch (Exception ex)         {             _logger.log(ex.ToString());         }     } } </code></pre> <p>通过使用依赖注入，我们不再依赖<em>Post</em>类来定义指定类型的日志。</p> <p>OK，介绍完这么多，也大致理解了这几个原则。这些原则有区别，同时彼此间也有着联系。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230109/ea6c75b445abfbe74b86541e0f492dc2.jpg" alt="SOLID原则：解释和实例"></p> <ul> <li>单一职责原则是 SOLID 所有原则的基础和解决问题的思路。</li> <li>开闭原则是直接保障代码质量的原则，用来解决设计的脆弱性、僵化、难以阅读、难以复用等问题，应用开闭原则的关键在于如何“抽象”。</li> <li>里氏替换原则通过确保子类和父类是 “is a” 的关系，来帮助实现开闭原则。该原则的使用中，引申出面向对象角度的 “is a” 是关于行为的，以及模型的正确性不是内在的，而是由它的客户程序来体现。</li> <li>接口隔离原则提供了一种方案，在不违反里氏替换原则的情况下，如何实现开闭原则。同时接口隔离的思想本身也体现了单一职责原则。</li> <li>依赖倒置原则是过程式设计与面向对象设计的分水岭，通过适当的抽象，让高层模块和底层模块同样地可复用和可测试。同时它也被用来指导接口隔离原则。</li> </ul> <h2> <a id="_344" rel="nofollow"></a>参考</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/what-is-design-pattern/"  rel="nofollow">【1】What Is Design Pattern？</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/single-responsibility-principle-in-cpp-solid-as-a-rock/"  rel="nofollow">【2】Single Responsibility Principle in C++</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zh.wikipedia.org/zh-cn/%E5%8D%95%E4%B8%80%E5%8A%9F%E8%83%BD%E5%8E%9F%E5%88%99"  rel="nofollow">【3】单一功能原则</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/open-closed-principle-in-cpp-solid-as-a-rock/"  rel="nofollow">【4】Open Closed Principle in C++</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zh.wikipedia.org/zh-cn/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"  rel="nofollow">【5】开闭原则</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/liskovs-substitution-principle-in-cpp-solid-as-a-rock/"  rel="nofollow">【6】Liskov’s Substitution Principle in C++</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zh.wikipedia.org/zh-cn/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"  rel="nofollow">【7】里氏替换原则</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/interface-segregation-principle-in-cpp-solid-as-a-rock/"  rel="nofollow">【8】Interface Segregation Principle in C++</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zh.wikipedia.org/zh-cn/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"  rel="nofollow">【9】接口隔离原则</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.vishalchovatiya.com/dependency-inversion-principle-in-cpp-solid-as-a-rock/"  rel="nofollow">【10】Dependency Inversion Principle in C++</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zh.wikipedia.org/zh-cn/"  rel="nofollow">【11】依赖倒置原则</a></p> <hr/> <p><strong>That’s it!If you have any questions or feedback, please feel free to comment below.</strong></p> <p><strong>-EOF-</strong></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45501.htm">家猫轻微抓伤（家猫轻微抓伤没有出血用不用打疫苗）</a></p>
+                                        <p>下一个：<a href="/news/article-46007.htm">动物检疫合格证明在哪里办理（太原动物检疫合格证明在哪里办理）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-clash-windows.htm" title="10月22日|最高速度22M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接">10月22日|最高速度22M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-v2ray-subscribe.htm" title="11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-clash.htm" title="11月9日|最高速度20M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接">11月9日|最高速度20M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-node-share-links.htm" title="1月4日|最高速度22.6M/S，2025最新SSR/Shadowrocket/Clash/V2ray免费节点订阅链接地址">1月4日|最高速度22.6M/S，2025最新SSR/Shadowrocket/Clash/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share-links.htm" title="12月2日|最高速度22.5M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接">12月2日|最高速度22.5M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-node-share.htm" title="12月19日|最高速度19.3M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">12月19日|最高速度19.3M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-v2ray.htm" title="10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">10月7日|最高速度18.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-clash-subscribe.htm" title="11月29日|最高速度19.7M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接">11月29日|最高速度19.7M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23853.htm" title="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）">详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）</a></li>
+                        <li class="py-2"><a href="/news/article-44515.htm" title="猫喜欢你的表现是什么（猫咪对主人的喜欢程度及表现）">猫喜欢你的表现是什么（猫咪对主人的喜欢程度及表现）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
