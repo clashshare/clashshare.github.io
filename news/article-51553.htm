@@ -1,0 +1,291 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-51553.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>网络协议之:Domain name service DNS详解_在线工具</title>
+        <meta name="description" content="目录  简介 DNS的功能  DNS的组成  域名空间Domain name space Name servers   DNS的工作流程 DNS资源记录 DNS消息的结构 总结    现在是互联网的世" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-51553.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="网络协议之:Domain name service DNS详解_在线工具" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/a7542902c4097447bda44bf21af2ce6d.webp" />
+        <meta property="og:release_date" content="2025-02-05T08:20:19" />
+    <meta property="og:updated_time" content="2025-02-05T08:20:19" />
+        <meta property="og:description" content="目录  简介 DNS的功能  DNS的组成  域名空间Domain name space Name servers   DNS的工作流程 DNS资源记录 DNS消息的结构 总结    现在是互联网的世" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="网络协议之:Domain name service DNS详解_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">网络协议之:Domain name service DNS详解_在线工具</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</p> <div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E7%AE%80%E4%BB%8B"  rel="nofollow">简介</a></li> <li><a href="#dns%E7%9A%84%E5%8A%9F%E8%83%BD"  rel="nofollow">DNS的功能</a></li> <li> <a href="#dns%E7%9A%84%E7%BB%84%E6%88%90"  rel="nofollow">DNS的组成</a></p> <ul> <li><a href="#%E5%9F%9F%E5%90%8D%E7%A9%BA%E9%97%B4domain-name-space"  rel="nofollow">域名空间Domain name space</a></li> <li><a href="#name-servers"  rel="nofollow">Name servers</a></li> </ul> </li> <li><a href="#dns%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"  rel="nofollow">DNS的工作流程</a></li> <li><a href="#dns%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95"  rel="nofollow">DNS资源记录</a></li> <li><a href="#dns%E6%B6%88%E6%81%AF%E7%9A%84%E7%BB%93%E6%9E%84"  rel="nofollow">DNS消息的结构</a></li> <li><a href="#%E6%80%BB%E7%BB%93"  rel="nofollow">总结</a></li> </ul> </div> </h1> <p>现在是互联网的世界，大家从各种网站中获取各类资源和信息，通常我们只需要牢记一个网站地址即可，至于这个网站后台的服务器在什么地方，我们并不需要关心。当我们的请求指向这个网址之后，接下来就只需要等待请求被转发到该网址的后端服务器上，得到返回的处理结果即可。</p> <p>这个将网站名称解析成为服务IP地址的服务就是DNS服务，它的全称是Domain Name System,也就是域名解析服务。</p> <p>那么DNS到底是怎么工作的呢？</p> <p>有聪明的小伙伴可能会说了，那还不简单，搞一个统一的服务器，把世界上所有的域名对应的IP都存起来，每次需要解析的时候从这个服务去取就行了。确实，在互联网的初期就是这么干的，那时候网站还不多，域名维护的成本还不高,并且最开始还没有域名系统。</p> <p>作为互联网的技术基础的ARPANET(The Advanced Research Projects Agency Network)是第一个具有分布式控制的广域分组交换网络，也是最早应用 TCP/IP 协议的网络设施。</p> <p>在ARPANET网络中，每个主机都有一个数字地址，但是这个数字地址明显是反人类记忆模式的，所以科学家们希望能够给这些主机起一些好记的名字，那么就需要维护这些名字和主机之间的映射关系，在这个时候斯坦福研究所(现在被称为SRI International)接下了这个任务，他们维护了一个HOSTS.TXT 的文本文件,在这个文件中描述了主机地址和主机名字之间的映射关系。</p> <p>如果有人想要更新这个HOST文件，那么需要在工作时间打电话给SRI网络信息中心,由信息中心的工作人员将主机名和地址添加到HOSTS.TXT文件中。当然这样的操作对少量的数据更新来说还可以，但是如果数据量太大的情况下就有问题了。</p> <p>后面一个叫做Elizabeth Feinler的人在SRI网络信息中心的基础上搭建了WHOIS目录，用于检索有关资源、联系人和实体的信息，并且提出了域名的概念.</p> <p>最开始的维护都是在一个单一的服务器上进行集中式管理，但是这种维护方式已经不能够满足日益增长的网络需求，于是在1983年Paul Mockapetris在南加州大学创建了DNS系统,并在1983年11月于RFC 882 和 RFC 883发布了相关的原始规范。</p> <p>后面DNS经过一系列的发展，于1987年11月，RFC 1034和 RFC 1035取代了1983年的DNS规范。</p> </h1> <p>前面我们也提过了，DNS最基本的作用就是将用户提供的域名转换成为服务器的地址。</p> <p>比如我们现在有个域名叫做www.flydean.com,它对应的服务器IPv4地址是42.138.111.201，对应的IPv6地址是fe40::1024:ff:fe10:123f,DNS要做的工作就是将www.flydean.com根据需要快速的转换成为IPv4或者IPv6地址。这是DNS的第一个功能也是最重要的功能：提供域名的解析服务。</p> <p>另外，在具体的应用场景中，域名背后对应的服务器IP可能是会变化的，那么就需要DNS有快速更新的功能，可以快速反映网络的变化情况，而不影响具体用户的访问。</p> <p>这种操作对用用户来说是友好的，因为用户不需要知道底层服务器的变化，他们只需要知道要访问的域名即可。</p> <p>最后，现代的网络应用一般都是分布式的，可能会有多个工作节点，不同的工作节点可能会被部署在不同的地方。用户在访问一个域名的时候，为了提升访问速度，应该优先访问离用户最近的那个节点。这时候DNS又承担了优化网络访问的任务，它负责向用户提供最近的服务器节点，所以在现代网络架构中，DNS的作用越来越大。</p> </h1> <p>讲解完DNS的功能之后，让我们来看看DNS的组成，作为一个域名服务，DNS是由域名空间和Name servers两部分组成的。</p> <p>域名空间描述的是域名的结构和命令规则，而Name servers则是对域名进行解析的服务。接下来我们分别进行讲解。</p> <h2 id="域名空间domain-name-space">域名空间Domain name space</h2> <p>域名空间，也叫做Domain name space,它是所有域名的集合。下面是维基百科上的域名空间的示意图：</p> <p><img decoding="async" src="https://img-blog.csdnimg.cn/a4ada5191a6d4889aa54edb5a3a2e148.png" alt="网络协议之:Domain name service DNS详解_在线工具" style="zoom: 67%"></p> <p>从上图可以看出，域名空间其实是一个树形结构，每个节点或者叶子节点都有一个label和RR(esource records记载着和域名相关的有用信息),域名本身由label组成，右边是其父节点的名称，用点分隔。</p> <p>域名空间可以被划分为多个子空间，每个子空间可以单独进行管理，这样的子空间叫做一个域(zone)。</p> <p>每个DNS域又可以被划分为一个域，也可能包含许多域和子域，具体取决于域管理器的管理选择。</p> <p>大家对域名都很熟悉了，但是大家可能不是很明白域名的构成。</p> <p>事实上域名是由label组成的，各个label是以点连接起来的，比如：www.flydean.com。</p> <p>每个label都可以看做是域的一个层级，最右边是顶级域名com,左边的是右边域名的子域名,比如flydean是com的子域名，www是flydean.com的子域名，以此类推，总共可以有127个层级结构。</p> <p>每个label可以包含0到63个字符，总共的域名长度不能超过253个字符。为什么是253个字符而不是255个字符呢？那是因为有2个字符是用来存储长度值的。</p> <p>一般来说域名的标签是以ASCII字符表示的,通常使用a-z,A-Z,0-9和连字符来表示,这种规则简称为LDH(letters, digits, hyphen)规则。</p> <p>在域名中，字符串是大小写不敏感的，这就意味着www.flydean.com和WWW.FLYDEAN.COM是等价的。</p> <p>注意，标签不能以连字符开头或者结尾，并且顶级域名不能全为数字。</p> <p>有朋友可能会问了，不对呀，为什么我听过中文域名呢？</p> <p>这是因为为了解决域名只能使用ASCII编码的问题，ICANN通过了一个叫做IDNA国际化域名的系统，通过这个系统，用户应用程序（例如Web浏览器）可以使用Punycode将Unicode字符串映射到有效的DNS字符集。</p> <p>什么是Punycode呢？Punycode是一种使用ASCII字符集来表示Unicode的编码方式。感兴趣的同学可以自行探索，这里就不细讲了。</p> <h2 id="name-servers">Name servers</h2> <p>name servers也被称为名称服务器，是用来解析域名的服务器。名称服务器是一种客户端-服务器的架构，每个名称服务器用于发布有关该域的信息以及管理从属于它的任何域的名称服务器。</p> <p>这样的名称管理器就构成了层级结构。为了提升域名解析的效率，通常会需要使用缓存来存储域名和服务器地址的对应关系，但是有时候我们需要时效性更高的场景和服务，于是出现了一种特殊的名称服务器，这种服务器叫做权威名称服务器。</p> <p>为什么叫权威名称服务器呢?这是因为权威名称服务器仅从由原始来源配置的数据中给出DNS查询的答案，而不是通过对另一个名称服务器的查询获得的结果。它是域名服务器查询中的最后一站，如果权威名称服务器中保存有请求的记录，则其会将已请求主机名的IP地址返回到发出初始请求的DNS解析器.</p> </h1> <p>上面讲了那么多概念性的东西，大家可能会有些懵。 没关系，这里我们举一个具体的例子来观察一下DNS查询的整个流程。</p> <p>假如用户在浏览器中输入www.flydean.com想访问这个网站，因为用户输入的是一个域名，所以需要将域名解析成为IP地址，从而发送后续的数据请求包。</p> <p>因为DNS本身是一个名称服务，所以需要一个客户端来请求DNS，这个客户端就叫做DNS解析器。</p> <p>一般来说DNS解析器是嵌入在浏览器中的，当用户输入URL来访问网络资源的时候，浏览器会自动调用DNS解析器去对这个URL进行解析。</p> <p>那么域名解析的第一站是哪里呢？域名解析的第一站就是根服务器,也叫root服务器。</p> <p>域名解析的请求由root服务器首先响应，但是root服务器并不会直接返回用户要解析的域名地址，而是根据用户访问的域名中的顶级域名的不同，返回顶级域名服务器(TLD)的地址。</p> <p>比如这里我们要访问的定义域名是.com，那么root服务器会返回.com的顶级域名服务器的地址。</p> <p>root服务器有多少个呢？世界上的root服务器IP地址只有13个，这是由于早期技术原因的限制导致的。这13个root服务器的IP地址中，1个为主root地址，这个地址是由ICANN负责管理的，其他12地址中9个在美国，2个在欧洲，1个在日本。</p> <p>虽然root根服务器IP只有13个，但是基于这13个IP地址构建了一个服务器集群，可以有效的保证根服务器的运行稳定性。从而不至于出现根服务器不能访问导致的大规模网络错误。</p> <p>回到我们的解析过程，root服务器把.com顶级域名服务器的地址返回给了DNS解析器，DNS解析会再次向.com TLD发起解析查询。</p> <p>.com TLD会再次返回flydean.com的域名服务器地址给DNS解析器。</p> <p>DNS解析器再次发送请求给flydean.com的域名服务器，这里的域名服务器是一个权威域名服务器，因为这里是域名解析的最后一站，存放着域名的真实IP地址，权威域名服务器经过查询得到www.flydean.com的真实IP地址，并返回给DNS解析器。</p> <p>最后DNS解析器将这个IP地址返回给浏览器，供后续的浏览请求使用。</p> <p>可以看到DNS解析是一个不断递归解析的过程，所以这样的解析器又被称为DNS递归解析器。</p> <p>从上面的流程可以看到，每次域名的请求都需要经过root域名服务器，那么这样root域名服务器的压力会很大，为了解决这个问题，事实上我们在使用的过程中引入了DNS缓存。</p> <p>缓存的目的就是将DNS数据放到离自己最近的地方，从而提示数据的处理速度和展示效率。</p> <p>常见的DNS缓存有浏览器缓存和操作系统DNS缓存。</p> <p>浏览器缓存就是由浏览器负责维护的DNS缓存，而操作系统DNS缓存是操作系统级的DNS缓存。</p> <p>如果这两个缓存都不存在的话，那么本地的DNS客户端会将DNS查询发生到ISP(Internet 服务提供商)内部的DNS递归解析器，对于ISP来说，它也会存在DNS缓存，所以如果新增一个域名或者更改一个IP地址，并不是马上生效的，而是需要等待一定的时间来让缓存失效或者缓存刷新。</p> </h1> <p>前面我们提到了DNS命名空间中每个节点都是有label和resource records (RR)组成的，RR存储着资源的描述信息，会在收到DNS查询之后返回。</p> <p>DNS RR是由一条条的record构成的，下面是一条record的结构：</p> <table> <thead> <tr> <th style="text-align: center">字段名</th> <th style="text-align: center">描述</th> <th style="text-align: center">长度 [octets]</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">NAME</td> <td style="text-align: center">此记录所属的节点的名称</td> <td style="text-align: center">可变</td> </tr> <tr> <td style="text-align: center">TYPE</td> <td style="text-align: center">RR类型</td> <td style="text-align: center">2</td> </tr> <tr> <td style="text-align: center">CLASS</td> <td style="text-align: center">Class代码</td> <td style="text-align: center">2</td> </tr> <tr> <td style="text-align: center">TTL</td> <td style="text-align: center">RR 保持有效的秒数</td> <td style="text-align: center">4</td> </tr> <tr> <td style="text-align: center">RDLENGTH</td> <td style="text-align: center">RDATA 字段的长度</td> <td style="text-align: center">2</td> </tr> <tr> <td style="text-align: center">RDATA</td> <td style="text-align: center">附加数据字段</td> <td style="text-align: center">可变</td> </tr> </tbody> </table> <p>其中NAME是树中节点的完全限定域名。</p> <p>TYPE是记录类型。它表示数据的格式和用途，比如A表示用于将域名转换为IPv4地址，NS表示列出了哪些名称服务器可以响应DNS的域查找，MX表示指定用于处理指定域的邮件的邮件服务器在电子邮件地址中。</p> <p>RDATA是特定类型相关的数据，例如地址记录的IP地址，或MX记录的优先级和主机名。</p> </h1> <p>既然有DNS查询，那么就会有DNS查询的消息结构，DNS消息可以分为两种,分别是查询消息和回复消息。</p> <p>每一个message都包含了一个消息头和四个其他部分：question, answer, authority和额外空间。</p> <p>header负责控制其他的4个部分，header包含了这样几个字段： Identification, Flags, Number of questions, Number of answers, Number of authority resource records (RRs)和 Number of additional RRs， 如下表所示：</p> <table> <thead> <tr> <th style="text-align: center">字段名</th> <th style="text-align: center">描述</th> <th style="text-align: center">长度[bits]</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">QR</td> <td style="text-align: center">消息是 query (0) 还是 reply (1)</td> <td style="text-align: center">1</td> </tr> <tr> <td style="text-align: center">OPCODE</td> <td style="text-align: center">查询的类型 QUERY (标准查询, 0), IQUERY (递归查询, 1), 或者 STATUS (服务器状态请求, 2)</td> <td style="text-align: center">4</td> </tr> <tr> <td style="text-align: center">AA</td> <td style="text-align: center">是否是权威服务器响应</td> <td style="text-align: center">1</td> </tr> <tr> <td style="text-align: center">TC</td> <td style="text-align: center">表示此消息因长度过长而被截断</td> <td style="text-align: center">1</td> </tr> <tr> <td style="text-align: center">RD</td> <td style="text-align: center">是否递归查询</td> <td style="text-align: center">1</td> </tr> <tr> <td style="text-align: center">RA</td> <td style="text-align: center">DNS 服务器是否支持递归</td> <td style="text-align: center">1</td> </tr> <tr> <td style="text-align: center">Z</td> <td style="text-align: center">保留字段</td> <td style="text-align: center">3</td> </tr> <tr> <td style="text-align: center">RCODE</td> <td style="text-align: center">响应码，可以是NOERROR（0），FORMERR（1，格式错误），SERVFAIL（2），NXDOMAIN（3，不存在的域名）</td> <td style="text-align: center">4</td> </tr> </tbody> </table> <p>整个头的标记字段长度是16bits，紧跟着4个16bits，分别表示4个其他部分的长度。</p> </h1> <p>以上就是DNS的结构和DNS工作的基本流程。</p> <blockquote> <p>本文已收录于 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.flydean.com/19-domain-name-service/"  target="_blank"  rel="nofollow">http://www.flydean.com/19-domain-name-service/</a></p> <p>最通俗的解读，最深刻的干货，最简洁的教程，众多你不知道的小技巧等你来发现！</p> <p>欢迎关注我的公众号:「程序那些事」,懂技术，更懂你！</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-51552.htm">springboot在线调整log日志级别</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-ssr-node.htm" title="12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">12月30日|最高速度22.3M/S，2024最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19729.htm" title="中国兽药30强企业有哪些（中国兽药十强企业）">中国兽药30强企业有哪些（中国兽药十强企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-clash-windows.htm" title="12月31日|最高速度22.5M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址">12月31日|最高速度22.5M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-free-clash-subscribe.htm" title="2月4日|最高速度22.5M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址">2月4日|最高速度22.5M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-46980.htm" title="Java时间 之 Instant">Java时间 之 Instant</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-v2ray-subscribe.htm" title="11月24日|最高速度19.5M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接">11月24日|最高速度19.5M/S，2024最新SSR/V2ray/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26194.htm" title="动物疫苗查询系统怎么查询（动物疫苗批号查询）">动物疫苗查询系统怎么查询（动物疫苗批号查询）</a></li>
+                        <li class="py-2"><a href="/news/article-39070.htm" title="宠物买卖交易平台app（宠物交易的平台）">宠物买卖交易平台app（宠物交易的平台）</a></li>
+                        <li class="py-2"><a href="/news/article-20650.htm" title="哪家动物医院好（哪家动物医院好一点）">哪家动物医院好（哪家动物医院好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-48361.htm" title="免费领养狗狗正规网站平台官网有哪些（免费领养狗狗正规网站平台官网有哪些呢）">免费领养狗狗正规网站平台官网有哪些（免费领养狗狗正规网站平台官网有哪些呢）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clashshare.github.io/news/article-23853.htm" />
@@ -9,9 +9,37 @@
     <title>详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）</title>
         <meta name="description" content="文章目录  前言 一、环境准备 二、SpringBoot项目打jar包   1.1 使用Maven的package插件打包 1.2 上传至Linux服务器   三、Vue项目打包   1.1 修改后台" />
         <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-23853.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/8970d6b309f32feedd1285d6054e5349.webp" />
+        <meta property="og:release_date" content="2024-12-10T09:59:53" />
+    <meta property="og:updated_time" content="2024-12-10T09:59:53" />
+        <meta property="og:description" content="文章目录  前言 一、环境准备 二、SpringBoot项目打jar包   1.1 使用Maven的package插件打包 1.2 上传至Linux服务器   三、Vue项目打包   1.1 修改后台" />
+        
     <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="详细解析Spring Boot结合Vue前后端分离项目打包部署步骤（搭配Nginx）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
 <script>
@@ -121,16 +149,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-3-node-share.htm" title="9月3日|最高速度18.6M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">9月3日|最高速度18.6M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-25-free-shadowrocket-node.htm" title="6月25日|最高速度19.5M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接">6月25日|最高速度19.5M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-clash-windows.htm" title="12月21日|最高速度20.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址">12月21日|最高速度20.6M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-31261.htm" title="厦门宠物收容中心在哪里 厦门宠物收容中心在哪里啊">厦门宠物收容中心在哪里 厦门宠物收容中心在哪里啊</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-free-clash-subscribe.htm" title="8月20日|最高速度19.5M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接">8月20日|最高速度19.5M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-26194.htm" title="动物疫苗查询系统怎么查询（动物疫苗批号查询）">动物疫苗查询系统怎么查询（动物疫苗批号查询）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-10-free-clash-subscribe.htm" title="8月10日|最高速度22.9M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接">8月10日|最高速度22.9M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-5-clash-v2ray-ss-ssr.htm" title="7月5日|最高速度21.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接">7月5日|最高速度21.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-17-free-node-subscribe-links.htm" title="6月17日|最高速度20.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">6月17日|最高速度20.7M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-24-clash-node-daily-updates.htm" title="6月24日|最高速度23M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">6月24日|最高速度23M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-subscribe-node.htm" title="12月12日|最高速度20.8M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">12月12日|最高速度20.8M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37591.htm" title="动物打疫苗打几次最好（小动物打疫苗多少钱一只）">动物打疫苗打几次最好（小动物打疫苗多少钱一只）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-ssr-node.htm" title="11月7日|最高速度22M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">11月7日|最高速度22M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe-links.htm" title="11月13日|最高速度22M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接">11月13日|最高速度22M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19272.htm" title="养猫最忌讳的一个生肖马是什么意思（养猫最忌讳的一个生肖马是什么意思啊）">养猫最忌讳的一个生肖马是什么意思（养猫最忌讳的一个生肖马是什么意思啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-node-share.htm" title="11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接">11月14日|最高速度18.7M/S，2024最新Shadowrocket/V2ray/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35934.htm" title="打疫苗后可以吃肝脏吗（打完疫苗可以吃动物肝脏吗）">打疫苗后可以吃肝脏吗（打完疫苗可以吃动物肝脏吗）</a></li>
+                        <li class="py-2"><a href="/news/article-46981.htm" title="动物打一次疫苗多少钱一针啊（动物打一次疫苗多少钱一针啊）">动物打一次疫苗多少钱一针啊（动物打一次疫苗多少钱一针啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-ssr-node.htm" title="12月4日|最高速度19.2M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">12月4日|最高速度19.2M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-shadowrocket-node.htm" title="1月28日|最高速度19.9M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址">1月28日|最高速度19.9M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -142,31 +170,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

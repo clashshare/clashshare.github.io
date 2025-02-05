@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clashshare.github.io/news/article-40540.htm" />
@@ -9,9 +9,37 @@
     <title>Synchronized锁及其膨胀</title>
         <meta name="description" content="一、序言 在并发编程中，synchronized锁因其使用简单，在线程间同步被广泛应用。下面对其原理及锁升级过程进行探究。 二、如何使用 1、修饰实例方法 当实例方法被synchronized修饰时，" />
         <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-40540.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Synchronized锁及其膨胀" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/9bd98f24087f4d7a97bc723ae31a80fe.webp" />
+        <meta property="og:release_date" content="2025-01-14T07:35:28" />
+    <meta property="og:updated_time" content="2025-01-14T07:35:28" />
+        <meta property="og:description" content="一、序言 在并发编程中，synchronized锁因其使用简单，在线程间同步被广泛应用。下面对其原理及锁升级过程进行探究。 二、如何使用 1、修饰实例方法 当实例方法被synchronized修饰时，" />
+        
     <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Synchronized锁及其膨胀">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
 <script>
@@ -121,16 +149,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-28514.htm" title="拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）">拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）</a></li>
-                        <li class="py-2"><a href="/news/article-31812.htm" title="动物疫苗注射方法及部位图解 动物疫苗注射方法及部位图解视频">动物疫苗注射方法及部位图解 动物疫苗注射方法及部位图解视频</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-clash-windows.htm" title="11月20日|最高速度22.2M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接">11月20日|最高速度22.2M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-30397.htm" title="上海宠物领养救助基地地址 上海宠物领养救助基地地址电话">上海宠物领养救助基地地址 上海宠物领养救助基地地址电话</a></li>
-                        <li class="py-2"><a href="/news/article-24789.htm" title="全国最便宜的批发衣服市场是哪里（中国最便宜的服装批发）">全国最便宜的批发衣服市场是哪里（中国最便宜的服装批发）</a></li>
-                        <li class="py-2"><a href="/news/article-41028.htm" title="助理宠物医师资格证报考条件及要求是什么（宠物医生助理考证）">助理宠物医师资格证报考条件及要求是什么（宠物医生助理考证）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-v2ray-subscribe.htm" title="11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-28040.htm" title="小猫挠没出血但蹭破点皮过了几天还需要打疫苗吗（小猫挠破皮没流血了用打针么）">小猫挠没出血但蹭破点皮过了几天还需要打疫苗吗（小猫挠破皮没流血了用打针么）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-v2ray.htm" title="10月30日|最高速度21M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接">10月30日|最高速度21M/S，2024最新V2ray/Clash/Shadowrocket/SSR免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-clash-node.htm" title="10月14日|最高速度18.9M/S，2024最新Clash/Shadowrocket/V2ray/SSR免费节点高速订阅链接">10月14日|最高速度18.9M/S，2024最新Clash/Shadowrocket/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45010.htm" title="怎样开宠物店（我想开宠物店怎么开）">怎样开宠物店（我想开宠物店怎么开）</a></li>
+                        <li class="py-2"><a href="/news/article-22484.htm" title="猫三针疫苗每针间隔时间（猫咪三针疫苗间隔多久打）">猫三针疫苗每针间隔时间（猫咪三针疫苗间隔多久打）</a></li>
+                        <li class="py-2"><a href="/news/article-19273.htm" title="动物防疫计划表（动物防疫年度计划）">动物防疫计划表（动物防疫年度计划）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-ssr-node.htm" title="12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42024.htm" title="Vue&#8211;》混合文件使用以及ref的引用讲解">Vue&#8211;》混合文件使用以及ref的引用讲解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-shadowrocket-node.htm" title="11月16日|最高速度20.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接">11月16日|最高速度20.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38564.htm" title="Kafka如何保证可靠的数据传递">Kafka如何保证可靠的数据传递</a></li>
+                        <li class="py-2"><a href="/news/article-31261.htm" title="厦门宠物收容中心在哪里 厦门宠物收容中心在哪里啊">厦门宠物收容中心在哪里 厦门宠物收容中心在哪里啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-shadowrocket-node.htm" title="12月17日|最高速度18.4M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接">12月17日|最高速度18.4M/S，2024最新Shadowrocket/V2ray/Clash/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38056.htm" title="重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）">重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）</a></li>
                     </ul>
     </div>
 </div>
@@ -142,16 +170,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
