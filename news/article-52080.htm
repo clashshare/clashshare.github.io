@@ -1,0 +1,292 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-52080.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Python并发编程之多进程</title>
+        <meta name="description" content="文章目录  一 、什么是进程 二 、进程与程序的区别 三、进程的调度 四 、并发与并行 四 、程序运行状态 五、同步（synchronization）/异步（asynchronization）阻塞/非" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-52080.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Python并发编程之多进程" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/581e76b01c2a5d4b210cae096706d45f.webp" />
+        <meta property="og:release_date" content="2025-02-06T05:29:25" />
+    <meta property="og:updated_time" content="2025-02-06T05:29:25" />
+        <meta property="og:description" content="文章目录  一 、什么是进程 二 、进程与程序的区别 三、进程的调度 四 、并发与并行 四 、程序运行状态 五、同步（synchronization）/异步（asynchronization）阻塞/非" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python并发编程之多进程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">联系</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Python并发编程之多进程</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#__2" rel="nofollow">一 、什么是进程</a></li> <li><a href="#__10" rel="nofollow">二 、进程与程序的区别</a></li> <li><a href="#_15" rel="nofollow">三、进程的调度</a></li> <li><a href="#__36" rel="nofollow">四 、并发与并行</a></li> <li><a href="#__74" rel="nofollow">四 、程序运行状态</a></li> <li><a href="#synchronizationasynchronization_85" rel="nofollow">五、同步（synchronization）/异步（asynchronization）阻塞/非阻塞（重点）</a></li> <li><a href="#__159" rel="nofollow">五 进程的创建（了解）</a></li> <li><a href="#__173" rel="nofollow">六、 进程的终止（了解）</a></li> <li><a href="#__179" rel="nofollow">七、 进程的层次结构</a></li> <li><a href="#__184" rel="nofollow">八、 进程的状态</a></li> </ul> </div> </h1> <p>进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu。<br /> 举例（单核+多道，实现多个进程的并发执行）：<br /> 孙悟空在一个时间段内有很多任务要做：python备课的任务，写书的任务，交女朋友的任务，王者荣耀上分的任务，但孙悟空同一时刻只能做一个任务（cpu同一时间只能干一个活），如何才能玩出多个任务并发执行的效果？<br /> 孙悟空备一会课，再去跟李杰的女朋友聊聊天，再去打一会王者荣耀…这就保证了每个任务都在进行中.</p> <hr/> </h1> <p>程序仅仅只是一堆代码而已（死的），而进程指的是程序的运行过程（活的）。<br /> 需要强调的是：同一个程序执行两次，那也是两个进程，比如打开暴风影音，虽然都是同一个软件，但是一个可以播放苍井空，一个可以播放饭岛爱。</p> <hr/> </h1> <p>要想多个进程交替运行，操作系统必须对这些进程进行调度，这个调度也不是随即进行的，而是需要遵循一定的法则，由此就有了进程的调度算法。</p> <ol> <li>先来先服务（FCFS）调度算法：是一种最简单的调度算法，该算法既可用于作业调度，也可用于进程调度。FCFS算法比较有利于长作业（进程），而不利于短作业（进程）。由此可知，本算法适合于CPU繁忙型作业，而不利于I/O繁忙型的作业（进程）。</li> <li>短作业（进程）优先调度算法（SJ/PF）：是指对短作业或短进程优先调度的算法，该算法既可用于作业调度，也可用于进程调度。但其对长作业不利；不能保证紧迫性作业（进程）被及时处理；作业的长短只是被估算出来的。</li> <li>时间片轮转(Round Robin，RR)法的基本思路是让每个进程在就绪队列中的等待时间与享受服务的时间成比例。在时间片轮转法中，需要将CPU的处理时间分成固定大小的时间片，例如，几十毫秒至几百毫秒。如果一个进程在被调度选中之后用完了系统规定的时间片，但又未完成要求的任务，则它自行释放自己所占有的CPU而排到就绪队列的末尾，等待下一次调度。同时，进程调度程序又去调度当前就绪队列中的第一个进程。<br /> 显然，轮转法只能用来调度分配一些可以抢占的资源。这些可以抢占的资源可以随时被剥夺，而且可以将它们再分配给别的进程。CPU是可抢占资源的一种。但打印机等资源是不可抢占的。由于作业调度是对除了CPU之外的所有系统硬件资源的分配，其中包含有不可抢占资源，所以作业调度不使用轮转法。<br /> 在轮转法中，时间片长度的选取非常重要。首先，时间片长度的选择会直接影响到系统的开销和响应时间。如果时间片长度过短，则调度程序抢占处理机的次数增多。这将使进程上下文切换次数也大大增加，从而加重系统开销。反过来，如果时间片长度选择过长，例如，一个时间片能保证就绪队列中所需执行时间最长的进程能执行完毕，则轮转法变成了先来先服务法。时间片长度的选择是根据系统对响应时间的要求和就绪队列中所允许最大的进程数来确定的。</li> </ol> <p>在轮转法中，加入到就绪队列的进程有3种情况：<br /> 一种是分给它的时间片用完，但进程还未完成，回到就绪队列的末尾等待下次调度去继续执行。<br /> 另一种情况是分给该进程的时间片并未用完，只是因为请求I/O或由于进程的互斥与同步关系而被阻塞。当阻塞解除之后再回到就绪队列。<br /> 第三种情况就是新创建进程进入就绪队列。<br /> 如果对这些进程区别对待，给予不同的优先级和时间片从直观上看，可以进一步改善系统服务质量和效率。例如，我们可把就绪队列按照进程到达就绪队列的类型和进程被阻塞时的阻塞原因分成不同的就绪队列，每个队列按FCFS原则排列，各队列之间的进程享有不同的优先级，但同一队列内优先级相同。这样，当一个进程在执行完它的时间片之后，或从睡眠中被唤醒以及被创建之后，将进入不同的就绪队列。</p> <p>前面介绍的各种用作进程调度的算法都有一定的局限性。如短进程优先的调度算法，仅照顾了短进程而忽略了长进程，而且如果并未指明进程的长度，则短进程优先和基于进程长度的抢占式调度算法都将无法使用。<br /> 而多级反馈队列调度算法则不必事先知道各种进程所需的执行时间，而且还可以满足各种类型进程的需要，因而它是目前被公认的一种较好的进程调度算法。在采用多级反馈队列调度算法的系统中，调度算法的实施过程如下所述。<br /> (1) 应设置多个就绪队列，并为各个队列赋予不同的优先级。第一个队列的优先级最高，第二个队列次之，其余各队列的优先权逐个降低。该算法赋予各个队列中进程执行时间片的大小也各不相同，在优先权愈高的队列中，为每个进程所规定的执行时间片就愈小。例如，第二个队列的时间片要比第一个队列的时间片长一倍，……，第i+1个队列的时间片要比第i个队列的时间片长一倍。<br /> (2) 当一个新进程进入内存后，首先将它放入第一队列的末尾，按FCFS原则排队等待调度。当轮到该进程执行时，如它能在该时间片内完成，便可准备撤离系统；如果它在一个时间片结束时尚未完成，调度程序便将该进程转入第二队列的末尾，再同样地按FCFS原则等待调度执行；如果它在第二队列中运行一个时间片后仍未完成，再依次将它放入第三队列，……，如此下去，当一个长作业(进程)从第一队列依次降到第n队列后，在第n 队列便采取按时间片轮转的方式运行。<br /> (3) 仅当第一队列空闲时，调度程序才调度第二队列中的进程运行；仅当第1～(i-1)队列均空时，才会调度第i队列中的进程运行。如果处理机正在第i队列中为某进程服务时，又有新进程进入优先权较高的队列(第1～(i-1)中的任何一个队列)，则此时新进程将抢占正在运行进程的处理机，即由调度程序把正在运行的进程放回到第i队列的末尾，把处理机分配给新到的高优先权进程。</p> <hr/> </h1> <p>无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真是干活的是cpu，cpu来做这些任务，而一个cpu同一时刻只能执行一个任务</p> <ol> <li>并发：是伪并行，即看起来是同时运行。单个cpu+多道技术就可以实现并发，（并行也属于并发）</li> </ol> <p>单cpu，多进程，并发举例：</p> <pre><code class="prism language-python">你是一个cpu，你同时谈了三个女朋友，每一个都可以是一个恋爱任务，你被这三个任务共享 要玩出并发恋爱的效果，应该是你先跟女友<span class="token number">1</span>去看电影，看了一会说：不好，我要拉肚子， 然后跑去跟第二个女友吃饭，吃了一会说：那啥，我去趟洗手间， 然后跑去跟女友<span class="token number">3</span>开了个房</code></pre> <p>单cpu，多进程，并发举例二</p> <pre><code class="prism language-python">某天下午，egon，yuanhao，wupeiqi，alex约好了一起去嫖娼，但娼只有一个，cpu只有一个， 但是却要‘同时’干四个任务<span class="token punctuation">(</span>嫖出并发的效果<span class="token punctuation">)</span>，那就必须是干一会egon，再干一会yuanhao， 再干一会wupeiqi，再干一会alex egon：花了<span class="token number">200</span>块钱，因为人美活好 yuanhao：<span class="token number">500</span>块钱 wupeiqi：<span class="token number">100</span>块钱，可能是不太行 alex：没要钱，为啥？？？因为大家刚刚嫖的是他女朋友</code></pre> <ol start="2"> <li>并行：同时运行，只有具备多个cpu才能实现并行<br />  单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（多道技术是针对单核而言的）<br />  有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4， 一旦任务1遇到I/O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就是单核下的多道技术。 而一旦任务1的I/O结束了，操作系统会重新调用它(需知进程的调度、分配给哪个cpu运行，由操作系统说了算)，可能被分配给四个cpu中的任意一个去执行</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/344825339246f1281e9f8f66de404531.jpg" alt="Python并发编程之多进程">所有现代计算机经常会在同一时间做很多件事，一个用户的PC（无论是单cpu还是多cpu），都可以同时运行多个任务（一个任务可以理解为一个进程）。<br /> 启动一个进程来杀毒（360软件）<br /> 启动一个进程来看电影（暴风影音）<br /> 启动一个进程来聊天（腾讯QQ）<br /> 所有的这些进程都需被管理，于是一个支持多进程的多道程序系统是至关重要的<br /> 多道技术概念回顾：内存中同时存入多道（多个）程序，cpu从一个进程快速切换到另外一个，使每个进程各自运行几十或几百毫秒，这样，虽然在某一个瞬间，一个cpu只能执行一个任务，但在1秒内，cpu却可以运行多个进程，这就给人产生了并行的错觉，即并发，以此来区分多处理器操作系统的真正硬件并行（多个cpu共享同一个物理内存）<br /><mark>并行肯定是并发，并发：看起来好像同时执行 单核计算机肯定不能实行并行</mark></p> <hr/> </h1> <p>程序会进入几个状态：就绪，运行和阻塞。<br /> （1）就绪(Ready)状态<br /> 当进程已分配到除CPU以外的所有必要的资源，只要获得处理机便可立即执行，这时的进程状态称为就绪状态。<br /> （2）执行/运行（Running）状态当进程已获得处理机，其程序正在处理机上执行，此时的进程状态称为执行状态。<br /> （3）阻塞(Blocked)状态正在执行的进程，由于等待某个事件发生而无法执行时，便放弃处理机而处于阻塞状态。引起进程阻塞的事件可有多种，例如，等待I/O完成、申请缓冲区不能满足、等待信件(信号)等。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/b84b3d631cbf762f04a4e5c37e3b1d37.jpg" alt="Python并发编程之多进程"></p> <hr/> </h1> <p><font color="red">同步和异步<br /> “”“描述的是任务的提交方式”""</font></p> <pre><code class="prism language-python">  同步<span class="token punctuation">:</span>任务提交之后，原地等待任务的返回结果，等待的过程中不做任何事<span class="token punctuation">(</span>干等<span class="token punctuation">)</span>        程序层面上表现出来的感觉就是卡住了      异步<span class="token punctuation">:</span>任务提交之后，不原地等待任务的返回结果，直接去做其他事情        我提交的任务结果如何获取？       任务的返回结果会有一个异步回调机制自动处理</code></pre> <p><font color="red">阻塞非阻塞<br /> “”“描述的程序的运行状态”""</font></p> <pre><code class="prism language-python">  阻塞<span class="token punctuation">:</span>阻塞态   非阻塞<span class="token punctuation">:</span>就绪态、运行态   理想状态<span class="token punctuation">:</span>我们应该让我们的写的代码永远处于就绪态和运行态之间切换</code></pre> <p><font color="red">上述概念的组合:最高效的一种组合就是<strong>异步非阻塞</strong><br /> 同步：</font></p> <pre><code class="prism language-python">所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不会返回。按照这个定义其实绝大多数函数都是同步调用。 但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。<span class="token comment">#举例：</span><span class="token comment">#1. multiprocessing.Pool下的apply #发起同步调用后，就在原地等着任务结束，根本不考虑任务是在计算还是在io阻塞，总之就是一股脑地等任务结束</span><span class="token comment">#2. concurrent.futures.ProcessPoolExecutor().submit(func,).result()</span><span class="token comment">#3. concurrent.futures.ThreadPoolExecutor().submit(func,).result()</span></code></pre> <p>异步：</p> <pre><code class="prism language-python">异步的概念和同步相对。当一个异步功能调用发出后，调用者不能立刻得到结果。 当该异步功能完成后，通过状态、通知或回调来通知调用者。 如果异步功能用状态来通知，那么调用者就需要每隔一定时间检查一次， 效率就很低（有些初学多线程编程的人，总喜欢用一个循环去检查某个变量的值， 这其实是一 种很严重的错误）。如果是使用通知的方式，效率则很高， 因为异步功能几乎不需要做额外的操作。至于回调函数，其实和通知没太多区别。<span class="token comment">#举例：</span><span class="token comment">#1. multiprocessing.Pool().apply_async() #发起异步调用后，并不会等待任务结束才返回，</span><span class="token comment">#相反，会立即获取一个临时结果（并不是最终的结果，可能是封装好的一个对象）。</span><span class="token comment">#2. concurrent.futures.ProcessPoolExecutor(3).submit(func,)</span><span class="token comment">#3. concurrent.futures.ThreadPoolExecutor(3).submit(func,)</span></code></pre> <p>阻塞：</p> <pre><code class="prism language-python">阻塞调用是指调用结果返回之前，当前线程会被挂起（如遇到io操作）。函数只有在得到结果之后才会将阻塞的线程激活。 有人也许会把阻塞调用和同步调用等同起来，实际上他是不同的。对于同步调用来说，很多时候当前线程还是激活的， 只是从逻辑上当前函数没有返回而已。<span class="token comment">#举例：</span><span class="token comment">#1. 同步调用：apply一个累计1亿次的任务，该调用会一直等待，直到任务返回结果为止，但并未阻塞住（即便是被抢走cpu的执行权限，那也是处于就绪态）;</span><span class="token comment">#2. 阻塞调用：当socket工作在阻塞模式的时候，如果没有数据的情况下调用recv函数，则当前线程就会被挂起，直到有数据为止。</span></code></pre> <p>非阻塞：</p> <pre><code class="prism language-python"><span class="token comment">#非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前也会立刻返回，同时该函数不会阻塞当前线程。</span></code></pre> <p>小结：</p> <ol> <li> <p>同步与异步针对的是函数/任务的调用方式：同步就是当一个进程发起一个函数（任务）调用的时候，一直等到函数（任务）完成，而进程继续处于激活状态。而异步情况下是当一个进程发起一个函数（任务）调用的时候，不会等函数返回，而是继续往下执行当，函数返回的时候通过状态、通知、事件等方式通知进程任务完成。</p> </li> <li> <p>阻塞与非阻塞针对的是进程或线程：阻塞是当请求不能满足的时候就将进程挂起，而非阻塞则不会阻塞当前进程</p> </li> </ol> <hr/> </h1> <p>但凡是硬件，都需要有操作系统去管理，只要有操作系统，就有进程的概念，就需要有创建进程的方式，一些操作系统只为一个应用程序设计，比如微波炉中的控制器，一旦启动微波炉，所有的进程都已经存在。<br /> 而对于通用系统（跑很多应用程序），需要有系统运行过程中创建或撤销进程的能力，主要分为4中形式创建新的进程</p> <ol> <li>系统初始化（查看进程linux中用ps命令，windows中用任务管理器，前台进程负责与用户交互，后台运行的进程与用户无关，运行在后台并且只在需要时才唤醒的进程，称为守护进程，如电子邮件、web页面、新闻、打印）</li> <li>一个进程在运行过程中开启了子进程（如nginx开启多进程，os.fork,subprocess.Popen等）</li> <li>用户的交互式请求，而创建一个新进程（如用户双击暴风影音）</li> <li>一个批处理作业的初始化（只在大型机的批处理系统中应用）<br /> 无论哪一种，新进程的创建都是由一个已经存在的进程执行了一个用于创建进程的系统调用而创建的：</li> <li>在UNIX中该系统调用是：fork，fork会创建一个与父进程一模一样的副本，二者有相同的存储映像、同样的环境字符串和同样的打开文件（在shell解释器进程中，执行一个命令就会创建一个子进程）</li> <li>在windows中该系统调用是：CreateProcess，CreateProcess既处理进程的创建，也负责把正确的程序装入新进程。<br /> 关于创建的子进程，UNIX和windows<br /> 1.相同的是：进程创建后，父进程和子进程有各自不同的地址空间（多道技术要求物理层面实现进程之间内存的隔离），任何一个进程的在其地址空间中的修改都不会影响到另外一个进程。<br /> 2.不同的是：在UNIX中，子进程的初始地址空间是父进程的一个副本，提示：子进程和父进程是可以有只读的共享内存区的。但是对于windows系统来说，从一开始父进程与子进程的地址空间就是不同的。</li> </ol> <hr/> </h1> <ol> <li>正常退出（自愿，如用户点击交互式页面的叉号，或程序执行完毕调用发起系统调用正常退出，在linux中用exit，在windows中用ExitProcess）</li> <li>出错退出（自愿，python a.py中a.py不存在）</li> <li>严重错误（非自愿，执行非法指令，如引用不存在的内存，1/0等，可以捕捉异常，try…except…）</li> <li>被其他进程杀死（非自愿，如kill -9）</li> </ol> <hr/> </h1> <p>无论UNIX还是windows，进程只有一个父进程，不同的是：</p> <ol> <li>在UNIX中所有的进程，都是以init进程为根，组成树形结构。父子进程共同组成一个进程组，这样，当从键盘发出一个信号时，该信号被送给当前与键盘相关的进程组中的所有成员。</li> <li>在windows中，没有进程层次的概念，所有的进程都是地位相同的，唯一类似于进程层次的暗示，是在创建进程时，父进程得到一个特别的令牌（称为句柄）,该句柄可以用来控制子进程，但是父进程有权把该句柄传给其他子进程，这样就没有层次了。</li> </ol> <hr/> </h1> <p>tail -f access.log |grep ‘404’<br /> 执行程序tail，开启一个子进程，执行程序grep，开启另外一个子进程，两个进程之间基于管道’|'通讯，将tail的结果作为grep的输入。<br /> 进程grep在等待输入（即I/O）时的状态称为阻塞，此时grep命令都无法运行<br /> 其实在两种情况下会导致一个进程在逻辑上不能运行，</p> <ol> <li>进程挂起是自身原因，遇到I/O阻塞，便要让出CPU让其他进程去执行，这样保证CPU一直在工作</li> <li>与进程无关，是操作系统层面，可能会因为一个进程占用时间过多，或者优先级等原因，而调用其他的进程去使用CPU。<br /> 因而一个进程由三种状态</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/6f63d7d17b496a27d6210bc5ce5551ae.jpg" alt="Python并发编程之多进程"></p> <hr/> <p>九 、进程并发的实现（了解）<br /> 进程并发的实现在于，硬件中断一个正在运行的进程，把此时进程运行的所有状态保存下来，为此，操作系统维护一张表格，即进程表（process table），每个进程占用一个进程表项（这些表项也称为进程控制块）</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-51553.htm">网络协议之:Domain name service DNS详解_在线工具</a></p>
+                                        <p>下一个：<a href="/news/article-52081.htm">一件代发48个货源网站质量很好怎么办（一件代发48个货源网站质量很好怎么办呢）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19273.htm" title="动物防疫计划表（动物防疫年度计划）">动物防疫计划表（动物防疫年度计划）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-clash-v2ray-ss-ssr.htm" title="1月27日|最高速度22.9M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址">1月27日|最高速度22.9M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37093.htm" title="动物注射疫苗最佳的用药方法是什么意思（动物注射疫苗注射哪里）">动物注射疫苗最佳的用药方法是什么意思（动物注射疫苗注射哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-ssr-node.htm" title="12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接">12月9日|最高速度18.2M/S，2024最新V2ray/Clash/SSR/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31813.htm" title="哈尔滨王春华动物医院简介（哈尔滨王春山）">哈尔滨王春华动物医院简介（哈尔滨王春山）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-shadowrocket-node.htm" title="11月30日|最高速度18.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接">11月30日|最高速度18.8M/S，2024最新Shadowrocket/SSR/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe-links.htm" title="11月13日|最高速度22M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接">11月13日|最高速度22M/S，2024最新V2ray/SSR/Clash/Shadowrocket免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20191.htm" title="猫咪三针疫苗打完要多久（猫咪三针疫苗打完多久测抗体）">猫咪三针疫苗打完要多久（猫咪三针疫苗打完多久测抗体）</a></li>
+                        <li class="py-2"><a href="/news/article-29704.htm" title="python中，用pyspark读写Hive数据">python中，用pyspark读写Hive数据</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-clash-v2ray-ss-ssr.htm" title="12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址">12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
