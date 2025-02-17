@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-58122.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>在Windows Service中托管ASP.NET Core并指定端口</title>
+        <meta name="description" content="在上一篇《.NET 6学习笔记（2）——通过Worker Service创建Windows Service》中，我们讨论了.NET Core 3.1或更新版本如何创建Windows Service。本" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-58122.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="在Windows Service中托管ASP.NET Core并指定端口" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/0c6ef0d3df3a0e00ab89aef294943227.webp" />
+        <meta property="og:release_date" content="2025-02-17T09:57:32" />
+    <meta property="og:updated_time" content="2025-02-17T09:57:32" />
+        <meta property="og:description" content="在上一篇《.NET 6学习笔记（2）——通过Worker Service创建Windows Service》中，我们讨论了.NET Core 3.1或更新版本如何创建Windows Service。本" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="在Windows Service中托管ASP.NET Core并指定端口">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">在Windows Service中托管ASP.NET Core并指定端口</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>在上一篇<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/manupstairs/p/16029892.html"  target="_blank" rel="nofollow">《.NET 6学习笔记（2）——通过Worker Service创建Windows Service》</a>中，我们讨论了.NET Core 3.1或更新版本如何创建Windows Service。本篇我们将在此基础上，托管ASP.NET Core程序并指定端口。<br />首先让我们创建一个ASP.NET Core Web App，当然Web Api类型也是可以的。通过NuGet来安装Microsoft.Extensions.Hosting.WindowsServices。该库提供了必要的UseWindowsSrvice方法。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bc446fc4e3fa741783ba3cbeeca75276.jpg" alt="在Windows Service中托管ASP.NET Core并指定端口"></p> <p>让我们对Program.cs文件稍作修改。在InWindowsSerivice的状态下，将ContentRootPath设置为AppContext.BaseDirectory。这是因为从Windows Service中调用GetCurrentDirectory会返回C:\WINDOWS\system32，所以某软需要我们将ContentRootPath指定到WebApp的exe所在目录。还有不要忘了在builder的Host属性上调用UseWindowsService方法。</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">UseWindowsService方法。 using Microsoft.Extensions.Hosting.WindowsServices;  var options = new WebApplicationOptions {     Args = args,     ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default };  var builder = WebApplication.CreateBuilder(options);  // Add services to the container. builder.Services.AddRazorPages();  builder.Host.UseWindowsService();  var app = builder.Build();</pre> </div> <p>完成上述步骤之后，我们已经可以通过PowerShell来创建Windows Service了。但是默认情况下ASP.NET Core被绑定到http://localhost:5000。这可能不符合我们的期望。那如何修改呢？比较简单的方式是增加appsettings.Production.json文件，添加仅针对发布后程序的配置。好处是不会影响Visual Studio中的Debug，如果我们在代码中通过UseUrls方法，或者修改launchSettings.json文件，会导致Debug时不会自动启动WebBrowser的奇怪问题。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5bfb6dcc0d97911caac1b2955ce9c010.jpg" alt="在Windows Service中托管ASP.NET Core并指定端口"></p> <p>本篇我们讨论了如何在Windows Service托管ASP.NET Core程序并指定端口。水平有限，还请各位大佬扶正。</p> <p>Github:<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/manupstairs/WebAppHostOnWinService"  target="_blank" rel="nofollow">manupstairs/WebAppHostOnWinService (github.com)</a><br />Gitee:<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/manupstairs/WebAppHostOnWinService"  target="_blank" rel="nofollow">manupstairs/WebAppHostOnWinService (gitee.com)</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57552.htm">宠物免费赠送（宠物免费赠送平台）</a></p>
+                                        <p>下一个：<a href="/news/article-58123.htm">动物疫苗预防控制中心官网 动物疫苗预防控制中心官网查询</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-clash.htm" title="1月29日|最高速度18.3M/S，2025最新SSR/V2ray/Clash/Shadowrocket免费节点订阅链接地址">1月29日|最高速度18.3M/S，2025最新SSR/V2ray/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-56432.htm" title="Redis：内存淘汰机制">Redis：内存淘汰机制</a></li>
+                        <li class="py-2"><a href="/news/article-40038.htm" title="宠物猫驱虫药什么牌子好（猫驱虫买什么牌子药）">宠物猫驱虫药什么牌子好（猫驱虫买什么牌子药）</a></li>
+                        <li class="py-2"><a href="/news/article-35450.htm" title="广州猫领养中心地址查询官网（广州去哪领养猫）">广州猫领养中心地址查询官网（广州去哪领养猫）</a></li>
+                        <li class="py-2"><a href="/news/article-48948.htm" title="动物疫苗接种途径有哪些种类（动物疫苗有哪几种）">动物疫苗接种途径有哪些种类（动物疫苗有哪几种）</a></li>
+                        <li class="py-2"><a href="/news/article-51006.htm" title="宠物粮食加工厂需要投资多少钱一个月呢视频 宠物粮食加工厂需要投资多少钱一个月呢视频讲解">宠物粮食加工厂需要投资多少钱一个月呢视频 宠物粮食加工厂需要投资多少钱一个月呢视频讲解</a></li>
+                        <li class="py-2"><a href="/news/article-43017.htm" title="包含成都市宠物狗领养平台电话是多少的词条">包含成都市宠物狗领养平台电话是多少的词条</a></li>
+                        <li class="py-2"><a href="/news/article-54766.htm" title="正规领养宠物流程商家会打电话吗（正规领养宠物流程商家会打电话吗）">正规领养宠物流程商家会打电话吗（正规领养宠物流程商家会打电话吗）</a></li>
+                        <li class="py-2"><a href="/news/article-26191.htm" title="宠物医院怎么办（宠物医院办理流程）">宠物医院怎么办（宠物医院办理流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-free-clash-subscribe.htm" title="2月4日|最高速度22.5M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址">2月4日|最高速度22.5M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
