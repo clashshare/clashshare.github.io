@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-61003.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>模板引擎Thymeleaf基本介绍和使用</title>
+        <meta name="description" content="一、序言 虽然目前大部分互联网项目都是基于先后端分离的思想开发，但也存在一些视图和后台代码还是在同个工程的。本文详细讲解SpringBoot视图框架Thymeleaf，一种基于Java语言实现的模板引" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-61003.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="模板引擎Thymeleaf基本介绍和使用" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/0c6ef0d3df3a0e00ab89aef294943227.webp" />
+        <meta property="og:release_date" content="2025-02-22T07:11:35" />
+    <meta property="og:updated_time" content="2025-02-22T07:11:35" />
+        <meta property="og:description" content="一、序言 虽然目前大部分互联网项目都是基于先后端分离的思想开发，但也存在一些视图和后台代码还是在同个工程的。本文详细讲解SpringBoot视图框架Thymeleaf，一种基于Java语言实现的模板引" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="模板引擎Thymeleaf基本介绍和使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">模板引擎Thymeleaf基本介绍和使用</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3><a id="_0" rel="nofollow"></a>一、序言</h3> <p>虽然目前大部分互联网项目都是基于先后端分离的思想开发，但也存在一些视图和后台代码还是在同个工程的。本文详细讲解SpringBoot视图框架Thymeleaf，一种基于Java语言实现的模板引擎技术。</p> <h3><a id="_2" rel="nofollow"></a>二、常见标签</h3> <pre><code class="prism language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token attr-name"><span class="token namespace">xmlns:</span>th</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.thymeleaf.org<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span><span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span><span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>all<span class="token punctuation">"</span></span><span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../../css/gtvg.css<span class="token punctuation">"</span></span><span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@{/css/gtvg.css}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${hello}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre> <p>以上便是常见的Thymeleaf模板代码，<code>xmlns:th="http://www.thymeleaf.org"</code>表示引入模板引擎标签，<code>th:href</code>用于引入外联样式文件，<code>th:text</code>用于动态展示标签的文本内容。Thymeleaf提供了很多标签用于解析视图，大体如下：</p> <table> <thead> <tr> <th>标签</th> <th>注释</th> </tr> </thead> <tbody> <tr> <td>th:insert</td> <td>布局标签，引入具体的内容</td> </tr> <tr> <td>th:each</td> <td>遍历元素</td> </tr> <tr> <td>th:replace</td> <td>引入文件，类似include</td> </tr> <tr> <td>th:if</td> <td>条件判断，如果为真</td> </tr> <tr> <td>th:unless</td> <td>条件判断，如果为假</td> </tr> <tr> <td>th:switch</td> <td>条件判断，跟th:case配合使用</td> </tr> <tr> <td>th:value</td> <td>指定属性标签</td> </tr> <tr> <td>th:href</td> <td>设置超链接</td> </tr> <tr> <td>th:src</td> <td>引入外部资源文件</td> </tr> <tr> <td>th:text</td> <td>指定标签显示的内容</td> </tr> </tbody> </table> <h3><a id="_29" rel="nofollow"></a>三、标准表达式</h3> <h4><a id="31__30" rel="nofollow"></a>3.1 变量表达式${…}</h4> <p>主要用于显示上下文中的变量值，如果上下文中不存在指定内容，则显示默认的内容。</p> <pre><code class="prism language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${content}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>默认内容<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre> <p>Thymeleaf内置的对象：</p> <blockquote> <p>ctx、vars、locale：都是作用于上下文对象<br /> request：作用于HttpServletRequest对象<br /> response：作用于HttpServletResponse对象<br /> session：作用于HttpSession对象<br /> servletContext：作用于ServletContext对象</p> </blockquote> <h4><a id="32__42" rel="nofollow"></a>3.2 选择变量表达式*{…}</h4> <p>一般用于从被选定对象中获取属性，比如，从book对象中获取title属性可以这样子写：</p> <pre><code class="prism language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token attr-name"><span class="token namespace">th:</span>object</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${book}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>titile:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>*{title}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>标题<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre> <h4><a id="33__49" rel="nofollow"></a>3.3 消息表达式#{…}</h4> <p>用于国际化内容的动态展示和替换，但需要提供相应的国际化配置信息。SpringBoot默认识别的语言配置为resource下的message.properties，其他国际化语言遵从“文件前缀_语言代码_国家代码.properties”的形式实现，例如：</p> <pre><code class="prism language-xml">## login_en_US.properties login.tip=Please sign in login.username=Username login.password=Password login.rememberme=Remember me login.button=Login</code></pre> <p>编写配置文件：</p> <pre><code class="prism language-xml"># 国际化文件配置，包名+属性名 spring.messages.basename=com.keduw.login</code></pre> <h4><a id="34__64" rel="nofollow"></a>3.4 链接表达式@{…}</h4> <p>一般用于链接跳转，需要同时传递参数时，需要按照@{链接(参数名=参数值,参数名=参数值…)}的形式，参数值同时支持表达式传值。</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@{/order/details(orderId=${o.id})}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>view<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span></code></pre> <h4><a id="35__69" rel="nofollow"></a>3.5 片段表达式~{…}</h4> <p>用来标记一个片段传递给其他模板使用，最常用的方式是使用<code>th:insert</code>或<code>th:replace</code>属性插入片段，比如：</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token attr-name"><span class="token namespace">th:</span>insert</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>~{commonDiv::header}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre> <p>将commonDiv模板中的header代码片段添加到指定位置中，Thymeleaf会自动查找“/resources/templates”中的commonDiv模板，header为片段名称。</p> <h3><a id="_75" rel="nofollow"></a>四、基本使用</h3> <p>Thymeleaf的引入很简单，只需要导入相关依赖，添加指定配置信息即可。</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-thymeleaf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <pre><code class="prism language-xml">spring.thymeleaf.cache = true // 启动模板缓存 spring.thymeleaf.encoding = UTF-8 //模板编码 spring.thymeleaf.mode = HTML5 spring.thymeleaf.prefix = classpath:/templates/ //模板页面存放路径 spring.thymeleaf.suffix = .html //模板后缀</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-61002.htm">win11系统如何关闭快捷键模式</a></p>
+                                        <p>下一个：<a href="/news/article-61597.htm">ElasticSearch学习：springboot集成ElasticSearch</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-57551.htm" title="宠物粮生产厂家排名榜最新名单（国内宠物粮食十大厂家）">宠物粮生产厂家排名榜最新名单（国内宠物粮食十大厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-34210.htm" title="从线上环境摘取了四个代码优化记录分享给大家">从线上环境摘取了四个代码优化记录分享给大家</a></li>
+                        <li class="py-2"><a href="/news/article-45009.htm" title="沈阳宠物用品市场搬到啥地方了（沈阳宠物用品超市）">沈阳宠物用品市场搬到啥地方了（沈阳宠物用品超市）</a></li>
+                        <li class="py-2"><a href="/news/article-39547.htm" title="给动物接种疫苗的目的有哪些方面（给动物打疫苗的官方部门）">给动物接种疫苗的目的有哪些方面（给动物打疫苗的官方部门）</a></li>
+                        <li class="py-2"><a href="/news/article-35935.htm" title="打动物疫苗多少钱 打动物疫苗多少钱一针">打动物疫苗多少钱 打动物疫苗多少钱一针</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-v2ray-subscribe.htm" title="11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接">11月27日|最高速度21.7M/S，2024最新Shadowrocket/Clash/V2ray/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23855.htm" title="我所在的城市里有一家宠物医院英文 我所在的城市里有一家宠物医院英文翻译">我所在的城市里有一家宠物医院英文 我所在的城市里有一家宠物医院英文翻译</a></li>
+                        <li class="py-2"><a href="/news/article-42025.htm" title="宠物粮食广告（宠物粮食广告宣传语大全）">宠物粮食广告（宠物粮食广告宣传语大全）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-shadowrocket-node.htm" title="1月19日|最高速度18M/S，2025最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址">1月19日|最高速度18M/S，2025最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38567.htm" title="宠物粮食注册商标哪一类（宠物商品粮）">宠物粮食注册商标哪一类（宠物商品粮）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
