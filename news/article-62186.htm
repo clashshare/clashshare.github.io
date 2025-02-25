@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-62186.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Springboot 设置过滤器以及重复读取request里的body</title>
+        <meta name="description" content="需求：request的content-type为applciation/json，进入controller之前需要把body中的参数取出来做一次处理，然后和hearder中的另一个参数做对比。 思路：" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-62186.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Springboot 设置过滤器以及重复读取request里的body" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/13cfef86d649513799e5beefc5419aae.webp" />
+        <meta property="og:release_date" content="2025-02-24T09:16:20" />
+    <meta property="og:updated_time" content="2025-02-24T09:16:20" />
+        <meta property="og:description" content="需求：request的content-type为applciation/json，进入controller之前需要把body中的参数取出来做一次处理，然后和hearder中的另一个参数做对比。 思路：" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Springboot 设置过滤器以及重复读取request里的body">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Springboot 设置过滤器以及重复读取request里的body</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>需求：request的content-type为applciation/json，进入controller之前需要把body中的参数取出来做一次处理，然后和hearder中的另一个参数做对比。</p> <p>思路：加一个过滤器，在过滤器中取出参数做处理，然后比较</p> <p>注意：body里的数据用流来读取，只能读取一次</p> <h3>HttpServletRequest的输入流只能读取一次的原因</h3> <p>我们先来看看为什么HttpServletRequest的输入流只能读一次，当我们调用<code>getInputStream()</code>方法获取输入流时得到的是一个InputStream对象，而实际类型是ServletInputStream，它继承于InputStream。</p> <p>InputStream的<code>read()</code>方法内部有一个postion，标志当前流被读取到的位置，每读取一次，该标志就会移动一次，如果读到最后，<code>read()</code>会返回-1，表示已经读取完了。如果想要重新读取则需要调用<code>reset()</code>方法，position就会移动到上次调用mark的位置，mark默认是0，所以就能从头再读了。调用<code>reset()</code>方法的前提是已经重写了<code>reset()</code>方法，当然能否reset也是有条件的，它取决于<code>markSupported()</code>方法是否返回true。</p> <p>InputStream默认不实现<code>reset()</code>，并且<code>markSupported()</code>默认也是返回false，这一点查看其源码便知：<br /><img decoding="async" alt="解决HttpServletRequest的输入流只能读取一次的问题" class="has" src="http://img.555519.xyz/uploads/20230109/89183b9744eec4d350798ae11fb290ff.jpg"></p> <p>我们再来看看ServletInputStream，可以看到该类没有重写<code>mark()</code>，<code>reset()</code>以及<code>markSupported()</code>方法：<br /><img decoding="async" alt="解决HttpServletRequest的输入流只能读取一次的问题" class="has" src="http://img.555519.xyz/uploads/20230109/c20b44b2179e32861ea90ddf2430d5c5.jpg"></p> <p>综上，InputStream默认不实现reset的相关方法，而ServletInputStream也没有重写reset的相关方法，这样就无法重复读取流，这就是我们从request对象中获取的输入流就只能读取一次的原因。</p> <h2><strong>重复读取body中数据的方法</strong></h2> <p>这个自定义的requestWrapper继承了HttpServletRequestWrapper&nbsp;，HttpServletRequestWrapper 是一个ServletRequest的包装类同时也是ServletRequest的实现类。在这个自定义的requestWrapper里，<strong>用一个String做缓存，在构造方法里先把request的body中的数据缓存起来，然后重写了getInputStream，返回这个缓存的body，而不是从流中读取。</strong>这样，在需要多次读取body的地方，只需要在过滤器中把原来的request换成这个自定义的request，然后把这个自定义的带缓存功能的request传到后续的过滤器链中。</p> <pre class="has"><code class="language-java">public class BodyReaderRequestWrapper extends HttpServletRequestWrapper {     private final String body;      /**      *      * @param request      */     public BodyReaderRequestWrapper(HttpServletRequest request) throws IOException{         super(request);         StringBuilder sb = new StringBuilder();         InputStream ins = request.getInputStream();         BufferedReader isr = null;         try{             if(ins != null){                 isr = new BufferedReader(new InputStreamReader(ins));                 char[] charBuffer = new char[128];                 int readCount = 0;                 while((readCount = isr.read(charBuffer)) != -1){                     sb.append(charBuffer,0,readCount);                 }             }else{                 sb.append("");             }         }catch (IOException e){             throw e;         }finally {             if(isr != null) {                 isr.close();             }         }          sb.toString();         body = sb.toString();     }      @Override     public BufferedReader getReader() throws IOException {         return new BufferedReader(new InputStreamReader(this.getInputStream()));     }      @Override     public ServletInputStream getInputStream() throws IOException {         final ByteArrayInputStream byteArrayIns = new ByteArrayInputStream(body.getBytes());         ServletInputStream servletIns = new ServletInputStream() {             @Override             public boolean isFinished() {                 return false;             }              @Override             public boolean isReady() {                 return false;             }              @Override             public void setReadListener(ReadListener readListener) {              }              @Override             public int read() throws IOException {                 return byteArrayIns.read();             }         };         return  servletIns;     } }</code></pre> <h3><strong>springboot的过滤器：</strong></h3> <p><strong>2个注解：</strong></p> <p><strong>@WebFilter（过滤器上）</strong></p> <p><strong>@ServletComponentScan （加在启动类上,支持servlet components扫描（为了webfilter）)</strong></p> <pre class="has"><code>@Order(999) // 序号越低，优先级越高 // 加上WebFilter即可成为过滤器 @WebFilter(filterName="myFilter", urlPatterns="/api/workorder/service/selfAppeal") public class ExternalFilter implements Filter  {      private final static Logger logger = LoggerFactory.getLogger(ExternalFilter.class);          @Override     public void init(FilterConfig filterConfig) throws ServletException {         logger.info("filter init");     }       @Override     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)             throws IOException, ServletException {         ResponseObject object = new ResponseObject();         HttpServletRequest req = (HttpServletRequest)servletRequest;         HttpServletResponse res = (HttpServletResponse)servletResponse;         // 一个request的包装类，初始化时缓存了body,重写了getInputStream返回缓存的body，实现重复读取body         BodyReaderRequestWrapper requestWrapper  = new BodyReaderRequestWrapper(req);         String requestURI = requestWrapper.getRequestURI();         System.out.println("---------------------&gt;过滤器：请求地址" + requestURI);         String md5 = requestWrapper.getHeader("md5")  ;                 if (md5 == null || !md5.toLowerCase().equals(MD5.md5(ReqGetBody.getBody(requestWrapper)).toLowerCase())) {             object.setStatus(501);             object.setStatusText("数据md5校验失败");             render(object, res);             return;         }         // 这里传递下去的就是自定义的request了，所以后续的Controller才能重复读取到body里的参数         filterChain.doFilter(requestWrapper, res);     }       @Override     public void destroy() {       }      /**      * @Title: render      * @Description: 发送Response      * @param object     * @param response void     * @author MasterYi     * @date 2020年1月15日上午10:48:45     */      private void render(ResponseObject object, HttpServletResponse response) {         response.setContentType("application/json;charset=UTF-8");         try {             response.setStatus(200);             response.getWriter().write(JSONObject.toJSON(object).toString());         } catch (IOException e) {             logger.error("ExternalFilter写入response异常");         }     } }</code></pre> <p>上面的getBody的代码（从body中取值的具体操作）</p> <pre class="has"><code class="language-java">public class ReqGetBody {     static public String getBody(HttpServletRequest request) {         try {             ServletInputStream in = request.getInputStream();             String body;             body = StreamUtils.copyToString(in, Charset.forName("UTF-8"));                          return body;         } catch (IOException e) {             e.printStackTrace();             return "";         }     } }</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-61598.htm">义乌哪里有领养宠物狗（义乌哪里可以领养流浪猫）</a></p>
+                                        <p>下一个：<a href="/news/article-62187.htm">Python中安装pandas出现问题总结</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-45009.htm" title="沈阳宠物用品市场搬到啥地方了（沈阳宠物用品超市）">沈阳宠物用品市场搬到啥地方了（沈阳宠物用品超市）</a></li>
+                        <li class="py-2"><a href="/news/article-50493.htm" title="被小猫抓了多久过安全期（被小猫抓了多久会发病）">被小猫抓了多久过安全期（被小猫抓了多久会发病）</a></li>
+                        <li class="py-2"><a href="/news/article-53140.htm" title="动物医院上班怎么样工资高吗 动物医院上班怎么样工资高吗知乎">动物医院上班怎么样工资高吗 动物医院上班怎么样工资高吗知乎</a></li>
+                        <li class="py-2"><a href="/news/article-38056.htm" title="重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）">重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）</a></li>
+                        <li class="py-2"><a href="/news/article-47471.htm" title="动物活疫苗对人的伤害有哪些症状图片（动物疫苗作用）">动物活疫苗对人的伤害有哪些症状图片（动物疫苗作用）</a></li>
+                        <li class="py-2"><a href="/news/article-27119.htm" title="猫咪三针疫苗需要多久 猫咪三针疫苗需要多久打完">猫咪三针疫苗需要多久 猫咪三针疫苗需要多久打完</a></li>
+                        <li class="py-2"><a href="/news/article-42024.htm" title="Vue&#8211;》混合文件使用以及ref的引用讲解">Vue&#8211;》混合文件使用以及ref的引用讲解</a></li>
+                        <li class="py-2"><a href="/news/article-40038.htm" title="宠物猫驱虫药什么牌子好（猫驱虫买什么牌子药）">宠物猫驱虫药什么牌子好（猫驱虫买什么牌子药）</a></li>
+                        <li class="py-2"><a href="/news/article-41529.htm" title="猫咪恨主人的十种表现有哪些（猫咪恨主人该怎么办）">猫咪恨主人的十种表现有哪些（猫咪恨主人该怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-48948.htm" title="动物疫苗接种途径有哪些种类（动物疫苗有哪几种）">动物疫苗接种途径有哪些种类（动物疫苗有哪几种）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
