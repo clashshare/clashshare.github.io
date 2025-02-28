@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-64600.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>使用 Vert.X Future/Promise 编写异步代码_在线工具</title>
+        <meta name="description" content="Future 和 Promise 是 Vert.X 4.0中的重要角色，贯穿了整个 Vert.X 框架。掌握 Future/Promise 的用法，是用好 Vert.X、编写高质量异步代码的基础。本文" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-64600.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="使用 Vert.X Future/Promise 编写异步代码_在线工具" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/bc62aa135a49ff90429edafff38640da.webp" />
+        <meta property="og:release_date" content="2025-02-28T06:56:31" />
+    <meta property="og:updated_time" content="2025-02-28T06:56:31" />
+        <meta property="og:description" content="Future 和 Promise 是 Vert.X 4.0中的重要角色，贯穿了整个 Vert.X 框架。掌握 Future/Promise 的用法，是用好 Vert.X、编写高质量异步代码的基础。本文" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用 Vert.X Future/Promise 编写异步代码_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">使用 Vert.X Future/Promise 编写异步代码_在线工具</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>Future 和 Promise 是 Vert.X 4.0中的重要角色，贯穿了整个 Vert.X 框架。掌握 Future/Promise 的用法，是用好 Vert.X、编写高质量异步代码的基础。本文从 Future/Promise 的概念出发，介绍这两者的定义以及如何理解其定义；然后介绍 Promise 和 Future 相关的 API，结合若干实例介绍如何编写异步代码。</p> <h2 id="1-概念">1. 概念</h2> <p>Future 和 Promise 是一个宽泛的概念，很多编程语言都有对这二者的实现。在 Java 中，JDK 有对 Future 的实现，不同的 Java 框架（如：Netty）也有各自的实现。</p> <p>Vert.X 也实现了 Future 和 Promise，并且有自己的定义：Future 表示某种已经发生或未发生的行为的结果，Promise 表示某种已经发生或未发生的行为的写入端。</p> <blockquote> <p>A future represents the result of an action that may, or may not, have occurred yet.<br /> A promise represents the writable side of an action that may, or may not, have occurred yet.</p> </blockquote> <p>这段来自于 Vert.X 源码中的描述比较抽象，网络上对这二者有多种不同的描述。自认为“把 Promise 当做消息的生产者，把 Future 当做消息的消费者”这一描述最好理解。例如下面一段代码，promise 通过 complete() 方法来生产一条消息，future 通过 onSuccess() 来消费一条消息。</p> <pre><code class="language-java">Promise&lt;String&gt; promise = Promise.promise(); Future&lt;String&gt; future = promise.future(); promise.complete("Hello"); // 生产消息 future.onSuccess(msg -&gt; System.out.println(msg)); // 消费消息 </code></pre> <p>从 Java 语法上看，Promise 和 Future 是两个接口，它们有共同的实现类，在运行时 Fromise 和与之关联的 Future 是同一个对象。一个 Promise 对象整个生命周期只能够生产一条消息，意味着与之关联的 Future 只能够消费一条消息，但可以多次消费这条消息。</p> <h2 id="2-promise">2. Promise</h2> <p>Promise 是一个泛型接口，泛型表示要写入（生产）的消息的类型。</p> <h3 id="21-获取-promise-实例">2.1 获取 Promise 实例</h3> <p>获取 Promise 实例是编写 Future/Promise 异步代码的第一步，用户可以通过 Promise 接口提供的静态工厂方法<code>promise()</code>来获取一个 Promise 实例。如下代码获取了一个实例，它可以写入一条 String 消息。</p> <pre><code class="language-java">Promise&lt;String&gt; promise = Promise.promise(); </code></pre> <h3 id="22-promise-写入生产异步消息">2.2 Promise 写入（生产）异步消息</h3> <p>Promise 作为行为的写入端，可以通过 complete 方法来写入一条消息。</p> <pre><code class="language-java">promise.complete("Hello"); </code></pre> <p>当然，在发生异常时，也可以通过 fail 方法写入一个异常。如下代码，从 path 中读取一个字符串，若读取成功，则 promise 写入读取到的内容；若读取失败，则写入捕获到的异常。</p> <pre><code class="language-java">try {     String str = Files.readString(path);     promise.complete(str); // 写入一条消息 } catch(IOException e) {     promise.fail(e); // 写入一个异常 } </code></pre> <p>一个 promise 对象只能写入一次消息，要么写入一条正常消息，要么写入一个异常。通常情况下，往一个已经写入过内容的 promise 的对象中继续写入，会抛出 <code>IllegalStateException</code>。除非使用以 "try" 开头的 API 来写入消息，这类 API 通过返回 boolean 值来判断写入是否成功，不抛出 <code>IllegaStateException</code>。</p> <p>在 Promise 内部，写入消息实质上是把消息或者异常设置到 Promise 实现类的对象中，并通知与 Promise 关联的 Future 来处理消息或异常。</p> <p>写入（生产）消息的 API 清单如下：</p> <table> <thead> <tr> <th>方法签名</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>void complete(T result)</td> <td>写入异步任务的结果。</td> </tr> <tr> <td>void complete()</td> <td>同 <code>complete(null)</code>。</td> </tr> <tr> <td>void fail(Throwable cause)</td> <td>写入一个异常。</td> </tr> <tr> <td>void fail(String message)</td> <td>同 <code>fail(new NoStackTraceThrowable(message))</code>。</td> </tr> <tr> <td>boolean tryComplete(T result)</td> <td>尝试写入一个异步任务的结果。</td> </tr> <tr> <td>boolean tryComplete()</td> <td>同 <code>tryComplete(null)</code>。</td> </tr> <tr> <td>boolean tryFail(Throwable cause)</td> <td>尝试写入一个异常。</td> </tr> <tr> <td>boolean tryFail(String message)</td> <td>同 <code>tryFail(new NoStackTraceThrowable(message))</code>。</td> </tr> </tbody> </table> <h2 id="3-future">3. Future</h2> <p>Vert.X 官方定义 Future 为已发生或还未发生行为的结果。从另一角度看，相对于生产端的 Promise，Future 又是消息的消费端。Future 是一个比 Promise 更加复杂的抽象，出场率也更高；很多时候会隐去 Promise，只使用 Future 来完成异步操作。</p> <h3 id="31-future-的状态与结果">3.1 Future 的状态与结果</h3> <p>Future 有两个状态，已完成（已完成 completed）或未完成两种状态。而按照 Promise 写入的结果类型，又可以将已完成状态分为成功完成和失败完成。Future 提供了 3 个 API 来查询状态。</p> <table> <thead> <tr> <th>方法</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>isComplete()</td> <td>true 表示 Future 已完成，false 表示未完成。</td> </tr> <tr> <td>succeed()</td> <td>true 表示 Future 已成功完成。此时可以读取正常结果。</td> </tr> <tr> <td>failed()</td> <td>true 表示 Future 已经失败。此时可以读取异常结果。</td> </tr> </tbody> </table> <p>当 Promise 写入结果时，对应的 Future 状态会发生改变，状态图如下所示。</p> <div class="mermaid">stateDiagram<br /> [*] --&gt; INCOMPLETE<br /> INCOMPLETE --&gt; SUCCEED: complete() / tryComplete()<br /> INCOMPLETE --&gt; FAILED: fail() / tryFail()<br /> SUCCEED --&gt; [*]<br /> FAILED --&gt; [*] </div> <p>当状态是成功完成（SUCCEED）时，可以通过 future.result() 来读取一个正常消息；当状态是失败完成（FAILED）时，可以通过 future.cause() 来读取异常。</p> <table> <thead> <tr> <th>方法</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>result()</td> <td>读取正常结果。若异步操作未完成或异步操作失败，则返回 null；否则，返回异步操作的正常结果。</td> </tr> <tr> <td>cause()</td> <td>读取异步信息。若异步操作未完成或异步操作成功，则返回 null；否则，返回异步操作的异常结果。</td> </tr> </tbody> </table> <p>以上查询状态和读取结果的方法来自于 Future 的父接口 AsyncResult，这是 Future 能够表示异步结果的原因。</p> <h3 id="32-succeedfuture-与-failedfuture">3.2 SucceedFuture 与 FailedFuture</h3> <p>与刚创建时状态不确定的普通 Future 不同，SucceedFuture 和 FailedFuture 在创建出来的时候状态就已经确定。Future 提供了静态工厂方法来获取它们的实例，这一类 Future 对象没有与之关联的 Promise，因为消息已经存在，不需要 Promise 来生产消息。</p> <pre><code class="language-java">Future&lt;Void&gt; future = Future.succeedFuture(); Future&lt;String&gt; future1 = Future.succeedFuture("hello"); Future&lt;Void&gt; future2 = Future.failedFuture(e); </code></pre> <h3 id="33-future-处理消费异步消息">3.3 Future 处理（消费）异步消息</h3> <p>前面提到，异步消息可能是一条正常消息，也可能是一个异常；当然，Future 本身也表示异步消息（结果）。</p> <p>Future 提供了 onSuccess, onFailure, 和 onComplete 这几个 API 来处理异步消息。它们的参数都是一个处理器 Handler，也可以看做一个无返回值的函数，这些 API 内部将传入的处理器包装称为监听器，监听 Promise 写入事件。它们返回的结果都是 this，因此可以链式调用这些方法。</p> <p>如下代码以异步的形式通过 HttpClient 向远程服务器发起请求，获取响应体。如果执行正常，promise 将响应体作为一条正常消息写入；如果发生异常，则写入一个异常。后面与之关联的 future 设置了 3 个处理器，当请求成功时，执行 onSuccess 设置的处理器；当请求失败时，执行 onFailure() 设置的处理器；无论请求成功还是失败，都将执行 onComplete() 设置的处理器。</p> <pre><code class="language-java">Promise&lt;String&gt; promise = Promise.promise(); new Thread(() -&gt; {     try { 	    String responseBody = httpClient.request("http://www.test.com/user");                 promise.complete(responseBody); // 写入正常消息     } catch(Exception e) {         promise.fail(e); // 写入异常     } }).start();  Future&lt;String&gt; future = promise.future(); future.onSuccess(body -&gt; System.out.println("获取到 Response Body:" + body)) // 成功时执行 	  .onFailure(cause -&gt; cause.printStacktrace()) // 失败时执行 	  .onComplete(asyncResult -&gt; { // 无论成功失败都执行     	if (asyncResult.succeed()) {         	logger.info("成功获取到 Reponse Body"); 	    } else {     	    logger.error("获取 Response Body 失败。", asyncResult.cause());     	} 	  }); </code></pre> <p>与只能写入一次结果的 Promise 不同，Future 可以设置任意多个处理器，或者说可以多次消费消息。</p> <pre><code class="language-java">future.onSuccess(result -&gt; // 处理 1)       .onSuccess(result -&gt; // 处理 2); </code></pre> <p>另外，无论当前 Future 的状态是成功、失败或是未完成，都可以调用这些 API 来设置处理器（Handler）。如果 Future 是未完成状态，这些处理器会在 Promise 写入结果之后触发执行；如果 Future 是已完成状态，在设置处理器时立即执行它们。</p> <p>如下是这几个 API 的说明。</p> <table> <thead> <tr> <th>方法</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>Future<t> onComplete(Handler&lt;AsyncResult<t>&gt; handler)</t></t> </td> <td>处理一个异步结果，无论异步操作结果是正常的还是异常的，都会触发 handler 的执行。</td> </tr> <tr> <td>Future<t> onSuccess(Handler<t> handler)</t></t> </td> <td>当异步操作结果正常时，触发 handler 的执行。</td> </tr> <tr> <td>Future<t> onFailure(Handler<throwable> handler)</throwable></t> </td> <td>当异步操作结果异常时，触发 handler 的执行。</td> </tr> </tbody> </table> <h3 id="34-future-转换">3.4 Future 转换</h3> <p>Future 转换是指将一个 Future 对象经过处理之后转换为另一个 Future 对象。Future 转换通过 Future 的一系列成员方法来完成，这些转换 API 的参数是一个 Function， 返回值是另一个 Future 对象。</p> <p>看下面一段代码，根据名字查询到对应的用户 User，然后根据用户 ID 查询账户信息 Account，再从账户中获取余额，最后打印余额。</p> <pre><code class="language-java">Future&lt;String&gt; f1 = Future.succeedFuture("Robothy"); // 1 Future&lt;User&gt; f2 = f1.compose(name -&gt; getUserByName(name)); // 2 Future&lt;Account&gt; f3 = f2.compose(user -&gt; getAccountInfo(user.getId())); // 3 Future&lt;Double&gt; f4 = f3.map(account -&gt; account.getBalance()); // 4 f4.onSuccess(balance -&gt; System.out.println("Balance: " + balance)) // 5   .onFailure(cause -&gt; cause.printStacktrace() ); // 6 </code></pre> <ol> <li>代码获取了一个 SucceedFuture 对象 f1，它的结果是正常消息 "Robothy"。</li> <li>f1 调用 compose 方法，设置一个异步函数，即该行代码中的 Lambda 表达式。函数会在 f1 正常完成的时候执行，以异步的方式根据用户名获取用户信息，并将用户信息设置到 f2 中。这行代码将 f1 转化成了 f2。</li> <li>f2 继续调用 compose 方法，设置另一个异步函数，根据用户 ID 获取账户信息。同样，该函数在 f2 正常完成之后执行，执行结果设置到 f3 中，即：把 f2 转化为 f3。</li> <li>f3 调用 map 方法，设置一个同步函数，从账户信息中读取余额。同步函数在 f3 正常完成之后执行，执行结果会被写入到 f4 中。</li> <li>为 f4 设置正常消息处理器，处理器在 f4 正常完成之后被调用，打印余额信息。</li> <li>为 f4 设置异常处理器，处理器在 f4 异常完成之后被调用，打印栈信息。</li> </ol> <p>为了方便描述，上面代码被拆成了多个部分，采用链式调用可以使代码更加简洁。</p> <pre><code class="language-java">Future&lt;String&gt; f1 = Future.succeedFuture("Robothy") // 1     .compose(name -&gt; getUserByName(name)) // 2 	.compose(user -&gt; getAccountInfo(user.getId())) // 3 	.map(account -&gt; account.getBalance()) // 4 	.onSuccess(balance -&gt; System.out.println("Balance: " + balance)) // 5  	.onFailure(cause -&gt; cause.printStacktrace() ); // 6 </code></pre> <p>上面提到的同步函数和异步函数都是 Function 类型，同步函数是同步执行，可以返回任意结果；而异步函数形式上异步执行，返回的是一个 Future。之所以说形式上异步执行，是因为实际上是否异步取决于实现。例如：getUserByName 的方法签名如下，但是它方法体的实现可以是同步的，也可以是异步的。</p> <pre><code class="language-java">Future&lt;User&gt; getUserByName(String name); Future&lt;Account&gt; getAccountInfo(String userId); // 同理 </code></pre> <p>compose 设置的是一个异步函数，函数被调用之后，立即返回一个 Future，但此时异步函数返回的 Future （区别于 compose 返回的 Future）并不一定已完成。所以并不能向下面这段代码一样，直接读取结果，正确的做法是像上面一样通过 compose 将异步函数连接起来。</p> <pre><code class="language-java">Future&lt;User&gt; future = getUserByName(name); User user = future.result(); // 立即读取，此时 future 未完成，读取到的是 null Future&lt;Account&gt; account = getAccount(user.getId()); // 抛出 NullPointerException </code></pre> <p>类似地，map 里面设置的是同步函数，函数被调用之后，返回的结果就是最终结果。getBalance 是 Account 的成员方法，它的方法签名如下：</p> <pre><code class="language-java">Double getBalance(); </code></pre> <p>此外，如果 getUserByName 有异常抛出，或者它返回的 Future 包含了一个异常消息，则后续的 compose 和 map 设置的函数都不会被执行。也就是说，只有 2, 6 处设置的函数和处理器会执行。同理，如果 getAccountInfo 发生异常，2,3,6 处的代码会被执行；如果调用链设置的各个函数执行正常，则 2,3,4,5 的函数或处理器会被执行。</p> <p>这种执行方式与同步代码块中的 try-catch 很相似，假如 getUserByName 和 getAccoutInfo 都是同步的，则代码可以用 try-catch 表达如下。</p> <pre><code class="language-java">try {     String name = "Robothy"; // 1     User user = getUserByName(name); // 2，注意这里是同步的，返回的是 User，不是 Future&lt;User&gt;     Account account = getAccountInfo(user.getId()); // 3，返回 Account，不是 Future&lt;Account&gt;     Double balance = account.getBalance(); // 4     System.out.println("Balance: " + balance); // 5 } catch(Throwable cause) {     cause.printStacktrace(); // 6 } </code></pre> <p>map 和 compose 会在遇到异常时会跳过执行，而 recover 与之相反，只有在遇到异常时才执行。比如把上面代码的效果修改一下：如果获取账户余额的过程中失败，则默认用户余额是 0。代码可以这样写：</p> <pre><code class="language-java">Future&lt;String&gt; f1 = Future.succeedFuture("Robothy")     .compose(name -&gt; getUserByName(name)) 	.compose(user -&gt; getAccountInfo(user.getId())) 	.map(account -&gt; account.getBalance())     .recover(cause -&gt; Future.succeedFuture(0.0)) // 拦截异常，把余额设置成 0. 	.onSuccess(balance -&gt; System.out.println("Balance: " + balance))  	.onFailure(cause -&gt; cause.printStacktrace() ); </code></pre> <p>Future 还有其他的转换操作，这里不一一赘述，下面会给出 API 清单。</p> <p>Future 转换 API 和前面的 Future 结果处理 API 很相似，内部都是将参数包装成监听器，都可以链式调用，区别在于 Future 结果处理 API 返回的是 this，而转换 API 返回的是另一个 Future 对象。在实际开发中，通常在调用链的尾部使用处理 API，而在中间使用转换 API。</p> <table> <thead> <tr> <th style="text-align: left">Future 操作（成员方法）</th> <th>实现类</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td style="text-align: left"><u> Future<u> compose(Function&lt;T, Future<u>&gt; mapper)</u></u></u></td> <td>Composition</td> <td>mapper 是一个<strong>异步操作</strong>，将当前 Future 的<strong>正常结果</strong>转化为另一个 Future 的异步结果。当且仅当当前 Future 状态是 Succeed 的时候调用 mapper。</td> </tr> <tr> <td style="text-align: left"><u> Future<u> flatMap(Function&lt;T, Future<u>&gt; mapper)</u></u></u></td> <td>Composition</td> <td>同 compose。</td> </tr> <tr> <td style="text-align: left"><u> Future<u> compose(Function&lt;T, Future<u>&gt; successMapper, Function&lt;Throwable, Future<u>&gt; failureMapper)</u></u></u></u></td> <td>Composition</td> <td>succeedMapper 与 failedMapper 均为<strong>异步操作</strong>，分别将当前 Future 的正常结果和异常结果转化为另一个 Future 的异步结果。当前 Future 完成状态是 Succeed 时，执行 succeedMapper；当前 Future 完成状态是 Failed 时，执行 failureMapper。</td> </tr> <tr> <td style="text-align: left">Future<t> recover(Function&lt;Throwable, Future<t>&gt; mapper)</t></t> </td> <td>Composition</td> <td>mapper 是一个<strong>异步操作</strong>，将当前 Future 的<strong>异常结果</strong>转化为另一个 Future 的异步结果。当且仅当当前 Future 状态是 Failed 的时候调用 mapper。</td> </tr> <tr> <td style="text-align: left"><u> Future<u> transform(Function&lt;AsyncResult<t>, Future<u>&gt; mapper)</u></t></u></u></td> <td>Transformation</td> <td>mapper 是一个<strong>异步操作</strong>，将当前 Future 的<strong>异步结果</strong>转化为另一个 Future 的异步结果。</td> </tr> <tr> <td style="text-align: left"><u> Future<t> eventually(Function&lt;Void, Future<u>&gt; mapper)</u></t></u></td> <td>Eventually</td> <td>mapper 是一个<strong>异步操作</strong>，在当前 Future 完成之后执行，返回一个异步结果。</td> </tr> <tr> <td style="text-align: left"><u> Future<u> map(Function&lt;T, U&gt; mapper)</u></u></td> <td>Mapping</td> <td>mapper 是一个<strong>同步操作</strong>，将当前 Future 的<strong>正常结果</strong>转化为另一个 Future 的异步结果。当且仅当当前 Future 状态是 Succeed 的时候调用 mapper。</td> </tr> <tr> <td style="text-align: left"><v> Future<v> map(V value)</v></v></td> <td>FixedMapping</td> <td>忽略当前 Future 的<strong>正常结果</strong>，value 作为转化的另一个 Future 的异步结果。当且仅当当前 Future 状态是 Succeed 时有效。</td> </tr> <tr> <td style="text-align: left">Future<t> otherwise(Function&lt;Throwable, T&gt; mapper)</t> </td> <td>Otherwise</td> <td>mapper 是一个<strong>同步操作</strong>，将当前 Future 的<strong>异常结果</strong>转化为另一个 Future 的异步结果。当且仅当当前 Future 状态是 Failed 的时候调用 mapper。</td> </tr> <tr> <td style="text-align: left">Future<t> otherwise(T value)</t> </td> <td>FixedOtherwise</td> <td>忽略当前 Future 的<strong>异常结果</strong>，value 作为转化的另一个 Future 的异步结果。当且仅当当前 Future 状态是 Failed 时有效。</td> </tr> </tbody> </table> <h2 id="4-小结">4. 小结</h2> <p>以上是 Vert.X Promise/Future 的基本概念和用法。为了方便理解，可以把 Promise 看做生产者，Future 看做消费者。生产者 Promise 即可以生产正常消息，也可以生产一个异常，消费者 Future 可以消费正常消息，也可以消费异常。一个 Promise 对象整个生命周期只能够写入一次消息，而对应的 Future 可以消费这条消息多次。</p> <p>Future 作为异步结果（AsyncReuslt）时有状态，当状态是成功完成时，可以读取正常结果（消息），当状态是失败完成时，可以读取一个异常。SucceedFuture 和 FailedFuture 是两种特殊的 Future，它们在实例化之后就是已完成状态。</p> <p>Future 作为消费者提供了结果处理 API 和 Future 转换 API。结果处理 API 可以设置处理器 Handler 来处理相应的结果，转换 API 可以设置函数 Function 把当前 Future 转化为另一个 Future 对象。</p> <p>Promise/Future 本身比较抽象，异步编程也是个技术难点。 本文仅仅包含了 Promise/Future 最基本的用法，要熟练掌握它们的用法，写出高效、优雅的异步代码还需要进行大量的练习。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63989.htm">动物医院需要几个兽医资格证书才能开药 动物医院需要几个兽医资格证书才能开药</a></p>
+                                        <p>下一个：<a href="/news/article-64603.htm">十大动物疫苗公司有哪些品牌名称 十大动物疫苗公司有哪些品牌名称图片</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-63988.htm" title="宠爱国际动物医院创始人（宠爱动物医院怎么样）">宠爱国际动物医院创始人（宠爱动物医院怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-46005.htm" title="SOLID原则：解释和实例">SOLID原则：解释和实例</a></li>
+                        <li class="py-2"><a href="/news/article-33723.htm" title="网上卖狗合法吗（网上卖狗狗的讲信用吗?）">网上卖狗合法吗（网上卖狗狗的讲信用吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-19273.htm" title="动物防疫计划表（动物防疫年度计划）">动物防疫计划表（动物防疫年度计划）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-clash-v2ray-ss-ssr.htm" title="12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址">12月26日|最高速度18.8M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-free-node-subscribe.htm" title="2月25日|最高速度22.2M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">2月25日|最高速度22.2M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-node-share.htm" title="2月8日|最高速度18.6M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址">2月8日|最高速度18.6M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-shadowrocket-node.htm" title="12月20日|最高速度18.1M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接">12月20日|最高速度18.1M/S，2024最新SSR/Clash/Shadowrocket/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45500.htm" title="成都宠物收容机构有哪些（成都宠物收留中心）">成都宠物收容机构有哪些（成都宠物收留中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share.htm" title="12月24日|最高速度18.6M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址">12月24日|最高速度18.6M/S，2024最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
