@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-65813.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>实时流处理与分布式存储过程中对文件的操作</title>
+        <meta name="description" content="这两天都是在跟文件打交道，很有趣，每一步都不会顺心如意，但每一步的解决都有所获益，首先是对文件变化的监测，能找到很多办法，例如通过ELK家族的Filebeat工具来探测，但是外部工具不好融合进Stor" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-65813.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="实时流处理与分布式存储过程中对文件的操作" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/c1048e2e47dc26b3a293efd89fa87494.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:37:28" />
+    <meta property="og:updated_time" content="2025-03-02T09:37:28" />
+        <meta property="og:description" content="这两天都是在跟文件打交道，很有趣，每一步都不会顺心如意，但每一步的解决都有所获益，首先是对文件变化的监测，能找到很多办法，例如通过ELK家族的Filebeat工具来探测，但是外部工具不好融合进Stor" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="实时流处理与分布式存储过程中对文件的操作">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">实时流处理与分布式存储过程中对文件的操作</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p data-track="1" data-pm-slice="0 0 []"><span style="font-size: 16px">这两天都是在跟文件打交道，很有趣，每一步都不会顺心如意，但每一步的解决都有所获益，首先是对文件变化的监测，能找到很多办法，例如通过ELK家族的Filebeat工具来探测，但是外部工具不好融合进Storm，最好是自己写Java程序来监测。</span></p> </h1> <p data-track="3"><span style="font-size: 16px">其实jdk7以上版本就有一个比较不错的选择，那就是nio包里的WatchService监控器，我觉得它有两方面的优点，其一就是由操作系统的信号通知机制，当文件目录中出现变化就发信号给应用层监控器，那么这种由操作系统主动通知的效率就远好于应用程序对文件的反复轮巡，而且不占用过多系统资源；其二编程模型并不采用观察者模式注册监听器的方案，而是将多线程问题隐藏起来，客户端对api采取循环阻塞的直观调用，这就非常有利于嵌入到各种运行容器当中去执行文件采集监控。</span></p> <p data-track="4"><span style="font-size: 16px">另外监测文件变化后按行采集变化记录我采用了RadmonAccessFile对象，这个文件操作对象常用于断点续传此类的需求，很方便，关键要设计一个可持久化的位移记录文件，保证采集器重启后总能从未读取的最新变化数据点位置开始采集数据。如下图所示：</span></p> <div class="pgc-img"><img decoding="async" src="https://p9.toutiaoimg.com/img/tos-cn-i-qvj2lq49k0/e13d12ea432b45efa450fa499c2f53d7~tplv-obj.jpg" alt="实时流处理与分布式存储过程中对文件的操作" data-ic="false" data-width="803" data-height="283" data-ic-uri=""/></div> <p data-track="5"><span style="font-size: 16px">文件监控与采集功能嵌入Storm集群之后又出现了一个新问题，那就是Storm spout实例不会如你所愿地运行在指定的机器上，而是完全由Storm集群随机地在节点上指定运行，但被监测的文件位置是固定的，反正总有笨办法：当Storm集群启动后，确定spout运行的机器节点，再由该机器执行cdc文件输出程序，但是这样耦合性太强，必须跟随Storm对spout实例的安排而变化采集位置，维护管理就会很麻烦，而且很容易出错。</span></p> </h1> <p data-track="7"><span style="font-size: 16px">因此我就引出了一个新的假设：通过分布式文件系统(dfs)来解决此问题，但是dfs的选型很重要，Hadoop hdfs肯定不行，它脱离了普通文件系统的操作方式，最终我挑选了两款dfs，一是ClusterFS，二是MooseFS，它们都具有fuse结合功能，通过Mount dfs到本地目录的方式，让访问dfs如同访问本地目录文件一样无缝结合，dfs的任一客户端节点对文件的修改，都会在所有dfs客户端节点上被通知，因此我让Storm的所有节点都成为dfs的客户端，这样无论spout随机运行在任何节点上，都可以在本节点的相同目录中去访问dfs中的被监测的文件，同时被监测文件还具有了多副本的高可靠性。</span></p> <div class="pgc-img"><img fetchpriority="high" decoding="async" src="https://p3.toutiaoimg.com/origin/tos-cn-i-qvj2lq49k0/e4a367be46d74c0dba007a9a3f7bab14" width="839" height="513" data-ic="false" data-width="1164" data-height="712" data-ic-uri=""/></div> <p data-track="8"><span style="font-size: 16px">这种解决分布式计算过程中与分布式存储结合的方案，也就是Storm计算节点由于是集群动态分配位置，无法固定住Storm spout的文件采集位置，因此我选择了分布式文件系统的思路，主要是利用了GlusterFS连接Linux fuse(用户空间文件系统)的办法，使得每一个spout节点都是dfs客户端，那么无论spout被分配在哪个节点，都可以通过监测并读取本节点的GlusterFS客户端挂载(mount)的目录来实现对PostgreSQL cdc输出文件副本的数据采集。</span></p> <p data-track="9"><span style="font-size: 16px">但是测试中发现一个大bug，让我虎躯一震，bug原因分析：</span></p> </h1> <p data-track="11"><span style="font-size: 16px">内置在spout中的Java文件监控器(WatchService)监控目录变化是通过操作系统传递来的信号驱动的，这样spout就可以等待式文件变化实现监控，可是我想当然的以为就算PostgreSQL cdc输出节点与spout文件采集监控节点不是一台机器也可以，只要通过分布式文件系统同步副本，spout节点就一定能感知到当前目录副本的变化，事实上我错了，spout中的watchservice根本就感知不到目录副本的变化，因此想要得到操作系统的文件变化信号通知，必须对文件目录的读写是在一台机器上，才会有文件变化信号发送给上层应用，我之前的测试正确仅仅是因为PostgreSQL输出和spout监控是同一台服务器。</span></p> <p data-track="12"><span style="font-size: 16px">那么问题就来了，我的假设就是spout不用考虑采集点的目录位置，否则逆向根据storm集群分配好spout节点地址后才能进行pg监控，显然这是颠倒流程了，又试过MooseFS和NFS，结果一样，NFS还不如分布式文件系统高效。</span></p> <p data-track="13"><span style="font-size: 16px">当无路可走的时候，认为自己的假设即将失败的时候，一个新的思路开启了我的灵感，为什么非要spout只设置1个并行度呢？按照参与Storm集群拓扑的工作数是3个，那就设置spout并行度为3，这样每一个机器就都会有一个spout监控本地GlusterFS挂载目录，那么无论我的PostgreSQL cdc输出程序是在哪个节点启动，同时只会有一个spout感应到副本变化开始推送数据，其他都是wait，这样就解决了问题，同样也保证了即便是换一个节点进行PostgreSQL cdc文件输出，前一个spout实例自然wait，新的spout就工作了，依然完美地保证了PostgreSQL cdc程序与spout的可靠性冗余。</span></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65231.htm">宠物粮食专卖店名称大全 宠物粮食专卖店名称大全集</a></p>
+                                        <p>下一个：<a href="/news/article-65814.htm">生产宠物粮的工厂有哪些岗位工作（生产宠物粮前景如何）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-34953.htm" title="大猫养多久才认主人（大猫养多久才认主人呢）">大猫养多久才认主人（大猫养多久才认主人呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日|最高速度23M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址">1月22日|最高速度23M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34954.htm" title="参观动物医院的实验报告怎么写（参观动物医院有感）">参观动物医院的实验报告怎么写（参观动物医院有感）</a></li>
+                        <li class="py-2"><a href="/news/article-35449.htm" title="动物疫苗注射注意事项及禁忌有哪些 动物疫苗注射注意事项及禁忌有哪些呢">动物疫苗注射注意事项及禁忌有哪些 动物疫苗注射注意事项及禁忌有哪些呢</a></li>
+                        <li class="py-2"><a href="/news/article-65814.htm" title="生产宠物粮的工厂有哪些岗位工作（生产宠物粮前景如何）">生产宠物粮的工厂有哪些岗位工作（生产宠物粮前景如何）</a></li>
+                        <li class="py-2"><a href="/news/article-53686.htm" title="家猫体内驱虫多久一次比较好（家猫体内驱虫多久一次比较好一点）">家猫体内驱虫多久一次比较好（家猫体内驱虫多久一次比较好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-28514.htm" title="拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）">拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）</a></li>
+                        <li class="py-2"><a href="/news/article-22485.htm" title="动物疫苗公司排名前十有哪些（动物疫苗行业龙头）">动物疫苗公司排名前十有哪些（动物疫苗行业龙头）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-high-speed-nodes.htm" title="12月11日|最高速度22.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接">12月11日|最高速度22.9M/S，2024最新SSR/Shadowrocket/Clash/V2ray免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-node-share-links.htm" title="1月1日|最高速度22M/S，2025最新SSR/Shadowrocket/Clash/V2ray免费节点订阅链接地址">1月1日|最高速度22M/S，2025最新SSR/Shadowrocket/Clash/V2ray免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

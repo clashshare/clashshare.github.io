@@ -1,0 +1,289 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-65228.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pip 使用简易指南</title>
+        <meta name="description" content="pip 是 Python 的包管理工具，用于第三方库的查找、下载、安装、卸载等。 从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中。如果安装的 Python 版本里没" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-65228.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Pip 使用简易指南" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/0c6ef0d3df3a0e00ab89aef294943227.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:59:35" />
+    <meta property="og:updated_time" content="2025-03-01T06:59:35" />
+        <meta property="og:description" content="pip 是 Python 的包管理工具，用于第三方库的查找、下载、安装、卸载等。 从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中。如果安装的 Python 版本里没" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Pip 使用简易指南">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Pip 使用简易指南</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><code>pip</code> 是 Python 的包管理工具，用于第三方库的查找、下载、安装、卸载等。</p> <p>从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中。如果安装的 Python 版本里没有自带 pip 工具，可以通过下载 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://bootstrap.pypa.io/get-pip.py"  title="get-pip.py" rel="nofollow">get-pip.py</a> 文件，然后通过如下方式安装:</p> <pre><code>python get-pip.py install pip </code></pre> <p>运行 pip 可以通过 <code>pip</code> 命令，也可以用 <code>python -m pip</code> 来完成：</p> <pre><code>$ pip --version pip 21.3.1 from /usr/local/lib/python3.8/dist-packages/pip (python 3.8) $ python -m pip --version pip 21.3.1 from /usr/local/lib/python3.8/dist-packages/pip (python 3.8) $ /bin/python3 -m pip --version pip 21.3.1 from /usr/local/lib/python3.8/dist-packages/pip (python 3.8) </code></pre> <p>使用 <code>/bin/python3 -m pip</code> 这样的方式运行 pip 是比较推荐的方式，因为在你的系统里可能存在多个 Python 环境，这样运行可以显式的指示为哪个环境使用 pip。pip 命令的语法格式为：</p> <pre><code>python -m pip &lt;command&gt; [options] </code></pre> <p>一些常用的公共的参数：</p> <pre><code>--debug  启动 DEBUG 模式 -v, --verbose  显示更加详细的 -q, --quiet  显示更少的信息 --log &lt;path&gt;  将输出记录到文件 --proxy &lt;proxy&gt;  指定代理服务器，格式为 [user:passwd@]proxy.server:port --retries &lt;retries&gt;  指定最大的尝试次数，默认为 5 次 --timeout &lt;sec&gt;  指定超时时间，默认为 15 秒 --cache-dir &lt;dir&gt;  指定缓存目录 --no-cache-dir  禁用缓存 </code></pre> <h2 id="install">Install</h2> <p><code>pip</code> 默认从 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pypi.org/"  title="PyPI" rel="nofollow">PyPI</a> 下载包并安装，其基本用法为：</p> <pre><code>pip install [options] &lt;requirement specifier&gt; [package-index-options] ... pip install [options] -r &lt;requirements file&gt; [package-index-options] ... pip install [options] [-e] &lt;vcs project url&gt; ... pip install [options] [-e] &lt;local project path&gt; ... pip install [options] &lt;archive url/path&gt; ... </code></pre> <p>从 PyPI 下载包时，pip 使用 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pypi.org/simple/"  title="HTTP simple interface" rel="nofollow">HTTP simple interface</a> 查找相应的包。除了从 PyPI 下载包安装外，pip 还支持从本地文件、本地项目目录、压缩包、远程路径（url）安装。</p> <p>安装包时的常用参数：</p> <pre><code>-r, --requirement &lt;file&gt;  指定依赖说明文件 --no-deps  不安装依赖 --pre  包含预发布版本或开发测试版本，默认只搜索稳定版 -e, --editable &lt;path/url&gt;  以可编辑模式安装，通常用于开发调试本地项目 --user  安装到用户目录下，通常为 ~/.local/ -U, --upgrade  升级指定的包及其依赖 --force-reinstall  强制重装指定包 -I, --ignore-installed  忽略已经安装的包 -i, --index-url &lt;url&gt;  指定包仓库的索引地址，即所谓的源，默认为 https://pypi.org/simple --extra-index-url  额外的包仓库索引地址 --no-index  忽略包仓库地址（通常与 --find-links 配合使用，实现离线安装） --find-links  指定查找路径，可以是一个本地路径，或者一个 HTML 文件链接 </code></pre> <p><code>pip</code> 支持从 <strong>版本控制系统 VCS</strong>（version control systems）安装包，这种支持需要系统中存在相应 VCS 的可执行文件，且需要在 URL 前加上相应前缀：</p> <ul> <li>Git -- <code>git+</code> </li> <li>Mercurial -- <code>hg+</code> </li> <li>Subversion -- <code>svn+</code> </li> <li>Bazaar -- <code>bzr+</code> </li> </ul> <p>例如 Git 支持的格式为 git+file, git+https, git+ssh, git+http 等等。</p> <p>可以将需要安装的包写在一个依赖描述文件中，用 -r 参数指定该文件位置，pip 会解析该文件并安装合适的包，该文件通常被命名为 requirements.txt。依赖描述文件示例：</p> <pre><code># Requirement Specifiers:  pkg pkg == 1.3 pkg &gt;=1.2,&lt;2.0 pkg == 1.*     # 模糊匹配，表示 1 版本均可，如 1.1, 1.2 okg!=1.3.5     # 除了 1.3.5 版本，其他版本均可 pkg~=1.4.2     # 兼容的版本，即大于 1.4.2 的 1.4 版本均可，类似 &gt;= 1.4.2, == 1.4.* pkg[foo, bar]  # 指定额外的依赖项  # 支持环境标志 pkg ==5.4 ; python_version &lt; '3.8' pkg; sys_platform == 'win32'  # 直接包含一个文件路径 ./downloads/pkg-1.0.2-cp38-none-win32.whl http://pkg.com/pkg-1.0.8-cp38-none-win_amd64.whl  # 从 git 仓库安装 git+https://github.com/hello/project.git git+https://github.com/hello/project.git </code></pre> <p>一些安装示例：</p> <pre><code># 指定包和版本 pip install pkg pip install pkg==1.0.4 pip install 'pkg&gt;=1.0.4'  # 指定依赖说明文件 pip install -r requirements.txt  # 升级包 pip install --upgrade pkg pip install -U pkg  # 以编辑模式安装本地项目 pip install -e . pip install --pre -e .   # 允许预发布版本 pip install -e path/to/project  # 只安装指定包，不安装其依赖 pip instal --no-deps pkg  # 安装到用户目录，而不是系统默认目录 pip install --user pkg  # 指定安装目录前缀 pip install --install-option="--prefix=/usr/local" pkg  # 从 Git 仓库安装 pip install git+ssh://git.example.com/project#egg=project pip install git+file:///home/user/projects/project#egg=project pip install git+https://git.example.com/project#egg=project  # 安装额外的依赖项 pip install pkg[PDF] pip install "pkg[PDF] @ git+https://git.repo/pkg@main#subdirectory=subdir_path" pip install .[PDF]  # project in current directory pip install pkg[PDF]==3.0 pip install pkg[PDF,EPUB]  # multiple extras  # 安装时不使用二进制包 pip install pkg1 pkg2 --no-binary :all:  # 所有包都不使用二进制 pip install pkg1 pkg2 --no-binary pkg1   # 仅 pkg1 不使用二进制  # 从指定的仓库源安装 pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple/ pkg  # 从指定路径安装： pip install --no-index --find-links=file:///local/dir/ pkg pip install --no-index --find-links=/local/dir/ pkg pip install --no-index --find-links=relative/dir/ pkg </code></pre> <p>如果安装时指定了错误的版本，则会报错：</p> <pre><code>$ pip install requests==lemon Looking in indexes: https://mirrors.aliyun.com/pypi/simple/ ERROR: Could not find a version that satisfies the requirement requests==lemon (from versions: 0.2.0, ... 2.26.0) ERROR: No matching distribution found for requests==lemon </code></pre> <p>所以，可以通过这种方式来查看可用的版本，直接运行 <strong>pip intall numpy==</strong> （不指定任何版本号）也可以达到同样的效果。</p> <p>此外，还可以使用 <code>download</code> 命令，只下载包到本地，而不安装，如：</p> <pre><code># 下载包 pip download pkg  # 下载包到指定目录 pip download -d /tmp pkg  # 允许预发布版本，且不下载依赖 pip download --no-deps --pre pkg  # 从指定源下载 pip download -i https://pypi.tuna.tsinghua.edu.cn/simple/ pkg </code></pre> <p>需要卸载已安装的包，则使用 <code>uninstall</code> 命令：</p> <pre><code># 卸载包 pip uninstall pkg  # 不用手动确认，直接卸载 pip uninstall -y pkg  # 卸载 requirements.txt 文件列出的包 pip uninstall -r requirements.txt </code></pre> <h2 id="wheel">Wheel</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://wheel.readthedocs.io/en/latest/"  title="Wheel" rel="nofollow">Wheel</a> 是 Python 的达标标准，这之前的主流打包格式是 <strong>egg</strong> 文件。Wheel 遵循 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.python.org/dev/peps/pep-0427/"  title="PEP-0427" rel="nofollow">PEP-0427</a> 标准，其本质是一个 zip 压缩文件，zip应用程序打开它。打包与安装 Wheel 文件都依赖 wheel 库，需要先安装它：</p> <pre><code>pip install wheel </code></pre> <p>制作 wheel 文件可以使用 <code>pip wheel</code> 命令，如：</p> <pre><code>pip wheel --wheel-dir=~/whl . </code></pre> <p><code>--wheel-dir</code> 指定生成 <code>.whl</code> 文件的存储位置，最后指定包含 setup.py 文件的项目目录，示例中指定了当前目录。</p> <p>在项目目录中可以将安装依赖写入到 requirements.txt 文件中，然后用 <code>-r</code> 参数指定，在制作 <code>.whl</code> 安装包时会将 requirements.txt 里的安装依赖写入到 dist-info 里的 METADATA 文件中：</p> <pre><code>pip wheel --wheel-dir=~/whl -r requirements.txt . </code></pre> <p>也可以直接在项目目录中使用 setup.py 的 <code>bdist_wheel</code> 命令制作 wheel 文件：</p> <pre><code>python setup.py bdist_wheel </code></pre> <p>安装 wheel 文件时直接指定 .whl 文件位置即可：</p> <pre><code>pip install ~/whl/pkg-1.0.0-py3-none-any.whl </code></pre> <p>如果是在 windows 环境下，安装一些需要编译的包可能不是很容易，可以到 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.lfd.uci.edu/~gohlke/pythonlibs/"  title="https://www.lfd.uci.edu/~gohlke/pythonlibs/" rel="nofollow">https://www.lfd.uci.edu/~gohlke/pythonlibs/</a> 下载已经编译好的 whl 文件安装。</p> <h2 id="list">List</h2> <p><code>list</code> 命令由于列出已安装的包，常用的参数有：</p> <pre><code>-o, --outdated    列出可更新的包 -u, --uptodate    列出已经更新到最新版本的包 -e, --editable    列出所有可编辑的项目 -l, --local       只列出在虚拟环境中安装的包，也就是不列出全局安装的包 --user            只列出用户级别安装的包 --pre             包含预发布的版本和开发版本，默认情况下只包含稳定版本 --format          指定输出格式，包括 columns(默认), freeze, json 或 legacy </code></pre> <p>使用示例：</p> <pre><code>$ pip list Package                                           Version ------------------------------------------------- ------------------- alabaster                                         0.7.12 altair                                            4.1.0 ...  $ pip list --format=json [{"name": "alabaster", "version": "0.7.12"}, ...]  $ pip list --format=freeze alabaster==0.7.12 altair==4.1.0 ... </code></pre> <p><code>freeze</code> 输出格式与使用 freeze 命令是同样的效果：</p> <pre><code>$ pip freeze alabaster==0.7.12 altair==4.1.0 ... </code></pre> <p><code>freeze</code> 命令通常用于将环境导出为 requirements.txt，以便用 <code>-r</code> 安装指定安装：</p> <pre><code># 导出环境 pip freeze &gt; requirements.txt  # 恢复环境 pip install install -r requirements.txt </code></pre> <p>还可以使用 <code>show</code> 命令查看已安装包的信息:</p> <pre><code># 查看包信息 pip show pkg  # 查看包信息，同时列出安装的文件 pip show -f pkg pip show --files pkg </code></pre> <h2 id="config">Config</h2> <p><code>config</code> 命令可以用于管理配置，其基本用法为：</p> <pre><code>pip config [&lt;file-option&gt;] list pip config [&lt;file-option&gt;] [--editor &lt;editor-path&gt;] edit  pip config [&lt;file-option&gt;] get name pip config [&lt;file-option&gt;] set name value pip config [&lt;file-option&gt;] unset name pip config [&lt;file-option&gt;] debug </code></pre> <p>选项参数包括：</p> <pre><code>--global  使用系统全局配置 --user  使用用户配置 --site  使用当前虚拟环境配置 --editor &lt;editor&gt;  指定编辑器 </code></pre> <p>示例（配置源）：</p> <pre><code>pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/ pip config set install.trusted-host mirrors.aliyun.com </code></pre> <p>设置的配置会写入相应的配置文件中，也可以手动修改配置文件来完成配置。各平台下的配置文件位置，Unix 环境：</p> <table> <thead> <tr> <th>类型</th> <th>位置</th> </tr> </thead> <tbody> <tr> <td>Global</td> <td>/etc/pip.conf</td> </tr> <tr> <td>User</td> <td>$HOME/.config/pip/pip.conf</td> </tr> <tr> <td>Site</td> <td>$VIRTUAL_ENV/pip.conf</td> </tr> </tbody> </table> <p>MacOS 环境：</p> <table> <thead> <tr> <th>类型</th> <th>位置</th> </tr> </thead> <tbody> <tr> <td>Global</td> <td>/Library/Application Support/pip/pip.conf</td> </tr> <tr> <td>User</td> <td>$HOME/.config/pip/pip.conf</td> </tr> <tr> <td>Site</td> <td>$VIRTUAL_ENV/pip.conf</td> </tr> </tbody> </table> <p>Windows 环境：</p> <table> <thead> <tr> <th>类型</th> <th>位置</th> </tr> </thead> <tbody> <tr> <td>Global</td> <td>C:\ProgramData\pip\pip.ini</td> </tr> <tr> <td>User</td> <td>%APPDATA%\pip\pip.ini</td> </tr> <tr> <td>Site</td> <td>$VIRTUAL_ENV/pip.conf</td> </tr> </tbody> </table> <p>此外，pip 在各平台上都会优先加载 PIP_CONFIG_FILE 环境变量指定的配置，pip 加载配置文件的</p> <ul> <li>PIP_CONFIG_FILE</li> <li>Global</li> <li>User</li> <li>Site</li> </ul> <p>配置文件示例：</p> <pre><code>[global] quiet = 0 verbose = 2 timeout = 60 no-cache-dir = false index-url = https://pypi.tuna.tsinghua.edu.cn/simple/  [install] ignore-installed = true no-dependencies = yes  [freeze] timeout = 10 </code></pre> <h2 id="mirror">Mirror</h2> <p>常用镜像地址：</p> <ul> <li>官方： https://pypi.org/</li> <li>豆瓣： https://pypi.doubanio.com/simple/</li> <li>阿里云： https://mirrors.aliyun.com/pypi/simple/</li> <li>腾讯云： https://mirrors.cloud.tencent.com/pypi/simple/</li> <li>华为云： https://mirrors.huaweicloud.com/repository/pypi/simple/</li> <li>清华大学： https://pypi.tuna.tsinghua.edu.cn/simple/</li> <li>中国科学技术大学： https://pypi.mirrors.ustc.edu.cn/simple/</li> <li>华中理工大学： https://pypi.hustunique.com/</li> <li>山东理工大学： https://pypi.sdutlinux.org/</li> </ul> <p>更多使用方式可查阅 pip 官网文档：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pip.pypa.io/en/stable/"  title="pip documentation v22.0.4" rel="nofollow">pip documentation v22.0.4</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64603.htm">十大动物疫苗公司有哪些品牌名称 十大动物疫苗公司有哪些品牌名称图片</a></p>
+                                        <p>下一个：<a href="/news/article-65231.htm">宠物粮食专卖店名称大全 宠物粮食专卖店名称大全集</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-v2ray.htm" title="2月27日|最高速度19.9M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址">2月27日|最高速度19.9M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40540.htm" title="Synchronized锁及其膨胀">Synchronized锁及其膨胀</a></li>
+                        <li class="py-2"><a href="/news/article-20651.htm" title="动物接种疫苗的方法有几种图片（动物接种注意事项）">动物接种疫苗的方法有几种图片（动物接种注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-28514.htm" title="拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）">拼多多无货源怎么上货到店铺（拼多多无货源怎么卖货）</a></li>
+                        <li class="py-2"><a href="/news/article-43017.htm" title="包含成都市宠物狗领养平台电话是多少的词条">包含成都市宠物狗领养平台电话是多少的词条</a></li>
+                        <li class="py-2"><a href="/news/article-40040.htm" title="宠物粮厂家批发价格表图片（宠物粮生产厂家）">宠物粮厂家批发价格表图片（宠物粮生产厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-37589.htm" title="MySQL 存储过程和函数">MySQL 存储过程和函数</a></li>
+                        <li class="py-2"><a href="/news/article-52081.htm" title="一件代发48个货源网站质量很好怎么办（一件代发48个货源网站质量很好怎么办呢）">一件代发48个货源网站质量很好怎么办（一件代发48个货源网站质量很好怎么办呢）</a></li>
+                        <li class="py-2"><a href="/news/article-45501.htm" title="家猫轻微抓伤（家猫轻微抓伤没有出血用不用打疫苗）">家猫轻微抓伤（家猫轻微抓伤没有出血用不用打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-58122.htm" title="在Windows Service中托管ASP.NET Core并指定端口">在Windows Service中托管ASP.NET Core并指定端口</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
