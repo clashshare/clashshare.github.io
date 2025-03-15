@@ -1,0 +1,286 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-74320.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>c# 一些警告的处理方法</title>
+        <meta name="description" content="在使用.Net 6开发程序时，发现多了很多新的警告类型。这里总结一下处理方法。 CS8618 在退出构造函数时，不可为 null 的 属性“Name”必须包含非 null 值 经常遇到的有CS8618" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-74320.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="c# 一些警告的处理方法" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/d04e82ac09f0855891825c406bf51356.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:20:32" />
+    <meta property="og:updated_time" content="2025-03-15T07:20:32" />
+        <meta property="og:description" content="在使用.Net 6开发程序时，发现多了很多新的警告类型。这里总结一下处理方法。 CS8618 在退出构造函数时，不可为 null 的 属性“Name”必须包含非 null 值 经常遇到的有CS8618" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="c# 一些警告的处理方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">c# 一些警告的处理方法</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>在使用.Net 6开发程序时，发现多了很多新的警告类型。这里总结一下处理方法。</p> <h2 id="cs8618-在退出构造函数时不可为-null-的-属性name必须包含非-null-值">CS8618 在退出构造函数时，不可为 null 的 属性“Name”必须包含非 null 值</h2> <p>经常遇到的有CS8618警告：如果定义属性可能为空时，在编译时会报这个警告，比如下面的代码：</p> <pre><code>    public class Play     {         public string Name { get; set; }          public Play()         {          }</code></pre> <p>警告如下：<br /> CS8618	在退出构造函数时，不可为 null 的 属性“Name”必须包含非 null 值。请考虑将 属性 声明为可以为 null。<br /> 处理办法是将属性声明为可以为空：</p> <pre><code>    public class Play     {         public string? Name { get; set; }          public Play()         {          }     }</code></pre> <p>或者，给属性设置初始值：</p> <pre><code>    public class Play     {         public string Name { get; set; } = "";          public Play()         {          }     }</code></pre> <p>但遇到下面的情况，这两种办法就不能用了：</p> <pre><code> public class GameSocialDbContext : DbContext { 　　public DbSet&lt;GameMessage&gt; GameMessages { get; set; } 　　public DbSet&lt;Player&gt; Players { get; set; } 　　public GameSocialDbContext(DbContextOptions&lt;GameSocialDbContext&gt; options) : base(options) 　　{ 　　}  }</code></pre> <p>这种情况下，可以将属性设置default!来避免警告：</p> <pre><code>        public DbSet&lt;Game&gt; Games { get; set; } = default!;         public DbSet&lt;Player&gt; Players { get; set; } = default!;</code></pre> <h2 id="cs1998-此异步方法缺少await运算符">CS1998 此异步方法缺少await运算符</h2> <p>这种情况通常出现在重载或者实现某个异步方法时，没有可调用的异步函数。比如下面的方法：</p> <pre><code>        public async Task RemoveAsync(Player player)         {             Players.Remove(player);         }</code></pre> <p>这种情况下，可以在退出前增加 await Task.CompletedTask;来避免警告。<br /> 如果需要返回值，比如：</p> <pre><code>        public async Task&lt;List&lt;Player&gt;&gt; GetAllAsync()         {             return colTemp.AsQueryable&lt;Player&gt;().ToList();         }</code></pre> <p>这时，可以使用await Task.FromResult()作为返回值：</p> <pre><code>        public async Task&lt;List&lt;Player&gt;&gt; GetAllAsync()         {             return await Task.FromResult(colTemp.AsQueryable&lt;Player&gt;().ToList());         }</code></pre> <h2 id="cs8602-解引用可能出现空引用">CS8602 解引用可能出现空引用</h2> <p>如果采用as进行转换，可能出现这个警告：</p> <pre><code> await (handler as IEventHandler).HandleEvent(data);</code></pre> <p>可以改为强制转换：</p> <pre><code> await ((IEventHandler)handler).HandleEvent(data);</code></pre> <p>也可以使用!操作符：</p> <pre><code> await (handler as IEventHandler)!.HandleEvent(data);</code></pre> <p>还可以在调用前判断是否为空，如果为空，抛出异常。</p> <h2 id="cs8603-可能返回null引用">CS8603 可能返回null引用</h2> <p>这种警告多出现在过滤时，比如：</p> <pre><code>        public async Task&lt;Player&gt; GetPlayerByNameAsync(string name)         {             return await gameDbContext.Players                 .Include(p =&gt; p.SentFriendRequests)                 .Include(p =&gt; p.ReceievedFriendRequests).FirstOrDefaultAsync(p =&gt; p.UserName == name);         }</code></pre> <p>由于FirstOrDefault可能返回空值，所以会出现警告。可以改为使用First：</p> <pre><code>        public async Task&lt;Player&gt; GetPlayerByNameAsync(string name)         {             return await gameDbContext.Players                 .Include(p =&gt; p.SentFriendRequests)                 .Include(p =&gt; p.ReceievedFriendRequests).FirstAsync(p =&gt; p.UserName == name);         }</code></pre> <p>或者允许返回值为空：</p> <pre><code>        public async Task&lt;Player?&gt; GetPlayerByNameAsync(string name)         {             return await gameDbContext.Players                 .Include(p =&gt; p.SentFriendRequests)                 .Include(p =&gt; p.ReceievedFriendRequests).FirstOrDefaultAsync(p =&gt; p.UserName == name);         }</code></pre> <p>最后需要说明的是，警告是为了提示程序可能的潜在问题，消除警告时，需要结合具体情况确定使用哪种方式，不要为了去掉警告忽略潜在的问题。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73641.htm">附近领养宠物小猫的地方（附近领养宠物小狗）</a></p>
+                                        <p>下一个：<a href="/news/article-74321.htm">厦门领养猫咪的地方吗 厦门哪里可以领养猫</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-44514.htm" title="vue 安装sass_vue 中 node-sass  如何安装。安装sass">vue 安装sass_vue 中 node-sass  如何安装。安装sass</a></li>
+                        <li class="py-2"><a href="/news/article-62187.htm" title="Python中安装pandas出现问题总结">Python中安装pandas出现问题总结</a></li>
+                        <li class="py-2"><a href="/news/article-71648.htm" title="DeferredResult异步处理spring mvc Demo">DeferredResult异步处理spring mvc Demo</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-17-free-node-subscribe.htm" title="2月17日|最高速度20.7M/S，2025最新V2ray/Shadowrocket/Clash/SSR免费节点订阅链接地址">2月17日|最高速度20.7M/S，2025最新V2ray/Shadowrocket/Clash/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-52611.htm" title="24小时宠物医院在哪（24小时宠物店）">24小时宠物医院在哪（24小时宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-clash-windows.htm" title="1月14日|最高速度18.2M/S，2025最新Clash/SSR/Shadowrocket/V2ray免费节点订阅链接地址">1月14日|最高速度18.2M/S，2025最新Clash/SSR/Shadowrocket/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-shadowrocket-node.htm" title="1月28日|最高速度19.9M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址">1月28日|最高速度19.9M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-node-share-links.htm" title="1月15日|最高速度22.4M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址">1月15日|最高速度22.4M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-62787.htm" title="猫咪3针疫苗间隔多久打第二针好（猫咪三针疫苗间隔）">猫咪3针疫苗间隔多久打第二针好（猫咪三针疫苗间隔）</a></li>
+                        <li class="py-2"><a href="/news/article-61002.htm" title="win11系统如何关闭快捷键模式">win11系统如何关闭快捷键模式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
