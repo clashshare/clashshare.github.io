@@ -1,0 +1,286 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-82547.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>k8s 新版本 部署 Ingress-nginx controller</title>
+        <meta name="description" content="本篇主要记录一下 k8s 新版本 1.23.5 中如何搭建 ingress controller 以及里面的注意项 新版本和老版本 区别有不少 ，坑很多，只能从官网一点点撸  1.环境准备  操作系统" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-82547.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="k8s 新版本 部署 Ingress-nginx controller" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/e0139ce3e8720419307450d304dc4c0d.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:14:46" />
+    <meta property="og:updated_time" content="2025-03-27T08:14:46" />
+        <meta property="og:description" content="本篇主要记录一下 k8s 新版本 1.23.5 中如何搭建 ingress controller 以及里面的注意项 新版本和老版本 区别有不少 ，坑很多，只能从官网一点点撸  1.环境准备  操作系统" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="k8s 新版本 部署 Ingress-nginx controller">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">k8s 新版本 部署 Ingress-nginx controller</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <blockquote> <p>本篇主要记录一下 k8s 新版本 1.23.5 中如何搭建 ingress controller 以及里面的注意项</p> <p>新版本和老版本 区别有不少 ，坑很多，只能从官网一点点撸</p> </blockquote> <h3 id="1环境准备">1.环境准备</h3> <ul> <li>操作系统：Centos7 （CentOS Linux release 7.9.2009）</li> <li>Master  主节点：  1台 虚拟机</li> <li>Node 计算节点： 2台 虚拟机</li> <li>K8s version：v1.23.5 （选的较新的版本）</li> <li>Docker version：20.10.14</li> </ul> <p><strong>环境和上一篇中 kubeadm 搭建 k8s 的一致</strong></p> <h3 id="2概述">2.概述</h3> <blockquote> <p>下面从 官网摘取的对于 Ingress 的介绍</p> </blockquote> <h4 id="21-什么是-ingress">2.1 什么是 Ingress</h4> <p>Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。Ingress 可以提供负载均衡</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#ingress-v1beta1-networking-k8s-io"  target="_blank" rel="nofollow">Ingress</a> 公开了从集群外部到集群内<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.io/zh/docs/concepts/services-networking/service/"  target="_blank" rel="nofollow">服务</a>的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。</p> <p>下面是一个将所有流量都发送到同一 Service 的简单 Ingress 示例：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/030fa94ca3eb05b42b48cf16fe70ce71.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p>但是 仅创建 Ingress 资源本身没有任何效果，需要有对应的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers"  target="_blank" rel="nofollow">Ingress 控制器</a> ，你可能需要部署 Ingress 控制器，例如<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.github.io/ingress-nginx/deploy/"  target="_blank" rel="nofollow">ingress-nginx</a>。 你可以从许多<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers"  target="_blank" rel="nofollow">Ingress 控制器</a> 中进行选择。</p> <h4 id="22-什么是-ingress-controller">2.2 什么是 Ingress controller</h4> <p>为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress 控制器。k8s官网维护了 3 个Ingress控制器</p> <p>目前支持和维护<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/kubernetes-sigs/aws-load-balancer-controller#readme"  target="_blank" rel="nofollow">AWS</a>、<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://git.k8s.io/ingress-gce/README.md"  target="_blank" rel="nofollow">GCE</a> 和<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://git.k8s.io/ingress-nginx/README.md#readme"  target="_blank" rel="nofollow">Nginx</a> Ingress 控制器 ，本篇就拿 Ingress-nginx 作为控制器为例 讲解一下如何部署</p> <p><code>还有一些 社区等提供的 控制器</code></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/701be4b16b51839fd0cacb07acce66de.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h3 id="3部署-ingress-nginx-controller">3.部署 Ingress-nginx controller</h3> <blockquote> <p>本篇就拿 最常用的 Ingress-nginx 作为 Ingress的控制器，实现k8s 把请求重定向到集群内部（Cluster Ip）服务去</p> </blockquote> <h4 id="31-deployyaml--坑点">3.1 deploy.yaml  坑点</h4> <p>Ingress-nginx 官网<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kubernetes.github.io/ingress-nginx/"  target="_blank" rel="nofollow">https://kubernetes.github.io/ingress-nginx/</a> 提到了 deploy.yaml 文件</p> <p>Ingress-nginx 新版本的 depoly.yaml 有些不同，需要拉取下面2个镜像</p> <p>k8s.gcr.io/ingress-nginx/controller:v1.1.2</p> <p>k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1</p> <p>多半是下载不到的，所以需要 自己替换一下 ，可以去docker hub 上找到对应的 镜像文件</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/681c44e11c9c72d5a0c1a13ac9fe2dc0.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p><code>总结 坑点</code>：</p> <ul> <li>新版本中 提供了 IngressClass ，需要在编写 Ingress 的时候指定</li> <li>Image 加载不到，需要手动去 docker hub 上找其他的 并且修改 deploy.yaml文件</li> <li>把 ingress-nginx-controller 使用 hostNetwork: true 进行部署 比 NodePort  减少一层转发，但是需要指定 选择打了标签的 node    nodeSelector: app: ingress</li> </ul> <h4 id="32-deployyaml-样例我自己修改后的-可以参考">3.2 deploy.yaml 样例（我自己修改后的 可以参考）</h4> <pre><code class="language-yaml">#GENERATED FOR K8S 1.20 apiVersion: v1 kind: Namespace metadata:   labels:     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/name: ingress-nginx   name: ingress-nginx --- apiVersion: v1 automountServiceAccountToken: true kind: ServiceAccount metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx   namespace: ingress-nginx --- apiVersion: v1 kind: ServiceAccount metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade,post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission   namespace: ingress-nginx --- apiVersion: rbac.authorization.k8s.io/v1 kind: Role metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx   namespace: ingress-nginx rules:   - apiGroups:       - ""     resources:       - namespaces     verbs:       - get   - apiGroups:       - ""     resources:       - configmaps       - pods       - secrets       - endpoints     verbs:       - get       - list       - watch   - apiGroups:       - ""     resources:       - services     verbs:       - get       - list       - watch   - apiGroups:       - networking.k8s.io     resources:       - ingresses     verbs:       - get       - list       - watch   - apiGroups:       - networking.k8s.io     resources:       - ingresses/status     verbs:       - update   - apiGroups:       - networking.k8s.io     resources:       - ingressclasses     verbs:       - get       - list       - watch   - apiGroups:       - ""     resourceNames:       - ingress-controller-leader     resources:       - configmaps     verbs:       - get       - update   - apiGroups:       - ""     resources:       - configmaps     verbs:       - create   - apiGroups:       - ""     resources:       - events     verbs:       - create       - patch --- apiVersion: rbac.authorization.k8s.io/v1 kind: Role metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade,post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission   namespace: ingress-nginx rules:   - apiGroups:       - ""     resources:       - secrets     verbs:       - get       - create --- apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRole metadata:   labels:     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx rules:   - apiGroups:       - ""     resources:       - configmaps       - endpoints       - nodes       - pods       - secrets       - namespaces     verbs:       - list       - watch   - apiGroups:       - ""     resources:       - nodes     verbs:       - get   - apiGroups:       - ""     resources:       - services     verbs:       - get       - list       - watch   - apiGroups:       - networking.k8s.io     resources:       - ingresses     verbs:       - get       - list       - watch   - apiGroups:       - ""     resources:       - events     verbs:       - create       - patch   - apiGroups:       - networking.k8s.io     resources:       - ingresses/status     verbs:       - update   - apiGroups:       - networking.k8s.io     resources:       - ingressclasses     verbs:       - get       - list       - watch --- apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRole metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade,post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission rules:   - apiGroups:       - admissionregistration.k8s.io     resources:       - validatingwebhookconfigurations     verbs:       - get       - update --- apiVersion: rbac.authorization.k8s.io/v1 kind: RoleBinding metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx   namespace: ingress-nginx roleRef:   apiGroup: rbac.authorization.k8s.io   kind: Role   name: ingress-nginx subjects:   - kind: ServiceAccount     name: ingress-nginx     namespace: ingress-nginx --- apiVersion: rbac.authorization.k8s.io/v1 kind: RoleBinding metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade,post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission   namespace: ingress-nginx roleRef:   apiGroup: rbac.authorization.k8s.io   kind: Role   name: ingress-nginx-admission subjects:   - kind: ServiceAccount     name: ingress-nginx-admission     namespace: ingress-nginx --- apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRoleBinding metadata:   labels:     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx roleRef:   apiGroup: rbac.authorization.k8s.io   kind: ClusterRole   name: ingress-nginx subjects:   - kind: ServiceAccount     name: ingress-nginx     namespace: ingress-nginx --- apiVersion: rbac.authorization.k8s.io/v1 kind: ClusterRoleBinding metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade,post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission roleRef:   apiGroup: rbac.authorization.k8s.io   kind: ClusterRole   name: ingress-nginx-admission subjects:   - kind: ServiceAccount     name: ingress-nginx-admission     namespace: ingress-nginx --- apiVersion: v1 data:   allow-snippet-annotations: "true" kind: ConfigMap metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-controller   namespace: ingress-nginx --- apiVersion: v1 kind: Service metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-controller   namespace: ingress-nginx spec:   externalTrafficPolicy: Local   ipFamilies:     - IPv4   ipFamilyPolicy: SingleStack   ports:     - appProtocol: http       name: http       port: 80       protocol: TCP       targetPort: http     - appProtocol: https       name: https       port: 443       protocol: TCP       targetPort: https   selector:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/name: ingress-nginx   type: LoadBalancer --- apiVersion: v1 kind: Service metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-controller-admission   namespace: ingress-nginx spec:   ports:     - appProtocol: https       name: https-webhook       port: 443       targetPort: webhook   selector:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/name: ingress-nginx   type: ClusterIP --- apiVersion: apps/v1 kind: Deployment metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-controller   namespace: ingress-nginx spec:   minReadySeconds: 0   revisionHistoryLimit: 10   selector:     matchLabels:       app.kubernetes.io/component: controller       app.kubernetes.io/instance: ingress-nginx       app.kubernetes.io/name: ingress-nginx   template:     metadata:       labels:         app.kubernetes.io/component: controller         app.kubernetes.io/instance: ingress-nginx         app.kubernetes.io/name: ingress-nginx     spec:       hostNetwork: true #修改  ingress-nginx-controller 为 hostNetwork模式        nodeSelector: #选择 node label 中有 app=ingress的节点进行部署         app: ingress       containers:         - args:             - /nginx-ingress-controller             - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller             - --election-id=ingress-controller-leader             - --controller-class=k8s.io/ingress-nginx             - --ingress-class=nginx             - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller             - --validating-webhook=:8443             - --validating-webhook-certificate=/usr/local/certificates/cert             - --validating-webhook-key=/usr/local/certificates/key           env:             - name: POD_NAME               valueFrom:                 fieldRef:                   fieldPath: metadata.name             - name: POD_NAMESPACE               valueFrom:                 fieldRef:                   fieldPath: metadata.namespace             - name: LD_PRELOAD               value: /usr/local/lib/libmimalloc.so           image: k8s.gcr.io/ingress-nginx/controller:v1.1.2 #修改镜像地址           imagePullPolicy: IfNotPresent           lifecycle:             preStop:               exec:                 command:                   - /wait-shutdown           livenessProbe:             failureThreshold: 5             httpGet:               path: /healthz               port: 10254               scheme: HTTP             initialDelaySeconds: 10             periodSeconds: 10             successThreshold: 1             timeoutSeconds: 1           name: controller           ports:             - containerPort: 80               name: http               protocol: TCP             - containerPort: 443               name: https               protocol: TCP             - containerPort: 8443               name: webhook               protocol: TCP           readinessProbe:             failureThreshold: 3             httpGet:               path: /healthz               port: 10254               scheme: HTTP             initialDelaySeconds: 10             periodSeconds: 10             successThreshold: 1             timeoutSeconds: 1           resources:             requests:               cpu: 100m               memory: 90Mi           securityContext:             allowPrivilegeEscalation: true             capabilities:               add:                 - NET_BIND_SERVICE               drop:                 - ALL             runAsUser: 101           volumeMounts:             - mountPath: /usr/local/certificates/               name: webhook-cert               readOnly: true       dnsPolicy: ClusterFirst       nodeSelector:         kubernetes.io/os: linux       serviceAccountName: ingress-nginx       terminationGracePeriodSeconds: 300       volumes:         - name: webhook-cert           secret:             secretName: ingress-nginx-admission --- apiVersion: batch/v1 kind: Job metadata:   annotations:     helm.sh/hook: pre-install,pre-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission-create   namespace: ingress-nginx spec:   template:     metadata:       labels:         app.kubernetes.io/component: admission-webhook         app.kubernetes.io/instance: ingress-nginx         app.kubernetes.io/managed-by: Helm         app.kubernetes.io/name: ingress-nginx         app.kubernetes.io/part-of: ingress-nginx         app.kubernetes.io/version: 1.1.2         helm.sh/chart: ingress-nginx-4.0.18       name: ingress-nginx-admission-create     spec:       containers:         - args:             - create             - --host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.$(POD_NAMESPACE).svc             - --namespace=$(POD_NAMESPACE)             - --secret-name=ingress-nginx-admission           env:             - name: POD_NAMESPACE               valueFrom:                 fieldRef:                   fieldPath: metadata.namespace           image: k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 #修改镜像地址           imagePullPolicy: IfNotPresent           name: create           securityContext:             allowPrivilegeEscalation: false       nodeSelector:         kubernetes.io/os: linux       restartPolicy: OnFailure       securityContext:         fsGroup: 2000         runAsNonRoot: true         runAsUser: 2000       serviceAccountName: ingress-nginx-admission --- apiVersion: batch/v1 kind: Job metadata:   annotations:     helm.sh/hook: post-install,post-upgrade     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission-patch   namespace: ingress-nginx spec:   template:     metadata:       labels:         app.kubernetes.io/component: admission-webhook         app.kubernetes.io/instance: ingress-nginx         app.kubernetes.io/managed-by: Helm         app.kubernetes.io/name: ingress-nginx         app.kubernetes.io/part-of: ingress-nginx         app.kubernetes.io/version: 1.1.2         helm.sh/chart: ingress-nginx-4.0.18       name: ingress-nginx-admission-patch     spec:       containers:         - args:             - patch             - --webhook-name=ingress-nginx-admission             - --namespace=$(POD_NAMESPACE)             - --patch-mutating=false             - --secret-name=ingress-nginx-admission             - --patch-failure-policy=Fail           env:             - name: POD_NAMESPACE               valueFrom:                 fieldRef:                   fieldPath: metadata.namespace           image: k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 #修改镜像地址           imagePullPolicy: IfNotPresent           name: patch           securityContext:             allowPrivilegeEscalation: false       nodeSelector:         kubernetes.io/os: linux       restartPolicy: OnFailure       securityContext:         fsGroup: 2000         runAsNonRoot: true         runAsUser: 2000       serviceAccountName: ingress-nginx-admission --- apiVersion: networking.k8s.io/v1 kind: IngressClass metadata:   labels:     app.kubernetes.io/component: controller     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: nginx spec:   controller: k8s.io/ingress-nginx --- apiVersion: admissionregistration.k8s.io/v1 kind: ValidatingWebhookConfiguration metadata:   labels:     app.kubernetes.io/component: admission-webhook     app.kubernetes.io/instance: ingress-nginx     app.kubernetes.io/managed-by: Helm     app.kubernetes.io/name: ingress-nginx     app.kubernetes.io/part-of: ingress-nginx     app.kubernetes.io/version: 1.1.2     helm.sh/chart: ingress-nginx-4.0.18   name: ingress-nginx-admission webhooks:   - admissionReviewVersions:       - v1     clientConfig:       service:         name: ingress-nginx-controller-admission         namespace: ingress-nginx         path: /networking/v1/ingresses     failurePolicy: Fail     matchPolicy: Equivalent     name: validate.nginx.ingress.kubernetes.io     rules:       - apiGroups:           - networking.k8s.io         apiVersions:           - v1         operations:           - CREATE           - UPDATE         resources:           - ingresses     sideEffects: None</code></pre> <h3 id="4部署-ingress-nginx">4.部署 Ingress-nginx</h3> <h4 id="41-准备工作">4.1 准备工作</h4> <blockquote> <p>给 node2 节点打了app=ingress标签，因为上面的ingress-nginx-controller 使用的是 hostNetwork 模式（只会放pod真实pod 的 端口） + nodeSelector</p> </blockquote> <pre><code class="language-shell">kubectl label node kubec-node-2 app=ingress</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/2799ed9a68793cf3334cea92bca2e908.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h4 id="42-部署-kubect-apply--f">4.2 部署 kubect apply -f</h4> <pre><code class="language-shell">kubectl apply -f deploy.yaml #通过 kubectl apply 命令进行部署 ，前提是镜像准备好，否则GG</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/bb0645efb55c47203d27a0c53571cd9e.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h4 id="43-查看状态">4.3 查看状态</h4> <pre><code class="language-shell">kubectl get all -n ingress-nginx #查看 ingress-nginx namespace的 部署情况</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/315277afeb88dacfbbf4882170844515.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <pre><code class="language-shell">kubectl logs -f ingress-nginx-controller-744f6d5bdf-tl6g4 -n ingress-nginx # 查看 ingress-nginx-controller 的 日志情况</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/31d87024e6a1102a10f1441085254cee.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h4 id="44-测试访问">4.4 测试访问</h4> <p>直接访问 kube-node-2的 ip 即可，因为 ingress-nginx-controller 默认是 监听 80端口，由于上面的    nodeSelector: #选择 node label 中有 app=ingress的节点进行部署 ,而 kube-node-2 是被打了标签的节点node</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3fb7595faaa84963c322279aab3d56e6.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p>可以看到 其实就是一个 nginx</p> <h3 id="5部署一个-tomcat-测试-ingress-nginx">5.部署一个 tomcat 测试 Ingress-nginx</h3> <blockquote> <p>通过部署一个tomcat ，测试Ingress-nginx的代理 是否生效</p> </blockquote> <h4 id="51-编写-deploy-tomcatyaml">5.1 编写 deploy-tomcat.yaml</h4> <p>主要编写</p> <ul> <li> <p>Deployment 部署tomcat:8.0-alpine，</p> </li> <li> <p>Service 暴露 tomcat pod</p> </li> <li> <p>一个 Ingress 资源它规定 访问 tomcat.demo.com 这个域名的 所有请求 / 都转发到  tomcat-demo Service 上</p> <p>IngressClass 新版本提供的资源 ，用于在定义 Ingress资源的时候 指定，在集群中有多个 Ingress controller 的时候很有用处</p> </li> </ul> <pre><code class="language-yaml">apiVersion: apps/v1 kind: Deployment metadata:   name: tomcat-demo spec:   selector:     matchLabels:       app: tomcat-demo   replicas: 1   template:     metadata:       labels:         app: tomcat-demo     spec:       containers:       - name: tomcat-demo         image: tomcat:8.0-alpine         ports:         - containerPort: 8080 ---  apiVersion: v1 kind: Service metadata:   name: tomcat-demo spec:   selector:     app: tomcat-demo #选择 tomcat-demo pod    ports:   - port: 80 #对外暴露 80 端口     protocol: TCP     targetPort: 8080 # tomcat 端口   ---  apiVersion: networking.k8s.io/v1 kind: Ingress metadata:   name: tomcat-demo spec:   defaultBackend:     service:       name: default-http-backend #！！！ 指定 默认的backend服务        port:        	number: 80    ingressClassName: nginx #！！！重点 需要指定 哪个 IngressClass 可以看上面的 deploy.yaml 最后定义的   rules:   - host: tomcat.demo.com #所有的  tomcat.demo.com请求都转发到  Service tomcat-demo     http:       paths:       - pathType: Prefix         path: "/"         backend:           service:             name: tomcat-demo             port:                number: 80                --- #定义一个 default-http-backend 当没有被Ingress规定的请求 负载给 它 apiVersion: apps/v1 kind: Deployment metadata:   name: default-http-backend   labels:     app: default-http-backend spec:   replicas: 1   selector:     matchLabels:       app: default-http-backend   template:     metadata:       labels:         app: default-http-backend     spec:       terminationGracePeriodSeconds: 60       containers:       - name: default-http-backend         # Any image is permissible as long as:         # 1. It serves a 404 page at /         # 2. It serves 200 on a /healthz endpoint         image: registry.cn-hangzhou.aliyuncs.com/google_containers/defaultbackend:1.4         livenessProbe:           httpGet:             path: /healthz             port: 8080             scheme: HTTP           initialDelaySeconds: 30           timeoutSeconds: 5         ports:         - containerPort: 8080         resources:           limits:             cpu: 10m             memory: 20Mi           requests:             cpu: 10m             memory: 20Mi ---   apiVersion: v1 kind: Service metadata:   name: default-http-backend   labels:     app: default-http-backend spec:   ports:   - port: 80     targetPort: 8080   selector:     app: default-http-backend</code></pre> <h4 id="52-部署-tomcat--ingress--default-http-backend">5.2 部署 tomcat + ingress + default-http-backend</h4> <blockquote> <p>部署上面的文件 即可</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f0640452d276ed1e9d30ed0b7d8da04d.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p>查看 部署情况 可以看到都是Running 了</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/eebac7d19cdeebbf8a621cde3c1b56ae.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h4 id="53-测试--通过ingress-nginx-能否访问到tomcat">5.3 测试  通过Ingress-nginx 能否访问到tomcat</h4> <p>由于我们 ingress 资源配置的 域名 是 tomcat.demo.com ，所以我需要把它添加到 宿主机的hosts 文件中，如下</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/02ceebdf90ea7481c11e75ef1c0d8545.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p>那么按照预期，当我访问 tomcat.demo.com 的时候其实就是访问 192.168.56.22 上的 ingress-nginx-controller 这个nginx，那么根据 ingress 的 资源的设定 它会把请求 转发到 Service tomcat-demo 上，从而访问到 tomcat 界面</p> <p>当我访问 api.demo.com 的时候 由于没有对这个域名进行处理 那么会默认把请求转发到 default-http-backend 上</p> <p><code>访问 tomcat.demo.com</code></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c72667c209915439690c60c718d89902.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <p><code>访问 api.demo.com</code></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5f9b91a9108e17351884291680c3bf68.jpg" alt="k8s 新版本 部署 Ingress-nginx controller"></p> <h3 id="总结">总结</h3> <p>至此在k8s 1.23.5上 已经成功部署了 Ingress-nginx ，并且通过部署一个tomcat服务测试了 Ingress-nginx 已经代理成功了，由于不管是 k8s 新版本和 Ingress-nginx 新版本都有些变化 所有很些坑，是我从官网不断摸索的，下面总结一下坑点</p> <ul> <li> <p>image 镜像需要自己从docker hub 上准备好 ，或者直接修改Ingress-nginx 的  deploy.yaml</p> <p><strong>k8s.gcr.io/ingress-nginx/controller:v1.1.2</strong></p> <p><strong>k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1</strong></p> </li> <li> <p>重要！新版本中 提供了 IngressClass ，需要在编写 Ingress 的时候指定</p> </li> <li> <p>把 ingress-nginx-controller 使用 hostNetwork: true 进行部署 比 NodePort  减少一层转发，但是需要指定 选择打了标签的 node    nodeSelector: app: ingress</p> </li> <li> <p>通过 Ingress  spec.defaultBackend 指定 默认服务，并且需要保持在同一个 namespace</p> <pre><code class="language-yaml">spec: 	defaultBackend:     service:       name: default-http-backend #！！！ 指定 默认的backend服务        port:        	number: 80</code></pre> </li> <li> <p>vscode k8s 插件 快捷生成Depoyment 的时候 自定添加了资源限制，导致部署tomcat的时候 总是启动不起来..</p> <p>导致tomcat pod 状态 CrashLoopBackOff，从而导致 通过 Ingress-nginx 无法访问到tomcat</p> <pre><code class="language-yaml">resources:   limits:     memory: "128Mi" #不够部署tomcat 内存     cpu: "500m"</code></pre> </li> </ul> <blockquote> <p>欢迎大家访问 个人博客<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.askajohnny.com"  target="_blank" rel="nofollow">Johnny小屋</a></p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81801.htm">动物疫苗的正确使用方法有哪些视频 动物疫苗的正确使用方法有哪些视频讲解</a></p>
+                                        <p>下一个：<a href="/news/article-82548.htm">给动物注射疫苗是属于人工被动免疫（给动物注射疫苗属于什么免疫）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40541.htm" title="宠物粮食市场竞争与效益分析报告（宠物粮食市场份额）">宠物粮食市场竞争与效益分析报告（宠物粮食市场份额）</a></li>
+                        <li class="py-2"><a href="/news/article-67751.htm" title="动物防疫疫苗管理要点是什么呢英语（动物防疫疫苗管理要点是什么呢英语翻译）">动物防疫疫苗管理要点是什么呢英语（动物防疫疫苗管理要点是什么呢英语翻译）</a></li>
+                        <li class="py-2"><a href="/news/article-77007.htm" title="猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）">猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）</a></li>
+                        <li class="py-2"><a href="/news/article-44514.htm" title="vue 安装sass_vue 中 node-sass  如何安装。安装sass">vue 安装sass_vue 中 node-sass  如何安装。安装sass</a></li>
+                        <li class="py-2"><a href="/news/article-66467.htm" title="狗粮颗粒制作方法配方大全（最简颗粒狗粮制作方法）">狗粮颗粒制作方法配方大全（最简颗粒狗粮制作方法）</a></li>
+                        <li class="py-2"><a href="/news/article-56989.htm" title="国内宠物粮食品牌排行榜（国内十大宠物粮食品牌）">国内宠物粮食品牌排行榜（国内十大宠物粮食品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-53686.htm" title="家猫体内驱虫多久一次比较好（家猫体内驱虫多久一次比较好一点）">家猫体内驱虫多久一次比较好（家猫体内驱虫多久一次比较好一点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日|最高速度20.6M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">1月16日|最高速度20.6M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37091.htm" title="领养狗狗要签协议吗 领养狗狗要签协议吗合法吗">领养狗狗要签协议吗 领养狗狗要签协议吗合法吗</a></li>
+                        <li class="py-2"><a href="/news/article-38056.htm" title="重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）">重庆有宠物领养中心吗（重庆有宠物领养中心吗现在）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
