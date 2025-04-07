@@ -1,0 +1,285 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-90445.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>C#开发Winform实现学生管理系统_C#教程</title>
+        <meta name="description" content="一、案例功能的实现 数据：  --专业  create table ProfessionInfo  (  	ProfessionID int primary key identity(1,1), --" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-90445.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="C#开发Winform实现学生管理系统_C#教程" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/6899f93ba961c53ca640080d1e79ca18.webp" />
+        <meta property="og:release_date" content="2025-04-07T09:02:27" />
+    <meta property="og:updated_time" content="2025-04-07T09:02:27" />
+        <meta property="og:description" content="一、案例功能的实现 数据：  --专业  create table ProfessionInfo  (  	ProfessionID int primary key identity(1,1), --" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C#开发Winform实现学生管理系统_C#教程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">C#开发Winform实现学生管理系统_C#教程</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>一、案例功能的实现</h2> <p>数据：</p> <div class="ay1code"> <pre class="brush:sql;">--专业  create table ProfessionInfo  (  	ProfessionID int primary key identity(1,1), --专业编号  	professionName varchar(50) not null unique --专业名称  )  --学生  create table StudentInfo  (  	StuID varchar(20) primary key,  --学生学号  	StuName varchar(50) not null,		--学生姓名  	StuAge int not null check(StuAge &gt; 0 and StuAge &lt; 130), --学生年龄  	StuSex char(2) not null check(StuSex in('男','女')),  --学生性别  	StuHobby nvarchar(100), --爱好  	ProfessionID int not null references ProfessionInfo(ProfessionID), --所属专业编号  )  --添加专业信息  insert into ProfessionInfo(professionName) values('电子竞技')  insert into ProfessionInfo(professionName) values('软件开发')  insert into ProfessionInfo(professionName) values('医疗护理')  --插入学生信息  insert into StudentInfo(StuID,StuName,StuAge,StuSex,StuHobby,ProfessionID)  values('001','刘备',18,'男','',1)  insert into StudentInfo(StuID,StuName,StuAge,StuSex,StuHobby,ProfessionID)  values('002','关羽',20,'男','',2)  insert into StudentInfo(StuID,StuName,StuAge,StuSex,StuHobby,ProfessionID)  values('003','张飞',19,'男','',2)  insert into StudentInfo(StuID,StuName,StuAge,StuSex,StuHobby,ProfessionID)  values('004','孙尚香',17,'女','',3)</pre> </div> <p>业务需求：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220504/6f1f88489992ae604d0d4de6d00bd758.jpg"></p> <p>（1）专业下拉框绑定专业表数据，网格控件绑定学生数据，并且点击"搜索"按钮可以多条件组合查询。</p> <p>（2）选中某一行，右键可以弹出"删除"菜单，点击"删除"菜单可以删除学生数据。</p> <p>（3）点击"新增"按钮，弹出新增窗体，在此窗体中完成学生的新增操作。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220504/8b6344c7fa794e3085e53c23a9d594a2.jpg"></p> <p>（4）选中某一行，点击"编辑"按钮，弹出编辑窗体，在此窗体中完成数据的修改。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220504/bf099f06dbf5130a1aeaf8802f5524a7.jpg"></p> <p>备注：其中性别的单选框，以及爱好的多选框分别用两个Pannel容器包含。</p> <h3><strong>实现代码：</strong></h3> <p>（1）查询窗体绑定专业信息、绑定学生信息以及搜索功能代码：</p> <div class="ay1code"> <pre class="brush:csharp;">#region 绑定专业信息到下拉框  private void BindProfession()  {      DataTable dt = new DataTable();      DBHelper.PrepareSql("select * from ProfessionInfo");      dt = DBHelper.ExecQuery();      DataRow dr = dt.NewRow();      dr["ProfessionID"] = 0;      dr["professionName"] = "--请选择--";      dt.Rows.InsertAt(dr, 0);      this.cmbPro.DataSource = dt;      this.cmbPro.DisplayMember = "professionName";      this.cmbPro.ValueMember = "ProfessionID";  }  #endregion    #region 绑定学生数据  private void BindData()  {      string sql = "select * from StudentInfo inner join ProfessionInfo on StudentInfo.ProfessionID=ProfessionInfo.ProfessionID  where 1 = 1 ";      if(!this.cmbPro.SelectedValue.ToString().Equals("0"))          sql += " and StudentInfo.ProfessionID = " + this.cmbPro.SelectedValue.ToString();      if(!this.txtName.Text.Equals(""))          sql += " and StuName like '%" + this.txtName.Text + "%'";      this.dataGridView1.AutoGenerateColumns = false;      DBHelper.PrepareSql(sql);      this.dataGridView1.DataSource = DBHelper.ExecQuery();  }  #endregion    private void Form1_Load(object sender, EventArgs e)  {      BindProfession();      BindData();  }    private void btSearch_Click(object sender, EventArgs e)  {  	BindData();  }</pre> </div> <p>（2）删除菜单代码：</p> <div class="ay1code"> <pre class="brush:csharp;">private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)  {      //添加是否确定删除的对话框      DialogResult result = MessageBox.Show("确定要删除数据吗，删除之后无法恢复！", "提示框",          MessageBoxButtons.OKCancel, MessageBoxIcon.Question);      if (result == DialogResult.Cancel)          return;      string stuid = this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString();      string sql = "delete from StudentInfo where StuID = @StuID";      DBHelper.PrepareSql(sql);      DBHelper.SetParameter("StuID", stuid);      int rowCount = DBHelper.ExecNonQuery();      if (rowCount == 1)          MessageBox.Show("删除成功!");      else          MessageBox.Show("删除失败!");      BindData();  }</pre> </div> <p>（3）添加学生信息窗体代码：</p> <div class="ay1code"> <pre class="brush:csharp;">#region 绑定专业信息到下拉框  private void BindProfession()  {      DataTable dt = new DataTable();      DBHelper.PrepareSql("select * from ProfessionInfo");      dt = DBHelper.ExecQuery();      DataRow dr = dt.NewRow();      dr["ProfessionID"] = 0;      dr["professionName"] = "--请选择--";      dt.Rows.InsertAt(dr, 0);      this.cmbPro.DataSource = dt;      this.cmbPro.DisplayMember = "professionName";      this.cmbPro.ValueMember = "ProfessionID";  }  #endregion  private void FrmAdd_Load(object sender, EventArgs e)  {      BindProfession();  }    private void btAdd_Click(object sender, EventArgs e)  {      string sql = "insert into StudentInfo(StuID,StuName,StuAge,StuSex,StuHobby,ProfessionID) values(@StuID,@StuName,@StuAge,@StuSex,@StuHobby,@ProfessionID)";      DBHelper.PrepareSql(sql);      DBHelper.SetParameter("StuID", this.txtId.Text);      DBHelper.SetParameter("StuName",this.txtName.Text);      DBHelper.SetParameter("StuAge",this.txtAge.Text);      //性别处理      string sex = "";      if (this.rbBoy.Checked == true) sex = this.rbBoy.Text;      if (this.rbGirl.Checked == true) sex = this.rbGirl.Text;      DBHelper.SetParameter("StuSex", sex);      //爱好处理      string hobby = "";      foreach (CheckBox ck in this.panel2.Controls)      {          if (ck.Checked == true)          {              if (!hobby.Equals(""))                  hobby += ",";              hobby += ck.Text;          }      }      DBHelper.SetParameter("StuHobby", hobby);      DBHelper.SetParameter("ProfessionID",this.cmbPro.SelectedValue.ToString());      int rowCount = DBHelper.ExecNonQuery();      if (rowCount == 1)      {          MessageBox.Show("新增成功!");          this.Close();      }      else      {          MessageBox.Show("新增失败!");      }  }</pre> </div> <p>（4）编辑学生信息窗体代码：</p> <div class="ay1code"> <pre class="brush:csharp;">public string StuID { get; set; } //学生编号  #region 绑定专业信息到下拉框  private void BindProfession()  {      DataTable dt = new DataTable();      DBHelper.PrepareSql("select * from ProfessionInfo");      dt = DBHelper.ExecQuery();      DataRow dr = dt.NewRow();      dr["ProfessionID"] = 0;      dr["professionName"] = "--请选择--";      dt.Rows.InsertAt(dr, 0);      this.cmbPro.DataSource = dt;      this.cmbPro.DisplayMember = "professionName";      this.cmbPro.ValueMember = "ProfessionID";  }  #endregion  private void BindDetail()  {      string sql = "select * from StudentInfo where StuID = " + this.StuID;      DBHelper.PrepareSql(sql);      DataTable dt = new DataTable();      dt = DBHelper.ExecQuery();      this.txtId.Text = dt.Rows[0]["StuID"].ToString();      this.txtName.Text = dt.Rows[0]["StuName"].ToString();      this.txtAge.Text = dt.Rows[0]["StuAge"].ToString();      this.cmbPro.SelectedValue = dt.Rows[0]["ProfessionID"].ToString();      //性别处理      if (dt.Rows[0]["StuSex"].ToString().Equals("男"))          this.rbBoy.Checked = true;      else          this.rbGirl.Checked = true;      //爱好处理      string[] arrHobby = dt.Rows[0]["StuHobby"].ToString().Split(',');      foreach (string hobby in arrHobby)      {          foreach (CheckBox ck in this.panel2.Controls)          {              if (ck.Text.Equals(hobby))                  ck.Checked = true;          }      }    }  private void FrmEdit_Load(object sender, EventArgs e)  {      BindProfession();      BindDetail();  }    private void btUpdate_Click(object sender, EventArgs e)  {      string sql = "update StudentInfo set StuName=@StuName,StuAge=@StuAge,StuSex=@StuSex,StuHobby=@StuHobby,ProfessionID=@ProfessionID where StuID=@StuID";      DBHelper.PrepareSql(sql);      DBHelper.SetParameter("StuName", this.txtName.Text);      DBHelper.SetParameter("StuAge", this.txtAge.Text);      //性别处理      string sex = "";      if (this.rbBoy.Checked == true) sex = this.rbBoy.Text;      if (this.rbGirl.Checked == true) sex = this.rbGirl.Text;      DBHelper.SetParameter("StuSex", sex);      //爱好处理      string hobby = "";      foreach (CheckBox ck in this.panel2.Controls)      {          if (ck.Checked == true)          {              if (!hobby.Equals(""))                  hobby += ",";              hobby += ck.Text;          }      }      DBHelper.SetParameter("StuHobby", hobby);      DBHelper.SetParameter("ProfessionID", this.cmbPro.SelectedValue.ToString());      DBHelper.SetParameter("StuID", this.StuID);      int rowCount = DBHelper.ExecNonQuery();      if (rowCount == 1)      {          MessageBox.Show("修改成功!");          this.Close();      }      else      {          MessageBox.Show("修改失败!");      }  }</pre> </div> <p>（5）查询窗体中"新增"和"编辑"按钮代码：</p> <div class="ay1code"> <pre class="brush:csharp;">private void btAdd_Click(object sender, EventArgs e)  {      FrmAdd frm = new FrmAdd();      //frm.Owner = this;      frm.Show();  }  private void btEdit_Click(object sender, EventArgs e)  {      string stuid = this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString();      FrmEdit frm = new FrmEdit();      frm.StuID = stuid;      frm.Show();  }</pre> </div> <h2>二、补充：连接字符串配置</h2> <p>将数据库连接字符串直接写在C#代码中，如果连接字符串需要发生改变，必须在C#代码中修改，并且重新进行编译的操作，给软件实施带来了麻烦。</p> <p>解决此问题，可以将数据库连接字符串存放在配置文件中。</p> <p>（1）在项目中找到App.config文件，如果没有此文件可以添加一个应用程序配置文件，在此配置文件的configuration节点内部添加如下配置：</p> <div class="ay1code"> <pre class="brush:xml;">&lt;connectionStrings&gt;  	&lt;add name="DefaultConn" connectionString="server=.;database=DBTEST;uid=sa;pwd=123456;"/&gt;  &lt;/connectionStrings&gt;</pre> </div> <p>（2）给项目添加引用"System.Configuration"，并且将C#中连接字符串的赋值修改如下：</p> <div class="ay1code"> <pre class="brush:csharp;">public static string connStr = ConfigurationManager.ConnectionStrings["DefaultConn"].ConnectionString;</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-89717.htm">宠物粮加工厂投资成本高吗知乎（宠物粮食加工厂挣钱吗）</a></p>
+                                        <p>下一个：<a href="/news/article-90447.htm">动物医院哪里好点（动物医院哪个好）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-65813.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                        <li class="py-2"><a href="/news/article-67100.htm" title="被猫抓伤5天了***晚不晚（被猫抓了五天了打疫苗来得及吗）">被猫抓伤5天了***晚不晚（被猫抓了五天了打疫苗来得及吗）</a></li>
+                        <li class="py-2"><a href="/news/article-89717.htm" title="宠物粮加工厂投资成本高吗知乎（宠物粮食加工厂挣钱吗）">宠物粮加工厂投资成本高吗知乎（宠物粮食加工厂挣钱吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-node-subscribe.htm" title="4月1日|最高速度21.7M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址">4月1日|最高速度21.7M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-subscribe-node.htm" title="3月26日|最高速度19.4M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址">3月26日|最高速度19.4M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-90445.htm" title="C#开发Winform实现学生管理系统_C#教程">C#开发Winform实现学生管理系统_C#教程</a></li>
+                        <li class="py-2"><a href="/news/article-74320.htm" title="c# 一些警告的处理方法">c# 一些警告的处理方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-subscribe-node.htm" title="3月23日|最高速度19M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址">3月23日|最高速度19M/S，2025最新SSR/Shadowrocket/V2ray/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-77007.htm" title="猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）">猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）</a></li>
+                        <li class="py-2"><a href="/news/article-77008.htm" title="南京宠物猫领养中心在哪里啊（南京宠物领养吧）">南京宠物猫领养中心在哪里啊（南京宠物领养吧）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
