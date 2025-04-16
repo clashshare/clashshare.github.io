@@ -1,0 +1,285 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-97133.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring JDBC-NamedParameterJdbcTemplate模板类</title>
+        <meta name="description" content="概述 示例  BeanPropertySqlParameterSource 使用示例 MapSqlParameterSource使用示例   NamedParameterJdbcTemplate 支持" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-97133.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Spring JDBC-NamedParameterJdbcTemplate模板类" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/c1048e2e47dc26b3a293efd89fa87494.webp" />
+        <meta property="og:release_date" content="2025-04-16T08:39:53" />
+    <meta property="og:updated_time" content="2025-04-16T08:39:53" />
+        <meta property="og:description" content="概述 示例  BeanPropertySqlParameterSource 使用示例 MapSqlParameterSource使用示例   NamedParameterJdbcTemplate 支持" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring JDBC-NamedParameterJdbcTemplate模板类">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Spring JDBC-NamedParameterJdbcTemplate模板类</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <div class="toc"> <ul> <li><a href="#%E6%A6%82%E8%BF%B0" rel="nofollow">概述</a></li> <li><a href="#%E7%A4%BA%E4%BE%8B" rel="nofollow">示例</a> <ul> <li><a href="#beanpropertysqlparametersource-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B" rel="nofollow">BeanPropertySqlParameterSource 使用示例</a></li> <li><a href="#mapsqlparametersource%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B" rel="nofollow">MapSqlParameterSource使用示例</a></li> </ul> </li> <li><a href="#namedparameterjdbctemplate-%E6%94%AF%E6%8C%81-in-%E7%9A%84%E6%93%8D%E4%BD%9C" rel="nofollow">NamedParameterJdbcTemplate 支持 in 的操作</a> <ul> <li><a href="#preparestatement%E7%9A%84%E7%BC%BA%E9%99%B7" rel="nofollow">PrepareStatement的缺陷</a></li> <li><a href="#namedparameterjdbctemplate%E7%9A%84%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B" rel="nofollow">NamedParameterJdbcTemplate的操作示例</a></li> </ul> </li> <li><a href="#%E7%A4%BA%E4%BE%8B%E6%BA%90%E7%A0%81" rel="nofollow">示例源码</a></li> </ul> </div> </h1> <p>除了标准的JdbcTemplate外，Spring还提供了两个易用的JDBC模板类</p> <ul> <li><font color="blue">SimpleJdbcTemplate 封装了JdbcTemplate，将常用的API开放出来 . 这里暂不讨论</font></li> <li><font color="blue">NamedParameterJdbcTemplate 提供命名参数绑定的功能。</font></li> </ul> <p>在低版本的Spring 中， 用户只能使用“？”占位符声明参数，并使用索引号绑定参数，必须要保证参数的索引号和SQL语句中的占位符“？”的位置正确匹配。</p> <p><font color="red">NamedParameterJdbcTemplate模板了支持命名参数变量的SQL，位于org.springframework.jdbc.namedparam包中，该包中还定义了一个用于承载命名参数的SqlParameterSource接口</font></p> <ul> <li> <p><font color="blue">BeanPropertySqlParameterSource：该实现类是将一个JavaBean对像封装成一个参数源，以便通过JavaBean属性名和SQL语句中的命名参数匹配的方式绑定参数</font></p> </li> <li> <p><font color="blue">MapSqlparameterSource：该实现类内部通过一个Map存储参数，可以通过addValue(String paramName , Object value) 或 addValue(Map value)添加参数，并通过参数键名和SQL语句的命名参数的方式绑定参数。</font></p> </li> </ul> <hr/> </h1> <h2 id="beanpropertysqlparametersource-使用示例">BeanPropertySqlParameterSource 使用示例</h2> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">package</span> com.xgj.dao.namedParameterJdbcTemplate.dao;<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<span class="hljs-keyword">import</span> org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;<span class="hljs-keyword">import</span> org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;<span class="hljs-keyword">import</span> org.springframework.jdbc.core.namedparam.SqlParameterSource;<span class="hljs-keyword">import</span> org.springframework.stereotype.Repository;<span class="hljs-keyword">import</span> com.xgj.dao.namedParameterJdbcTemplate.domain.Artisan;<span class="hljs-javadoc">/**  *   *   *<span class="hljs-javadoctag"> @ClassName</span>: ArtisanNJDaoImpl  *   *<span class="hljs-javadoctag"> @Description</span>:<span class="hljs-javadoctag"> @Repository</span>标注的DAO层，受Spring管理  *   *<span class="hljs-javadoctag"> @author</span>: Mr.Yang  *   *<span class="hljs-javadoctag"> @date</span>: 2017年9月30日 上午12:42:26  */</span><span class="hljs-annotation">@Repository</span><span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">ArtisanNJDaoImpl</span><span class="hljs-keyword">implements</span><span class="hljs-title">ArtisanNJDao</span> {<!-- --></span><span class="hljs-keyword">private</span> NamedParameterJdbcTemplate namedParameterJdbcTemplate;<span class="hljs-keyword">private</span><span class="hljs-keyword">final</span><span class="hljs-keyword">static</span> String insertArtisanSql =<span class="hljs-string">"insert into artisan(artisan_name) values(:artisanName)"</span>;<span class="hljs-javadoc">/**      *       *       *<span class="hljs-javadoctag"> @Title</span>: setNamedParameterJdbcTemplate      *       *<span class="hljs-javadoctag"> @Description</span>: 自动注入namedParameterJdbcTemplate      *       *<span class="hljs-javadoctag"> @param</span> namedParameterJdbcTemplate      *       *<span class="hljs-javadoctag"> @return</span>: void      */</span><span class="hljs-annotation">@Autowired</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">setNamedParameterJdbcTemplate</span>(             NamedParameterJdbcTemplate namedParameterJdbcTemplate) {<span class="hljs-keyword">this</span>.namedParameterJdbcTemplate = namedParameterJdbcTemplate;     }<span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">addArtisan</span>(Artisan artisan) {<span class="hljs-comment">// 定义命名参数</span>         SqlParameterSource sps =<span class="hljs-keyword">new</span> BeanPropertySqlParameterSource(artisan);<span class="hljs-comment">// 使用模板类方法</span>         namedParameterJdbcTemplate.update(insertArtisanSql, sps);     }  }</code></pre> <p><font color="red">在SQL语句中声明命名参数的格式为</font></p> <pre class="prettyprint"><code class="hljs ruby"><span class="hljs-symbol">:paranName</span></code></pre> <p><font color="red">比如values(:artisanName) ，多个参数使用逗号分隔。</font></p> <p><font color="red">在这个示例中，使用BeanPropertySqlParameterSource提供数据源，它接收一个JavaBean作为构造函数的入参，调用namedParameterJdbcTemplate.update(insertArtisanSql, sps)执行插入数据的而操作。</font></p> <p><font color="blue">配置文件</font></p> <pre class="prettyprint"><code class="hljs xml"><span class="hljs-pi">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">beans</span><span class="hljs-attribute">xmlns</span>=<span class="hljs-value">"http://www.springframework.org/schema/beans"</span><span class="hljs-attribute">xmlns:xsi</span>=<span class="hljs-value">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="hljs-attribute">xmlns:p</span>=<span class="hljs-value">"http://www.springframework.org/schema/p"</span><span class="hljs-attribute">xmlns:context</span>=<span class="hljs-value">"http://www.springframework.org/schema/context"</span><span class="hljs-attribute">xsi:schemaLocation</span>=<span class="hljs-value">"http://www.springframework.org/schema/beans         http://www.springframework.org/schema/beans/spring-beans.xsd        http://www.springframework.org/schema/context         http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span><span class="hljs-comment">&lt;!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">context:component-scan</span><span class="hljs-attribute">base-package</span>=<span class="hljs-value">"com.xgj.dao.namedParameterJdbcTemplate"</span> /&gt;</span><span class="hljs-comment">&lt;!-- 使用context命名空间 配置数据库的properties文件 --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">context:property-placeholder</span><span class="hljs-attribute">location</span>=<span class="hljs-value">"classpath:spring/jdbc.properties"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">bean</span><span class="hljs-attribute">id</span>=<span class="hljs-value">"dataSource"</span><span class="hljs-attribute">class</span>=<span class="hljs-value">"org.apache.commons.dbcp.BasicDataSource"</span><span class="hljs-attribute">destroy-method</span>=<span class="hljs-value">"close"</span><span class="hljs-attribute">p:driverClassName</span>=<span class="hljs-value">"${jdbc.driverClassName}"</span><span class="hljs-attribute">p:url</span>=<span class="hljs-value">"${jdbc.url}"</span><span class="hljs-attribute">p:username</span>=<span class="hljs-value">"${jdbc.username}"</span><span class="hljs-attribute">p:password</span>=<span class="hljs-value">"${jdbc.password}"</span> /&gt;</span><span class="hljs-comment">&lt;!-- 定义 namedParameterJdbcTemplate--&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">bean</span><span class="hljs-attribute">id</span>=<span class="hljs-value">"namedParameterJdbcTemplate"</span><span class="hljs-attribute">class</span>=<span class="hljs-value">"org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">constructor-arg</span><span class="hljs-attribute">ref</span>=<span class="hljs-value">"dataSource"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">bean</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">beans</span>&gt;</span></code></pre> <p><font color="red"> 注意NamedParameterJdbcTemplate的配置，使用构造函数。</font></p> <hr/> <p><font color="blue">Domain</font></p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">package</span> com.xgj.dao.namedParameterJdbcTemplate.domain;<span class="hljs-keyword">import</span> java.io.Serializable;<span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">Artisan</span><span class="hljs-keyword">implements</span><span class="hljs-title">Serializable</span> {<!-- --></span><span class="hljs-keyword">private</span><span class="hljs-keyword">static</span><span class="hljs-keyword">final</span><span class="hljs-keyword">long</span> serialVersionUID =<span class="hljs-number">1</span>L;<span class="hljs-keyword">private</span> String artisanId;<span class="hljs-keyword">private</span> String artisanName;<span class="hljs-keyword">public</span> String<span class="hljs-title">getArtisanId</span>() {<span class="hljs-keyword">return</span> artisanId;     }<span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">setArtisanId</span>(String artisanId) {<span class="hljs-keyword">this</span>.artisanId = artisanId;     }<span class="hljs-keyword">public</span> String<span class="hljs-title">getArtisanName</span>() {<span class="hljs-keyword">return</span> artisanName;     }<span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">setArtisanName</span>(String artisanName) {<span class="hljs-keyword">this</span>.artisanName = artisanName;     }  }</code></pre> <p>Artisan拥有两个属性，我们这里没有插入ID，暂且忽略。<font color="red" size="4">其中 artisanName 这个属性和 SQL语句中的命名参数匹配，参数即按照这个匹配关系进行绑定。</font></p> <hr/> <p><font color="blue">单元测试</font></p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">package</span> com.xgj.dao.namedParameterJdbcTemplate.dao;<span class="hljs-keyword">import</span> org.junit.After;<span class="hljs-keyword">import</span> org.junit.Before;<span class="hljs-keyword">import</span> org.junit.Test;<span class="hljs-keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;<span class="hljs-keyword">import</span> com.xgj.dao.namedParameterJdbcTemplate.domain.Artisan;<span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">ArtisanNJDaoImplTest</span> {<!-- --></span>      ClassPathXmlApplicationContext ctx =<span class="hljs-keyword">null</span>;     ArtisanNJDaoImpl artisanNJDaoImpl =<span class="hljs-keyword">null</span>;<span class="hljs-annotation">@Before</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">initContext</span>() {<span class="hljs-comment">// 启动Spring 容器</span>         ctx =<span class="hljs-keyword">new</span> ClassPathXmlApplicationContext(<span class="hljs-string">"classpath:com/xgj/dao/namedParameterJdbcTemplate/conf_namedParameterJdbcTemplate.xml"</span>);         artisanNJDaoImpl = ctx.getBean(<span class="hljs-string">"artisanNJDaoImpl"</span>,                 ArtisanNJDaoImpl.class);         System.out.println(<span class="hljs-string">"initContext successfully"</span>);     }<span class="hljs-annotation">@Test</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">queryTeacherById</span>() {         Artisan artisan =<span class="hljs-keyword">new</span> Artisan();         artisan.setArtisanName(<span class="hljs-string">"ArtisanNJ"</span>);         artisanNJDaoImpl.addArtisan(artisan);     }<span class="hljs-annotation">@After</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">closeContext</span>() {<span class="hljs-keyword">if</span> (ctx !=<span class="hljs-keyword">null</span>) {             ctx.close();         }         System.out.println(<span class="hljs-string">"close context successfully"</span>);     } }</code></pre> <p>结果：<br /> 查看下数据库是否插入成功 （只是演示，忽略ID…）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/15a759e549332212375389796b06abd2.jpg" alt="Spring JDBC-NamedParameterJdbcTemplate模板类"></p> <hr/> <h2 id="mapsqlparametersource使用示例">MapSqlParameterSource使用示例</h2> <p>如果有数据表记录没有对应的领域对象，则用户可以直接使用MapSqlparameterSource达到绑定参数的目的。</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">addArtisanWithMapSqlParameterSource</span>(Artisan artisan) {<span class="hljs-comment">// 使用MapSqlParameterSource绑定参数</span>         MapSqlParameterSource mapSqlParameterSource =<span class="hljs-keyword">new</span> MapSqlParameterSource()                 .addValue(<span class="hljs-string">"artisanName"</span>, artisan.getArtisanName());<span class="hljs-comment">// 使用模板类方法</span>         namedParameterJdbcTemplate.update(insertArtisanSql,                 mapSqlParameterSource);     }</code></pre> <p><font color="blue">由于MapSqlParameterSource中的大多数方法都能返回对象本身，所以可以将几个参数的调用串成一个链，假设Artisan还有个artisanSex属性，如下</font></p> <pre class="prettyprint"><code class="hljs avrasm">    MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource()<span class="hljs-preprocessor">.addValue</span>(<span class="hljs-string">"artisanName"</span>, artisan<span class="hljs-preprocessor">.getArtisanName</span>())<span class="hljs-preprocessor">.addValue</span>(<span class="hljs-string">"artisanSex"</span>,artisan<span class="hljs-preprocessor">.getArtisanSex</span>)<span class="hljs-comment">;</span></code></pre> <p>由于这个原因，使用方法调用链模式设计的API很容易使用。</p> <hr/> <p><font color="blue">单元测试</font></p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-annotation">@Test</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">queryTeacherById</span>() {<span class="hljs-comment">// Artisan artisan = new Artisan();</span><span class="hljs-comment">// artisan.setArtisanName("ArtisanNJ");</span><span class="hljs-comment">// artisanNJDaoImpl.addArtisan(artisan);</span>          Artisan artisan =<span class="hljs-keyword">new</span> Artisan();         artisan.setArtisanName(<span class="hljs-string">"ArtisanMS"</span>);         artisanNJDaoImpl.addArtisanWithMapSqlParameterSource(artisan);     }</code></pre> <hr/> <p><font color="blue">数据库结果</font></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/144143fa4dd0e327096b5ef488f89387.jpg" alt="Spring JDBC-NamedParameterJdbcTemplate模板类"></p> <hr/> </h1> <h2 id="preparestatement的缺陷">PrepareStatement的缺陷</h2> <p><font color="blue">如果我们想查找artisan_id在 1 ,3 , 5 中的数据， PrepareStatement对in的操作只能动态拼接</font></p> <pre class="prettyprint"><code class="hljs bash">String<span class="hljs-keyword">in</span>_data =<span class="hljs-string">"1,3,5"</span>; pst = conn.prepareStatement(<span class="hljs-string">"select artisan_name from artisan where artisan_id in (?)"</span>); pst.setString(<span class="hljs-number">1</span>,<span class="hljs-keyword">in</span>_data);</code></pre> <p><font color="blue">使用传统的prepareStatement是动态设定参数的，也就是生成 select artisan_name from artisan where artisan_id in (?) ，一个 ？ 代表一个参数，pst.setString(1,”1,3,5”) 就相当于 select artisan_name from artisan where artisan_id in (“1,3,5”) ，这个SQL是查找artisan_id为 “1,3,5”的记录，而不是在 1，3，5中记录。</font></p> <hr/> <h2 id="namedparameterjdbctemplate的操作示例">NamedParameterJdbcTemplate的操作示例</h2> <p><font color="blue">NamedParameterJdbcTemplate可以很好地解决上述问题呢。</font></p> <pre class="prettyprint"><code class="hljs java">....<span class="hljs-keyword">private</span><span class="hljs-keyword">final</span><span class="hljs-keyword">static</span> String selectArtisanByIds =<span class="hljs-string">"select artisan_name from artisan where artisan_id in (:artisanId)"</span>;  ....<span class="hljs-keyword">public</span> List&lt;Artisan&gt;<span class="hljs-title">getArtisanByIds</span>(List&lt;String&gt; artisanIds) {<span class="hljs-keyword">final</span> List&lt;Artisan&gt; artisanList =<span class="hljs-keyword">new</span> ArrayList&lt;Artisan&gt;();<span class="hljs-comment">// 使用MapSqlParameterSource绑定参数</span>         MapSqlParameterSource mapSqlParameterSource =<span class="hljs-keyword">new</span> MapSqlParameterSource();          mapSqlParameterSource.addValue(<span class="hljs-string">"artisanId"</span>, artisanIds);          namedParameterJdbcTemplate.query(selectArtisanByIds,                 mapSqlParameterSource,<span class="hljs-keyword">new</span> RowCallbackHandler() {<span class="hljs-annotation">@Override</span><span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">processRow</span>(ResultSet rs)<span class="hljs-keyword">throws</span> SQLException {                         Artisan artisan =<span class="hljs-keyword">new</span> Artisan();                         artisan.setArtisanName(rs.getString(<span class="hljs-string">"artisan_name"</span>));<span class="hljs-comment">// 加入集合</span>                         artisanList.add(artisan);                     }                 });<span class="hljs-keyword">return</span> artisanList;     }</code></pre> <p>单元测试</p> <pre class="prettyprint"><code class="hljs cs">@Test<span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">queryTeacherById</span>() {         List&lt;String&gt; artisanIds =<span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();         artisanIds.add(<span class="hljs-string">"1"</span>);         artisanIds.add(<span class="hljs-string">"3"</span>);         artisanIds.add(<span class="hljs-string">"5"</span>);         List&lt;Artisan&gt; artisans = artisanNJDaoImpl.getArtisanByIds(artisanIds);<span class="hljs-keyword">for</span> (Artisan artisan : artisans) {             System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"artisanName:"</span> + artisan.getArtisanName());         }     }</code></pre> <p>输出：</p> <pre class="prettyprint"><code class="hljs css">2017<span class="hljs-tag">-09-30</span> 02<span class="hljs-pseudo">:01</span><span class="hljs-pseudo">:27</span>,648<span class="hljs-tag">INFO</span><span class="hljs-attr_selector">[main]</span> (<span class="hljs-tag">AbstractApplicationContext</span><span class="hljs-class">.java</span><span class="hljs-pseudo">:583)</span><span class="hljs-tag">-</span><span class="hljs-tag">Refreshing</span><span class="hljs-tag">org</span><span class="hljs-class">.springframework</span><span class="hljs-class">.context</span><span class="hljs-class">.support</span><span class="hljs-class">.ClassPathXmlApplicationContext</span><span class="hljs-at_rule">@<span class="hljs-keyword">5f0ab5d:</span> startup date [Sat Sep<span class="hljs-number">30</span><span class="hljs-number">02</span>:<span class="hljs-number">01</span>:<span class="hljs-number">27</span> BOT<span class="hljs-number">2017</span>]</span>;<span class="hljs-tag">root</span><span class="hljs-tag">of</span><span class="hljs-tag">context</span><span class="hljs-tag">hierarchy</span> 2017<span class="hljs-tag">-09-30</span> 02<span class="hljs-pseudo">:01</span><span class="hljs-pseudo">:27</span>,777<span class="hljs-tag">INFO</span><span class="hljs-attr_selector">[main]</span> (<span class="hljs-tag">XmlBeanDefinitionReader</span><span class="hljs-class">.java</span><span class="hljs-pseudo">:317)</span><span class="hljs-tag">-</span><span class="hljs-tag">Loading</span><span class="hljs-tag">XML</span><span class="hljs-tag">bean</span><span class="hljs-tag">definitions</span><span class="hljs-tag">from</span><span class="hljs-tag">class</span><span class="hljs-tag">path</span><span class="hljs-tag">resource</span><span class="hljs-attr_selector">[com/xgj/dao/namedParameterJdbcTemplate/conf_namedParameterJdbcTemplate.xml]</span><span class="hljs-tag">initContext</span><span class="hljs-tag">successfully</span><span class="hljs-tag">artisanName</span><span class="hljs-pseudo">:Xiao2</span><span class="hljs-tag">artisanName</span><span class="hljs-pseudo">:Xiao0</span><span class="hljs-tag">artisanName</span><span class="hljs-pseudo">:Xiao4</span> 2017<span class="hljs-tag">-09-30</span> 02<span class="hljs-pseudo">:01</span><span class="hljs-pseudo">:30</span>,387<span class="hljs-tag">INFO</span><span class="hljs-attr_selector">[main]</span> (<span class="hljs-tag">AbstractApplicationContext</span><span class="hljs-class">.java</span><span class="hljs-pseudo">:984)</span><span class="hljs-tag">-</span><span class="hljs-tag">Closing</span><span class="hljs-tag">org</span><span class="hljs-class">.springframework</span><span class="hljs-class">.context</span><span class="hljs-class">.support</span><span class="hljs-class">.ClassPathXmlApplicationContext</span><span class="hljs-at_rule">@<span class="hljs-keyword">5f0ab5d:</span> startup date [Sat Sep<span class="hljs-number">30</span><span class="hljs-number">02</span>:<span class="hljs-number">01</span>:<span class="hljs-number">27</span> BOT<span class="hljs-number">2017</span>]</span>;<span class="hljs-tag">root</span><span class="hljs-tag">of</span><span class="hljs-tag">context</span><span class="hljs-tag">hierarchy</span><span class="hljs-tag">close</span><span class="hljs-tag">context</span><span class="hljs-tag">successfully</span></code></pre> <hr/> </h1> <p>代码已托管到Github—&gt;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/yangshangwei/SpringMaster"  rel="nofollow">https://github.com/yangshangwei/SpringMaster</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96450.htm">淮南领养狗（淮南领养猫咪）</a></p>
+                                        <p>下一个：<a href="/news/article-97134.htm">私人出售狗吉娃多少钱一条（狗市吉娃娃幼犬视频）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-77692.htm" title="宠物狗批发市场在哪里最大（狗的批发市场）">宠物狗批发市场在哪里最大（狗的批发市场）</a></li>
+                        <li class="py-2"><a href="/news/article-91134.htm" title="猫咪打猫瘟疫苗多少钱（猫咪猫瘟疫苗多少钱一针）">猫咪打猫瘟疫苗多少钱（猫咪猫瘟疫苗多少钱一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-free-node-subscribe-links.htm" title="3月27日|最高速度20.8M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址">3月27日|最高速度20.8M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-78382.htm" title="领养宠物的文章范文（领养宠物的文章范文大全）">领养宠物的文章范文（领养宠物的文章范文大全）</a></li>
+                        <li class="py-2"><a href="/news/article-83249.htm" title="动物疫苗周期多久一次最好（动物疫苗一般什么时候是旺季）">动物疫苗周期多久一次最好（动物疫苗一般什么时候是旺季）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-clash-node-daily-updates.htm" title="3月31日|最高速度20.6M/S，2025最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址">3月31日|最高速度20.6M/S，2025最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-clash-windows.htm" title="4月13日|最高速度21.3M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址">4月13日|最高速度21.3M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-free-clash-subscribe.htm" title="4月9日|最高速度19.4M/S，2025最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址">4月9日|最高速度19.4M/S，2025最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69672.htm" title="0元开网店无货源（0元开网店无货源拼多多可以吗）">0元开网店无货源（0元开网店无货源拼多多可以吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-node.htm" title="4月2日|最高速度21.7M/S，2025最新Clash/SSR/V2ray/Shadowrocket免费节点订阅链接地址">4月2日|最高速度21.7M/S，2025最新Clash/SSR/V2ray/Shadowrocket免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
