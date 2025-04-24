@@ -1,0 +1,288 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-101528.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>时间轮原理及其在框架中的应用</title>
+        <meta name="description" content="1.1 为什么要使用时间轮 在平时开发中，经常会与定时任务打交道。下面举几个定时任务处理的例子。 1）心跳检测。在Dubbo中，需要有心跳机制来维持Consumer与Provider的长连接，默认的心" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-101528.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="时间轮原理及其在框架中的应用" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/5499bf4b1e3d90a64a9c83da1deb97b3.webp" />
+        <meta property="og:release_date" content="2025-04-22T08:24:07" />
+    <meta property="og:updated_time" content="2025-04-22T08:24:07" />
+        <meta property="og:description" content="1.1 为什么要使用时间轮 在平时开发中，经常会与定时任务打交道。下面举几个定时任务处理的例子。 1）心跳检测。在Dubbo中，需要有心跳机制来维持Consumer与Provider的长连接，默认的心" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="时间轮原理及其在框架中的应用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">时间轮原理及其在框架中的应用</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				</h1> <h2 id="11-为什么要使用时间轮">1.1 为什么要使用时间轮</h2> <p>在平时开发中，经常会与定时任务打交道。下面举几个定时任务处理的例子。</p> <p><strong>1）心跳检测</strong>。在Dubbo中，需要有心跳机制来维持Consumer与Provider的长连接，默认的心跳间隔是60s。当Provider在3次心跳时间内没有收到心跳响应，会关闭连接通道。当Consumer在3次心跳时间内没有收到心跳响应，会进行重连。Provider侧和Consumer侧的心跳检测机制都是通过定时任务实现的，而且是本篇文章要分析的时间轮HashedWheelTimer处理的。</p> <p><strong>2）超时处理</strong>。在Dubbo中发起RPC调用时，通常会配置超时时间，当消费者调用服务提供者出现超时进行一定的逻辑处理。那么怎么检测任务调用超时了呢？我们可以利用定时任务，每次创建一个Future，记录这个Future的创建时间与超时时间，后台有一个定时任务进行检测，当Future到达超时时间并且没有被处理时，就需要对这个Future执行超时逻辑处理。</p> <p><strong>3）Redisson分布式锁续期</strong>。在分布式锁处理中，通常会指定分布式锁的超时时间，同样会在finally块里释放分布式锁。但是有一个问题时，通常分布式锁的超时时间不好判断，如果设置短了业务却没执行完成就把锁释放掉了，或者超时时间设置很长，同样也会存在一些问题。Redisson提供了一种看门狗机制，通过时间轮定时给分布式锁续期，也就是延长分布式锁的超时时间。</p> <p>可以看到，上述几个例子都与定时任务有关，那么传统的定时任务有什么缺点呢？为什么要使用时间轮来实现？</p> <p>假如使用普通的定时任务处理机制来处理例2）中的超时情况：</p> <p>1）简单地，可以针对每一次请求创建一个线程，然后Sleep到超时时间，之后若判断超时则进行超时逻辑处理。存在的问题是如果面临是高并发请求，针对每个请求都要去创建线程，这样太耗费资源了。</p> <p>2）针对方案1的不足，可以改成一个线程来处理所有的定时任务，比如这个线程可以每隔50ms扫描所有需要处理的超时任务，如果发现有超时任务，则进行处理。但是，这样也存在一个问题，可能一段时间内都没有任务达到超时时间，那么就让CPU多了很多无用的轮询遍历操作。</p> <p>针对上述方案的不足，可以采用时间轮来进行处理。下面先来简单介绍下时间轮的概念。</p> <h2 id="12-单层时间轮">1.2 单层时间轮</h2> <p>我们先以单层时间轮为例，假设时间轮的周期是1秒，时间轮中有10个槽位，则每个槽位代表100ms。假设我们现在有3个任务，分别是任务A（220ms后执行）、B（410ms之后运行）、C（1930ms之后运行）。则这三个任务在时间轮所处的槽位如下图，可以看到任务A被放到了槽位2，任务B被放到了槽位4，任务C被放到了槽位9。</p> <p>当时间轮转动到对应的槽时，就会从槽中取出任务判断是否需要执行。同时可以发现有一个剩余周期的概念，这是因为任务C的执行时间为1930ms，超过了时间轮的周期1秒，所以可以标记它的剩余周期为1，当时间轮第一次转动到它的位置时，发现它的剩余周期为1，表示还没有到要处理的时间，将剩余周期减1，时间轮继续转动，当下一次转动到C任务位置时，发现剩余周期为0，表示时间到了需要处理该定时任务了。Dubbo中采用的就是这种单层时间轮机制。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/02311583be05082286f619f41460b28c.jpg" alt="时间轮原理及其在框架中的应用"></p> <h2 id="13-多层时间轮">1.3 多层时间轮</h2> <p>既然有单层时间轮，那么自然而然可以想到利用多层时间轮来解决上述任务执行时间超出时间轮周期的情况。下面以两层时间轮为例，第一层时间轮周期为1秒，第二层时间轮周期为10秒。</p> <p>还是以上述3个任务为例，可以看到任务A和B分布在第一层时间轮上，而任务C分布在第二层时间轮的槽1处。当第一层时间轮转动时，任务A和任务B会被先后执行。1秒钟之后，第一层时间轮完成了一个周期转动。从新开始第0跳，这时第二层时间轮从槽0跳到了槽1处，将槽1处的任务，也就是任务C取出放入到第一层时间轮的槽位9处，当第一层时间轮转动到槽位9处，任务C就会被执行。这种将第二层的任务取出放入第一层中称为降级，它是为了保证任务被处理的时间精度。Kafka内部就是采用的这种多层时间轮机制。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/928cec899c814a7c51f8fa31b4bdf840.jpg" alt="时间轮原理及其在框架中的应用"></p> </h1> <p>下面先来看一下Dubbo中的时间轮的结构，可以看到，它和时钟很像，它被划分成了一个个Bucket，每个Bucket有一个头指针和尾指针，分别指向双向链表的头节点和尾节点，双向链表中存储的就是要处理的任务。时间轮不停转动，当指向Bucket0所负责维护的双向链表时，就将它所存储的任务遍历取出来处理。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a445b79d4037e4b8b8c010ccec73f52d.jpg" alt="时间轮原理及其在框架中的应用"></p> <p>下面我们先来介绍下Dubbo中时间轮HashedWheelTimer所涉及到的一些核心概念，在讲解完这些核心概念之后，再来对时间轮的源码进行分析。</p> <h2 id="21-timertask">2.1 TimerTask</h2> <p>在Dubbo中，TimerTask封装了要执行的任务，它就是上图双向链表中节点所封装的任务。所有的定时任务都需要继承TimerTask接口。如下图，可以看到Dubbo中的心跳任务HeartBeatTask、注册失败重试任务FailRegisteredTask等都实现了TimerTask接口。</p> <pre><code class="language-java">public interface TimerTask {     void run(Timeout timeout) throws Exception; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bf18d7925d9bf67666001906693317db.jpg" alt="时间轮原理及其在框架中的应用"></p> <h2 id="22-timeout">2.2 Timeout</h2> <p>TimerTask中run方法的入参是Timeout，Timeout与TimerTask一一对应，Timeout的唯一实现类HashedWheelTimeout中就封装了TimerTask属性，可以理解为HashedWheelTimeout就是上述双向链表的一个节点，因此它也包含两个HashedWheelTimeout类型的指针，分别指向当前节点的上一个节点和下一个节点。</p> <pre><code class="language-java">public interface Timeout {       // Timer就是定时器, 也就是Dubbo中的时间轮     Timer timer();       // 获取该节点要执行的任务     TimerTask task();       // 判断该节点封装的任务有没有过期、被取消     boolean isExpired();     boolean isCancelled();       // 取消该节点的任务     boolean cancel(); }</code></pre> <p>HashedWheelTimeout是Timeout的唯一实现，它的作用有两个：</p> <ul> <li> <p>它是时间轮槽所维护的双向链表的节点，其中封装了实际要执行的任务TimerTask。</p> </li> <li> <p>通过它可以查看定时任务的状态、对定时任务进行取消、从双向链表中移除等操作。</p> </li> </ul> <p>下面来看一下Timeout的实现类HashedWheelTimeout的核心字段与实现。</p> <pre><code class="language-java">1) int ST_INIT = 0、int ST_CANCELLED = 1、int ST_EXPIRED = 2    HashedWheelTimeout里定义了三种状态，分别表示任务的初始化状态、被取消状态、已过期状态   2) STATE_UPDATER    用于更新定时任务的状态   3) HashedWheelTimer timer    指向时间轮对象   4) TimerTask task    实际要执行的任务   5) long deadline    指定时任务执行的时间，这个时间是在创建 HashedWheelTimeout 时指定的    计算公式是: currentTime(创建 HashedWheelTimeout 的时间) + delay(任务延迟时间)              - startTime(HashedWheelTimer 的启动时间)，时间单位为纳秒   6) int state = ST_INIT    任务初始状态   7) long remainingRounds    指当前任务剩余的时钟周期数. 时间轮所能表示的时间长度是有限的， 在任务到期时间与当前时刻    的时间差超过时间轮单圈能表示的时长，就出现了套圈的情况，需要该字段值表示剩余的时钟周期   8) HashedWheelTimeout next、HashedWheelTimeout prev    分别对应当前定时任务在链表中的前驱节点和后继节点，这也验证了时间轮中每个槽所对应的任务链表是    一个双链表   9) HashedWheelBucket bucket    时间轮中的一个槽，对应时间轮圆圈的一个个小格子，每个槽维护一个双向链表，当时间轮指针转到当前    槽时，就会从槽所负责的双向链表中取出任务进行处理</code></pre> <p>HashedWheelTimeout提供了remove操作，可以从双向链表中移除当前自身节点，并将当前时间轮所维护的定时任务数量减一。</p> <pre><code class="language-java">void remove() {     // 获取当前任务属于哪个槽     HashedWheelBucket bucket = this.bucket;     if (bucket != null) {         // 从槽中移除自己，也就是从双向链表中移除节点，         // 分析bucket的方法时会分析         bucket.remove(this);     } else {         // pendingTimeouts表示当前时间轮所维护的定时任务的数量         timer.pendingTimeouts.decrementAndGet();     } }</code></pre> <p>HashedWheelTimeout提供了cancel操作，可以取消时间轮中的定时任务。当定时任务被取消时，它会首先被暂存到canceledTimeouts队列中。在时间轮转动到槽进行任务处理之前和时间轮退出运行时都会调用cancel，而cancel会调用remove，从而清理该队列中被取消的定时任务。</p> <pre><code class="language-java">@Override public boolean cancel() {     // 通过CAS进行状态变更     if (!compareAndSetState(ST_INIT, ST_CANCELLED)) {         return false;     }           // 任务被取消时，时间轮会将它暂存到时间轮所维护的canceledTimeouts队列中.     // 在时间轮转动到槽进行任务处理之前和时间轮退出运行时都会调用cancel，而     // cancel会调用remove，从而清理该队列中被取消的定时任务     timer.cancelledTimeouts.add(this);     return true; }</code></pre> <p>HashedWheelTimeout提供了expire操作，当时间轮指针转动到某个槽时，会遍历该槽所维护的双向链表，判断节点的状态，如果发现任务已到期，会通过remove方法移除，然后调用expire方法执行该定时任务。</p> <pre><code class="language-java">public void expire() {     // 修改定时任务状态为已过期     if (!compareAndSetState(ST_INIT, ST_EXPIRED)) {         return;     }       try {         // 真正的执行定时任务所要代表的逻辑         task.run(this);     } catch (Throwable t) {         // 打印日志，可以看到当时间轮中定时任务执行异常时，         // 不会抛出异常，影响到时间轮中其他定时任务执行     } }</code></pre> <h2 id="23-hashedwheelbucket">2.3 HashedWheelBucket</h2> <p>前面也介绍过了，它是时间轮中的槽，它内部维护了双向链表的首尾指针。下面我们来看一下它内部的核心资源和实现。</p> <pre><code class="language-java">1) HashedWheelTimeout head、HashedWheelTimeout tail    指向该槽所维护的双向链表的首节点和尾节点</code></pre> <p>HashedWheelBucket提供了addTimeout方法，用于添加任务到双向链表的尾节点。</p> <pre><code class="language-java">void addTimeout(HashedWheelTimeout timeout) {     // 添加之前判断一下该任务当前没有被被关联到一个槽上     assert timeout.bucket == null;     timeout.bucket = this;     if (head == null) {         head = tail = timeout;     } else {         tail.next = timeout;         timeout.prev = tail;         tail = timeout;     } }</code></pre> <p>HashedWheelBucket提供了remove方法，用于从双向链表中删除指定节点。核心逻辑如下图所示，根据要删除的节点找到其前置节点和后置节点，然后分别调整前置节点的next指针和后置节点的prev指针。删除过程中需要考虑一些边界情况。删除之后将pendingTimeouts，也就是当前时间轮的待处理任务数减一。remove代码逻辑较简单，这边就不贴代码了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f57ce6fcedceec448a550a14c897d488.jpg" alt="时间轮原理及其在框架中的应用"></p> <p>HashedWheelBucket提供了expireTimeouts方法，当时间轮指针转动到某个槽时，通过该方法处理该槽上双向链表的定时任务，分为3种情况：</p> <ul> <li> <p>定时任务已到期，则会通过remove方法取出，并调用其expire方法执行任务逻辑。</p> </li> <li> <p>定时任务已被取消，则通过remove方法取出直接丢弃。</p> </li> <li> <p>定时任务还未到期，则会将remainingRounds（剩余时钟周期）减一。</p> </li> </ul> <pre><code class="language-java">void expireTimeouts(long deadline) {     HashedWheelTimeout timeout = head;       // 时间轮指针转到某个槽时从双向链表头节点开始遍历     while (timeout != null) {         HashedWheelTimeout next = timeout.next;         // remainingRounds &lt;= 0表示到期了         if (timeout.remainingRounds &lt;= 0) {             // 从链表中移除该节点             next = remove(timeout);             // 判断该定时任务确实是到期了             if (timeout.deadline &lt;= deadline) {                 // 执行该任务                 timeout.expire();             } else {                 // 抛异常             }         } else if (timeout.isCancelled()) {             // 任务被取消，移除后直接丢弃             next = remove(timeout);         } else {             // 剩余时钟周期减一             timeout.remainingRounds--;         }         // 继续判断下一个任务节点         timeout = next;     } }</code></pre> <p>HashedWheelBucket也提供了clearTimeouts方法，该方法会在时间轮停止的时候被使用，它会遍历并移除所有双向链表中的节点，并返回所有未超时和未被取消的任务。</p> <h2 id="24-worker">2.4 Worker</h2> <p>Worker实现了Runnable接口，时间轮内部通过Worker线程来处理放入时间轮中的定时任务。下面先来看一下它的核心字段和run方法逻辑。</p> <pre><code class="language-java">1) Set&lt;Timeout&gt; unprocessedTimeouts    当时间轮停止时，用于存放时间轮中未过期的和未被取消的任务       2) long tick    时间轮指针，指向时间轮中某个槽，当时间轮转动时该tick会自增</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4a21faec52dc837fd70e34e16b349cb0.jpg" alt="时间轮原理及其在框架中的应用"></p> <pre><code class="language-java">public void run() {     // 初始化startTime, 所有任务的的deadline都是相对于这个时间点     startTime = System.nanoTime();       // 唤醒阻塞在start()的线程     startTimeInitialized.countDown();       // 只要时间轮的状态为WORKER_STATE_STARTED, 就循环的转动tick,     // 处理槽中的定时任务     do {         // 判断是否到了处理槽的时间了，还没到则sleep一会         final long deadline = waitForNextTick();         if (deadline &gt; 0) {             // 获取tick对应的槽索引             int idx = (int) (tick &amp; mask);               // 清理用户主动取消的定时任务, 这些定时任务在用户取消时,             // 会记录到 cancelledTimeouts 队列中. 在每次指针转动             // 的时候,时间轮都会清理该队列             processCancelledTasks();               // 根据当前指针定位对应槽             HashedWheelBucket bucket = wheel[idx];               // 将缓存在 timeouts 队列中的定时任务转移到时间轮中对应的槽中             transferTimeoutsToBuckets();               // 处理该槽位的双向链表中的定时任务             bucket.expireTimeouts(deadline);             tick++;         }         // 检测时间轮的状态, 如果时间轮处于运行状态, 则循环执行上述步骤,         // 不断执行定时任务     } while (WORKER_STATE_UPDATER.get(HashedWheelTimer.this)                                     == WORKER_STATE_STARTED);       // 这里应该是时间轮停止了, 清除所有槽中的任务, 并加入到未处理任务列表,     // 以供stop()方法返回     for (HashedWheelBucket bucket : wheel) {         bucket.clearTimeouts(unprocessedTimeouts);     }       // 将还没有加入到槽中的待处理定时任务队列中的任务取出, 如果是未取消     // 的任务, 则加入到未处理任务队列中, 以供stop()方法返回     for (; ; ) {         HashedWheelTimeout timeout = timeouts.poll();         if (timeout == null) {             break;         }         if (!timeout.isCancelled()) {             unprocessedTimeouts.add(timeout);         }     }     // 最后再次清理 cancelledTimeouts 队列中用户主动取消的定时任务     processCancelledTasks(); }</code></pre> <p>下面对run方法中涉及到的一些方法进行介绍：</p> <p><strong>1）waitForNextTick</strong></p> <p>逻辑比较简单，它会判断有没有到达处理下一个槽任务的时间了，如果还没有到达则sleep一会。</p> <p><strong>2）processCancelledTasks</strong></p> <p>遍历cancelledTimeouts，获取被取消的任务并从双向链表中移除。</p> <pre><code class="language-java">private void processCancelledTasks() {     for (; ; ) {         HashedWheelTimeout timeout = cancelledTimeouts.poll();         if (timeout == null) {             // all processed             break;         }         timeout.remove();     } }</code></pre> <p><strong>3）transferTimeoutsToBuckets</strong></p> <p>当调用newTimeout方法时，会先将要处理的任务缓存到timeouts队列中，等时间轮指针转动时统一调用transferTimeoutsToBuckets方法处理，将任务转移到指定的槽对应的双向链表中，每次转移10万个，以免阻塞时间轮线程。</p> <pre><code class="language-java">private void transferTimeoutsToBuckets() {     // 每次tick只处理10w个任务, 以免阻塞worker线程     for (int i = 0; i &lt; 100000; i++) {         HashedWheelTimeout timeout = timeouts.poll();         // 没有任务了直接跳出循环         if (timeout == null) {             // all processed             break;         }         // 还没有放入到槽中就取消了, 直接略过         if (timeout.state() == HashedWheelTimeout.ST_CANCELLED) {             continue;         }           // 计算任务需要经过多少个tick         long calculated = timeout.deadline / tickDuration;         // 计算任务的轮数         timeout.remainingRounds = (calculated - tick) / wheel.length;           // 如果任务在timeouts队列里面放久了, 以至于已经过了执行时间, 这个时候         // 就使用当前tick, 也就是放到当前bucket, 此方法调用完后就会被执行.         final long ticks = Math.max(calculated, tick);         int stopIndex = (int) (ticks &amp; mask);           // 将任务加入到相应的槽中         HashedWheelBucket bucket = wheel[stopIndex];         bucket.addTimeout(timeout);     } }</code></pre> <h2 id="25-hashedwheeltimer">2.5 HashedWheelTimer</h2> <p>最后，我们来分析时间轮HashedWheelTimer，它实现了Timer接口，提供了newTimeout方法可以向时间轮中添加定时任务，该任务会先被暂存到timeouts队列中，等时间轮转动到某个槽时，会将该timeouts队列中的任务转移到某个槽所负责的双向链表中。它还提供了stop方法用于终止时间轮，该方法会返回时间轮中未处理的任务。它也提供了isStop方法用于判断时间轮是否终止了。</p> <p>先来看一下HashedWheelTimer的核心字段。</p> <pre><code class="language-java">1) HashedWheelBucket[] wheel    该数组就是时间轮的环形队列，数组每个元素都是一个槽，一个槽负责维护一个双向链表，用于存储定时    任务。它会被在构造函数中初始化，当指定为n时，它实际上会取最靠近n的且为2的幂次方值。   2) Queue&lt;HashedWheelTimeout&gt; timeouts    timeouts用于缓存外部向时间轮提交的定时任务       3) Queue&lt;HashedWheelTimeout&gt; cancelledTimeouts    cancelledTimeouts用于暂存被取消的定时任务，时间轮会在处理槽负责的双向链表之前，先处理这两    个队列中的数据。   4) Worker worker    时间轮处理定时任务的逻辑       5) Thread workerThread    时间轮处理定时任务的线程       6) AtomicLong pendingTimeouts    时间轮剩余的待处理的定时任务数量       7) long tickDuration    时间轮每个槽所代表的时间长度       8) int workerState    时间轮状态，可选值有init、started、shut down</code></pre> <p>下面来看一下时间轮的构造函数，用于初始化一个时间轮。首先它会对传入参数ticksPerWheel进行转换处理，返回大于该值的2的幂次方，它表示时间轮上有多少个槽，默认是512个。然后创建大小为该值的HashedWheelBucket[]数组。接着通过传入的tickDuration对时间轮的tickDuration赋值，默认是100ms。节通过threadFactory创建workerThread工作线程，该线程就是负责处理时间轮中的定时任务的线程。</p> <pre><code class="language-java">public HashedWheelTimer(ThreadFactory threadFactory,                         long tickDuration, TimeUnit unit,                         int ticksPerWheel,                         long maxPendingTimeouts) {       // 圆环上一共有多少个时间间隔, HashedWheelTimer对其正则化     // 将其换算为大于等于该值的2^n     wheel = createWheel(ticksPerWheel);       // 这用来快速计算任务应该呆的槽     mask = wheel.length - 1;       // 时间轮每个槽的时间间隔     this.tickDuration = unit.toNanos(tickDuration);       // threadFactory是创建线程的线程工厂对象     workerThread = threadFactory.newThread(worker);       // 最多允许多少个任务等待执行     this.maxPendingTimeouts = maxPendingTimeouts; }   private static HashedWheelBucket[] createWheel(int ticksPerWheel) {     // 计算真正应当创建多少个槽     ticksPerWheel = normalizeTicksPerWheel(ticksPerWheel);       // 初始化时间轮数组     HashedWheelBucket[] wheel = new HashedWheelBucket[ticksPerWheel];     for (int i = 0; i &lt; wheel.length; i++) {         wheel[i] = new HashedWheelBucket();     }     return wheel; }</code></pre> <p>初始化时间轮之后，就可以向其中提交定时任务了，可以通过时间轮提供的newTimeout方法来完成。首先将待处理的任务数量加1，然后启动时间轮线程，这时worker的run方法就会被系统调度运行。然后将该定时任务封装成HashedWheelTimeout加入到timeouts队列中。start之后，时间轮就开始运行起来了，直到外界调用stop方法终止退出。</p> <pre><code class="language-java">public Timeout newTimeout(TimerTask task, long delay, TimeUnit unit) {     // 待处理的任务数量加1     long pendingTimeoutsCount = pendingTimeouts.incrementAndGet();       // 启动时间轮     start();       // 计算该定时任务的deadline     long deadline = System.nanoTime() + unit.toNanos(delay) - startTime;       // 创建一个HashedWheelTimeout对象，它首先会被暂存到timeouts队列中     HashedWheelTimeout timeout = new HashedWheelTimeout(this, task, deadline);     timeouts.add(timeout);     return timeout; }</code></pre> <pre><code class="language-java">public void start() {     /**       * 判断当前时间轮的状态       * 1) 如果是初始化, 则启动worker线程, 启动整个时间轮       * 2) 如果已经启动则略过       * 3) 如果是已经停止,则报错       */     switch (WORKER_STATE_UPDATER.get(this)) {         case WORKER_STATE_INIT:             // 使用cas来判断启动时间轮             if (WORKER_STATE_UPDATER.compareAndSet(this,                      WORKER_STATE_INIT, WORKER_STATE_STARTED)) {                 workerThread.start();             }             break;         case WORKER_STATE_STARTED:             break;         case WORKER_STATE_SHUTDOWN:             // 抛异常         default:             throw new Error("Invalid WorkerState");     }       // 等待worker线程初始化时间轮的启动时间     while (startTime == 0) {         try {             // 这里使用countDownLatch来确保调度的线程已经被启动             startTimeInitialized.await();         } catch (InterruptedException ignore) {             // Ignore - it will be ready very soon.         }     } }</code></pre> </h1> <p>到这里，Dubbo中的时间轮原理就分析完了。接下来呼应本文开头的三个例子，结合它们来分析下时间轮在Dubbo或Redisson中是如何使用的。</p> <p><strong>1）HeartbeatTimerTask</strong></p> <p>在Dubbo的HeaderExchangeClient类中会向时间轮中提交该心跳任务。</p> <pre><code class="language-java">private void startHeartBeatTask(URL url) {     // Client的具体实现决定是否启动该心跳任务     if (!client.canHandleIdle()) {         AbstractTimerTask.ChannelProvider cp =           () -&gt; Collections.singletonList(HeaderExchangeClient.this);         // 计算心跳间隔, 最小间隔不能低于1s         int heartbeat = getHeartbeat(url);         long heartbeatTick = calculateLeastDuration(heartbeat);         // 创建心跳任务         this.heartBeatTimerTask =                new HeartbeatTimerTask(cp, heartbeatTick, heartbeat);         // 提交到IDLE_CHECK_TIMER这个时间轮中等待执行, 等时间到了时间轮就会去取出该任务进行调度执行         IDLE_CHECK_TIMER.newTimeout(heartBeatTimerTask, heartbeatTick, TimeUnit.MILLISECONDS);     } }</code></pre> <pre><code class="language-java">// 上面用到的IDLE_CHECK_TIMER就是我们本文的分析的时间轮 private static final HashedWheelTimer IDLE_CHECK_TIMER =                               new HashedWheelTimer(new NamedThreadFactory("dubbo-client-idleCheck", true), 1, TimeUnit.SECONDS, TICKS_PER_WHEEL);</code></pre> <pre><code class="language-java">// 上述创建心跳任务时, 创建了一个HeartbeatTimerTask对象, 可以看下该任务具体要做什么 @Override protected void doTask(Channel channel) {     try {         // 获取最后一次读写时间         Long lastRead = lastRead(channel);         Long lastWrite = lastWrite(channel);         if ((lastRead != null &amp;&amp; now() - lastRead &gt; heartbeat)             || (lastWrite != null &amp;&amp; now() - lastWrite &gt; heartbeat)) {             // 最后一次读写时间超过心跳时间, 就会发送心跳请求             Request req = new Request();             req.setVersion(Version.getProtocolVersion());             req.setTwoWay(true);             // 表明它是一个心跳请求             req.setEvent(HEARTBEAT_EVENT);             channel.send(req);         }     } catch (Throwable t) {               } }</code></pre> <p><strong>2）Redisson锁续期机制</strong></p> <p>当获取锁成功后，Redisson会封装一个锁续期任务放入时间轮中，默认10s检查一下，用于对获取到的锁进行续期，延长持有锁的时间。如果业务机器宕机了，那么该续期的定时任务也就没法跑了，就没法续期了，那等加锁时间到了锁就自动释放了。逻辑封装在RedissonLock中的renewExpiration()方法中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9b6b780bbfb884c34bfb4a69de8ca744.jpg" alt="时间轮原理及其在框架中的应用"></p> <pre><code class="language-java">private void renewExpiration() {     ExpirationEntry ee = EXPIRATION_RENEWAL_MAP.get(getEntryName());     if (ee == null) {         return;     }       // 这边newTimeout点进去发现就是往时间轮中提交了一个任务     Timeout task = commandExecutor.getConnectionManager().newTimeout(new TimerTask() {         @Override         public void run(Timeout timeout) throws Exception {             ExpirationEntry ent = EXPIRATION_RENEWAL_MAP.get(getEntryName());             if (ent == null) {                 return;             }             Long threadId = ent.getFirstThreadId();             if (threadId == null) {                 return;             }               RFuture&lt;Boolean&gt; future = renewExpirationAsync(threadId);             future.onComplete((res, e) -&gt; {                 if (e != null) {                     log.error("Can't update lock " + getName() + " expiration", e);                     return;                 }                   if (res) {                     // 续期成功后继续调度, 又往时间轮中放一个续期任务                     renewExpiration();                 }             });         }     }, internalLockLeaseTime / 3, TimeUnit.MILLISECONDS);       ee.setTimeout(task); }</code></pre> <pre><code class="language-java">protected RFuture&lt;Boolean&gt; renewExpirationAsync(long threadId) {     // 通过lua脚本对锁进行续期     return evalWriteAsync(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN,                           "if (redis.call('hexists', KEYS[1], ARGV[2]) == 1) then " +                           "redis.call('pexpire', KEYS[1], ARGV[1]); " +                           "return 1; " +                           "end; " +                           "return 0;",                           Collections.singletonList(getName()),                           internalLockLeaseTime, getLockName(threadId)); }</code></pre> <p><strong>3）超时重试</strong></p> <p>使用方式和HeartbeatTimerTask方式类似，读者可以自己动手去分析下它是在哪里被引入的。</p> </h1> <p>在本篇文章中，先是举了3个例子来论述为什么需要使用时间轮，使用时间轮的优点，在文末处也分别对这3个例子在Dubbo或Redisson中的使用做了介绍。接着通过画图讲解了单层时间轮与多层时间轮机制，让读者对时间轮算法有了一个简单的认识。在第二部分，依次讲解了Dubbo时间轮中涉及到的TimerTask、Timeout、HashedWheelBucket、Worker、HashedWheelTimer，分析了它们的原理与源码实现。</p> <blockquote> <p>作者：vivo互联网服务器团队-Li Wanghong</p> </blockquote> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-101527.htm">SpringBoot入门，Dubbo+Zookeeper简单入门案例</a></p>
+                                        <p>下一个：<a href="/news/article-102279.htm">家庭小型狗粮加工机器（狗粮加工机械）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-77693.htm" title="动物疫苗上市公司（动物疫苗上市a股龙头）">动物疫苗上市公司（动物疫苗上市a股龙头）</a></li>
+                        <li class="py-2"><a href="/news/article-69030.htm" title="全国兽药50强企业名单最新 全国兽药50强企业名单最新消息">全国兽药50强企业名单最新 全国兽药50强企业名单最新消息</a></li>
+                        <li class="py-2"><a href="/news/article-73640.htm" title="vue 遍历数组">vue 遍历数组</a></li>
+                        <li class="py-2"><a href="/news/article-84681.htm" title="领养狗狗怎么领养（领养狗的途径）">领养狗狗怎么领养（领养狗的途径）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-subscribe-node.htm" title="3月26日|最高速度19.4M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址">3月26日|最高速度19.4M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-clash-v2ray-ss-ssr.htm" title="3月25日|最高速度21M/S，2025最新SSR/V2ray/Clash/Shadowrocket免费节点订阅链接地址">3月25日|最高速度21M/S，2025最新SSR/V2ray/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-71648.htm" title="DeferredResult异步处理spring mvc Demo">DeferredResult异步处理spring mvc Demo</a></li>
+                        <li class="py-2"><a href="/news/article-68361.htm" title="宠物粮食品牌取名怎么取好 宠物粮食品牌取名怎么取好听">宠物粮食品牌取名怎么取好 宠物粮食品牌取名怎么取好听</a></li>
+                        <li class="py-2"><a href="/news/article-97908.htm" title="vue框架 vue组件中的ref、props传值并修改、混合（子组件重复部分利用混合可以减少代码量的重复编写）">vue框架 vue组件中的ref、props传值并修改、混合（子组件重复部分利用混合可以减少代码量的重复编写）</a></li>
+                        <li class="py-2"><a href="/news/article-84682.htm" title="上海宠物领养平台排名榜单图片（上海2020年宠物领养活动）">上海宠物领养平台排名榜单图片（上海2020年宠物领养活动）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">71</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
