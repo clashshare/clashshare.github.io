@@ -1,0 +1,288 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-110520.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Git撤销&amp;回滚操作</title>
+        <meta name="description" content="开发过程中，你肯定会遇到这样的场景： 场景一：  糟了，我刚把不想要的代码，commit到本地仓库中了，但是还没有做push操作！  场景二：  彻底完了，刚线上更新的代码出现问题了，需要还原这次提交" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-110520.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Git撤销&amp;回滚操作" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/c1048e2e47dc26b3a293efd89fa87494.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:28:45" />
+    <meta property="og:updated_time" content="2025-05-03T10:28:45" />
+        <meta property="og:description" content="开发过程中，你肯定会遇到这样的场景： 场景一：  糟了，我刚把不想要的代码，commit到本地仓库中了，但是还没有做push操作！  场景二：  彻底完了，刚线上更新的代码出现问题了，需要还原这次提交" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Git撤销&amp;回滚操作">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Git撤销&amp;回滚操作</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>开发过程中，你肯定会遇到这样的场景：</p> <p><strong>场景一：</strong></p> <blockquote> <p>糟了，我刚把不想要的代码，commit到本地仓库中了，但是还没有做push操作！</p> </blockquote> <p><strong>场景二：</strong></p> <blockquote> <p>彻底完了，刚线上更新的代码出现问题了，需要还原这次提交的代码！</p> </blockquote> <p><strong>场景三：</strong></p> <blockquote> <p>刚才我发现之前的某次提交太愚蠢了，现在想要干掉它！</p> </blockquote> <h2>撤销</h2> <p>上述<strong>场景一</strong>，在未进行<code>git push</code>前的所有操作，都是在“本地仓库”中执行的。我们暂且将“本地仓库”的代码还原操作叫做“撤销”！</p> <p><strong>情况一：文件被修改了，但未执行<code>git add</code>操作（working tree内撤销）</strong></p> <pre><code class="prism language-shell">$<span class="token function">git</span> checkout fileName $<span class="token function">git</span> checkout<span class="token keyword">.</span></code></pre> <p><strong>情况二：同时对多个文件执行了<code>git add</code>操作，但本次只想提交其中一部分文件</strong></p> <pre><code class="prism language-shell">$<span class="token function">git</span> add * $<span class="token function">git</span> status<span class="token comment"># 取消暂存</span> $<span class="token function">git</span> reset HEAD<span class="token operator">&lt;</span>filename<span class="token operator">&gt;</span></code></pre> <p><strong>情况三：文件执行了<code>git add</code>操作，但想撤销对其的修改（index内回滚）</strong></p> <pre><code class="prism language-shell"><span class="token comment"># 取消暂存</span> $<span class="token function">git</span> reset HEAD fileName<span class="token comment"># 撤销修改</span> $<span class="token function">git</span> checkout fileName</code></pre> <p><strong>情况四：修改的文件已被<code>git commit</code>，但想再次修改不再产生新的Commit</strong></p> <pre><code class="prism language-shell"><span class="token comment"># 修改最后一次提交</span> $<span class="token function">git</span> add sample.txt $<span class="token function">git</span> commit --amend -m<span class="token string">"说明"</span></code></pre> <p><strong>情况五：已在本地进行了多次<code>git commit</code>操作，现在想撤销到其中某次Commit</strong></p> <pre><code class="prism language-shell">$<span class="token function">git</span> reset<span class="token punctuation">[</span>--hard<span class="token operator">|</span>soft<span class="token operator">|</span>mixed<span class="token operator">|</span>merge<span class="token operator">|</span>keep<span class="token punctuation">]</span><span class="token punctuation">[</span>commit<span class="token operator">|</span>HEAD<span class="token punctuation">]</span></code></pre> <p>具体参数和使用说明，请查看：Git Pro深入浅出（二）中的重置揭秘部分</p> <h2>回滚</h2> <p>上述<strong>场景二</strong>，已进行<code>git push</code>，即已推送到“远程仓库”中。我们将已被提交到“远程仓库”的代码还原操作叫做“回滚”！<strong>注意：对远程仓库做回滚操作是有风险的，需提前做好备份和通知其他团队成员！</strong></p> <p><em>如果你每次更新线上，都会打tag，那恭喜你，你可以很快的处理上述<strong>场景二</strong>的情况</em></p> <pre><code class="prism language-shell">$<span class="token function">git</span> checkout<span class="token operator">&lt;</span>tag<span class="token operator">&gt;</span></code></pre> <p><em>如果你回到当前HEAD指向</em></p> <pre><code class="prism language-shell">$<span class="token function">git</span> checkout<span class="token operator">&lt;</span>branch_name<span class="token operator">&gt;</span></code></pre> <p><strong>情况一：撤销指定文件到指定版本</strong></p> <pre><code class="prism language-shell"><span class="token comment"># 查看指定文件的历史版本</span> $<span class="token function">git</span> log<span class="token operator">&lt;</span>filename<span class="token operator">&gt;</span><span class="token comment"># 回滚到指定commitID</span> $<span class="token function">git</span> checkout<span class="token operator">&lt;</span>commitID<span class="token operator">&gt;</span><span class="token operator">&lt;</span>filename<span class="token operator">&gt;</span></code></pre> <p><strong>情况二：删除最后一次远程提交</strong></p> <p><em>方式一：使用revert</em></p> <pre><code class="prism language-shell">$<span class="token function">git</span> revert HEAD $<span class="token function">git</span> push origin master</code></pre> <p><em>方式二：使用reset</em></p> <pre><code class="prism language-shell">$<span class="token function">git</span> reset --hard HEAD^ $<span class="token function">git</span> push origin master -f</code></pre> <p><em>二者区别：</em></p> <ul> <li><strong>revert</strong> 是放弃指定提交的修改，但是会生成一次新的提交，需要填写提交注释，以前的历史记录都在；</li> <li><strong>reset</strong> 是指将HEAD指针指到指定提交，历史记录中不会出现放弃的提交记录。</li> </ul> <p><strong>情况三：回滚某次提交</strong></p> <pre><code class="prism language-shell"><span class="token comment"># 找到要回滚的commitID</span> $<span class="token function">git</span> log $<span class="token function">git</span> revert commitID</code></pre> <h2>删除某次提交</h2> <pre><code class="prism language-shell">$<span class="token function">git</span> log --oneline -n5</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220607/a90991714ee69b9f1165d9cdc077120a.jpg" alt="Git撤销&amp;回滚操作"></p> <pre><code class="prism language-shell">$<span class="token function">git</span> rebase -i<span class="token string">"commit id"</span>^</code></pre> <p><strong>注意：</strong> 需要注意最后的*^*号，意思是commit id的前一次提交</p> <pre><code class="prism language-shell">$<span class="token function">git</span> rebase -i<span class="token string">"5b3ba7a"</span>^</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220607/c3f9d56cf378e88f9fb3b5fb6b1e6316.jpg" alt="Git撤销&amp;回滚操作"><br /> 在编辑框中删除相关commit，如<code>pick 5b3ba7a test2</code>，然后保存退出（如果遇到冲突需要先解决冲突）！</p> <pre><code class="prism language-shell">$<span class="token function">git</span> push origin master -f</code></pre> <p><strong>通过上述操作，如果你想对历史多个commit进行处理或者，可以选择<code>git rebase -i</code>，只需删除对应的记录就好。rebase还可对 commit 消息进行编辑，以及合并多个commit。</strong></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109744.htm">南京宠物领养中心在哪个位置 南京宠物领养中心在哪个位置啊</a></p>
+                                        <p>下一个：<a href="/news/article-110524.htm">宠物领养网免费平台有哪些呢图片 宠物领养网免费平台有哪些呢图片大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-93439.htm" title="动物疫苗接种时间表图片大全（动物疫苗接种时间表图片大全高清）">动物疫苗接种时间表图片大全（动物疫苗接种时间表图片大全高清）</a></li>
+                        <li class="py-2"><a href="/news/article-95701.htm" title="动物生物疫苗概念股票有哪些 动物生物疫苗概念股票有哪些公司">动物生物疫苗概念股票有哪些 动物生物疫苗概念股票有哪些公司</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-node-subscribe.htm" title="4月1日|最高速度21.7M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址">4月1日|最高速度21.7M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-106278.htm" title="python中repr()函数用法详解">python中repr()函数用法详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-free-node-subscribe.htm" title="4月4日|最高速度21.8M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址">4月4日|最高速度21.8M/S，2025最新V2ray/Clash/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-98588.htm" title="流浪猫养多久才会亲人抱（流浪猫养多久才会亲人抱走）">流浪猫养多久才会亲人抱（流浪猫养多久才会亲人抱走）</a></li>
+                        <li class="py-2"><a href="/news/article-109743.htm" title="基于Python制作一个文本翻译器_python_">基于Python制作一个文本翻译器_python_</a></li>
+                        <li class="py-2"><a href="/news/article-102279.htm" title="家庭小型狗粮加工机器（狗粮加工机械）">家庭小型狗粮加工机器（狗粮加工机械）</a></li>
+                        <li class="py-2"><a href="/news/article-90447.htm" title="动物医院哪里好点（动物医院哪个好）">动物医院哪里好点（动物医院哪个好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-free-subscribe-node.htm" title="4月26日|最高速度21.4M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址">4月26日|最高速度21.4M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
