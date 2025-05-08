@@ -1,0 +1,288 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashshare.github.io/news/article-111442.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Java8 新特性 &#8211; Instant 时间戳类</title>
+        <meta name="description" content="Instant 类  是Java8 中补充的一个 时间戳类。 相较于 System.currentTimeMillis()获取到【毫秒】，Instant 可以更为精确的获取到【纳秒】。 Instant" />
+        <link rel="icon" href="/assets/website/img/clashshare/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashShare节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashshare.github.io/news/article-111442.htm" />
+    <meta property="og:site_name" content="ClashShare节点分享站" />
+    <meta property="og:title" content="Java8 新特性 &#8211; Instant 时间戳类" />
+    <meta property="og:image" content="https://clashshare.github.io/uploads/20240525/c1048e2e47dc26b3a293efd89fa87494.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:28:24" />
+    <meta property="og:updated_time" content="2025-05-04T09:28:24" />
+        <meta property="og:description" content="Instant 类  是Java8 中补充的一个 时间戳类。 相较于 System.currentTimeMillis()获取到【毫秒】，Instant 可以更为精确的获取到【纳秒】。 Instant" />
+        
+    <link href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/website/css/clashshare/style-starter.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java8 新特性 &#8211; Instant 时间戳类">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCB90C85R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JXCB90C85R');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--/header-w3l-->
+    <div class="header-w3l">
+        <!-- header -->
+        <header id="site-header" class="fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke">
+                                        <a class="navbar-brand" href="/">
+                        Clash Share                    </a>
+                                        <!-- if logo is image enable this   
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-lg-auto">
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link" href="/news/">新闻资讯</a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- //toggle switch for light and dark theme -->
+                </nav>
+            </div>
+        </header>
+        <!-- //header -->
+    </div>
+    <!--//header-w3l-->
+    <!--/w3l-inner-page-breadcrumb-->
+    <section class="w3l-inner-page-breadcrumb">
+        <div class="breadcrumb-bg py-5">
+            <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+                <h2 class="title pt-5">Java8 新特性 &#8211; Instant 时间戳类</h2>
+                <ul class="breadcrumbs-custom-path mt-3 text-center">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">
+                        <span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 新闻资讯</a>
+                    </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> 正文</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- /w3l-content-2-->
+    <div class="w3l-content-2 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <pre><code>Instant 类  是Java8 中补充的一个 时间戳类。 相较于 System.currentTimeMillis()获取到【毫秒】，Instant 可以更为精确的获取到【纳秒】。</code></pre> <pre><code>Instant 可以使用静态方法 now() 或者 of() 方法来创建一个实例对象。（案例代码中会有体现）</code></pre> <pre><code>Instant 类的常用API 就是获取时间戳了  * Instant 类的 getEpochSecond() : 获取的是秒  * Instant 类的 toEpochMilli() : 获取的是毫秒，同 System.currentTimeMillis()  * Instant 类的 getNano() : 获取的是纳秒，更精确了</code></pre> <pre><code>同时，Instant 类还是 Java8 中 提供的新的 日期时间类LocalDateTime 与 原来的 java.util.Date 类之间转换的桥梁。</code></pre> </h1> <pre><code class="prism language-java"><span class="token keyword">package</span><span class="token namespace">com<span class="token punctuation">.</span>northcastle<span class="token punctuation">.</span></span><span class="token class-name">K_Date</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Instant</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">LocalDateTime</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">ZoneId</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">ZonedDateTime</span><span class="token punctuation">;</span><span class="token comment">/**  * Instant 类 ：存储了一个从1970-01-01 00:00:00 以来的 秒 和 纳秒 数据  * 实际上就是一个时间戳类  * System.currentTimeMillis() ： 获取的是毫秒  *  * Instant 类的 getEpochSecond() : 获取的是秒  * Instant 类的 toEpochMilli() : 获取的是毫秒，同 System.currentTimeMillis()  * Instant 类的 getNano() : 获取的是纳秒，更精确了  *  */</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InstantTest</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//1.获取当前时间的Instant对象</span><span class="token class-name">Instant</span> now01<span class="token operator">=</span><span class="token class-name">Instant</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>now01<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"纪元秒 ： "</span><span class="token operator">+</span>now01<span class="token punctuation">.</span><span class="token function">getEpochSecond</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"时间戳 ： "</span><span class="token operator">+</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"毫  秒 ： "</span><span class="token operator">+</span>now01<span class="token punctuation">.</span><span class="token function">toEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"纳  秒 ： "</span><span class="token operator">+</span>now01<span class="token punctuation">.</span><span class="token function">getNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 2.获取指定时间的Instant对象</span><span class="token class-name">Instant</span> instant01<span class="token operator">=</span><span class="token class-name">Instant</span><span class="token punctuation">.</span><span class="token function">ofEpochSecond</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant01<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"纪元秒 ： "</span><span class="token operator">+</span>instant01<span class="token punctuation">.</span><span class="token function">getEpochSecond</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"毫  秒 ： "</span><span class="token operator">+</span>instant01<span class="token punctuation">.</span><span class="token function">toEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"纳  秒 ： "</span><span class="token operator">+</span>instant01<span class="token punctuation">.</span><span class="token function">getNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//3.指定时间戳创建 带时区的日期时间对象 ZoneDateTime</span><span class="token class-name">Instant</span> instant02<span class="token operator">=</span><span class="token class-name">Instant</span><span class="token punctuation">.</span><span class="token function">ofEpochSecond</span><span class="token punctuation">(</span><span class="token number">1647784071</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 2022-03-20 21:47:51</span><span class="token class-name">ZonedDateTime</span> zonedDateTime<span class="token operator">=</span> instant02<span class="token punctuation">.</span><span class="token function">atZone</span><span class="token punctuation">(</span><span class="token class-name">ZoneId</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"Asia/Shanghai"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"zonedDateTime = "</span><span class="token operator">+</span> zonedDateTime<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 4.指定时间戳创建  默认时区的日期时间对象 LocalDateTime</span><span class="token class-name">Instant</span> instant03<span class="token operator">=</span><span class="token class-name">Instant</span><span class="token punctuation">.</span><span class="token function">ofEpochSecond</span><span class="token punctuation">(</span><span class="token number">1647784071</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 2022-03-20 21:47:51</span><span class="token class-name">LocalDateTime</span> localDateTime<span class="token operator">=</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">ofInstant</span><span class="token punctuation">(</span>instant03<span class="token punctuation">,</span><span class="token class-name">ZoneId</span><span class="token punctuation">.</span><span class="token function">systemDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"localDateTime = "</span><span class="token operator">+</span> localDateTime<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221118/293e042f55d550928a9b5e59814737fe.jpg" alt="Java8 新特性 - Instant 时间戳类"></p> </h1> <blockquote> <p>转换关系中涉及到了<code>LocalDate</code>、<code>LocalDateTime</code>、<code>ZoneDateTime</code>、<code>Instant</code> 、<code>Date</code> 之间的相互转换。<br /> 具体的转换操作可以参考博客 ：Java8新特性 - LocalDate、LocalDateTime、ZoneDateTime 与 Date 的相互转换<br /> 此博客也为本人所做，详细整理了各种情况下的转换案例。</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221118/418b4230bf08d19722485bff7a885d78.jpg" alt="Java8 新特性 - Instant 时间戳类"></p> </h1> <p><strong>Congratulations!<br /> You are one step closer to success!</strong></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110524.htm">宠物领养网免费平台有哪些呢图片 宠物领养网免费平台有哪些呢图片大全</a></p>
+                                        <p>下一个：<a href="/news/article-111446.htm">延边宠物网（延边宠物救助站）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-clash-node-daily-updates.htm" title="4月6日|最高速度23M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址">4月6日|最高速度23M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-109743.htm" title="基于Python制作一个文本翻译器_python_">基于Python制作一个文本翻译器_python_</a></li>
+                        <li class="py-2"><a href="/news/article-86108.htm" title="动物疫苗打几次有效果啊（动物疫苗打一次管多长时间）">动物疫苗打几次有效果啊（动物疫苗打一次管多长时间）</a></li>
+                        <li class="py-2"><a href="/news/article-101528.htm" title="时间轮原理及其在框架中的应用">时间轮原理及其在框架中的应用</a></li>
+                        <li class="py-2"><a href="/news/article-103099.htm" title="宠物粮食加工厂什么岗位比较好呢 宠物粮食加工厂什么岗位比较好呢工资多少">宠物粮食加工厂什么岗位比较好呢 宠物粮食加工厂什么岗位比较好呢工资多少</a></li>
+                        <li class="py-2"><a href="/news/article-87546.htm" title="宠物领养证书怎么办理流程视频（正规领养宠物流程）">宠物领养证书怎么办理流程视频（正规领养宠物流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-free-shadowrocket-node.htm" title="4月11日|最高速度22M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址">4月11日|最高速度22M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-106945.htm" title="动物疫苗接种时间要求多久（动物疫苗的使用方法及注意事项）">动物疫苗接种时间要求多久（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-90447.htm" title="动物医院哪里好点（动物医院哪个好）">动物医院哪里好点（动物医院哪个好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-5-6-free-high-speed-nodes.htm" title="5月6日|最高速度18.3M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址">5月6日|最高速度18.3M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //w3l-content-2-->
+        <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <!-- copyright -->
+        <section class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies">
+                    <p class="col-lg-8 copy-footer-29">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        ClashShare节点分享站 版权所有 Powered by WordPress
+                    </p>
+                    <div class="col-lg-4 footer-list-29">
+                        <ul class="d-flex text-lg-right">
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+        </button>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+        <!-- /move top -->
+    </footer>
+    <!--//footer-->
+    <!-- Template JavaScript -->
+    <script src="/assets/website/js/frontend/clashshare/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashshare/theme-change.js"></script>
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!--//MENU-JS-->
+    <script src="/assets/website/js/frontend/clashshare/bootstrap.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
