@@ -1,4 +1,4 @@
-# 9月21日|最高速度21.1M/S，2025最新V2ray/SSR/Clash/Shadowrocket免费节点订阅链接地址  更新时间 2025-09-21 10:41:37
+# 9月21日|最高速度19.8M/S，2025最新Clash/Shadowrocket/V2ray/SSR免费节点订阅链接地址  更新时间 2025-09-21 21:32:16
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://clashshare.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
