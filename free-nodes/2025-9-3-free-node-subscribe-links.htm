@@ -63,7 +63,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg stroke">
                                         <a class="navbar-brand" href="/">
-                        Clash Share                    </a>
+                        Clash 节点共享平台                    </a>
                                         <!-- if logo is image enable this   
             <a class="navbar-brand" href="#index.html">
                 <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -117,7 +117,7 @@
     <section class="w3l-inner-page-breadcrumb">
         <div class="breadcrumb-bg py-5">
             <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
-                <h2 class="title pt-5">9月3日|最高速度18.2M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址</h2>
+                <h2 class="title pt-5">9月3日|最高速度18.2M/S，2025最新SSR/Clash节点/V2ray节点/Shadowrocket免费节点订阅链接地址</h2>
                 <ul class="breadcrumbs-custom-path mt-3 text-center">
                     <li><a href="/">首页</a></li>
                     <li><a href="/free-nodes/">
@@ -158,8 +158,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅链接</h2><p>&nbsp;</p><p><strong>clash订阅链接</strong></p><p>https://clashshare.github.io/uploads/2025/09/0-20250903.yaml</p><p>https://clashshare.github.io/uploads/2025/09/1-20250903.yaml</p><p>https://clashshare.github.io/uploads/2025/09/2-20250903.yaml</p><p>https://clashshare.github.io/uploads/2025/09/3-20250903.yaml</p><p>https://clashshare.github.io/uploads/2025/09/4-20250903.yaml</p><p>&nbsp;</p><p><strong>v2ray订阅链接:</strong></p><p>https://clashshare.github.io/uploads/2025/09/1-20250903.txt</p><p>https://clashshare.github.io/uploads/2025/09/4-20250903.txt</p><p><strong>sing-box订阅链接</strong></p><p>https://clashshare.github.io/uploads/2025/09/20250903.json</p><p>&nbsp;</p><p>如果您需要高质量的付费服务,我们强烈推荐您试试「<a href="javascript:;" class="js_to" data-url="https://muguacloud.top/#/register?code=" data-type="Mugua" data-code="MQag6brk" rel="nofollow noopener" style="color:#c00;">木瓜云</a> 」。提供全球范围内快速稳定的高速节点,轻松处理8K高清视频流量,并可解锁流媒体网站和chatGPT。其服务器性能出色,确保您享受到高品质的体验。</p><h2>从零开始：OpenWrt路由器上编译Clash的终极实践指南</h2>  <h2>引言：为何选择在路由器上运行Clash？</h2>  <p>在当今这个数字化时代，网络自由与隐私保护已成为现代网民的基本诉求。Clash作为一款功能强大的代理工具，凭借其灵活的规则配置和高效的流量处理能力，在技术爱好者中赢得了极高声誉。而将Clash部署在OpenWrt路由器上，则如同为整个家庭网络安装了一位智能的"交通指挥官"——所有接入设备无需单独配置即可享受安全、畅通的网络环境。</p>  <p>这种部署方式的优势显而易见：一方面实现了网络流量的全局管理，另一方面减轻了终端设备的资源消耗。想象一下，当你的手机、平板、智能电视等设备连接到家中的Wi-Fi时，它们的所有网络请求都会自动通过Clash进行智能路由，这种无缝体验正是技术带来的优雅解决方案。</p>  <h2>环境准备：构建编译的坚实基础</h2>  <h3>系统要求与软件准备</h3>  <p>编译OpenWrt下的Clash并非在普通桌面环境那样简单直接，它需要一个精心准备的Linux编译环境。推荐使用Ubuntu 20.04 LTS或更新版本作为基础系统，这个长期支持版本提供了稳定的开发环境。在终端中执行以下命令安装必备工具链：</p>  <p><code>bash sudo apt update sudo apt install -y git gcc make libc-dev libstdc++-dev build-essential \ libncurses5-dev zlib1g-dev gawk flex gettext wget unzip python3</code></p>  <p>这些软件包构成了编译OpenWrt及其软件包的完整工具链，缺少其中任何一个都可能导致后续步骤失败。特别值得注意的是，<code>libncurses5-dev</code>和<code>zlib1g-dev</code>是OpenWrt配置菜单正常运行的关键依赖。</p>  <h3>获取OpenWrt源码的艺术</h3>  <p>OpenWrt的源码仓库犹如一座宝库，但如何获取合适的版本却是一门学问。对于初学者，建议从官方稳定版本开始：</p>  <p><code>bash git clone https://git.openwrt.org/openwrt/openwrt.git cd openwrt git checkout v21.02.3  # 使用稳定的21.02.3版本</code></p>  <p>这个特定版本经过了充分测试，与大多数硬件兼容良好。进入源码目录后，我们需要更新和安装所谓的"feeds"——这是OpenWrt特有的扩展机制，类似于其他系统中的软件仓库：</p>  <p><code>bash ./scripts/feeds update -a ./scripts/feeds install -a</code></p>  <p>这个过程可能会花费一些时间，因为它需要从多个远程仓库获取最新的软件包信息。耐心等待是值得的，因为完整的feeds是后续添加Clash支持的基础。</p>  <h2>编译Clash：从源码到可执行文件</h2>  <h3>获取Clash源码的多种途径</h3>  <p>在OpenWrt生态中，Clash有多种实现方式。最受欢迎的是OpenClash项目，它为OpenWrt提供了完整的Clash集成方案。将其添加到我们的编译环境中：</p>  <p><code>bash mkdir -p package/lean cd package/lean git clone --depth=1 https://github.com/vernesong/OpenClash.git cd ../..</code></p>  <p><code>--depth=1</code>参数告诉Git只克隆最近的提交历史，这可以显著减少下载时间和磁盘空间占用。对于国内用户，可能会遇到GitHub访问缓慢的问题，此时可以考虑使用镜像源或者代理工具。</p>  <h3>配置编译选项的智慧</h3>  <p>OpenWrt的<code>menuconfig</code>系统是其强大灵活性的体现，但初次面对那密密麻麻的选项菜单，许多新手都会感到无所适从。运行配置命令：</p>  <p><code>bash make menuconfig</code></p>  <p>在出现的界面中，我们需要重点关注几个关键部分： 1. 在"Target System"中选择正确的路由器CPU架构 2. 在"Target Profile"中选择具体的设备型号 3. 在"Network" → "Web Servers/Proxies"下找到"OpenClash"并选择为<code>&lt;M&gt;</code>(模块)或<code>&lt;*&gt;</code>(内置)</p>  <p>一个专业建议：初次编译时，可以只选择最基本的配置和OpenClash，减少出错概率。成功后再逐步添加其他需要的功能。</p>  <h3>编译过程的实战技巧</h3>  <p>真正的编译过程由一条看似简单的命令开始：</p>  <p><code>bash make -j$(nproc) V=s</code></p>  <p>但这简单的命令背后却有许多值得注意的细节： - <code>-j$(nproc)</code>表示使用与CPU核心数相同的并行任务数，最大化编译速度 - <code>V=s</code>表示显示详细输出，便于发现问题 - 首次编译会下载大量依赖，保持网络通畅至关重要 - 建议在screen或tmux会话中运行，防止网络中断导致编译失败</p>  <p>编译时间从几十分钟到数小时不等，取决于硬件性能和网络状况。在这个过程中，你可能会遇到各种依赖问题，这是完全正常的——OpenWrt编译就是一个不断解决问题的过程。</p>  <h2>安装与配置：让Clash真正运转起来</h2>  <h3>安装编译产物的正确方式</h3>  <p>编译成功后，生成的ipk包位于<code>bin/packages</code>目录下。将其传输到路由器的推荐方法是：</p>  <p><code>bash scp bin/packages/&lt;架构&gt;/clash/*.ipk root@路由器IP:/tmp/ ssh root@路由器IP "opkg install /tmp/*.ipk"</code></p>  <p>对于许多现代OpenWrt固件，可能已经内置了Clash的软件源，这种情况下可以直接通过opkg安装而无需自行编译。但自行编译的优势在于可以获得最新版本和完全定制的功能集。</p>  <h3>配置文件的精妙之处</h3>  <p>Clash的强大功能完全体现在其配置文件中。初始安装后，配置文件通常位于<code>/etc/clash/config.yaml</code>。一个最小化的配置示例如下：</p>  <p>```yaml port: 7890 socks-port: 7891 redir-port: 7892 allow-lan: true mode: Rule log-level: info external-controller: 0.0.0.0:9090</p>  <p>proxies:   - name: "我的代理服务器"     type: ss     server: server.example.com     port: 443     cipher: aes-256-gcm     password: "密码"</p>  <p>proxy-groups:   - name: "自动选择"     type: url-test     proxies: ["我的代理服务器"]     url: "http://www.gstatic.com/generate_204"     interval: 300</p>  <p>rules:   - DOMAIN-SUFFIX,google.com,自动选择   - GEOIP,CN,DIRECT   - MATCH,自动选择 ```</p>  <p>这个配置展示了Clash的几个核心概念：代理服务器定义、代理组策略和流量规则。实际使用时，你需要根据自己的代理服务器信息进行修改。</p>  <h3>服务管理的专业技巧</h3>  <p>OpenWrt使用procd系统管理服务，Clash的启动脚本通常已经正确处理了这一点。基本的管理命令包括：</p>  <p><code>bash /etc/init.d/clash start    # 启动 /etc/init.d/clash stop     # 停止 /etc/init.d/clash restart  # 重启 /etc/init.d/clash enable   # 设置开机自启 /etc/init.d/clash disable  # 取消开机自启</code></p>  <p>查看服务状态的命令是<code>service clash status</code>，而实时日志可以通过<code>logread -f | grep clash</code>查看。当日志显示"Clash started successfully"时，说明服务已经正常运转。</p>  <h2>深度优化与问题排查</h2>  <h3>性能调优的进阶技巧</h3>  <p>要让Clash在资源有限的路由器上高效运行，有几个关键优化点：</p>  <ol> <li><p><strong>启用TUN模式</strong>：在配置文件中添加： <code>yaml tun:  enable: true  stack: system</code> 这种模式可以显著提升某些类型流量的处理效率。</p></li> <li><p><strong>合理设置DNS</strong>：避免使用默认的DNS配置，改为： ```yaml dns:  enable: true  listen: 0.0.0.0:53  enhanced-mode: redir-host  nameserver:</p>  <ul> <li>8.8.8.8</li> <li>1.1.1.1 ```</li> </ul></li> <li><p><strong>规则集优化</strong>：精简规则列表，只保留真正需要的规则，减少内存占用。</p></li> </ol>  <h3>常见问题与专业解决方案</h3>  <p><strong>Q1: 编译过程中出现"missing dependency"错误怎么办？</strong></p>  <p>这是OpenWrt编译最常见的问题之一。解决方法通常是： <code>bash ./scripts/feeds update -a ./scripts/feeds install -a make defconfig</code> 然后重新尝试编译。如果问题依旧，可能需要手动安装缺失的依赖。</p>  <p><strong>Q2: Clash启动后无法访问外网？</strong></p>  <p>这是一个多层次的问题，需要系统排查： 1. 检查日志<code>logread | grep clash</code>是否有明显错误 2. 确认防火墙规则正确放行Clash的端口 3. 测试直接使用IP地址而非域名是否能访问 4. 检查路由器的DNS设置是否被正确覆盖</p>  <p><strong>Q3: 如何实现特定设备不走代理？</strong></p>  <p>在Clash配置文件的rules部分添加： <code>yaml rules:   - IP-CIDR,192.168.1.100/32,DIRECT  # 指定IP直连</code> 或者在OpenWrt的网络设置中，为特定设备分配静态IP，然后通过防火墙标记实现分流。</p>  <p><strong>Q4: 内存不足导致崩溃怎么办？</strong></p>  <p>对于内存较小的路由器： 1. 使用更精简的规则集 2. 禁用不必要的插件功能 3. 考虑使用swap分区 4. 或者选择硬件性能更强的路由器</p>  <h2>结语：技术赋能的网络自由</h2>  <p>通过本指南，我们从零开始完成了在OpenWrt上编译和配置Clash的全过程。这不仅仅是一个技术操作指南，更是一次对网络自由和隐私保护的实践探索。Clash在OpenWrt上的运行，代表了个体对网络控制权的重新掌握——你可以决定数据如何流动，隐私如何保护，信息如何获取。</p>  <p>技术的魅力正在于此：它赋予普通人以力量，让复杂的网络管理变得触手可及。当你看到家中所有设备都通过这台小小的路由器安全地访问互联网时，那种成就感是无可替代的。</p>  <p>记住，技术永远在进步，今天的解决方案明天可能会有更好的替代。保持学习，保持探索，这才是技术爱好者永恒的姿态。愿你在网络自由的路上越走越远，但永远记得：能力越大，责任越大。</p>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-9-2-free-shadowrocket-node.htm">9月2日|最高速度23M/S，2025最新V2ray/Shadowrocket/SSR/Clash免费节点订阅链接地址</a></p>
-                                        <p>下一个：<a href="/free-nodes/2025-9-4-clash-windows.htm">9月4日|最高速度20.2M/S，2025最新Clash/Shadowrocket/V2ray/SSR免费节点订阅链接地址</a></p>
+                                        <p>上一个：<a href="/free-nodes/2025-9-2-free-shadowrocket-node.htm">9月2日|最高速度23M/S，2025最新V2ray节点/Shadowrocket节点/SSR/Clash免费节点订阅链接地址</a></p>
+                                        <p>下一个：<a href="/free-nodes/2025-9-4-clash-windows.htm">9月4日|最高速度20.2M/S，2025最新Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅链接地址</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
                     <div class="panel-heading">
@@ -167,16 +167,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                     </div>
                     <div class="panel-body">
                         <ul class="p-0 x-0">
-                                                        <li class="py-2"><a href="/free-nodes/2025-9-2-free-shadowrocket-node.htm">9月2日|最高速度23M/S，2025最新V2ray/Shadowrocket/SSR/Clash免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-9-1-free-node-subscribe.htm">9月1日|最高速度19.4M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-31-free-subscribe-node.htm">8月31日|最高速度19.1M/S，2025最新Clash/V2ray/SSR/Shadowrocket免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-30-clash-v2ray-ss-ssr.htm">8月30日|最高速度21.6M/S，2025最新Shadowrocket/V2ray/SSR/Clash免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-29-clash-windows.htm">8月29日|最高速度18.1M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-28-clash-node.htm">8月28日|最高速度22.7M/S，2025最新V2ray/Shadowrocket/Clash/SSR免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-27-clash-v2ray-ss-ssr.htm">8月27日|最高速度20.2M/S，2025最新SSR/Clash/Shadowrocket/V2ray免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-26-clash-node.htm">8月26日|最高速度20.5M/S，2025最新SSR/Clash/V2ray/Shadowrocket免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-25-node-share-links.htm">8月25日|最高速度20.8M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-24-free-clash.htm">8月24日|最高速度19.4M/S，2025最新SSR/V2ray/Clash/Shadowrocket免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-9-2-free-shadowrocket-node.htm">9月2日|最高速度23M/S，2025最新V2ray节点/Shadowrocket节点/SSR/Clash免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-9-1-free-node-subscribe.htm">9月1日|最高速度19.4M/S，2025最新V2ray节点/Clash节点/Shadowrocket节点/SSR免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-31-free-subscribe-node.htm">8月31日|最高速度19.1M/S，2025最新Clash节点/V2ray节点/SSR/Shadowrocket免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-30-clash-v2ray-ss-ssr.htm">8月30日|最高速度21.6M/S，2025最新Shadowrocket节点/V2ray节点/SSR/Clash免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-29-clash-windows.htm">8月29日|最高速度18.1M/S，2025最新Shadowrocket节点/SSR/V2ray节点/Clash免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-28-clash-node.htm">8月28日|最高速度22.7M/S，2025最新V2ray节点/Shadowrocket节点/Clash节点/SSR免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-27-clash-v2ray-ss-ssr.htm">8月27日|最高速度20.2M/S，2025最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-26-clash-node.htm">8月26日|最高速度20.5M/S，2025最新SSR/Clash节点/V2ray节点/Shadowrocket免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-25-node-share-links.htm">8月25日|最高速度20.8M/S，2025最新Shadowrocket节点/V2ray节点/Clash节点/SSR免费节点订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-24-free-clash.htm">8月24日|最高速度19.4M/S，2025最新SSR/V2ray节点/Clash节点/Shadowrocket免费节点订阅链接地址</a></li>
                                                     </ul>
                     </div>
                 </div>
@@ -188,16 +188,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-ssr-subscribe.htm" title="8月17日|最高速度19.7M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址">8月17日|最高速度19.7M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-1-free-node-subscribe.htm" title="9月1日|最高速度19.4M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址">9月1日|最高速度19.4M/S，2025最新V2ray/Clash/Shadowrocket/SSR免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-7-free-v2ray.htm" title="9月7日|最高速度20.2M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址">9月7日|最高速度20.2M/S，2025最新SSR/V2ray/Shadowrocket/Clash免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-18-free-v2ray-subscribe.htm" title="8月18日|最高速度22.6M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址">8月18日|最高速度22.6M/S，2025最新Shadowrocket/Clash/V2ray/SSR免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-8-clash-node.htm" title="8月8日|最高速度19.9M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址">8月8日|最高速度19.9M/S，2025最新Shadowrocket/Clash/SSR/V2ray免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-13-clash-windows.htm" title="8月13日|最高速度22.6M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址">8月13日|最高速度22.6M/S，2025最新Shadowrocket/SSR/Clash/V2ray免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-25-node-share-links.htm" title="8月25日|最高速度20.8M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址">8月25日|最高速度20.8M/S，2025最新Shadowrocket/V2ray/Clash/SSR免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-29-clash-windows.htm" title="8月29日|最高速度18.1M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址">8月29日|最高速度18.1M/S，2025最新Shadowrocket/SSR/V2ray/Clash免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-6-free-ssr-subscribe.htm" title="9月6日|最高速度22M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址">9月6日|最高速度22M/S，2025最新V2ray/SSR/Shadowrocket/Clash免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-4-free-subscribe-node.htm" title="8月4日|最高速度19.3M/S，2025最新Clash/V2ray/Shadowrocket/SSR免费节点订阅链接地址">8月4日|最高速度19.3M/S，2025最新Clash/V2ray/Shadowrocket/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-13-free-ssr-subscribe.htm" title="9月13日|最高速度19.1M/S，2025最新Clash节点/V2ray节点/Shadowrocket节点/SSR免费节点订阅链接地址">9月13日|最高速度19.1M/S，2025最新Clash节点/V2ray节点/Shadowrocket节点/SSR免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-27-clash-v2ray-ss-ssr.htm" title="8月27日|最高速度20.2M/S，2025最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点订阅链接地址">8月27日|最高速度20.2M/S，2025最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-12-clash-windows.htm" title="9月12日|最高速度18.5M/S，2025最新Shadowrocket节点/V2ray节点/SSR/Clash免费节点订阅链接地址">9月12日|最高速度18.5M/S，2025最新Shadowrocket节点/V2ray节点/SSR/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-2-free-shadowrocket-node.htm" title="9月2日|最高速度23M/S，2025最新V2ray节点/Shadowrocket节点/SSR/Clash免费节点订阅链接地址">9月2日|最高速度23M/S，2025最新V2ray节点/Shadowrocket节点/SSR/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-29-clash-windows.htm" title="8月29日|最高速度18.1M/S，2025最新Shadowrocket节点/SSR/V2ray节点/Clash免费节点订阅链接地址">8月29日|最高速度18.1M/S，2025最新Shadowrocket节点/SSR/V2ray节点/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-26-clash-node.htm" title="8月26日|最高速度20.5M/S，2025最新SSR/Clash节点/V2ray节点/Shadowrocket免费节点订阅链接地址">8月26日|最高速度20.5M/S，2025最新SSR/Clash节点/V2ray节点/Shadowrocket免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-7-free-v2ray.htm" title="9月7日|最高速度20.2M/S，2025最新SSR/V2ray节点/Shadowrocket节点/Clash免费节点订阅链接地址">9月7日|最高速度20.2M/S，2025最新SSR/V2ray节点/Shadowrocket节点/Clash免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-8-free-ssr-node.htm" title="9月8日|最高速度22.9M/S，2025最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点订阅链接地址">9月8日|最高速度22.9M/S，2025最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-20-free-shadowrocket-node.htm" title="9月20日|最高速度19.1M/S，2025最新Clash节点/SSR/Shadowrocket节点/V2ray免费节点订阅链接地址">9月20日|最高速度19.1M/S，2025最新Clash节点/SSR/Shadowrocket节点/V2ray免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-25-node-share-links.htm" title="8月25日|最高速度20.8M/S，2025最新Shadowrocket节点/V2ray节点/Clash节点/SSR免费节点订阅链接地址">8月25日|最高速度20.8M/S，2025最新Shadowrocket节点/V2ray节点/Clash节点/SSR免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -209,7 +209,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">28</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
@@ -232,7 +232,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
             <div class="container">
                 <div class="row bottom-copies">
                     <p class="col-lg-8 copy-footer-29">
-                                            <p>
+                                            <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -243,7 +244,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        ClashShare节点分享站 版权所有 Powered by WordPress
+                                            ClashShare节点分享站 版权所有 Powered by WordPress
                     </p>
                     <div class="col-lg-4 footer-list-29">
                         <ul class="d-flex text-lg-right">
