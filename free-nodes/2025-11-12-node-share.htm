@@ -163,9 +163,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何隐藏真实 IP？</h5></div>
+    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
     <div class="panel-body">
-        通过启用 TLS、Reality 或 WebSocket + CDN 转发，V2Ray 可有效隐藏真实服务器 IP。这样外部监测只能看到中转节点，从而提升匿名性与安全性。<hr />    </div>
+        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
+    <div class="panel-body">
+        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何按域名分流优化浏览器流量？</h5></div>
+    <div class="panel-body">
+        Sing-box 可通过规则匹配域名，将浏览器流量分配到最优节点。结合策略组，可保证网页访问速度和稳定性，同时优化视频和游戏等其他流量，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络中有何优势？</h5></div>
+    <div class="panel-body">
+        AEAD 加密能防止流量被篡改或重放，并隐藏流量特征。在高封锁网络中，使用 AEAD 可以提高节点稳定性和长期可用性，同时确保数据安全和隐蔽性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分类管理有什么作用？</h5></div>
@@ -178,24 +193,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Clash 支持设置订阅规则的更新频率，例如每小时或每天。定期更新可保证节点和规则最新，减少手动维护，提高访问速度和分流效率，同时保持网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 如何隐藏真实 IP？</h5></div>
     <div class="panel-body">
-        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>使用 Reality 协议后，客户端与服务端的密钥如何管理？</h5></div>
-    <div class="panel-body">
-        Reality 使用公私钥对进行认证，应生成唯一的公私钥对并妥善保存私钥，公钥可部署在服务端配置中。避免在多个服务共享同一密钥，定期轮换密钥并通过安全通道传输公钥以防泄露。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按域名分流优化浏览器流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 可通过规则匹配域名，将浏览器流量分配到最优节点。结合策略组，可保证网页访问速度和稳定性，同时优化视频和游戏等其他流量，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
-    <div class="panel-body">
-        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。<hr />    </div>
+        通过启用 TLS、Reality 或 WebSocket + CDN 转发，V2Ray 可有效隐藏真实服务器 IP。这样外部监测只能看到中转节点，从而提升匿名性与安全性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 的用户管理可以分组吗？</h5></div>
@@ -203,14 +203,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         支持用户分组管理，可为不同组设置独立带宽、流量配额和节点访问权限。分组管理便于大规模用户维护，确保每个组的网络资源合理分配，提升整体管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
+    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
     <div class="panel-body">
-        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
+        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密在高封锁网络中有何优势？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
     <div class="panel-body">
-        AEAD 加密能防止流量被篡改或重放，并隐藏流量特征。在高封锁网络中，使用 AEAD 可以提高节点稳定性和长期可用性，同时确保数据安全和隐蔽性。    </div>
+        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -239,16 +239,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-21-free-node-subscribe-links.htm" title="10月21日|最高速度19.1M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址">10月21日|最高速度19.1M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-19-free-ssr-node.htm" title="10月19日|最高速度22.6M/S，2025最新Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点免费节点订阅链接地址">10月19日|最高速度22.6M/S，2025最新Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-23-free-v2ray-subscribe.htm" title="10月23日|最高速度22.8M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点免费节点订阅链接地址">10月23日|最高速度22.8M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-14-free-ssr-node.htm" title="10月14日|最高速度21.9M/S，2025最新V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点免费节点订阅链接地址">10月14日|最高速度21.9M/S，2025最新V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-1-free-ssr-subscribe.htm" title="12月1日|最高速度19.7M/S，2025最新SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点免费节点订阅链接地址">12月1日|最高速度19.7M/S，2025最新SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-26-shadowrocket-node.htm" title="11月26日|最高速度22.4M/S，2025最新Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">11月26日|最高速度22.4M/S，2025最新Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-node-subscribe-links.htm" title="11月7日|最高速度19.4M/S，2025最新V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点免费节点订阅链接地址">11月7日|最高速度19.4M/S，2025最新V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-subscribe-node.htm" title="11月30日|最高速度19.9M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点免费节点订阅链接地址">11月30日|最高速度19.9M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日|最高速度22.4M/S，2025最新Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址">11月13日|最高速度22.4M/S，2025最新Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-free-node-subscribe-links.htm" title="11月9日|最高速度20M/S，2025最新Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Singbox节点免费节点订阅链接地址">11月9日|最高速度20M/S，2025最新Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Singbox节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-12-node-share.htm" title="11月12日|最高速度18.3M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址">11月12日|最高速度18.3M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-14-free-ssr-node.htm" title="11月14日|最高速度21.9M/S，2025最新Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址">11月14日|最高速度21.9M/S，2025最新Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-31-free-node-subscribe-links.htm" title="10月31日|最高速度20.8M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址">10月31日|最高速度20.8M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-27-shadowrocket-node.htm" title="10月27日|最高速度22.9M/S，2025最新SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点免费节点订阅链接地址">10月27日|最高速度22.9M/S，2025最新SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点免费节点订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-11-clash-node-daily-updates.htm" title="11月11日|最高速度21.6M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址">11月11日|最高速度21.6M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-shadowrocket-node.htm" title="11月8日|最高速度22.4M/S，2025最新V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点免费节点订阅链接地址">11月8日|最高速度22.4M/S，2025最新V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-16-free-ssr-node.htm" title="10月16日|最高速度21.6M/S，2025最新SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点免费节点订阅链接地址">10月16日|最高速度21.6M/S，2025最新SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe-links.htm" title="11月17日|最高速度20.7M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址">11月17日|最高速度20.7M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -260,10 +260,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
