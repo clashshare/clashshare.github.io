@@ -266,24 +266,9 @@ Chrome账户登录后，书签、密码、扩展等均可在多设备间同步�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 如何通过配置实现多出口分流？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
     <div class="panel-body">
-        Mellow 可在配置文件中定义多个 outbound，并结合 routing 规则实现按域名、IP 或策略组分流。这样不同类型的流量可走不同节点，提高使用体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 节点分组管理有哪些优势？</h5></div>
-    <div class="panel-body">
-        节点可按地区、延迟或用途分类，结合策略组实现自动分流。便于管理大量节点，快速选择最优节点，提高访问速度和连接稳定性，同时优化维护效率和网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 如何配置混淆以应对封锁升级？</h5></div>
-    <div class="panel-body">
-        选择合适的混淆方式，如 tls1.2_ticket_auth，可模拟正常 HTTPS 流量。合理搭配协议和混淆参数，可有效降低被 DPI 检测和封锁的风险，提高节点长期稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 可以导入哪些格式的规则文件？</h5></div>
-    <div class="panel-body">
-        Surfboard 支持 YAML 和部分 JSON 格式的规则文件，用户可以导入节点、策略组和分流规则。注意文件格式和语法必须符合 Surfboard 规范，否则可能导入失败。<hr />    </div>
+        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 能否同步 iCloud 配置？</h5></div>
@@ -291,19 +276,19 @@ Chrome账户登录后，书签、密码、扩展等均可在多设备间同步�
         可以。Surfboard 支持 iCloud 同步功能，用户可在不同苹果设备上共享同一配置文件。这样即使更换手机或重装系统，也能自动恢复节点与分流设置。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 节点分组管理有哪些优势？</h5></div>
+    <div class="panel-body">
+        节点可按地区、延迟或用途分类，结合策略组实现自动分流。便于管理大量节点，快速选择最优节点，提高访问速度和连接稳定性，同时优化维护效率和网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 如何手动导入节点？</h5></div>
+    <div class="panel-body">
+        SSR 节点通常以“ssr://”链接形式提供。用户可在客户端中点击“添加节点”或“导入链接”，粘贴该字符串后保存即可。程序会自动解析服务器地址、端口、加密方式等参数。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 如何通过命令行管理配置？</h5></div>
     <div class="panel-body">
         Clash 内置命令行接口，可用于启动、停止、切换配置或查看日志。通过命令行运行 `clash -f config.yaml` 可加载指定配置文件，适合服务器或无人值守场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
-    <div class="panel-body">
-        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
-    <div class="panel-body">
-        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 节点测速结合策略组的作用？</h5></div>
@@ -311,9 +296,24 @@ Chrome账户登录后，书签、密码、扩展等均可在多设备间同步�
         Shadowrocket 定期测速节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页、视频和游戏流量走低延迟节点，提高访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 如何手动导入节点？</h5></div>
+    <div class="panel-heading"><h5>Mellow 如何通过配置实现多出口分流？</h5></div>
     <div class="panel-body">
-        SSR 节点通常以“ssr://”链接形式提供。用户可在客户端中点击“添加节点”或“导入链接”，粘贴该字符串后保存即可。程序会自动解析服务器地址、端口、加密方式等参数。    </div>
+        Mellow 可在配置文件中定义多个 outbound，并结合 routing 规则实现按域名、IP 或策略组分流。这样不同类型的流量可走不同节点，提高使用体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 可以导入哪些格式的规则文件？</h5></div>
+    <div class="panel-body">
+        Surfboard 支持 YAML 和部分 JSON 格式的规则文件，用户可以导入节点、策略组和分流规则。注意文件格式和语法必须符合 Surfboard 规范，否则可能导入失败。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
+    <div class="panel-body">
+        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 如何配置混淆以应对封锁升级？</h5></div>
+    <div class="panel-body">
+        选择合适的混淆方式，如 tls1.2_ticket_auth，可模拟正常 HTTPS 流量。合理搭配协议和混淆参数，可有效降低被 DPI 检测和封锁的风险，提高节点长期稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -342,16 +342,16 @@ Chrome账户登录后，书签、密码、扩展等均可在多设备间同步�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-1-17-free-node-subscribe.htm" title="1月17日|最高速度18M/S，2025最新SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址">1月17日|最高速度18M/S，2025最新SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-23-node-share.htm" title="1月23日|最高速度18.4M/S，2025最新Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址">1月23日|最高速度18.4M/S，2025最新Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-24-free-v2ray-subscribe.htm" title="12月24日|最高速度22.2M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点免费节点订阅链接地址">12月24日|最高速度22.2M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-19-node-share.htm" title="1月19日|最高速度20.5M/S，2025最新Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点免费节点订阅链接地址">1月19日|最高速度20.5M/S，2025最新Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-31-free-clash-subscribe.htm" title="12月31日|最高速度21.2M/S，2025最新Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">12月31日|最高速度21.2M/S，2025最新Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-18-free-node-subscribe-links.htm" title="12月18日|最高速度20.4M/S，2025最新Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点免费节点订阅链接地址">12月18日|最高速度20.4M/S，2025最新Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-6-free-shadowrocket-node.htm" title="1月6日|最高速度20.2M/S，2025最新SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点免费节点订阅链接地址">1月6日|最高速度20.2M/S，2025最新SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-17-clash-node.htm" title="12月17日|最高速度19.8M/S，2025最新Clash节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点免费节点订阅链接地址">12月17日|最高速度19.8M/S，2025最新Clash节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-10-free-node-subscribe.htm" title="12月10日|最高速度20.6M/S，2025最新Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点免费节点订阅链接地址">12月10日|最高速度20.6M/S，2025最新Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-23-clash-v2ray-ss-ssr.htm" title="12月23日|最高速度21.8M/S，2025最新Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点免费节点订阅链接地址">12月23日|最高速度21.8M/S，2025最新Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-26-free-v2ray-subscribe.htm" title="1月26日|最高速度18.7M/S，2025最新Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点免费节点订阅链接地址">1月26日|最高速度18.7M/S，2025最新Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-30-node-share-links.htm" title="1月30日|最高速度22.2M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点免费节点订阅链接地址">1月30日|最高速度22.2M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-22-clash-v2ray-ss-ssr.htm" title="1月22日|最高速度18.1M/S，2025最新Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点免费节点订阅链接地址">1月22日|最高速度18.1M/S，2025最新Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-29-clash-node.htm" title="1月29日|最高速度20.5M/S，2025最新SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点免费节点订阅链接地址">1月29日|最高速度20.5M/S，2025最新SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-15-clash-windows.htm" title="1月15日|最高速度18.3M/S，2025最新V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">1月15日|最高速度18.3M/S，2025最新V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-16-node-share-links.htm" title="1月16日|最高速度21M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址">1月16日|最高速度21M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-28-node-share-links.htm" title="1月28日|最高速度18.1M/S，2025最新Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点免费节点订阅链接地址">1月28日|最高速度18.1M/S，2025最新Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-5-free-ssr-subscribe.htm" title="2月5日|最高速度18M/S，2025最新V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点免费节点订阅链接地址">2月5日|最高速度18M/S，2025最新V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-10-free-ssr-subscribe.htm" title="1月10日|最高速度22M/S，2025最新Clash节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点免费节点订阅链接地址">1月10日|最高速度22M/S，2025最新Clash节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-4-free-v2ray.htm" title="2月4日|最高速度19.5M/S，2025最新SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">2月4日|最高速度19.5M/S，2025最新SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -363,10 +363,10 @@ Chrome账户登录后，书签、密码、扩展等均可在多设备间同步�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                     </ul>
     </div>
