@@ -344,14 +344,9 @@ FINAL,DIRECT
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 的端口不可达怎么办？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 支持 Reality 吗？</h5></div>
     <div class="panel-body">
-        检查服务器防火墙是否开放对应端口，同时确认客户端和服务器端端口一致。还可以尝试更换节点或端口，确保 TLS 证书有效以保证连接成功。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何把 Clash 规则与本地 hosts 文件结合使用？</h5></div>
-    <div class="panel-body">
-        可在 Clash 的 rules 中优先设置域名直连规则，并在系统 hosts 中添加常用站点的固定解析以加速 DNS 解析。注意 hosts 优先级高于 DNS，因此修改 hosts 需谨慎以避免与真实解析冲突。<hr />    </div>
+        支持。Hiddify Next 基于 sing-box 内核，可加载 Vless+Reality、Trojan+TLS 等高级协议配置。用户可直接导入机场订阅，无需手动修改复杂参数。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 的节点延迟测量如何帮助选择节点？</h5></div>
@@ -359,9 +354,19 @@ FINAL,DIRECT
         Shadowrocket 会测试节点延迟和丢包率，并根据结果排序。用户可快速选择延迟最低的节点访问网站或视频，提高连接速度和稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 如何配置策略组优先节点？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
     <div class="panel-body">
-        在 Clash 中，用户可以通过策略组设置节点优先级，优先使用延迟低、稳定性高的节点。结合规则文件，可以根据域名或 IP 自动选择最优节点，实现更高效的网络访问体验。<hr />    </div>
+        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
+    <div class="panel-body">
+        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 的订阅更新支持自动导入节点吗？</h5></div>
+    <div class="panel-body">
+        支持。Nekoray 可以通过订阅 URL 自动下载节点，并根据用户配置更新本地节点列表。定期更新确保节点始终可用，减少手动维护的麻烦，提高使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的日志记录如何帮助排错？</h5></div>
@@ -374,24 +379,19 @@ FINAL,DIRECT
         ClashX 是 macOS 平台专用客户端，用户可在 GitHub 下载 DMG 安装包。安装后导入订阅即可使用，支持系统代理集成、自动更新和延迟测试。界面简洁直观，深受苹果用户欢迎。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
+    <div class="panel-heading"><h5>Clash 如何配置策略组优先节点？</h5></div>
     <div class="panel-body">
-        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
+        在 Clash 中，用户可以通过策略组设置节点优先级，优先使用延迟低、稳定性高的节点。结合规则文件，可以根据域名或 IP 自动选择最优节点，实现更高效的网络访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 支持 Reality 吗？</h5></div>
+    <div class="panel-heading"><h5>Trojan-Go 的端口不可达怎么办？</h5></div>
     <div class="panel-body">
-        支持。Hiddify Next 基于 sing-box 内核，可加载 Vless+Reality、Trojan+TLS 等高级协议配置。用户可直接导入机场订阅，无需手动修改复杂参数。<hr />    </div>
+        检查服务器防火墙是否开放对应端口，同时确认客户端和服务器端端口一致。还可以尝试更换节点或端口，确保 TLS 证书有效以保证连接成功。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
+    <div class="panel-heading"><h5>如何把 Clash 规则与本地 hosts 文件结合使用？</h5></div>
     <div class="panel-body">
-        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 的订阅更新支持自动导入节点吗？</h5></div>
-    <div class="panel-body">
-        支持。Nekoray 可以通过订阅 URL 自动下载节点，并根据用户配置更新本地节点列表。定期更新确保节点始终可用，减少手动维护的麻烦，提高使用便利性。    </div>
+        可在 Clash 的 rules 中优先设置域名直连规则，并在系统 hosts 中添加常用站点的固定解析以加速 DNS 解析。注意 hosts 优先级高于 DNS，因此修改 hosts 需谨慎以避免与真实解析冲突。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -420,16 +420,16 @@ FINAL,DIRECT
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-2-20-free-high-speed-nodes.htm" title="2月20日|最高速度19M/S，2025最新Shadowrocket节点/Trojan节点/Singbox节点/V2ray节点/SSR节点/Clash节点免费节点订阅链接地址">2月20日|最高速度19M/S，2025最新Shadowrocket节点/Trojan节点/Singbox节点/V2ray节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-24-clash-v2ray-ss-ssr.htm" title="1月24日|最高速度21.4M/S，2025最新V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点免费节点订阅链接地址">1月24日|最高速度21.4M/S，2025最新V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-24-free-ssr-node.htm" title="2月24日|最高速度20.5M/S，2025最新SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址">2月24日|最高速度20.5M/S，2025最新SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-6-free-ssr-subscribe.htm" title="3月6日|最高速度21.3M/S，2025最新V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点/Clash节点免费节点订阅链接地址">3月6日|最高速度21.3M/S，2025最新V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-26-clash-node-daily-updates.htm" title="2月26日|最高速度22.7M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点免费节点订阅链接地址">2月26日|最高速度22.7M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-30-node-share-links.htm" title="1月30日|最高速度22.2M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点免费节点订阅链接地址">1月30日|最高速度22.2M/S，2025最新Clash节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-26-free-ssr-node.htm" title="3月26日|最高速度19.6M/S，2025最新Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址">3月26日|最高速度19.6M/S，2025最新Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-10-free-high-speed-nodes.htm" title="2月10日|最高速度20.3M/S，2025最新Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅链接地址">2月10日|最高速度20.3M/S，2025最新Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-14-free-v2ray.htm" title="2月14日|最高速度22.8M/S，2025最新Shadowrocket节点/Trojan节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址">2月14日|最高速度22.8M/S，2025最新Shadowrocket节点/Trojan节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-25-free-high-speed-nodes.htm" title="1月25日|最高速度19.6M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点/Clash节点免费节点订阅链接地址">1月25日|最高速度19.6M/S，2025最新Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点/Clash节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-12-free-ssr-node.htm" title="3月12日|最高速度20.5M/S，2025最新Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">3月12日|最高速度20.5M/S，2025最新Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-node-subscribe-links.htm" title="3月15日|最高速度18.5M/S，2025最新Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/SSR节点/Singbox节点免费节点订阅链接地址">3月15日|最高速度18.5M/S，2025最新Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/SSR节点/Singbox节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-10-free-clash-subscribe.htm" title="3月10日|最高速度20.7M/S，2025最新Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点/Trojan节点免费节点订阅链接地址">3月10日|最高速度20.7M/S，2025最新Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点/Trojan节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-20-free-subscribe-node.htm" title="3月20日|最高速度22.9M/S，2025最新Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址">3月20日|最高速度22.9M/S，2025最新Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-13-free-v2ray.htm" title="3月13日|最高速度20.8M/S，2025最新V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点/SSR节点免费节点订阅链接地址">3月13日|最高速度20.8M/S，2025最新V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点/SSR节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-ssr-node.htm" title="3月27日|最高速度22.1M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Singbox节点免费节点订阅链接地址">3月27日|最高速度22.1M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/Singbox节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-16-free-subscribe-node.htm" title="3月16日|最高速度20.5M/S，2025最新V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点免费节点订阅链接地址">3月16日|最高速度20.5M/S，2025最新V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-28-free-v2ray-subscribe.htm" title="3月28日|最高速度20.8M/S，2025最新SSR节点/Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点免费节点订阅链接地址">3月28日|最高速度20.8M/S，2025最新SSR节点/Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-free-shadowrocket-node.htm" title="3月30日|最高速度19.4M/S，2025最新V2ray节点/Clash节点/Trojan节点/SSR节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址">3月30日|最高速度19.4M/S，2025最新V2ray节点/Clash节点/Trojan节点/SSR节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-7-free-clash.htm" title="3月7日|最高速度22.7M/S，2025最新Singbox节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址">3月7日|最高速度22.7M/S，2025最新Singbox节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -441,13 +441,10 @@ FINAL,DIRECT
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
             </li>
                     </ul>
     </div>
