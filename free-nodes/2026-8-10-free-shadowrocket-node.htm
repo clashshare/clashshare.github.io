@@ -397,39 +397,9 @@ A4：可以，推荐使用OpenWrt结合Passwall或Clash配置。但免费节点�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的用户管理可以分组吗？</h5></div>
-    <div class="panel-body">
-        支持用户分组管理，可为不同组设置独立带宽、流量配额和节点访问权限。分组管理便于大规模用户维护，确保每个组的网络资源合理分配，提升整体管理效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 模式能在移动网络下提高稳定性吗？</h5></div>
-    <div class="panel-body">
-        可以。XTLS 降低加密开销，减少握手次数，适合移动网络高延迟或不稳定环境。结合策略组和多出口节点，可提升连接稳定性和访问速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的 ACL4SSR 规则与 Rule Provider 有何区别？</h5></div>
     <div class="panel-body">
         ACL4SSR 是第三方规则集合，专注于分流国内外网站。Rule Provider 是 Clash 的订阅机制，允许自动更新远程规则。二者可以结合使用，实现灵活分流管理。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 与 VMess 的主要区别是什么？</h5></div>
-    <div class="panel-body">
-        VLESS 是 VMess 的轻量化替代协议，移除了内置加密逻辑，更依赖 TLS 层进行安全保护。这种设计降低了服务器压力，提升了传输效率，并增强了可扩展性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合规则实现智能节点切换？</h5></div>
-    <div class="panel-body">
-        Surfboard 可根据规则文件和策略组自动选择延迟低、稳定性高的节点处理流量。不同应用流量可分配不同节点，优化访问速度和稳定性，减少手动切换节点的操作。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 在路由器中如何更新节点订阅？</h5></div>
-    <div class="panel-body">
-        在 PassWall2 面板中点击“订阅管理”，输入或更新订阅链接后，点击“手动更新”即可自动下载最新节点数据。也可设置定时任务每日自动更新，保持配置最新。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-go 与原版 Trojan 有什么不同？</h5></div>
-    <div class="panel-body">
-        Trojan-go 在原版 Trojan 基础上扩展了多协议支持、WebSocket、gRPC、mux 多路复用等特性，同时优化性能并支持更丰富的客户端。相比原版，它更灵活，适合高级用户或多平台部署需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2RayN 的 GUI 界面如何导出节点？</h5></div>
@@ -437,14 +407,44 @@ A4：可以，推荐使用OpenWrt结合Passwall或Clash配置。但免费节点�
         V2RayN 提供节点导出功能，可生成分享链接或二维码。用户右键节点选择“分享”即可导出，以便在其他设备导入同样的代理配置，保持同步使用体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽与流量配额？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 的用户管理可以分组吗？</h5></div>
     <div class="panel-body">
-        管理员可为每个用户单独设置带宽和流量上限。超出限制时，可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
+        支持用户分组管理，可为不同组设置独立带宽、流量配额和节点访问权限。分组管理便于大规模用户维护，确保每个组的网络资源合理分配，提升整体管理效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 如何结合规则实现智能节点切换？</h5></div>
+    <div class="panel-body">
+        Surfboard 可根据规则文件和策略组自动选择延迟低、稳定性高的节点处理流量。不同应用流量可分配不同节点，优化访问速度和稳定性，减少手动切换节点的操作。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + XTLS 模式能在移动网络下提高稳定性吗？</h5></div>
+    <div class="panel-body">
+        可以。XTLS 降低加密开销，减少握手次数，适合移动网络高延迟或不稳定环境。结合策略组和多出口节点，可提升连接稳定性和访问速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 在路由器中如何更新节点订阅？</h5></div>
+    <div class="panel-body">
+        在 PassWall2 面板中点击“订阅管理”，输入或更新订阅链接后，点击“手动更新”即可自动下载最新节点数据。也可设置定时任务每日自动更新，保持配置最新。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS 与 VMess 的主要区别是什么？</h5></div>
+    <div class="panel-body">
+        VLESS 是 VMess 的轻量化替代协议，移除了内置加密逻辑，更依赖 TLS 层进行安全保护。这种设计降低了服务器压力，提升了传输效率，并增强了可扩展性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则订阅更新有哪些注意事项？</h5></div>
     <div class="panel-body">
-        Clash 订阅更新需保证网络畅通，规则文件格式正确，并与客户端版本兼容。建议定期更新规则以获得最新节点和分流规则，同时注意避免频繁刷新造成性能问题。    </div>
+        Clash 订阅更新需保证网络畅通，规则文件格式正确，并与客户端版本兼容。建议定期更新规则以获得最新节点和分流规则，同时注意避免频繁刷新造成性能问题。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan-go 与原版 Trojan 有什么不同？</h5></div>
+    <div class="panel-body">
+        Trojan-go 在原版 Trojan 基础上扩展了多协议支持、WebSocket、gRPC、mux 多路复用等特性，同时优化性能并支持更丰富的客户端。相比原版，它更灵活，适合高级用户或多平台部署需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽与流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户单独设置带宽和流量上限。超出限制时，可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -492,16 +492,16 @@ A4：可以，推荐使用OpenWrt结合Passwall或Clash配置。但免费节点�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2026-7-27-node-share-links.htm" title="7月27日|最高速度18.7M/S，2025最新SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">7月27日|最高速度18.7M/S，2025最新SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-20-free-node-subscribe.htm" title="7月20日|最高速度22.5M/S，2025最新V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点免费节点订阅链接地址">7月20日|最高速度22.5M/S，2025最新V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-22-free-v2ray.htm" title="7月22日|最高速度22.7M/S，2025最新Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址">7月22日|最高速度22.7M/S，2025最新Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-25-free-node-subscribe-links.htm" title="7月25日|最高速度18.7M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点免费节点订阅链接地址">7月25日|最高速度18.7M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-19.htm" title="8月19日|最高速度20.7M/S，2025最新V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址">8月19日|最高速度20.7M/S，2025最新V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-11.htm" title="8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-17-free-ssr-node.htm" title="7月17日|最高速度22.9M/S，2025最新Clash节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点/Singbox节点免费节点订阅链接地址">7月17日|最高速度22.9M/S，2025最新Clash节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-16-node-share.htm" title="7月16日|最高速度18.7M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点/SSR节点免费节点订阅链接地址">7月16日|最高速度18.7M/S，2025最新Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-18-free-clash.htm" title="7月18日|最高速度22.9M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址">7月18日|最高速度22.9M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-5.htm" title="8月5日|最高速度19.3M/S，2025最新Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址">8月5日|最高速度19.3M/S，2025最新Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-19-free-ssr-node.htm" title="7月19日|最高速度18.3M/S，2025最新Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址">7月19日|最高速度18.3M/S，2025最新Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-23-free-ssr-node.htm" title="7月23日|最高速度20.1M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Clash节点免费节点订阅链接地址">7月23日|最高速度20.1M/S，2025最新Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-28-clash-v2ray-ss-ssr.htm" title="7月28日|最高速度22.9M/S，2025最新V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点免费节点订阅链接地址">7月28日|最高速度22.9M/S，2025最新V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-4-clash-node.htm" title="8月4日|最高速度21.3M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址">8月4日|最高速度21.3M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-15-free-ssr-node.htm" title="7月15日|最高速度19.6M/S，2025最新SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/Clash节点免费节点订阅链接地址">7月15日|最高速度19.6M/S，2025最新SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-8-free-shadowrocket-node.htm" title="8月8日|最高速度18.7M/S，2025最新Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点免费节点订阅链接地址">8月8日|最高速度18.7M/S，2025最新Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-21-free-high-speed-nodes.htm" title="7月21日|最高速度22.7M/S，2025最新Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址">7月21日|最高速度22.7M/S，2025最新Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-30-free-ssr-subscribe.htm" title="7月30日|最高速度18.4M/S，2025最新Shadowrocket节点/SSR节点/Trojan节点/V2ray节点/Clash节点/Singbox节点免费节点订阅链接地址">7月30日|最高速度18.4M/S，2025最新Shadowrocket节点/SSR节点/Trojan节点/V2ray节点/Clash节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-clash-v2ray-ss-ssr.htm" title="8月6日|最高速度22M/S，2025最新SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/Trojan节点免费节点订阅链接地址">8月6日|最高速度22M/S，2025最新SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -513,10 +513,10 @@ A4：可以，推荐使用OpenWrt结合Passwall或Clash配置。但免费节点�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
             </li>
                     </ul>
     </div>
