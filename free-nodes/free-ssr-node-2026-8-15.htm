@@ -340,14 +340,19 @@ sudo apt install -y python3-pip git curl
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>ShadowsocksR 支持哪些混淆插件？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
     <div class="panel-body">
-        ShadowsocksR 提供多种混淆方式，如 tls1.2_ticket_auth、http_simple、random_head 等。它们通过模拟正常流量特征来规避防火墙检测，使通信更加隐蔽。<hr />    </div>
+        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
     <div class="panel-body">
         Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
+    <div class="panel-body">
+        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 支持订阅链接导入吗？</h5></div>
@@ -360,6 +365,16 @@ sudo apt install -y python3-pip git curl
         可尝试切换传输协议（如 WS、gRPC）、调整 MTU 或启用 MUX 多路复用功能。同时检查服务器地理位置、带宽和延迟，并选择最优节点以降低延迟。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 多路复用对即时通讯的优势是什么？</h5></div>
+    <div class="panel-body">
+        多路复用可让多个短连接共享同一通道，减少握手次数和加密开销，提高吞吐量和连接稳定性。适合即时通讯应用，保证消息快速传输和稳定接收。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>ShadowsocksR 支持哪些混淆插件？</h5></div>
+    <div class="panel-body">
+        ShadowsocksR 提供多种混淆方式，如 tls1.2_ticket_auth、http_simple、random_head 等。它们通过模拟正常流量特征来规避防火墙检测，使通信更加隐蔽。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 TUN 模式与 SOCKS 模式有何差异？</h5></div>
     <div class="panel-body">
         TUN 模式通过虚拟网卡拦截所有流量，更接近系统级代理；SOCKS 模式则仅作用于指定应用。TUN 模式更适合全局代理需求，而 SOCKS 模式轻量快捷，适用于游戏或单软件加速。<hr />    </div>
@@ -370,24 +385,9 @@ sudo apt install -y python3-pip git curl
         Sing-box 可按端口设置流量分流规则，将游戏流量分配到低延迟节点。结合策略组使用，可保证游戏连接稳定，减少延迟和掉线，提高流畅度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
-    <div class="panel-body">
-        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
-    <div class="panel-body">
-        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
     <div class="panel-body">
-        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用对即时通讯的优势是什么？</h5></div>
-    <div class="panel-body">
-        多路复用可让多个短连接共享同一通道，减少握手次数和加密开销，提高吞吐量和连接稳定性。适合即时通讯应用，保证消息快速传输和稳定接收。    </div>
+        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -435,16 +435,16 @@ sudo apt install -y python3-pip git curl
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-7-26-clash-v2ray-ss-ssr.htm" title="7月26日|最高速度22.8M/S，2025最新Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址">7月26日|最高速度22.8M/S，2025最新Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-22-clash-v2ray-ss-ssr.htm" title="8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址">8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-27.htm" title="8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址">8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址">8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-21-free-high-speed-nodes.htm" title="7月21日|最高速度22.7M/S，2025最新Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址">7月21日|最高速度22.7M/S，2025最新Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-16-clash-node.htm" title="8月16日|最高速度20.5M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月16日|最高速度20.5M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-9.htm" title="8月9日|最高速度20.5M/S，2025最新V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月9日|最高速度20.5M/S，2025最新V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-14-free-ssr-subscribe.htm" title="8月14日|最高速度21.9M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址">8月14日|最高速度21.9M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-3.htm" title="8月3日|最高速度22.5M/S，2025最新Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点/Trojan节点免费节点订阅链接地址">8月3日|最高速度22.5M/S，2025最新Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-10-free-shadowrocket-node.htm" title="8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-27-node-share-links.htm" title="7月27日|最高速度18.7M/S，2025最新SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">7月27日|最高速度18.7M/S，2025最新SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-20-free-node-subscribe.htm" title="7月20日|最高速度22.5M/S，2025最新V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点免费节点订阅链接地址">7月20日|最高速度22.5M/S，2025最新V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-18-node-share.htm" title="8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-19.htm" title="8月19日|最高速度20.7M/S，2025最新V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址">8月19日|最高速度20.7M/S，2025最新V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-11.htm" title="8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-21.htm" title="8月21日|最高速度20.3M/S，2025最新Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">8月21日|最高速度20.3M/S，2025最新Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-31.htm" title="8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-23.htm" title="8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-clash-node-daily-updates.htm" title="8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -456,10 +456,10 @@ sudo apt install -y python3-pip git curl
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>

@@ -361,24 +361,9 @@ netsh winsock reset
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的“节点切换策略”如何配置？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 策略组如何提升在线视频体验？</h5></div>
     <div class="panel-body">
-        在 PassWall2 中可设置多节点策略，如“按延迟排序”、“自动选择最快节点”等。程序会定期测速，根据实时数据自动切换线路，保证连接的稳定性和速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
-    <div class="panel-body">
-        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
-    <div class="panel-body">
-        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆方式选择有什么讲究？</h5></div>
-    <div class="panel-body">
-        混淆方式决定流量伪装特性，不同方式适应不同封锁环境。常用方式如 tls1.2_ticket_auth 模拟 HTTPS，http_simple 模拟 HTTP 请求，根据环境选择可提高抗封锁能力。<hr />    </div>
+        Surfboard 可通过策略组将视频流量分配到低延迟、高带宽节点，自动切换到最佳节点，减少缓冲和卡顿，提高在线视频播放的流畅性和整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 的节点测速结果能影响策略组吗？</h5></div>
@@ -386,9 +371,9 @@ netsh winsock reset
         可以。Matsuri 会将延迟最低的节点自动标记为优先节点，结合策略组，程序会优先选择最佳节点处理流量，保证访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 策略组如何提升在线视频体验？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 的“节点切换策略”如何配置？</h5></div>
     <div class="panel-body">
-        Surfboard 可通过策略组将视频流量分配到低延迟、高带宽节点，自动切换到最佳节点，减少缓冲和卡顿，提高在线视频播放的流畅性和整体网络体验。<hr />    </div>
+        在 PassWall2 中可设置多节点策略，如“按延迟排序”、“自动选择最快节点”等。程序会定期测速，根据实时数据自动切换线路，保证连接的稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 如何实现节点自动切换？</h5></div>
@@ -396,19 +381,34 @@ netsh winsock reset
         Shadowrocket 可结合延迟测速和策略组自动选择低延迟、稳定节点处理不同流量。提高网页、视频和游戏访问速度，减少掉线和卡顿，优化整体上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
+    <div class="panel-body">
+        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
+    <div class="panel-body">
+        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的混淆方式选择有什么讲究？</h5></div>
+    <div class="panel-body">
+        混淆方式决定流量伪装特性，不同方式适应不同封锁环境。常用方式如 tls1.2_ticket_auth 模拟 HTTPS，http_simple 模拟 HTTP 请求，根据环境选择可提高抗封锁能力。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 的节点测速功能有何局限？</h5></div>
     <div class="panel-body">
         Potatso Lite 节点测速只能显示延迟，无法测出带宽或实际下载速度。此外，测速结果受网络波动影响较大，建议结合实际使用体验来判断节点性能。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
-    <div class="panel-body">
-        Surfboard 基于 Clash 核心，因此支持大部分 YAML 配置文件，但部分字段如 rule-provider、external-controller 等可能不兼容。建议使用订阅转换工具将 Clash 文件转换为 Surfboard 兼容格式导入。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分组如何自动切换？</h5></div>
     <div class="panel-body">
-        用户可按延迟、地区或用途将节点分组，并启用策略组。系统会根据节点健康状况和延迟自动切换到最佳节点，保证网页浏览、视频播放和游戏连接稳定顺畅。    </div>
+        用户可按延迟、地区或用途将节点分组，并启用策略组。系统会根据节点健康状况和延迟自动切换到最佳节点，保证网页浏览、视频播放和游戏连接稳定顺畅。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
+    <div class="panel-body">
+        Surfboard 基于 Clash 核心，因此支持大部分 YAML 配置文件，但部分字段如 rule-provider、external-controller 等可能不兼容。建议使用订阅转换工具将 Clash 文件转换为 Surfboard 兼容格式导入。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -456,16 +456,16 @@ netsh winsock reset
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-22-clash-v2ray-ss-ssr.htm" title="8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址">8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-27.htm" title="8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址">8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-13.htm" title="8月13日|最高速度21.2M/S，2025最新Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址">8月13日|最高速度21.2M/S，2025最新Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址">8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-7.htm" title="8月7日|最高速度19M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址">8月7日|最高速度19M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-14-free-ssr-subscribe.htm" title="8月14日|最高速度21.9M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址">8月14日|最高速度21.9M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-9.htm" title="8月9日|最高速度20.5M/S，2025最新V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月9日|最高速度20.5M/S，2025最新V2ray节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-24-free-shadowrocket-node.htm" title="8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-21.htm" title="8月21日|最高速度20.3M/S，2025最新Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">8月21日|最高速度20.3M/S，2025最新Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-29.htm" title="8月29日|最高速度21.2M/S，2025最新Trojan节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点免费节点订阅链接地址">8月29日|最高速度21.2M/S，2025最新Trojan节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-10-free-shadowrocket-node.htm" title="8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-11.htm" title="8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月11日|最高速度20.9M/S，2025最新SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-23.htm" title="8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-31.htm" title="8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-18-node-share.htm" title="8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-17.htm" title="8月17日|最高速度20M/S，2025最新Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月17日|最高速度20M/S，2025最新Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-27.htm" title="8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址">8月27日|最高速度20.6M/S，2025最新Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-24-free-shadowrocket-node.htm" title="8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-clash-node-daily-updates.htm" title="8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -477,10 +477,10 @@ netsh winsock reset
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
