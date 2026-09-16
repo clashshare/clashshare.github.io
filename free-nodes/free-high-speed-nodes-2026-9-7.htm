@@ -166,14 +166,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的多策略组如何优化流量分配？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的多节点分流如何设置？</h5></div>
     <div class="panel-body">
-        多策略组允许将节点按用途、延迟或地理位置分类，并结合规则文件自动分流流量。这样不同应用如游戏、视频和网页流量都能走最优节点，提高整体访问速度和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性。<hr />    </div>
+        可通过策略组定义不同节点用途和优先级，结合规则文件将特定域名、IP 或端口流量分流至相应节点，实现游戏、视频或网页加速，并优化整体网络性能和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 的延迟测速功能如何提高网络体验？</h5></div>
@@ -181,9 +176,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         PassWall2 可以定期测速节点延迟，并结合策略组自动选择最优节点。这样在访问网站或视频时，可以始终使用延迟最低的线路，提高网络稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的多用户限速功能如何使用？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序功能如何使用？</h5></div>
     <div class="panel-body">
-        Hiddify Next 支持在管理面板中为每个用户设置带宽上限。管理员可以按需分配速率或流量配额，防止单一用户占用过多资源，从而保持整体网络稳定。<hr />    </div>
+        Matsuri 会定期测速节点延迟，并结合策略组自动选择延迟最低节点。用户无需手动切换即可保持高速访问，优化网页、视频和游戏体验，提高网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的路由规则如何实现国内直连？</h5></div>
@@ -196,24 +191,29 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Sing-box 可以按域名设置分流规则，将不同流量发送到指定节点。结合策略组使用，可实现网页、视频和游戏流量精准分配，提高访问速度和网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 是否支持跨客户端节点管理？</h5></div>
+    <div class="panel-body">
+        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 的多用户限速功能如何使用？</h5></div>
+    <div class="panel-body">
+        Hiddify Next 支持在管理面板中为每个用户设置带宽上限。管理员可以按需分配速率或流量配额，防止单一用户占用过多资源，从而保持整体网络稳定。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>如何优化 Clash DNS 解析速度？</h5></div>
     <div class="panel-body">
         可在配置文件中启用 fake-ip 模式或使用高质量的 DoH 服务（如 Cloudflare、AliDNS）。同时将 `fallback-filter.geoip` 设置为 true，避免国内域名被错误解析到境外，提高解析效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序功能如何使用？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的多策略组如何优化流量分配？</h5></div>
     <div class="panel-body">
-        Matsuri 会定期测速节点延迟，并结合策略组自动选择延迟最低节点。用户无需手动切换即可保持高速访问，优化网页、视频和游戏体验，提高网络稳定性。<hr />    </div>
+        多策略组允许将节点按用途、延迟或地理位置分类，并结合规则文件自动分流流量。这样不同应用如游戏、视频和网页流量都能走最优节点，提高整体访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的多节点分流如何设置？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
     <div class="panel-body">
-        可通过策略组定义不同节点用途和优先级，结合规则文件将特定域名、IP 或端口流量分流至相应节点，实现游戏、视频或网页加速，并优化整体网络性能和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持跨客户端节点管理？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。    </div>
+        管理员可为每个用户设置上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -261,16 +261,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址">8月12日|最高速度18.3M/S，2025最新Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-7.htm" title="8月7日|最高速度19M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址">8月7日|最高速度19M/S，2025最新Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-7.htm" title="9月7日|最高速度19.3M/S，2025最新Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点/Clash节点免费节点订阅链接地址">9月7日|最高速度19.3M/S，2025最新Shadowrocket节点/Singbox节点/SSR节点/Trojan节点/V2ray节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-23.htm" title="8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月23日|最高速度20.1M/S，2025最新V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-22-clash-v2ray-ss-ssr.htm" title="8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址">8月22日|最高速度18.7M/S，2025最新SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-10-free-shadowrocket-node.htm" title="8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月10日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-1.htm" title="9月1日|最高速度20.5M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Singbox节点免费节点订阅链接地址">9月1日|最高速度20.5M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-clash-node.htm" title="8月16日|最高速度20.5M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月16日|最高速度20.5M/S，2025最新Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-24-free-shadowrocket-node.htm" title="8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址">8月24日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点/Singbox节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-10-free-node-subscribe.htm" title="9月10日|最高速度20.4M/S，2025最新V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点免费节点订阅链接地址">9月10日|最高速度20.4M/S，2025最新V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-31.htm" title="8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月31日|最高速度19.4M/S，2025最新Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-15.htm" title="8月15日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址">8月15日|最高速度20.8M/S，2025最新V2ray节点/SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-20-free-node-subscribe.htm" title="8月20日|最高速度18.9M/S，2025最新Trojan节点/SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点免费节点订阅链接地址">8月20日|最高速度18.9M/S，2025最新Trojan节点/SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-29.htm" title="8月29日|最高速度21.2M/S，2025最新Trojan节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点免费节点订阅链接地址">8月29日|最高速度21.2M/S，2025最新Trojan节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-17.htm" title="8月17日|最高速度20M/S，2025最新Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Trojan节点免费节点订阅链接地址">8月17日|最高速度20M/S，2025最新Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Trojan节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-18-node-share.htm" title="8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址">8月18日|最高速度19.1M/S，2025最新SSR节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-25.htm" title="8月25日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月25日|最高速度18.2M/S，2025最新Singbox节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-12-free-node-subscribe.htm" title="9月12日|最高速度21.3M/S，2025最新Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅链接地址">9月12日|最高速度21.3M/S，2025最新Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-clash-node-daily-updates.htm" title="8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址">8月30日|最高速度19.4M/S，2025最新Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/SSR节点免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -282,7 +282,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
